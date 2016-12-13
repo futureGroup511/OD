@@ -36,7 +36,6 @@ public class SpringTestUser {
 	   int userId = 1;
 	   User user = userService.selectByPrimaryKey(userId);
 	   System.out.println(user.getUserName());
-		
 	}
 	
 }
