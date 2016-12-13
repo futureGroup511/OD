@@ -1,0 +1,17 @@
+.mymetadata
+.checkstyle
+.classpath
+.project
+.class
+.war
+.zip
+.rar
+.idea
+*.iml
+.springBeans
+.tern-project
+.settings/*
+/indexes/*
+/target/*
+/bin/
+/target/
