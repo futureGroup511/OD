@@ -11,4 +11,5 @@ import com.future.base.BaseAction;
 @RequestMapping("department")
 public class DepartmentController extends BaseAction {
 
+	
 }
