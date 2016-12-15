@@ -92,4 +92,8 @@
 		dep_manager = #{depManager,jdbcType=VARCHAR}
 		where dep_id = #{depId,jdbcType=INTEGER}
 	</update>
+	
+	<select id="getAllDep" resultType="com.future.domain.Department" resultMap="BaseResultMap">
+		select * from od_department
+	</select>
 </mapper>

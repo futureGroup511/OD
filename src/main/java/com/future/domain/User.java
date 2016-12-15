@@ -119,4 +119,13 @@ public class User {
 	public void setDepartment(Department department) {
 		this.department = department;
 	}
+
+	@Override
+	public String toString() {
+		return "User [userId=" + userId + ", userName=" + userName + ", userNum=" + userNum + ", userPassword="
+				+ userPassword + ", userNp=" + userNp + ", userReport=" + userReport + ", userDuty=" + userDuty
+				+ ", userDesc=" + userDesc + ", userDep=" + userDep + ", userRole=" + userRole + ", role=" + role
+				+ ", department=" + department + "]";
+	}
+	
 }

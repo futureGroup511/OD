@@ -70,4 +70,8 @@
 		role_desc = #{roleDesc,jdbcType=VARCHAR}
 		where role_id = #{roleId,jdbcType=INTEGER}
 	</update>
+	
+	<select id="getAllRole" resultType="com.future.domain.Role" resultMap="BaseResultMap">
+		select * from od_role
+	</select>
 </mapper>

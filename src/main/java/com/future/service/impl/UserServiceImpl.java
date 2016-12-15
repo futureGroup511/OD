@@ -29,4 +29,35 @@ public class UserServiceImpl implements UserServiceI {
 		return userMapper.getAllUser();
 	}
 
+	public int updateByPrimaryKey(User user) {
+		return userMapper.updateByPrimaryKey(user);
+	}
+
+	/* 
+	 * 
+	 * 验证登陆。
+	 */
+	public User login(String username, String password) {
+		User user = userMapper.login(username);
+		if(user!=null){
+			if(password.equals(user.getUserPassword())){
+				return user;
+			} else{
+				System.out.println("密码不对");
+				return null;
+			}
+		} else{
+			System.out.println("没有这个人");
+			return null;
+		}
+	}
+
+	/**
+	 * 校正厅对所有正职评价
+	 * @author 刘阳阳
+	 */
+	public List<User> getxzAllz() {
+		return userMapper.getxzAllz();
+	}
+
 }

@@ -1,5 +1,7 @@
 package com.future.dao;
 
+import java.util.List;
+
 import com.future.domain.Department;
 
 public interface DepartmentMapper {
@@ -14,4 +16,6 @@ public interface DepartmentMapper {
     int updateByPrimaryKeySelective(Department record);
 
     int updateByPrimaryKey(Department record);
+    
+    List<Department> getAllDep();
 }

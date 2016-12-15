@@ -18,4 +18,13 @@ public interface UserMapper {
     int updateByPrimaryKey(User user);
     
     List<User> getAllUser();
+
+	User login(String username);
+
+	/**
+	 * 校正厅对所有正职评价
+	 * @author 刘阳阳
+	 * @return 
+	 */
+	List<User> getxzAllz();
 }

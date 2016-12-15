@@ -1,7 +1,5 @@
 package com.future.test;
 
-import java.util.List;
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +7,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.future.domain.User;
+import com.future.service.RoleServiceI;
 import com.future.service.UserServiceI;
 
 
@@ -16,13 +15,18 @@ import com.future.service.UserServiceI;
 @RunWith(SpringJUnit4ClassRunner.class)
 //配置了@ContextConfiguration注解并使用该注解的locations属性指明spring和配置文件之后，
 @ContextConfiguration(locations = {"classpath:applicationContext.xml"})
-public class SpringTestUser {
+public class SpringTestRole {
 
-	//注入userService
+	//注入roleService
 	@Autowired
-	private UserServiceI userService;
+	private RoleServiceI roleService;
 	
 	@Test
+	public void getAllRole(){
+	   System.out.println(roleService.getAllRole().get(1).getRoleName());
+	}
+	
+	/*@Test
 	public void testAddUser(){
 	    User user = new User();
 	    user.setUserRole(1);
@@ -38,24 +42,6 @@ public class SpringTestUser {
 	   int userId = 1;
 	   User user = userService.selectByPrimaryKey(userId);
 	   System.out.println(user.getUserName());
-	}
-	
-	@Test
-	public void login(){
-	   User user = userService.login("guoqiuping", "123");
-	   System.out.println(user);
-	}
-	
-	/**
-	 * 校正厅查询所有正职
-	 * @author 刘阳阳
-	 */
-	@Test
-	public void getxzAllz(){
-		List<User> listUser = userService.getxzAllz();
-		System.out.println(listUser);
-	}
-	
-	
+	}*/
 	
 }

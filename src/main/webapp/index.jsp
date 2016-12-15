@@ -4,9 +4,15 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>欢迎访问组织部互评系统</title>
+<title>欢迎登陆</title>
 </head>
 <body>
-<a href="user/getAllUser">查看用户信息</a>
+<form action="user/login" method="post">
+	账号：<input type="text" name="username">
+	密码：<input type="text" name="password">
+	<input type="submit" value="登陆">
+</form>
+
+<form action=""></form>
 </body>
 </html>

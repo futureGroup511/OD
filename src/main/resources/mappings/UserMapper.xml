@@ -166,12 +166,39 @@
 			<result column="role_name" property="roleName"/>
 			<result column="role_desc" property="roleDesc"/>
 		</association>
+		<association property="department" javaType="com.future.domain.Department">
+			<id column="dep_id" property="depId"/>
+			<result  column="dep_name" property="depName"/>
+			<result  column="dep_desc" property="depDesc"/>
+			<result  column="dep_role" property="depRole"/>
+			<result  column="dep_manager" property="depManager"/>
+		</association>
 	</resultMap>
 	
 	<select id="getAllUser" resultType="com.future.domain.User" resultMap="userAndRoleAndDeprtment">
 		select 
-		user.*,role.role_id,role.role_name,role.role_desc
-		from od_user user,od_role role
-		where user.user_role = role.role_id
+		user.*,role.role_id,role.role_name,role.role_desc,
+		dep.dep_id,dep.dep_name,dep.dep_desc,dep.dep_role,dep.dep_manager
+		from 
+		od_user user,
+		od_role role,
+		od_department dep
+		where user.user_role = role.role_id and user.user_dep = dep.dep_id
+	</select>
+	
+	<!-- 判断登陆 -->
+	<select id="login" parameterType="java.lang.String" resultMap="userAndRoleAndDeprtment">
+		select 
+		user.*,role.role_id,role.role_name,role.role_desc,
+		dep.dep_id,dep.dep_name,dep.dep_desc,dep.dep_role,dep.dep_manager
+		from 
+		od_user user,
+		od_role role,
+		od_department dep
+		where user.user_role = role.role_id and user.user_dep = dep.dep_id and user.user_num =#{username}
+	</select>
+	
+	<select id="getxzAllz" resultType="com.future.domain.User" resultMap="BaseResultMap">
+		select user.* from od_user user where user.user_np = 0 
 	</select>
 </mapper>
