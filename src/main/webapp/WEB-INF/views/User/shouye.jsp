@@ -14,7 +14,7 @@
 <br>
 <c:if test="${sessionScope.user.userRole == 1 }">
 校正厅两类
-<a href="${pageContext.request.contextPath }/user/xzAllz">所有正职</a>
+<a href="${pageContext.request.contextPath }/user/xzAllzUI">所有正职</a>
 <a href="">分管单位</a>
 </c:if>
 <c:if test="${sessionScope.user.userRole == 2 }">

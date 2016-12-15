@@ -1,7 +1,6 @@
 package com.future.controller;
 
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
-
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -16,8 +15,8 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.future.base.BaseAction;
-import com.future.dao.UserMapper;
 import com.future.domain.Department;
+import com.future.domain.Evaluate;
 import com.future.domain.Role;
 import com.future.domain.User;
 
@@ -102,17 +101,51 @@ public class UserController extends BaseAction {
 	
 	
 	/**
-	 * 校正厅对所有正职评价
+	 * 校正厅对所有正职评价,请求页面
 	 * @author 刘阳阳
 	 */
-	@RequestMapping(value="xzAllz",method=RequestMethod.GET)
-	public ModelAndView xzAllz(){
-		String viewname = "User/xzAllz";
+	@RequestMapping(value="xzAllzUI",method=RequestMethod.GET)
+	public ModelAndView xzAllzUI(){
+		String viewname = "User/xzAllzUI";
 		ModelAndView modelAndView = new ModelAndView(viewname);
 		
 		List<User> user = userService.getxzAllz();
 		modelAndView.addObject("userList",user);
 		return modelAndView;
+	}
+	
+	/**
+	 * 校正厅对所有正职评价，处理结果
+	 * @author 刘阳阳
+	 */
+	@RequestMapping(value="xzAllz",method=RequestMethod.GET)
+	public String xzAllz(@RequestParam("evalEvalto") Integer evalEvalto,@RequestParam("evalEvalby") Integer[] evalEvalby,@RequestParam("resultt") String result){
+		System.out.println("评价人" + evalEvalto);
+		System.out.println("被评价人数" + evalEvalby.length);
+		System.out.println("被评价人：");
+		for(int i=0;i<evalEvalby.length;i++){
+			System.out.print(evalEvalby[i] + " ");
+		}
+		System.out.println("评价结果");
+		String[] result1 = result.split(",");
+		
+		//拿到结合，已备存储结果
+		List<Evaluate> evaList = new ArrayList();
+		for(int i=0;i<result1.length;i++){
+			Evaluate eva = new Evaluate();
+			//评价人
+			eva.setEvalEvalto(evalEvalto);
+			//被评价人
+			eva.setEvalEvalby(evalEvalby[i]);
+			//级别 优良中茶
+			eva.setEvalRank(Integer.parseInt(result1[i]));
+			//设置级别
+			eva.setEvalCate(2);
+			evaList.add(eva);
+		}
+		int num = userService.insertAll(evaList);
+		System.out.println(num);
+		return "";
 	}
 	
 }

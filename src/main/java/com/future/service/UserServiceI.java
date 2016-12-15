@@ -2,6 +2,7 @@ package com.future.service;
 
 import java.util.List;
 
+import com.future.domain.Evaluate;
 import com.future.domain.User;
 
 public interface UserServiceI {
@@ -25,4 +26,11 @@ public interface UserServiceI {
 	 * @author 刘阳阳
 	 */
 	List<User> getxzAllz();
+
+	/**
+	 * 批量插入评价数据
+	 * 
+	 * @author 刘阳阳
+	 */
+	int insertAll(List<Evaluate> evaList);
 }

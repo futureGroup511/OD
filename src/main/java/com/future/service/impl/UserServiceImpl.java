@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.future.dao.UserMapper;
+import com.future.domain.Evaluate;
 import com.future.domain.User;
 import com.future.service.UserServiceI;
 
@@ -58,6 +59,15 @@ public class UserServiceImpl implements UserServiceI {
 	 */
 	public List<User> getxzAllz() {
 		return userMapper.getxzAllz();
+	}
+
+	/**
+	 * 批量插入评价数据
+	 * 
+	 * @author 刘阳阳
+	 */
+	public int insertAll(List<Evaluate> evaList) {
+		return userMapper.insertAll(evaList);
 	}
 
 }

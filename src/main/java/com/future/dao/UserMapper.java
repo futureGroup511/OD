@@ -2,6 +2,7 @@ package com.future.dao;
 
 import java.util.List;
 
+import com.future.domain.Evaluate;
 import com.future.domain.User;
 
 public interface UserMapper {
@@ -27,4 +28,11 @@ public interface UserMapper {
 	 * @return 
 	 */
 	List<User> getxzAllz();
+
+	/**
+	 * 批量插入评价数据
+	 * 
+	 * @author 刘阳阳
+	 */
+	int insertAll(List<Evaluate> evaList);
 }

@@ -198,7 +198,30 @@
 		where user.user_role = role.role_id and user.user_dep = dep.dep_id and user.user_num =#{username}
 	</select>
 	
+	<!-- 校正厅查询所有正职 -->
 	<select id="getxzAllz" resultType="com.future.domain.User" resultMap="BaseResultMap">
 		select user.* from od_user user where user.user_np = 0 
 	</select>
+	
+	
+	<!-- <insert id="addTrainRecordBatch" useGeneratedKeys="true" parameterType="java.util.List"> 
+		<selectKey resultType="long" keyProperty="id" order="AFTER"> 
+		SELECT 
+		LAST_INSERT_ID() 
+		</selectKey> 
+		insert into t_train_record (add_time,emp_id,activity_id,flag) 
+		values 
+		<foreach collection="list" item="item" index="index" separator="," > 
+		(#{item.addTime},#{item.empId},#{item.activityId},#{item.flag}) 
+		</foreach> 
+	</insert> -->
+
+	<!-- 批量插入评价 -->
+	<insert id="insertAll" useGeneratedKeys="true" parameterType="java.util.List">
+		insert into od_evaluate(eval_evalby,eval_evalto,eval_rank,eval_cate) 
+		values 
+		<foreach collection="list" item="evaList" index="index" separator="," > 
+		(#{evaList.evalEvalby},#{evaList.evalEvalto},#{evaList.evalRank},#{evaList.evalCate}) 
+		</foreach>
+	</insert>
 </mapper>
