@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.future.dao.EvaluateMapper;
 import com.future.dao.UserMapper;
 import com.future.domain.Evaluate;
 import com.future.domain.User;
@@ -17,6 +18,8 @@ public class UserServiceImpl implements UserServiceI {
 
 	@Autowired
 	private UserMapper userMapper;
+	@Autowired
+	private EvaluateMapper evaluateMapp;
 	
 	public int insert(User user) {
 		return userMapper.insert(user);
@@ -68,6 +71,16 @@ public class UserServiceImpl implements UserServiceI {
 	 */
 	public int insertAll(List<Evaluate> evaList) {
 		return userMapper.insertAll(evaList);
+	}
+
+	/**
+	 * 
+	 * 首先判断是否评价过，评价过的条件为，拿当前session 评价人 的userid，然后根据本次评价的类型 类别(1互评、2厅级上对下、3本单位上对下)，
+	 * 查到有记录就代表评价过，
+	 * @author 刘阳阳
+	 */
+	public List<Evaluate> getIsOrNoAllZheng(Evaluate isEval) {
+		return evaluateMapp.getIsOrNoAllZheng(isEval);
 	}
 
 }

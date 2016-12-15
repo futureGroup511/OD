@@ -218,10 +218,10 @@
 
 	<!-- 批量插入评价 -->
 	<insert id="insertAll" useGeneratedKeys="true" parameterType="java.util.List">
-		insert into od_evaluate(eval_evalby,eval_evalto,eval_rank,eval_cate) 
+		insert into od_evaluate(eval_evalby,eval_evalto,eval_rank,eval_cate,eval_desc) 
 		values 
 		<foreach collection="list" item="evaList" index="index" separator="," > 
-		(#{evaList.evalEvalby},#{evaList.evalEvalto},#{evaList.evalRank},#{evaList.evalCate}) 
+		(#{evaList.evalEvalby},#{evaList.evalEvalto},#{evaList.evalRank},#{evaList.evalCate},#{evaList.evalDesc}) 
 		</foreach>
 	</insert>
 </mapper>

@@ -105,4 +105,12 @@
 		eval_desc = #{evalDesc,jdbcType=VARCHAR}
 		where eval_id = #{evalId,jdbcType=INTEGER}
 	</update>
+	
+	<!-- 校正厅对所有正职评价之前，先检查是否评价过 -->
+	<select id="getIsOrNoAllZheng" resultMap="BaseResultMap" parameterType="com.future.domain.Evaluate">
+		select *
+		from od_evaluate
+		where eval_evalto = #{evalEvalto} and eval_cate=2 and eval_desc='0'
+	</select>
+	
 </mapper>

@@ -35,4 +35,5 @@ public interface UserMapper {
 	 * @author 刘阳阳
 	 */
 	int insertAll(List<Evaluate> evaList);
+
 }

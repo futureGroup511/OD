@@ -7,36 +7,107 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>校正厅评价所有正职</title>
 <script type="text/javascript" src="${pageContext.request.contextPath }/js/jquery-1.11.1.js"></script>
-<script type="text/javascript">
-	/* $(function(){
+<script type="text/javascript"> 
+
+	$(document).ready(function(){
+	    $("#button").click(function(){ 
+	    	if(checkout()==true){ 
+	            //
+	        }
+	        
+	        
+	    });  
+	});
+
+	function checkout(){
+		//得到本次参与评价的总人数
+		var count = $("#count").val();
+		//a 得到某个人一共评价了多少人，如果少于总数提示；
+		var a = 0;
+		result = "";
+		var inpArr = $("input[type='radio']");
+		for(var i=0;i<inpArr.length;i++){
+		    if(inpArr[i].checked){
+		    	result+=inpArr[i].value+",";
+		        a=a+1;
+		    }
+		}
+		$("#result").attr("value",result);
 		
-	})
+		if(count !=a ){
+			alert("请对全部人员做出评价");
+			return false;
+		}
+		
+		var one=0;
+		var two=0;;
+		var three=0;
+		var four=0;
+		
+		for(var i=0;i<result.length;i++){
+			if(result.charAt(i) == 1){
+				one = one + 1;
+			}
+			if(result.charAt(i) == 2){
+				two = two + 1;
+			}
+			if(result.charAt(i) == 3){
+				three = three + 1;
+			}
+			if(result.charAt(i) == 4){
+				four = four + 1;
+			}
+		}
+		//alert("one:" + one + "  tow:" + two + "  three:" + three + "  four:" + four);
+		//已经得到每一项的人数，接下来就是判断
+		//发送Ajax到后台查询本次评价的百分比
+		$.ajax({
+			//先走校验的action  
+			url : '${pageContext.request.contextPath }/user/ajaxgetBili',
+			type : 'post',
+			data : null,
+			dataType : 'text',
+			success : function(data) {
+				//alert(one);
+				var result = one/count*100;
+				if(result < data){
+					flag = true;
+					$("#form").submit();  
+				} else{
+					alert("本次评价的优秀人数超过50%，请重新评价！")
+				}
+			}
+		}); 
+	} 
 	
-	function clickk(){
-		alert($("input[type='radio']:checked").val());
-	} */
 	
 	
-	 
-	function addResult(){
+	
+	/* function addResult(a){
+		//获得本次评论总人数
+		var count = a;
+		var num =b;
 		//var inpArr = document.getElementsByTagName("input");
 		var inpArr = $("input[type='radio']");
 		result = "";
 		for(var i=0;i<inpArr.length;i++){
 		    if(inpArr[i].checked){
 		        result+=inpArr[i].value+",";
+		        b=b+1;
 		    }
 		}
-		alert(result);
+		
 		$("#result").attr("value",result);
 		return false;
-	}
+	} */
+	
 </script>
 </head>
 <body>
+<c:if test="${message == null }">
 校正厅评价所有正职
 ====${sessionScope.user.userName }==
-<form action="${pageContext.request.contextPath }/user/xzAllz">
+<form id="form" action="${pageContext.request.contextPath }/user/xzAllz">
 	<input type="hidden" name="evalEvalto" value="${sessionScope.user.userId }">
 	<table border="1" cellpadding="1" cellspacing="0">
 		<tr>
@@ -63,10 +134,16 @@
 		<tr>
 			<td>
 				<input type="hidden" id="result" name="resultt" value="">
-				<input type="submit" value="提交" id="submit" onclick="addResult()">
+				<input type="hidden" id="count" value="${userNum }">
+				====${userNum }===
+				<input type="button" value="提交" id="button" >
 			</td>
 		</tr>
 	</table>
 </form>
+</c:if>
+<c:if test="${message != null }">
+	${message }
+</c:if>
 </body>
 </html>

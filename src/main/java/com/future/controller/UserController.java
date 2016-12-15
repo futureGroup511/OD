@@ -1,8 +1,11 @@
 package com.future.controller;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Properties;
 
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
@@ -11,6 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -92,6 +96,10 @@ public class UserController extends BaseAction {
 		return "redirect:getAllUser";
 	}
 	
+	/**
+	 * 处理登陆请求
+	 * @author 刘阳阳
+	 */
 	@RequestMapping(value="login",method=RequestMethod.POST)
 	public String login(@RequestParam("username") String username,@RequestParam("password") String password,ModelMap session){
 		User user = userService.login(username,password);
@@ -105,13 +113,49 @@ public class UserController extends BaseAction {
 	 * @author 刘阳阳
 	 */
 	@RequestMapping(value="xzAllzUI",method=RequestMethod.GET)
-	public ModelAndView xzAllzUI(){
+	public ModelAndView xzAllzUI(ModelMap session){
 		String viewname = "User/xzAllzUI";
 		ModelAndView modelAndView = new ModelAndView(viewname);
 		
-		List<User> user = userService.getxzAllz();
-		modelAndView.addObject("userList",user);
+		
+		//首先判断是否评价过，评价过的条件为，拿当前session 评价人 的userid，然后根据本次评价的类型 类别(1互评、2厅级上对下、3本单位上对下)，
+		//查到有记录就代表评价过，
+		Evaluate isEval = new Evaluate();
+		User tempuser = (User) session.get("user");
+		isEval.setEvalEvalto(tempuser.getUserId());
+		isEval.setEvalCate(2);
+		isEval.setEvalDesc("0");
+		List<Evaluate> num = userService.getIsOrNoAllZheng(isEval);
+		if(num.size() > 0){
+			//评价过
+			modelAndView.addObject("message","您已对所有正职评价过！！");
+		} else{
+			//未评价过
+			List<User> user = userService.getxzAllz();
+			modelAndView.addObject("userList",user);
+			modelAndView.addObject("userNum",user.size());
+		}
+		
+		
+		
 		return modelAndView;
+	}
+	
+	/**
+	 * ajax获取本次评价的优秀的百分比，
+	 * @author 刘阳阳
+	 * @throws IOException 
+	 */
+	@ResponseBody
+	@RequestMapping(value="ajaxgetBili",method=RequestMethod.POST)
+	public String ajaxgetBili() throws IOException{
+		System.out.println("ajax收到");
+		InputStream inputStream = this.getClass().getClassLoader().getResourceAsStream("date.properties");
+		
+		Properties pro = new Properties();
+		pro.load(inputStream);
+		String a = pro.getProperty("bili");
+		return a;
 	}
 	
 	/**
@@ -141,6 +185,8 @@ public class UserController extends BaseAction {
 			eva.setEvalRank(Integer.parseInt(result1[i]));
 			//设置级别
 			eva.setEvalCate(2);
+			//设置校正厅对正职大的分
+			eva.setEvalDesc("0");
 			evaList.add(eva);
 		}
 		int num = userService.insertAll(evaList);
