@@ -29,6 +29,44 @@ import com.future.domain.User;
 @RequestMapping("user")
 @SessionAttributes("user")
 public class UserController extends BaseAction {
+	
+	/**
+	 * 左侧菜单请求
+	 * 
+	 * @author 刘阳阳
+	 */
+	@RequestMapping(value="returnMeun",method=RequestMethod.GET)
+	public String returnMeun(){
+		return "User/menu";
+	}
+	
+	/**
+	 * 登陆页面请求
+	 * 
+	 * @author 刘阳阳
+	 */
+	@RequestMapping(value="loginUI",method=RequestMethod.GET)
+	public String loginUI(){
+		return "User/loginUI";
+	}
+	
+	/**
+	 * 处理登陆请求
+	 * @author 刘阳阳
+	 */
+	@RequestMapping(value="login",method=RequestMethod.POST)
+	public String login(@RequestParam("username") String username,@RequestParam("password") String password,ModelMap session){
+		User user = userService.login(username,password);
+		if(user != null){
+			session.addAttribute("user",user);
+			return "User/shouye";
+		} else{
+			session.addAttribute("message","账号或密码错误");
+			return "redirect:loginUI";
+		}
+	}
+	
+	
 
 	/**
 	 * 查询所有用户信息
@@ -96,16 +134,7 @@ public class UserController extends BaseAction {
 		return "redirect:getAllUser";
 	}
 	
-	/**
-	 * 处理登陆请求
-	 * @author 刘阳阳
-	 */
-	@RequestMapping(value="login",method=RequestMethod.POST)
-	public String login(@RequestParam("username") String username,@RequestParam("password") String password,ModelMap session){
-		User user = userService.login(username,password);
-		session.addAttribute("user",user);
-		return "User/shouye";
-	}
+	
 	
 	
 	/**
@@ -187,7 +216,7 @@ public class UserController extends BaseAction {
 		}
 		int num = userService.insertAll(evaList);
 		System.out.println(num);
-		return "";
+		return "User/successEval";
 	}
 	
 	
@@ -256,7 +285,7 @@ public class UserController extends BaseAction {
 		}
 		int num = userService.insertAll(evaList);
 		System.out.println(num);
-		return "";
+		return "User/successEval";
 	}
 	
 	
@@ -324,7 +353,7 @@ public class UserController extends BaseAction {
 		}
 		int num = userService.insertAll(evaList);
 		System.out.println(num);
-		return "";
+		return "User/successEval";
 	}
 	
 	/**
@@ -363,7 +392,7 @@ public class UserController extends BaseAction {
 	@RequestMapping(value="dangqunGetAllJiaoxueShuji",method=RequestMethod.GET)
 	public String dangqunGetAllJiaoxueShuji(@RequestParam("evalEvalto") Integer evalEvalto,@RequestParam("evalEvalby") Integer[] evalEvalby,@RequestParam("resultt") String result){	
 		int num = publicAccountInsert(evalEvalto, evalEvalby, result, 1, null);
-		return "";
+		return "User/successEval";
 	}
 	
 	/**
@@ -402,7 +431,7 @@ public class UserController extends BaseAction {
 	@RequestMapping(value="dangqunGetAllDepZF",method=RequestMethod.GET)
 	public String dangqunGetAllDepZF(@RequestParam("evalEvalto") Integer evalEvalto,@RequestParam("evalEvalby") Integer[] evalEvalby,@RequestParam("resultt") String result){	
 		int num = publicAccountInsert(evalEvalto, evalEvalby, result, 3, null);
-		return "";
+		return "User/successEval";
 	}
 	
 	/**
@@ -443,7 +472,7 @@ public class UserController extends BaseAction {
 	@RequestMapping(value="JiaoxueShujiGetAlldangqun",method=RequestMethod.GET)
 	public String JiaoxueShujiGetAlldangqun(@RequestParam("evalEvalto") Integer evalEvalto,@RequestParam("evalEvalby") Integer[] evalEvalby,@RequestParam("resultt") String result){	
 		int num = publicAccountInsert(evalEvalto, evalEvalby, result, 1, null);
-		return "";
+		return "User/successEval";
 	}
 	
 	/**
@@ -483,7 +512,7 @@ public class UserController extends BaseAction {
 	@RequestMapping(value="JiaoxueShujiGetAllDepDown",method=RequestMethod.GET)
 	public String JiaoxueShujiGetAllDepDown(@RequestParam("evalEvalto") Integer evalEvalto,@RequestParam("evalEvalby") Integer[] evalEvalby,@RequestParam("resultt") String result){	
 		int num = publicAccountInsert(evalEvalto, evalEvalby, result, 1, null);
-		return "";
+		return "User/successEval";
 	}
 	
 	
@@ -525,7 +554,7 @@ public class UserController extends BaseAction {
 	@RequestMapping(value="XzGetAllYxYz",method=RequestMethod.GET)
 	public String XzGetAllYxYz(@RequestParam("evalEvalto") Integer evalEvalto,@RequestParam("evalEvalby") Integer[] evalEvalby,@RequestParam("resultt") String result){	
 		int num = publicAccountInsert(evalEvalto, evalEvalby, result, 1, null);
-		return "";
+		return "User/successEval";
 	}
 	
 	
@@ -565,7 +594,7 @@ public class UserController extends BaseAction {
 	@RequestMapping(value="XzGetAllDepDown",method=RequestMethod.GET)
 	public String XzGetAllDepDown(@RequestParam("evalEvalto") Integer evalEvalto,@RequestParam("evalEvalby") Integer[] evalEvalby,@RequestParam("resultt") String result){	
 		int num = publicAccountInsert(evalEvalto, evalEvalby, result, 3, null);
-		return "";
+		return "User/successEval";
 	}
 	
 	
@@ -609,7 +638,7 @@ public class UserController extends BaseAction {
 	@RequestMapping(value="YxYzGetXz",method=RequestMethod.GET)
 	public String YxYzGetXz(@RequestParam("evalEvalto") Integer evalEvalto,@RequestParam("evalEvalby") Integer[] evalEvalby,@RequestParam("resultt") String result){	
 		int num = publicAccountInsert(evalEvalto, evalEvalby, result, 1, null);
-		return "";
+		return "User/successEval";
 	}
 	
 	/**
@@ -649,7 +678,7 @@ public class UserController extends BaseAction {
 	@RequestMapping(value="YxYzGetDepDown",method=RequestMethod.GET)
 	public String YxYzGetDepDown(@RequestParam("evalEvalto") Integer evalEvalto,@RequestParam("evalEvalby") Integer[] evalEvalby,@RequestParam("resultt") String result){	
 		int num = publicAccountInsert(evalEvalto, evalEvalby, result, 3, null);
-		return "";
+		return "User/successEval";
 	}
 	
 	
