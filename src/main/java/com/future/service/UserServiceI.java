@@ -85,4 +85,18 @@ public interface UserServiceI {
 	 * @author 刘阳阳
 	 */
 	List<User> dangquanAllHPUser();
+
+	/**
+	 * 党群，查看是否对其 本单位的下级评价过
+	 * 
+	 * @author 刘阳阳
+	 */
+	List<Evaluate> getIsOrNoAllDangQunDepDown(Evaluate isEval);
+
+	/**
+	 * 党群，查询所有本单位的下级 副
+	 * 
+	 * @author 刘阳阳
+	 */
+	List<User> dangquanAllDepDwon(User tempuser);
 }

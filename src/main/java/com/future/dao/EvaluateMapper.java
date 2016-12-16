@@ -47,4 +47,13 @@ public interface EvaluateMapper {
 	 * @author 刘阳阳
 	 */
 	List<Evaluate> getIsOrNoAllDangQunZHP(Evaluate isEval);
+
+	/**
+	 * 党群，查看是否对其 本单位的下级评价过
+	 * 
+	 * @author 刘阳阳
+	 */
+	List<Evaluate> getIsOrNoAllDangQunDepDown(Evaluate isEval);
+	
+	
 }

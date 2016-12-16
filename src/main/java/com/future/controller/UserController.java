@@ -366,9 +366,44 @@ public class UserController extends BaseAction {
 		return "";
 	}
 	
+	/**
+	 * 党群部门  评价 本单位所有副职 请求页面
+	 * dangqunGetAllDepZFUI
+	 */
+	@RequestMapping(value="dangqunGetAllDepZFUI",method=RequestMethod.GET)
+	public ModelAndView dangqunGetAllDepZFUI(ModelMap session){
+		String viewname = "User/xzAllzUI";
+		ModelAndView modelAndView = new ModelAndView(viewname);
+		//查询之前判断是否评价过，评价过的条件为，拿到session 评价人的userid，然后根据本次评价类别 2 厅级对上机，在在加上描述中 desc 为 1 代表校正厅对其分管单位打得分。
+		Evaluate isEval = new Evaluate();
+		User tempuser = (User) session.get("user");
+		isEval.setEvalEvalto(tempuser.getUserId());
+		isEval.setEvalCate(3);
+		//isEval.setEvalDesc("1");
+		List<Evaluate> num = userService.getIsOrNoAllDangQunDepDown(isEval);	
+		if(num.size() > 0){
+			//评价过
+			modelAndView.addObject("message","您已本单位副职评价过！");
+		} else {
+			//未评价过
+			User user = (User) session.get("user");
+			List<User> userList = userService.dangquanAllDepDwon(tempuser);
+			modelAndView.addObject("userList",userList);
+			modelAndView.addObject("userNum",userList.size());
+			modelAndView.addObject("url","/user/dangqunGetAllDepZF");
+		}
+		return modelAndView;
+	}
 	
-	
-	
+	/**
+	 * 党群部门  评价 本单位所有副职 接受表单请求
+	 * dangqunGetAllDepZFUI
+	 */
+	@RequestMapping(value="dangqunGetAllDepZF",method=RequestMethod.GET)
+	public String dangqunGetAllDepZF(@RequestParam("evalEvalto") Integer evalEvalto,@RequestParam("evalEvalby") Integer[] evalEvalby,@RequestParam("resultt") String result){	
+		int num = publicAccountInsert(evalEvalto, evalEvalby, result, 3, null);
+		return "";
+	}
 	
 	
 	

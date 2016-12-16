@@ -137,4 +137,22 @@ public class UserServiceImpl implements UserServiceI {
 		return userMapper.dangquanAllHPUser();
 	}
 
+	/**
+	 * 党群，查看是否对其 本单位的下级评价过
+	 * 
+	 * @author 刘阳阳
+	 */
+	public List<Evaluate> getIsOrNoAllDangQunDepDown(Evaluate isEval) {
+		return evaluateMapp.getIsOrNoAllDangQunDepDown(isEval);
+	}
+
+	/**
+	 * 党群，查询所有本单位的下级 副
+	 * 
+	 * @author 刘阳阳
+	 */
+	public List<User> dangquanAllDepDwon(User user) {
+		return userMapper.dangquanAllDepDwon(user);
+	}
+
 }

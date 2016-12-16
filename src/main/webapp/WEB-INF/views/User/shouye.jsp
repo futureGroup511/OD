@@ -20,23 +20,19 @@
 <c:if test="${sessionScope.user.userRole == 2 }">
 <a href="${pageContext.request.contextPath }/user/xfAllFenGuanUI">校副厅1类对分管单位</a>
 </c:if>
-
-
-
-
 <c:if test="${sessionScope.user.userRole == 3 && sessionScope.user.userNp == 0}">
 党群部门 正<br>
-<a href="${pageContext.request.contextPath }/user/dangqunGetAllJiaoxueShujiUI">评价所有正职</a><br>
-
-
-
-
-
-党群部门 正评价本单位所有副职
+<a href="${pageContext.request.contextPath }/user/dangqunGetAllJiaoxueShujiUI">互评</a><br>
+<a href="${pageContext.request.contextPath }/user/dangqunGetAllDepZFUI">党群部门 正评价本单位所有副职</a><br>
 </c:if>
 <c:if test="${sessionScope.user.userRole == 3 && sessionScope.user.userNp == 1}">
 党群部门 副
+<a href="${pageContext.request.contextPath }/user/JiaoxueShujiGetAlldangqunUI">互评</a><br>
 </c:if>
+
+
+
+
 <c:if test="${sessionScope.user.userRole == 4 && sessionScope.user.userNp == 0}">
 教学书记 正
 </c:if>

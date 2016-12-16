@@ -65,4 +65,12 @@ public interface UserMapper {
 	 */
 	List<User> dangquanAllHPUser();
 
+	/**
+	 * 党群，查询所有本单位的下级 副
+	 * 
+	 * @author 刘阳阳
+	 */
+	List<User> dangquanAllDepDwon(User user);
+
+
 }

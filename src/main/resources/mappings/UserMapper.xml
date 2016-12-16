@@ -240,5 +240,10 @@
 		select user.* from od_user user where user.user_role = 4 
 	</select>
 	
+	<!-- 党群查询所有下级 -->
+	<select id="dangquanAllDepDwon" parameterType="com.future.domain.User" resultMap="BaseResultMap">
+		select user.* from od_user user where user.user_dep = #{userDep} and user.user_np = 1
+	</select>
+	
 	 
 </mapper>
