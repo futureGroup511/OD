@@ -28,6 +28,10 @@
 党群部门 正<br>
 <a href="${pageContext.request.contextPath }/user/dangqunGetAllJiaoxueShujiUI">评价所有正职</a><br>
 
+
+
+
+
 党群部门 正评价本单位所有副职
 </c:if>
 <c:if test="${sessionScope.user.userRole == 3 && sessionScope.user.userNp == 1}">

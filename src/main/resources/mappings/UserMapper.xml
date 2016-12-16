@@ -235,5 +235,10 @@
 		select user.* from od_user user where user.user_dep in (select dep_id from od_department where dep_manager = #{name} ) 
 	</select>
 	
+	<!-- 党群查询所有互评的 院系书记副书记 -->
+	<select id="dangquanAllHPUser" parameterType="java.lang.String" resultMap="BaseResultMap">
+		select user.* from od_user user where user.user_role = 4 
+	</select>
+	
 	 
 </mapper>

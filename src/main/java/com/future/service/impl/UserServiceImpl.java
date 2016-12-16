@@ -120,4 +120,21 @@ public class UserServiceImpl implements UserServiceI {
 		return userMapper.xfAllFenGuanUI(name);
 	}
 
+	/**
+	 * 党群  查看是否对其 互评的结果评价过
+	 * 
+	 * @author 刘阳阳
+	 */
+	public List<Evaluate> getIsOrNoAllDangQunZHP(Evaluate isEval) {
+		return evaluateMapp.getIsOrNoAllDangQunZHP(isEval);
+	}
+
+	/**
+	 * 党群查询所有互评的人员（所有院系书记副书记）
+	 * @author 刘阳阳
+	 */
+	public List<User> dangquanAllHPUser(){
+		return userMapper.dangquanAllHPUser();
+	}
+
 }

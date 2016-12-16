@@ -327,4 +327,79 @@ public class UserController extends BaseAction {
 		return "";
 	}
 	
+	/**
+	 * 党群部门  评价所有教学书记副书记,请求页面
+	 * dangqunGetAllJiaoxueShujiUI
+	 */
+	@RequestMapping(value="dangqunGetAllJiaoxueShujiUI",method=RequestMethod.GET)
+	public ModelAndView dangqunGetAllJiaoxueShujiUI(ModelMap session){
+		String viewname = "User/xzAllzUI";
+		ModelAndView modelAndView = new ModelAndView(viewname);
+		//查询之前判断是否评价过，评价过的条件为，拿到session 评价人的userid，然后根据本次评价类别 2 厅级对上机，在在加上描述中 desc 为 1 代表校正厅对其分管单位打得分。
+		Evaluate isEval = new Evaluate();
+		User tempuser = (User) session.get("user");
+		isEval.setEvalEvalto(tempuser.getUserId());
+		isEval.setEvalCate(1);
+		//isEval.setEvalDesc("1");
+		List<Evaluate> num = userService.getIsOrNoAllDangQunZHP(isEval);	
+		if(num.size() > 0){
+			//评价过
+			modelAndView.addObject("message","您已对院系书记副书记评价过！！");
+		} else {
+			//未评价过
+			User user = (User) session.get("user");
+			List<User> userList = userService.dangquanAllHPUser();
+			modelAndView.addObject("userList",userList);
+			modelAndView.addObject("userNum",userList.size());
+			modelAndView.addObject("url","/user/dangqunGetAllJiaoxueShuji");
+		}
+		return modelAndView;
+	}
+	
+	/**
+	 * 党群部门  评价所有教学书记副书记，接受表单请求
+	 * dangqunGetAllJiaoxueShuji
+	 */
+	@RequestMapping(value="dangqunGetAllJiaoxueShuji",method=RequestMethod.GET)
+	public String dangqunGetAllJiaoxueShuji(@RequestParam("evalEvalto") Integer evalEvalto,@RequestParam("evalEvalby") Integer[] evalEvalby,@RequestParam("resultt") String result){	
+		int num = publicAccountInsert(evalEvalto, evalEvalby, result, 1, null);
+		return "";
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	public int publicAccountInsert(Integer evalEvalto,Integer[] evalEvalby,String result,int cate,String desc){
+		String[] result1 = result.split(",");
+		
+		//拿到结合，已备存储结果
+		List<Evaluate> evaList = new ArrayList<Evaluate>();
+		for(int i=0;i<result1.length;i++){
+			Evaluate eva = new Evaluate();
+			//评价人
+			eva.setEvalEvalto(evalEvalto);
+			//被评价人
+			eva.setEvalEvalby(evalEvalby[i]);
+			//级别 优良中茶
+			eva.setEvalRank(Integer.parseInt(result1[i]));
+			//设置级别
+			eva.setEvalCate(cate);
+			//设置互评
+			//eva.setEvalDesc(desc);
+			evaList.add(eva);
+		}
+		int num = userService.insertAll(evaList);
+		return num;
+	}
 }

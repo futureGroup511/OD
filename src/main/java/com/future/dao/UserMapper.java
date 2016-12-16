@@ -59,4 +59,10 @@ public interface UserMapper {
 	 */
 	List<User> xfAllFenGuanUI(String name);
 
+	/**
+	 * 党群查询所有互评的人员（所有院系书记副书记）
+	 * @author 刘阳阳
+	 */
+	List<User> dangquanAllHPUser();
+
 }

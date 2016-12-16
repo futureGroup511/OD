@@ -127,6 +127,14 @@
 		where eval_evalto = #{evalEvalto} and eval_cate=#{evalCate} and eval_desc=#{evalDesc}
 	</select>
 	
+	<!-- 党群 ====互评==先检查是否评价过 -->
+	<select id="getIsOrNoAllDangQunZHP" resultMap="BaseResultMap" parameterType="com.future.domain.Evaluate">
+		select *
+		from od_evaluate
+		where eval_evalto = #{evalEvalto} and eval_cate=#{evalCate} <!-- and eval_desc=#{evalDesc} -->
+	</select>
+	
+	
 	
 	
 </mapper>

@@ -40,4 +40,11 @@ public interface EvaluateMapper {
 	 * @author 刘阳阳
 	 */
 	List<Evaluate> getIsOrNoAllFenGuanXF(Evaluate isEval);
+
+	/**
+	 * 党群  查看是否对其 互评的结果评价过
+	 * 
+	 * @author 刘阳阳
+	 */
+	List<Evaluate> getIsOrNoAllDangQunZHP(Evaluate isEval);
 }
