@@ -56,6 +56,16 @@ public class SpringTestUser {
 		System.out.println(listUser);
 	}
 	
+	/**
+	 * 校正厅查询分管单位
+	 * @author 刘阳阳
+	 */
+	@Test
+	public void xzAllFenGuanUI(){
+		List<User> listUser = userService.xzAllFenGuanUI("王清连");
+		System.out.println(listUser);
+	}
+	
 	
 	
 }

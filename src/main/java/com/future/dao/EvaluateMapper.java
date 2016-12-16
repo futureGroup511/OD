@@ -19,9 +19,25 @@ public interface EvaluateMapper {
 
     /**
 	 * 
+	 * 校正厅查询所有正职
 	 * 首先判断是否评价过，评价过的条件为，拿当前session 评价人 的userid，然后根据本次评价的类型 类别(1互评、2厅级上对下、3本单位上对下)，
 	 * 查到有记录就代表评价过，
 	 * @author 刘阳阳
 	 */
 	List<Evaluate> getIsOrNoAllZheng(Evaluate isEval);
+
+	/**
+	 * 校正厅查询分管单位是否评价过
+	 * 拿到session 评价人的userid，然后根据本次评价类别 2 厅级对下级，在在加上描述中 desc 为 1 代表校正厅对其分管单位打得分。
+	 * 查到有记录就代表评价过，
+	 * @author 刘阳阳
+	 */
+	List<Evaluate> getIsOrNoAllFenGuan(Evaluate isEval);
+
+	/**
+	 * 校副厅查询分管单位是否评价过
+	 * 2 厅级对下级，在在加上描述中 desc 为 1 代表 校副厅-对其分管单位打得分。
+	 * @author 刘阳阳
+	 */
+	List<Evaluate> getIsOrNoAllFenGuanXF(Evaluate isEval);
 }

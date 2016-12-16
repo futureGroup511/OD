@@ -116,9 +116,7 @@ public class UserController extends BaseAction {
 	public ModelAndView xzAllzUI(ModelMap session){
 		String viewname = "User/xzAllzUI";
 		ModelAndView modelAndView = new ModelAndView(viewname);
-		
-		
-		//首先判断是否评价过，评价过的条件为，拿当前session 评价人 的userid，然后根据本次评价的类型 类别(1互评、2厅级上对下、3本单位上对下)，
+		//首先判断是否评价过，评价过的条件为，拿当前session 评价人 的userid，然后根据本次评价的类型 类别(1互评、2厅级上对下、3本单位上对下)，  （注意，本次查询在mapper只用到了一个userid其余写死的死的，如果修改代码请注意）
 		//查到有记录就代表评价过，
 		Evaluate isEval = new Evaluate();
 		User tempuser = (User) session.get("user");
@@ -134,10 +132,8 @@ public class UserController extends BaseAction {
 			List<User> user = userService.getxzAllz();
 			modelAndView.addObject("userList",user);
 			modelAndView.addObject("userNum",user.size());
+			modelAndView.addObject("url","/user/xzAllz");
 		}
-		
-		
-		
 		return modelAndView;
 	}
 	
@@ -174,7 +170,7 @@ public class UserController extends BaseAction {
 		String[] result1 = result.split(",");
 		
 		//拿到结合，已备存储结果
-		List<Evaluate> evaList = new ArrayList();
+		List<Evaluate> evaList = new ArrayList<Evaluate>();
 		for(int i=0;i<result1.length;i++){
 			Evaluate eva = new Evaluate();
 			//评价人
@@ -187,6 +183,143 @@ public class UserController extends BaseAction {
 			eva.setEvalCate(2);
 			//设置校正厅对正职大的分
 			eva.setEvalDesc("0");
+			evaList.add(eva);
+		}
+		int num = userService.insertAll(evaList);
+		System.out.println(num);
+		return "";
+	}
+	
+	
+	/**
+	 * 校正厅对所有分管单位正副职评价,请求页面
+	 * @author 刘阳阳
+	 */
+	@RequestMapping(value="xzAllFenGuanUI",method=RequestMethod.GET)
+	public ModelAndView xzAllFenGuanUI(ModelMap session){
+		
+		String viewname = "User/xzAllzUI";
+		ModelAndView modelAndView = new ModelAndView(viewname);
+		
+		//查询之前判断是否评价过，评价过的条件为，拿到session 评价人的userid，然后根据本次评价类别 2 厅级对上机，在在加上描述中 desc 为 1 代表校正厅对其分管单位打得分。
+		Evaluate isEval = new Evaluate();
+		User tempuser = (User) session.get("user");
+		isEval.setEvalEvalto(tempuser.getUserId());
+		isEval.setEvalCate(2);
+		isEval.setEvalDesc("1");
+		List<Evaluate> num = userService.getIsOrNoAllFenGuan(isEval);
+		if(num.size() > 0){
+			//评价过
+			modelAndView.addObject("message","您已对分管单位所有人员评价过！！");
+		} else {
+			//未评价过
+			//查询分管单位的所有人   从当前session拿到单位id，传到dao层查询
+			User user = (User) session.get("user");
+			List<User> userList = userService.xzAllFenGuanUI(user.getUserName());
+			modelAndView.addObject("userList",userList);
+			modelAndView.addObject("userNum",userList.size());
+			modelAndView.addObject("url","/user/xzAllFenGuan");
+		}
+		return modelAndView;
+	}
+	
+	/**
+	 * 校正厅对所有=分管单位=评价，处理结果
+	 * @author 刘阳阳
+	 */
+	@RequestMapping(value="xzAllFenGuan",method=RequestMethod.GET)
+	public String xzAllFenGuan(@RequestParam("evalEvalto") Integer evalEvalto,@RequestParam("evalEvalby") Integer[] evalEvalby,@RequestParam("resultt") String result){
+		System.out.println("评价人" + evalEvalto);
+		System.out.println("被评价人数" + evalEvalby.length);
+		System.out.println("被评价人：");
+		for(int i=0;i<evalEvalby.length;i++){
+			System.out.print(evalEvalby[i] + " ");
+		}
+		System.out.println("评价结果");
+		String[] result1 = result.split(",");
+		
+		//拿到结合，已备存储结果
+		List<Evaluate> evaList = new ArrayList<Evaluate>();
+		for(int i=0;i<result1.length;i++){
+			Evaluate eva = new Evaluate();
+			//评价人
+			eva.setEvalEvalto(evalEvalto);
+			//被评价人
+			eva.setEvalEvalby(evalEvalby[i]);
+			//级别 优良中茶
+			eva.setEvalRank(Integer.parseInt(result1[i]));
+			//设置级别
+			eva.setEvalCate(2);
+			//设置校正厅对正职大的分
+			eva.setEvalDesc("1");
+			evaList.add(eva);
+		}
+		int num = userService.insertAll(evaList);
+		System.out.println(num);
+		return "";
+	}
+	
+	
+	/**
+	 * 校副厅--对所有  分管单位  正副职评价,请求页面
+	 * @author 刘阳阳
+	 */
+	@RequestMapping(value="xfAllFenGuanUI",method=RequestMethod.GET)
+	public ModelAndView xfAllFenGuanUI(ModelMap session){
+		String viewname = "User/xzAllzUI";
+		ModelAndView modelAndView = new ModelAndView(viewname);
+		
+		//查询之前判断是否评价过，评价过的条件为，拿到session 评价人的userid，然后根据本次评价类别 2 厅级对上机，在在加上描述中 desc 为 1 代表校正厅对其分管单位打得分。
+		Evaluate isEval = new Evaluate();
+		User tempuser = (User) session.get("user");
+		isEval.setEvalEvalto(tempuser.getUserId());
+		isEval.setEvalCate(2);
+		isEval.setEvalDesc("1");
+		List<Evaluate> num = userService.getIsOrNoAllFenGuanXF(isEval);
+		if(num.size() > 0){
+			//评价过
+			modelAndView.addObject("message","您已对分管单位所有人员评价过！！");
+		} else {
+			//未评价过
+			//查询分管单位的所有人   从当前session拿到单位id，传到dao层查询
+			User user = (User) session.get("user");
+			List<User> userList = userService.xfAllFenGuanUI(user.getUserName());
+			modelAndView.addObject("userList",userList);
+			modelAndView.addObject("userNum",userList.size());
+			modelAndView.addObject("url","/user/xfAllFenGuan");
+		}
+		return modelAndView;
+	}
+	
+	/**
+	 * 校副厅对所有=分管单位=评价，处理结果
+	 * @author 刘阳阳
+	 */
+	@RequestMapping(value="xfAllFenGuan",method=RequestMethod.GET)
+	public String xfAllFenGuan(@RequestParam("evalEvalto") Integer evalEvalto,@RequestParam("evalEvalby") Integer[] evalEvalby,@RequestParam("resultt") String result){
+		System.out.println("评价人" + evalEvalto);
+		System.out.println("被评价人数" + evalEvalby.length);
+		System.out.println("被评价人：");
+		for(int i=0;i<evalEvalby.length;i++){
+			System.out.print(evalEvalby[i] + " ");
+		}
+		System.out.println("评价结果");
+		String[] result1 = result.split(",");
+		
+		//拿到结合，已备存储结果
+		List<Evaluate> evaList = new ArrayList<Evaluate>();
+		for(int i=0;i<result1.length;i++){
+			Evaluate eva = new Evaluate();
+			//评价人
+			eva.setEvalEvalto(evalEvalto);
+			//被评价人
+			eva.setEvalEvalby(evalEvalby[i]);
+			//级别 优良中茶
+			eva.setEvalRank(Integer.parseInt(result1[i]));
+			//设置级别
+			eva.setEvalCate(2);
+			//设置校 副厅  厅对正职大的分
+			eva.setEvalDesc("1");
 			evaList.add(eva);
 		}
 		int num = userService.insertAll(evaList);

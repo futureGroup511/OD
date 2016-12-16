@@ -224,4 +224,16 @@
 		(#{evaList.evalEvalby},#{evaList.evalEvalto},#{evaList.evalRank},#{evaList.evalCate},#{evaList.evalDesc}) 
 		</foreach>
 	</insert>
+	
+	<!-- 校正厅查询所有分管单位 -->
+	<select id="xzAllFenGuanUI" parameterType="java.lang.String" resultMap="BaseResultMap">
+		select user.* from od_user user where user.user_dep in (select dep_id from od_department where dep_manager = #{name} ) 
+	</select>
+	
+	<!-- 校副厅查询所有分管单位 -->
+	<select id="xfAllFenGuanUI" parameterType="java.lang.String" resultMap="BaseResultMap">
+		select user.* from od_user user where user.user_dep in (select dep_id from od_department where dep_manager = #{name} ) 
+	</select>
+	
+	 
 </mapper>

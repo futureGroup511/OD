@@ -106,11 +106,27 @@
 		where eval_id = #{evalId,jdbcType=INTEGER}
 	</update>
 	
-	<!-- 校正厅对所有正职评价之前，先检查是否评价过 -->
+	<!-- 校正厅对所有====正职====评价之前，先检查是否评价过 -->
 	<select id="getIsOrNoAllZheng" resultMap="BaseResultMap" parameterType="com.future.domain.Evaluate">
 		select *
 		from od_evaluate
 		where eval_evalto = #{evalEvalto} and eval_cate=2 and eval_desc='0'
 	</select>
+	
+	<!-- 校正厅对 ====分管单位====领导评价之前，先检查是否评价过 -->
+	<select id="getIsOrNoAllFenGuan" resultMap="BaseResultMap" parameterType="com.future.domain.Evaluate">
+		select *
+		from od_evaluate
+		where eval_evalto = #{evalEvalto} and eval_cate=#{evalCate} and eval_desc=#{evalDesc}
+	</select>
+	
+	<!-- 校副厅厅对 ====分管单位====领导评价之前，先检查是否评价过 -->
+	<select id="getIsOrNoAllFenGuanXF" resultMap="BaseResultMap" parameterType="com.future.domain.Evaluate">
+		select *
+		from od_evaluate
+		where eval_evalto = #{evalEvalto} and eval_cate=#{evalCate} and eval_desc=#{evalDesc}
+	</select>
+	
+	
 	
 </mapper>

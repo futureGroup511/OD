@@ -15,15 +15,20 @@
 <c:if test="${sessionScope.user.userRole == 1 }">
 校正厅两类
 <a href="${pageContext.request.contextPath }/user/xzAllzUI">所有正职</a>
-<a href="">分管单位</a>
+<a href="${pageContext.request.contextPath }/user/xzAllFenGuanUI">分管单位</a>
 </c:if>
 <c:if test="${sessionScope.user.userRole == 2 }">
-校副厅1类
+<a href="${pageContext.request.contextPath }/user/xfAllFenGuanUI">校副厅1类对分管单位</a>
 </c:if>
+
+
+
+
 <c:if test="${sessionScope.user.userRole == 3 && sessionScope.user.userNp == 0}">
-党群部门 正
-评价所有正职
-评价分管单位
+党群部门 正<br>
+<a href="${pageContext.request.contextPath }/user/dangqunGetAllJiaoxueShujiUI">评价所有正职</a><br>
+
+党群部门 正评价本单位所有副职
 </c:if>
 <c:if test="${sessionScope.user.userRole == 3 && sessionScope.user.userNp == 1}">
 党群部门 副
