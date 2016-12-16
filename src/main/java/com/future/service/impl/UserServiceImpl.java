@@ -155,4 +155,13 @@ public class UserServiceImpl implements UserServiceI {
 		return userMapper.dangquanAllDepDwon(user);
 	}
 
+	/**
+	 * 教学书记副书记查询所有 党群机构
+	 * 
+	 * @author 刘阳阳
+	 */
+	public List<User> JiaoxueShujiGetAlldangqun() {
+		return userMapper.JiaoxueShujiGetAlldangqun();
+	}
+
 }

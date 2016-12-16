@@ -27,14 +27,18 @@
 </c:if>
 <c:if test="${sessionScope.user.userRole == 3 && sessionScope.user.userNp == 1}">
 党群部门 副
-<a href="${pageContext.request.contextPath }/user/JiaoxueShujiGetAlldangqunUI">互评</a><br>
+评价所有教学书记副书记
+<a href="${pageContext.request.contextPath }/user/dangqunGetAllJiaoxueShujiUI">互评教学书记副书记</a><br>
 </c:if>
 
 
 
 
 <c:if test="${sessionScope.user.userRole == 4 && sessionScope.user.userNp == 0}">
-教学书记 正
+教学书记 正 两类
+<a href="${pageContext.request.contextPath }/user/JiaoxueShujiGetAlldangqunUI">互评</a><br>
+互评
+本单位所有副职
 </c:if>
 <c:if test="${sessionScope.user.userRole == 4 && sessionScope.user.userNp == 1}">
 教学书记 副

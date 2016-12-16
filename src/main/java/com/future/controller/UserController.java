@@ -405,6 +405,46 @@ public class UserController extends BaseAction {
 		return "";
 	}
 	
+	/**
+	 * 教学书记副书记 互评  对所有党群，请求页面
+	 * JiaoxueShujiGetAlldangqunUI
+	 * @author 刘阳阳
+	 
+	@RequestMapping(value="JiaoxueShujiGetAlldangqunUI",method=RequestMethod.GET)
+	public ModelAndView JiaoxueShujiGetAlldangqunUI(ModelMap session){
+		String viewname = "User/xzAllzUI";
+		ModelAndView modelAndView = new ModelAndView(viewname);
+		//查询之前判断是否评价过，评价过的条件为，拿到session 评价人的userid，然后根据本次评价类别 2 厅级对上机，在在加上描述中 desc 为 1 代表校正厅对其分管单位打得分。
+		Evaluate isEval = new Evaluate();
+		User tempuser = (User) session.get("user");
+		isEval.setEvalEvalto(tempuser.getUserId());
+		isEval.setEvalCate(1);
+		//isEval.setEvalDesc("1");
+		//调用党群的方法
+		List<Evaluate> num = userService.getIsOrNoAllDangQunZHP(isEval);	
+		if(num.size() > 0){
+			//评价过
+			modelAndView.addObject("message","您已对党群部门互评过！");
+		} else {
+			//未评价过
+			//User user = (User) session.get("user");
+			List<User> userList = userService.JiaoxueShujiGetAlldangqun();
+			modelAndView.addObject("userList",userList);
+			modelAndView.addObject("userNum",userList.size());
+			modelAndView.addObject("url","/user/JiaoxueShujiGetAlldangqun");
+		}
+		return modelAndView;
+	}*/
+	
+	/**
+	 * 教学书记副书记  互评 党群
+	 * dangqunGetAllDepZFUI
+	 
+	@RequestMapping(value="dangqunGetAllDepZF",method=RequestMethod.GET)
+	public String dangqunGetAllDepZFUI(@RequestParam("evalEvalto") Integer evalEvalto,@RequestParam("evalEvalby") Integer[] evalEvalby,@RequestParam("resultt") String result){	
+		int num = publicAccountInsert(evalEvalto, evalEvalby, result, 1, null);
+		return "";
+	}*/
 	
 	
 	

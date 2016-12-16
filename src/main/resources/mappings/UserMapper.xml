@@ -245,5 +245,11 @@
 		select user.* from od_user user where user.user_dep = #{userDep} and user.user_np = 1
 	</select>
 	
+	<!-- 教学书记  查询所有党群成员 -->
+	<select id="JiaoxueShujiGetAlldangqun" resultMap="BaseResultMap">
+		select user.* from od_user user where user.user_role = 3
+	</select>
+
+	
 	 
 </mapper>

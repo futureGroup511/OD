@@ -72,5 +72,12 @@ public interface UserMapper {
 	 */
 	List<User> dangquanAllDepDwon(User user);
 
+	/**
+	 * 教学书记副书记查询所有 党群机构
+	 * 
+	 * @author 刘阳阳
+	 */
+	List<User> JiaoxueShujiGetAlldangqun();
+
 
 }

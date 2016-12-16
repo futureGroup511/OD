@@ -99,4 +99,11 @@ public interface UserServiceI {
 	 * @author 刘阳阳
 	 */
 	List<User> dangquanAllDepDwon(User tempuser);
+
+	/**
+	 * 教学书记副书记查询所有 党群机构
+	 * 
+	 * @author 刘阳阳
+	 */
+	List<User> JiaoxueShujiGetAlldangqun();
 }
