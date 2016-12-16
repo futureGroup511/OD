@@ -22,17 +22,17 @@ public interface UserServiceI {
 	User login(String username, String password);
 
 	/**
-	 * 校正厅对所有正职评价
-	 * @author 刘阳阳
-	 */
-	List<User> getxzAllz();
-
-	/**
 	 * 批量插入评价数据
 	 * 
 	 * @author 刘阳阳
 	 */
 	int insertAll(List<Evaluate> evaList);
+	
+	/**
+	 * 校正厅对所有正职评价
+	 * @author 刘阳阳
+	 */
+	List<User> getxzAllz();
 
 	/**
 	 * 校正厅查询正职是否评价过正职
@@ -43,13 +43,13 @@ public interface UserServiceI {
 	List<Evaluate> getIsOrNoAllZheng(Evaluate isEval);
 
 	/**
+	 * 校正厅对所有分管单位 评价
 	 * 通过session中的单位id，传到dao查询到单位名称，再去User表中查询所有人。
 	 * 
 	 * @author 刘阳阳
 	 */
 	List<User> xzAllFenGuanUI(String name);
 
-	
 	/**
 	 * 
 	 * 校正厅查询分管单位是否评价过
@@ -99,11 +99,78 @@ public interface UserServiceI {
 	 * @author 刘阳阳
 	 */
 	List<User> dangquanAllDepDwon(User tempuser);
+	
+	
+	
+	
 
 	/**
-	 * 教学书记副书记查询所有 党群机构
+	 * 教学书记、副书记、 查询所有  党群机构
 	 * 
 	 * @author 刘阳阳
 	 */
 	List<User> JiaoxueShujiGetAlldangqun();
+	
+	/**
+	 * 
+	 * 教学正书记  对其  下级 副 进行评价 之前 检查，是否对其副职评价过
+	 * @author 刘阳阳
+	 */
+	List<Evaluate> getIsOrNoAllJiaoShuShuJiDepDown(Evaluate isEval);
+
+	/**
+	 * 教学书记 评价 本单位所有副职
+	 * 
+	 * @author 刘阳阳
+	 */
+	List<User> jiaoxueshujiAllGetDepDown(User user);
+
+	
+	/**
+	 * 行政教辅部门，与院系院长副院长 互评之前，检查是否评价过
+	 * @author 刘阳阳
+	 */
+	List<Evaluate> getIsOrNoAllYxYz(Evaluate isEval);
+
+	/**
+	 * 行政教辅部门，与院系院长副院长 互评,拿到所有院系院长副院长的名单
+	 * 
+	 * @author 刘阳阳
+	 */
+	List<User> XzGetAllYxYz();
+
+	/**
+	 * 行政教辅部门， 对其 所属单位的副职评价之前，检查是否评价过
+	 * @author 刘阳阳
+	 */
+	List<Evaluate> getIsOrNoAllDepDown(Evaluate isEval);
+
+	/**
+	 * 
+	 * 行政教辅部门， 对其 所属单位的副职评价
+	 * @author 刘阳阳
+	 * @param user 
+	 */
+	List<User> XzGetAllDepDown(User user);
+
+	/**
+	 * 院系院长，与 行政教辅部门 互评
+	 * 
+	 * @author 刘阳阳
+	 */
+	List<User> YxYzGetXz();
+
+	/**
+	 * 院系院长对本单位所有副职评价，检查时候评价过
+	 * 
+	 * @author 刘阳阳
+	 */
+	List<Evaluate> getIsOrNoAllYxYzDepDown(Evaluate isEval);
+
+	/**
+	 * 院系院长，对本单位所有副职评价，得到所有副职列表
+	 * 
+	 * @author 刘阳阳
+	 */
+	List<User> YxYzGetAllDepDown(User user);
 }

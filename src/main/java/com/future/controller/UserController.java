@@ -406,10 +406,10 @@ public class UserController extends BaseAction {
 	}
 	
 	/**
-	 * 教学书记副书记 互评  对所有党群，请求页面
+	 * 教学书记副书记  互评  对所有党群，请求页面
 	 * JiaoxueShujiGetAlldangqunUI
 	 * @author 刘阳阳
-	 
+	 */
 	@RequestMapping(value="JiaoxueShujiGetAlldangqunUI",method=RequestMethod.GET)
 	public ModelAndView JiaoxueShujiGetAlldangqunUI(ModelMap session){
 		String viewname = "User/xzAllzUI";
@@ -420,7 +420,7 @@ public class UserController extends BaseAction {
 		isEval.setEvalEvalto(tempuser.getUserId());
 		isEval.setEvalCate(1);
 		//isEval.setEvalDesc("1");
-		//调用党群的方法
+		//调用党群的方法                        						//=====================此处少一个方法。
 		List<Evaluate> num = userService.getIsOrNoAllDangQunZHP(isEval);	
 		if(num.size() > 0){
 			//评价过
@@ -434,17 +434,230 @@ public class UserController extends BaseAction {
 			modelAndView.addObject("url","/user/JiaoxueShujiGetAlldangqun");
 		}
 		return modelAndView;
-	}*/
+	}
 	
 	/**
 	 * 教学书记副书记  互评 党群
 	 * dangqunGetAllDepZFUI
-	 
-	@RequestMapping(value="dangqunGetAllDepZF",method=RequestMethod.GET)
-	public String dangqunGetAllDepZFUI(@RequestParam("evalEvalto") Integer evalEvalto,@RequestParam("evalEvalby") Integer[] evalEvalby,@RequestParam("resultt") String result){	
+	 */
+	@RequestMapping(value="JiaoxueShujiGetAlldangqun",method=RequestMethod.GET)
+	public String JiaoxueShujiGetAlldangqun(@RequestParam("evalEvalto") Integer evalEvalto,@RequestParam("evalEvalby") Integer[] evalEvalby,@RequestParam("resultt") String result){	
 		int num = publicAccountInsert(evalEvalto, evalEvalby, result, 1, null);
 		return "";
-	}*/
+	}
+	
+	/**
+	 * 教学书记 正书记，对其所属部门，的副职进行评价，请求页面
+	 * JiaoxueShujiGetAllDepDown
+	 * @author 刘阳阳
+	 */
+	@RequestMapping(value="JiaoxueShujiGetAllDepDownUI",method=RequestMethod.GET)
+	public ModelAndView JiaoxueShujiGetAllDepDownUI(ModelMap session){
+		String viewname = "User/xzAllzUI";
+		ModelAndView modelAndView = new ModelAndView(viewname);
+		//查询之前判断是否评价过，评价过的条件为，拿到session 评价人的userid，然后根据本次评价类别 2 厅级对上机，在在加上描述中 desc 为 1 代表校正厅对其分管单位打得分。
+		Evaluate isEval = new Evaluate();
+		User tempuser = (User) session.get("user");
+		isEval.setEvalEvalto(tempuser.getUserId());
+		isEval.setEvalCate(3);
+		//isEval.setEvalDesc("1");
+		List<Evaluate> num = userService.getIsOrNoAllJiaoShuShuJiDepDown(isEval);		
+		if(num.size() > 0){
+			//评价过
+			modelAndView.addObject("message","您已本单位副职评价过！");
+		} else {
+			//未评价过
+			User user = (User) session.get("user");
+			List<User> userList = userService.jiaoxueshujiAllGetDepDown(user);
+			modelAndView.addObject("userList",userList);
+			modelAndView.addObject("userNum",userList.size());
+			modelAndView.addObject("url","/user/JiaoxueShujiGetAllDepDown");
+		}
+		return modelAndView;
+	}
+	
+	/**
+	 * 教学书记 评价 本单位，所有副职
+	 * dangqunGetAllDepZFUI
+	 */
+	@RequestMapping(value="JiaoxueShujiGetAllDepDown",method=RequestMethod.GET)
+	public String JiaoxueShujiGetAllDepDown(@RequestParam("evalEvalto") Integer evalEvalto,@RequestParam("evalEvalby") Integer[] evalEvalby,@RequestParam("resultt") String result){	
+		int num = publicAccountInsert(evalEvalto, evalEvalby, result, 1, null);
+		return "";
+	}
+	
+	
+	/**
+	 * 行政教辅部门 与院系院长副院长，互评请求页面
+	 * XzGetAllYxYzUI 行政 get 所有 院系院长 副院长，
+	 * @author 刘阳阳
+	 */
+	@RequestMapping(value="XzGetAllYxYzUI",method=RequestMethod.GET)
+	public ModelAndView XzGetAllYxYzUI(ModelMap session){
+		String viewname = "User/xzAllzUI";
+		ModelAndView modelAndView = new ModelAndView(viewname);	
+		//查询之前判断是否评价过，评价过的条件为，拿到session 评价人的userid，然后根据本次评价类别 1 厅级对上机
+		Evaluate isEval = new Evaluate();
+		User tempuser = (User) session.get("user");
+		isEval.setEvalEvalto(tempuser.getUserId());
+		isEval.setEvalCate(1);
+		//isEval.setEvalDesc("1");
+		List<Evaluate> num = userService.getIsOrNoAllYxYz(isEval);  //YxYz 院系院长
+		if(num.size() > 0){
+			//评价过
+			modelAndView.addObject("message","您已对院系院长副院长评价过！");
+		} else {
+			//未评价过
+			//User user = (User) session.get("user");
+			List<User> userList = userService.XzGetAllYxYz();
+			modelAndView.addObject("userList",userList);
+			modelAndView.addObject("userNum",userList.size());
+			modelAndView.addObject("url","/user/XzGetAllYxYz");
+		}
+		return modelAndView;
+	}
+	
+	/**
+	 * 行政教辅部门 与院系院长副院长，互评,处理结果
+	 * 教学书记 评价 本单位，所有副职
+	 * dangqunGetAllDepZFUI
+	 */
+	@RequestMapping(value="XzGetAllYxYz",method=RequestMethod.GET)
+	public String XzGetAllYxYz(@RequestParam("evalEvalto") Integer evalEvalto,@RequestParam("evalEvalby") Integer[] evalEvalby,@RequestParam("resultt") String result){	
+		int num = publicAccountInsert(evalEvalto, evalEvalby, result, 1, null);
+		return "";
+	}
+	
+	
+	/**
+	 * 行政教辅部门 正职 对所有本单位的副职，进行评价
+	 * 
+	 */
+	@RequestMapping(value="XzGetAllDepDownUI",method=RequestMethod.GET)
+	public ModelAndView XzGetAllDepDownUI(ModelMap session){
+		String viewname = "User/xzAllzUI";
+		ModelAndView modelAndView = new ModelAndView(viewname);	
+		//查询之前判断是否评价过，评价过的条件为，拿到session 评价人的userid，然后根据本次评价类别 1 厅级对上机
+		Evaluate isEval = new Evaluate();
+		User tempuser = (User) session.get("user");
+		isEval.setEvalEvalto(tempuser.getUserId());
+		isEval.setEvalCate(3);
+		//isEval.setEvalDesc("1");
+		List<Evaluate> num = userService.getIsOrNoAllDepDown(isEval);  //YxYz 院系院长
+		if(num.size() > 0){
+			//评价过
+			modelAndView.addObject("message","您已本单位所有副职评价过！");
+		} else {
+			//未评价过
+			User user = (User) session.get("user");
+			List<User> userList = userService.XzGetAllDepDown(user);
+			modelAndView.addObject("userList",userList);
+			modelAndView.addObject("userNum",userList.size());
+			modelAndView.addObject("url","/user/XzGetAllDepDown");
+		}
+		return modelAndView;
+	}
+	
+	/**
+	 * 行政教辅部门 正职 对所有本单位的副职，进行评价
+	 * 
+	 */
+	@RequestMapping(value="XzGetAllDepDown",method=RequestMethod.GET)
+	public String XzGetAllDepDown(@RequestParam("evalEvalto") Integer evalEvalto,@RequestParam("evalEvalby") Integer[] evalEvalby,@RequestParam("resultt") String result){	
+		int num = publicAccountInsert(evalEvalto, evalEvalby, result, 3, null);
+		return "";
+	}
+	
+	
+	
+	/**
+	 * 院系院长评价 对 所有行政部门进行评价
+	 * 
+	 * YxYzGetXzUI
+	 * 
+	 * @author 刘阳阳
+	 */
+	@RequestMapping(value="YxYzGetXzUI",method=RequestMethod.GET)
+	public ModelAndView YxYzGetXzUI(ModelMap session){
+		String viewname = "User/xzAllzUI";
+		ModelAndView modelAndView = new ModelAndView(viewname);	
+		//查询之前判断是否评价过，评价过的条件为，拿到session 评价人的userid，然后根据本次评价类别 1 厅级对上机
+		Evaluate isEval = new Evaluate();
+		User tempuser = (User) session.get("user");
+		isEval.setEvalEvalto(tempuser.getUserId());
+		isEval.setEvalCate(1);
+		//isEval.setEvalDesc("1");
+		List<Evaluate> num = userService.getIsOrNoAllYxYz(isEval);  //YxYz 院系院长
+		if(num.size() > 0){
+			//评价过
+			modelAndView.addObject("message","您已对行政教辅部门评价过！");
+		} else {
+			//未评价过
+			//User user = (User) session.get("user");
+			List<User> userList = userService.YxYzGetXz();  //院系院长get行政
+			modelAndView.addObject("userList",userList);
+			modelAndView.addObject("userNum",userList.size());
+			modelAndView.addObject("url","/user/YxYzGetXz");
+		}
+		return modelAndView;
+	}
+	
+	/**
+	 * 院系院长评价  对  所有行政部门进行评价
+	 * 
+	 */
+	@RequestMapping(value="YxYzGetXz",method=RequestMethod.GET)
+	public String YxYzGetXz(@RequestParam("evalEvalto") Integer evalEvalto,@RequestParam("evalEvalby") Integer[] evalEvalby,@RequestParam("resultt") String result){	
+		int num = publicAccountInsert(evalEvalto, evalEvalby, result, 1, null);
+		return "";
+	}
+	
+	/**
+	 * 院系院长 对 本单位 所有副院长评价
+	 * YxYzGetDepDownUI
+	 * @author 刘阳阳
+	 */
+	@RequestMapping(value="YxYzGetDepDownUI",method=RequestMethod.GET)
+	public ModelAndView YxYzGetDepDownUI(ModelMap session){
+		String viewname = "User/xzAllzUI";
+		ModelAndView modelAndView = new ModelAndView(viewname);
+		//查询之前判断是否评价过，评价过的条件为，拿到session 评价人的userid，然后根据本次评价类别 2 厅级对上机，在在加上描述中 desc 为 1 代表校正厅对其分管单位打得分。
+		Evaluate isEval = new Evaluate();
+		User tempuser = (User) session.get("user");
+		isEval.setEvalEvalto(tempuser.getUserId());
+		isEval.setEvalCate(3);
+		//isEval.setEvalDesc("1");
+		List<Evaluate> num = userService.getIsOrNoAllYxYzDepDown(isEval);		
+		if(num.size() > 0){
+			//评价过
+			modelAndView.addObject("message","您已本单位副职评价过！");
+		} else {
+			//未评价过
+			User user = (User) session.get("user");
+			List<User> userList = userService.YxYzGetAllDepDown(user);
+			modelAndView.addObject("userList",userList);
+			modelAndView.addObject("userNum",userList.size());
+			modelAndView.addObject("url","/user/YxYzGetDepDown");
+		}
+		return modelAndView;
+	}
+	
+	/**
+	 * 院系院长 对 本单位 所有副院长评价
+	 * 
+	 */
+	@RequestMapping(value="YxYzGetDepDown",method=RequestMethod.GET)
+	public String YxYzGetDepDown(@RequestParam("evalEvalto") Integer evalEvalto,@RequestParam("evalEvalby") Integer[] evalEvalby,@RequestParam("resultt") String result){	
+		int num = publicAccountInsert(evalEvalto, evalEvalby, result, 3, null);
+		return "";
+	}
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	

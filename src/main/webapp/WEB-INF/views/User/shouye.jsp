@@ -30,30 +30,41 @@
 评价所有教学书记副书记
 <a href="${pageContext.request.contextPath }/user/dangqunGetAllJiaoxueShujiUI">互评教学书记副书记</a><br>
 </c:if>
-
-
-
-
 <c:if test="${sessionScope.user.userRole == 4 && sessionScope.user.userNp == 0}">
-教学书记 正 两类
+教学书记 正 两类  1、互评  2、本单位所有副职<br>
 <a href="${pageContext.request.contextPath }/user/JiaoxueShujiGetAlldangqunUI">互评</a><br>
-互评
-本单位所有副职
+<a href="${pageContext.request.contextPath }/user/JiaoxueShujiGetAllDepDownUI">评价本单位所有副职</a><br>
 </c:if>
 <c:if test="${sessionScope.user.userRole == 4 && sessionScope.user.userNp == 1}">
-教学书记 副
+教学书记 副  对所有党群互评<br>
+<a href="${pageContext.request.contextPath }/user/JiaoxueShujiGetAlldangqunUI">互评</a><br>
 </c:if>
+
+
+
+
+
 <c:if test="${sessionScope.user.userRole == 5 && sessionScope.user.userNp == 0}">
-行政教辅部门 正
+行政教辅部门 正  两类<br>
+<a href="${pageContext.request.contextPath }/user/XzGetAllYxYzUI">与院系院长副院长互评</a><br>
+<a href="${pageContext.request.contextPath }/user/XzGetAllDepDownUI">评价本单位所有副职</a><br>
 </c:if>
 <c:if test="${sessionScope.user.userRole == 5 && sessionScope.user.userNp == 1}">
-行政教辅部门 副
+行政教辅部门 副<br>
+<a href="${pageContext.request.contextPath }/user/XzGetAllYxYzUI">与院系院长副院长互评</a><br>
 </c:if>
+
+
+
+
 <c:if test="${sessionScope.user.userRole == 6 && sessionScope.user.userNp == 0}">
-院系院长 正
+院系院长 正 两类<br>
+<a href="${pageContext.request.contextPath }/user/YxYzGetXzUI">与行政教辅部门互评</a><br>
+<a href="${pageContext.request.contextPath }/user/YxYzGetDepDownUI">评价自己单位所有副职</a><br>
 </c:if>
 <c:if test="${sessionScope.user.userRole == 6 && sessionScope.user.userNp == 1}">
-院系院长 副
+院系院长 副<br>
+<a href="${pageContext.request.contextPath }/user/YxYzGetXzUI">与行政教辅部门互评</a><br>
 </c:if>
 <br>
 

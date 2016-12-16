@@ -104,7 +104,7 @@
 <body>
 <c:if test="${message == null }">
 校正厅评价所有正职
-====${sessionScope.user.userName }==
+====${sessionScope.user.userName }===
 <%-- <form id="form" action="${pageContext.request.contextPath }/user/xzAllz"> --%>
 <form id="form" action="${pageContext.request.contextPath }${url}">
 	<input type="hidden" name="evalEvalto" value="${sessionScope.user.userId }">

@@ -250,6 +250,30 @@
 		select user.* from od_user user where user.user_role = 3
 	</select>
 
+	<!--教学书记 查询 本单位所有副职  -->
+	<select id="jiaoxueshujiAllGetDepDown" parameterType="com.future.domain.User" resultMap="BaseResultMap">
+		select user.* from od_user user where user.user_dep = #{userDep} and user.user_np = 1 and user.user_role = #{userRole}
+	</select>
 	
-	 
+	<!-- 行政教辅部门，与院系院长副院长 互评,拿到所有院系院长副院长的名单 -->
+	<select id="XzGetAllYxYz" resultMap="BaseResultMap">
+		select user.* from od_user user where user.user_role = 6
+	</select>
+	
+	<!-- 行政教辅部门， 对其 所属单位的副职评价 -->
+	<select id="XzGetAllDepDown" parameterType="com.future.domain.User" resultMap="BaseResultMap">
+		select user.* from od_user user where user.user_dep = #{userDep} and user.user_np = 1
+	</select>
+	
+	<!-- 院系院长，与 行政教辅部门 互评 -->
+	<select id="YxYzGetXz" resultMap="BaseResultMap">
+		select user.* from od_user user where user.user_role = 5
+	</select>
+	
+	
+	<!-- 院系院长，对本单位所有副职评价，得到所有副职列表 -->
+	<select id="YxYzGetAllDepDown" parameterType="com.future.domain.User" resultMap="BaseResultMap">
+		select user.* from od_user user where user.user_dep = #{userDep} and user.user_np = 1 and user.user_role = #{userRole}
+	</select>
+
 </mapper>

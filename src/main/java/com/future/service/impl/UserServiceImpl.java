@@ -164,4 +164,85 @@ public class UserServiceImpl implements UserServiceI {
 		return userMapper.JiaoxueShujiGetAlldangqun();
 	}
 
+	/**
+	 * 
+	 * 教学正书记  对其  下级 副 进行评价 之前 检查，是否对其副职评价过
+	 * @author 刘阳阳
+	 */
+	public List<Evaluate> getIsOrNoAllJiaoShuShuJiDepDown(Evaluate isEval) {
+		return evaluateMapp.getIsOrNoAllJiaoShuShuJiDepDown(isEval);
+	}
+
+	/**
+	 * 教学书记 评价 本单位所有副职
+	 * 
+	 * @author 刘阳阳
+	 */
+	public List<User> jiaoxueshujiAllGetDepDown(User user) {
+		return userMapper.jiaoxueshujiAllGetDepDown(user);
+	}
+
+	
+	
+	/**
+	 * 行政教辅部门，与院系院长副院长 互评之前，检查是否评价过
+	 * @author 刘阳阳
+	 */
+	public List<Evaluate> getIsOrNoAllYxYz(Evaluate isEval) {
+		return evaluateMapp.getIsOrNoAllYxYz(isEval);
+	}
+
+	/**
+	 * 行政教辅部门，与院系院长副院长 互评,拿到所有院系院长副院长的名单
+	 * 
+	 * @author 刘阳阳
+	 */
+	public List<User> XzGetAllYxYz() {
+		return userMapper.XzGetAllYxYz();
+	}
+
+	/**
+	 * 行政教辅部门， 对其 所属单位的副职评价之前，检查是否评价过
+	 * @author 刘阳阳
+	 */
+	public List<Evaluate> getIsOrNoAllDepDown(Evaluate isEval) {
+		return evaluateMapp.getIsOrNoAllDepDown(isEval);
+	}
+
+	/**
+	 * 
+	 * 行政教辅部门， 对其 所属单位的副职评价
+	 * @author 刘阳阳
+	 */
+	public List<User> XzGetAllDepDown(User user) {
+		return userMapper.XzGetAllDepDown(user);
+	}
+
+	/**
+	 * 院系院长，与 行政教辅部门 互评
+	 * 
+	 * @author 刘阳阳
+	 */
+	public List<User> YxYzGetXz() {
+		return userMapper.YxYzGetXz();
+	}
+
+	/**
+	 * 院系院长对本单位所有副职评价，检查时候评价过
+	 * 
+	 * @author 刘阳阳
+	 */
+	public List<Evaluate> getIsOrNoAllYxYzDepDown(Evaluate isEval) {
+		return evaluateMapp.getIsOrNoAllYxYzDepDown(isEval);
+	}
+
+	/**
+	 * 院系院长，对本单位所有副职评价，得到所有副职列表
+	 * 
+	 * @author 刘阳阳
+	 */
+	public List<User> YxYzGetAllDepDown(User user) {
+		return userMapper.YxYzGetAllDepDown(user);
+	}
+
 }

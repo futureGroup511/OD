@@ -54,6 +54,33 @@ public interface EvaluateMapper {
 	 * @author 刘阳阳
 	 */
 	List<Evaluate> getIsOrNoAllDangQunDepDown(Evaluate isEval);
+
+	/**
+	 * 
+	 * 教学正书记  对其  下级 副 进行评价 之前 检查，是否对其副职评价过
+	 * @author 刘阳阳
+	 */
+	List<Evaluate> getIsOrNoAllJiaoShuShuJiDepDown(Evaluate isEval);
+
+	
+	/**
+	 * 行政教辅部门，与院系院长副院长 互评之前，检查是否评价过
+	 * @author 刘阳阳
+	 */
+	List<Evaluate> getIsOrNoAllYxYz(Evaluate isEval);
+
+	/**
+	 * 行政教辅部门， 对其 所属单位的副职评价之前，检查是否评价过
+	 * @author 刘阳阳
+	 */
+	List<Evaluate> getIsOrNoAllDepDown(Evaluate isEval);
+
+	/**
+	 * 院系院长对本单位所有副职评价，检查时候评价过
+	 * 
+	 * @author 刘阳阳
+	 */
+	List<Evaluate> getIsOrNoAllYxYzDepDown(Evaluate isEval);
 	
 	
 }

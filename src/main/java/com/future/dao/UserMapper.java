@@ -79,5 +79,40 @@ public interface UserMapper {
 	 */
 	List<User> JiaoxueShujiGetAlldangqun();
 
+	/**
+	 * 教学书记 评价 本单位所有副职
+	 * 
+	 * @author 刘阳阳
+	 */
+	List<User> jiaoxueshujiAllGetDepDown(User user);
+
+	/**
+	 * 行政教辅部门，与院系院长副院长 互评,拿到所有院系院长副院长的名单
+	 * 
+	 * @author 刘阳阳
+	 */
+	List<User> XzGetAllYxYz();
+
+	/**
+	 * 
+	 * 行政教辅部门， 对其 所属单位的副职评价
+	 * @author 刘阳阳
+	 */
+	List<User> XzGetAllDepDown(User user);
+
+	/**
+	 * 院系院长，与 行政教辅部门 互评
+	 * 
+	 * @author 刘阳阳
+	 */
+	List<User> YxYzGetXz();
+
+	/**
+	 * 院系院长，对本单位所有副职评价，得到所有副职列表
+	 * 
+	 * @author 刘阳阳
+	 */
+	List<User> YxYzGetAllDepDown(User user);
+
 
 }
