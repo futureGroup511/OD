@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.context.annotation.Scope;
@@ -59,7 +60,7 @@ public class UserController extends BaseAction {
 	 */
 	@RequestMapping(value="login",method=RequestMethod.POST)
 	//public ModelAndView login(@RequestParam("username") String username,@RequestParam("password") String password,ModelMap session){
-	public ModelAndView login(@RequestParam("username") String username,@RequestParam("password") String password,HttpSession session){
+	public ModelAndView login(@RequestParam("username") String username,@RequestParam("password") String password,HttpSession session,HttpServletRequest request){
 		User user = userService.login(username,password);
 		if(user != null){
 			String viewname = "User/shouye";
@@ -71,7 +72,8 @@ public class UserController extends BaseAction {
 			String viewname = "User/loginUI";
 			ModelAndView modelAndView = new ModelAndView(viewname);
 			//session.addAttribute("message","账号或密码错误");
-			session.setAttribute("message","账号或密码错误");
+			request.setAttribute("message", "账号或密码错误111");
+			//session.setAttribute("message","账号或密码错误");
 			return modelAndView;
 		}
 	}

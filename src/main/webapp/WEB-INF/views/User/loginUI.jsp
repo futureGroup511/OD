@@ -6,6 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>欢迎登陆</title>
+<script type="text/javascript" src="${pageContext.request.contextPath }/js/jquery-1.11.1.js"></script>
 </head>
 <body>
 ${message }
@@ -15,10 +16,26 @@ if(window.parent != window){
 	//window.parent.location.reload(true);
 	window.parent.location.href="http://localhost:8080/OD";
 }
+
+
+	function checkReg(){
+		var loginName = document.frm.username.value;
+		var password = document.frm.password.value;
+		if( loginName == ""){
+			alert("请输入账号！");
+			return false;
+		}
+		if(password == ""){
+			alert("请输入密码！");
+			return false;
+		}
+		return true;
+	}
+
 </script>
-<form action="${pageContext.request.contextPath }/user/login" method="post">
-	账号：<input type="text" name="username">
-	密码：<input type="text" name="password">
+<form name="frm" action="${pageContext.request.contextPath }/user/login" method="post" onsubmit="return checkReg()">
+	账号：<input type="text" name="username" id="username" />
+	密码：<input type="text" name="password" id="password" />
 	<input type="submit" value="登陆">
 </form>
 </body>
