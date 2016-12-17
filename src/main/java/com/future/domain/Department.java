@@ -1,14 +1,16 @@
 package com.future.domain;
 
 public class Department {
+
+    // 部门
     private Integer depId;
-
+    // 部门名称
     private String depName;
-
+    // 部门描述
     private String depDesc;
-
+    // 部门 对应角色（备用）
     private Integer depRole;
-
+    // 部门 分管单位
     private String depManager;
 
     public Integer getDepId() {

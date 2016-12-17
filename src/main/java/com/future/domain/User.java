@@ -1,24 +1,25 @@
 package com.future.domain;
 
 public class User {
+
 	private Integer userId;
 
 	private String userName;
-
+	// 账号
 	private String userNum;
-
+	// 密码
 	private String userPassword;
-
+	// 正负
 	private Integer userNp;
-
+	// 职称报告
 	private String userReport;
-
+	// 用户职务
 	private String userDuty;
-
+	// 用户描述
 	private String userDesc;
-
+	// 用户部门
 	private Integer userDep;
-
+	// 用户角色
 	private Integer userRole;
 
 	public Integer getUserId() {

@@ -1,16 +1,17 @@
 package com.future.domain;
 
 public class Evaluate {
+    // 评价id
     private Integer evalId;
-
+    // 被评价人
     private Integer evalEvalby;
-
+    // 评价人
     private Integer evalEvalto;
-
+    // 评价 等级 优良中差
     private Integer evalRank;
-
+    // 评价类别 厅级评价
     private Integer evalCate;
-
+    // 评价描述
     private String evalDesc;
 
     public Integer getEvalId() {
