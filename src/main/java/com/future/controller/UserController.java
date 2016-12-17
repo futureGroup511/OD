@@ -1,5 +1,6 @@
 package com.future.controller;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -10,6 +11,7 @@ import java.util.Properties;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.io.FileUtils;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -20,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.future.base.BaseAction;
@@ -130,10 +133,31 @@ public class UserController extends BaseAction {
 	/**
 	 * 添加用户
 	 * @author 刘阳阳
-	 */
 	@RequestMapping(value="addUser",method=RequestMethod.POST)
 	public String addUser(User user){
 		userService.insert(user);
+		return "redirect:getAllUser";
+	}
+	 */
+	@RequestMapping(value="addUser",method=RequestMethod.POST)
+	public String addUser(User user,@RequestParam("uploadfile") CommonsMultipartFile file,HttpServletRequest request){
+	//public String addUser(User user){
+		//userService.insert(user);
+		String filename = "";
+		if (!file.isEmpty()) {
+            String type = file.getOriginalFilename().substring(file.getOriginalFilename().indexOf("."));// 取文件格式后缀名
+            filename = System.currentTimeMillis() + type;// 取当前时间戳作为文件名
+            String path = request.getSession().getServletContext().getRealPath("/upload/" + filename);// 存放位置
+            File destFile = new File(path);
+            try {
+                FileUtils.copyInputStreamToFile(file.getInputStream(), destFile);// 复制临时文件到指定目录下
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } 
+		user.setUserReport(filename);
+		userService.insert(user);
+    
 		return "redirect:getAllUser";
 	}
 	
@@ -752,4 +776,24 @@ public class UserController extends BaseAction {
 		int num = userService.insertAll(evaList);
 		return num;
 	}
+}
+
+class Np{
+	
+	private Integer id;
+	private String name;
+	public Integer getId() {
+		return id;
+	}
+	public void setId(Integer id) {
+		this.id = id;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	
 }

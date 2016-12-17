@@ -111,8 +111,9 @@
 	<table border="1" cellpadding="1" cellspacing="0">
 		<tr>
 			<td>序号</td>
-			<td>正职名称</td>
+			<td>姓名</td>
 			<td>评价</td>
+			<td>述职报告</td>
 		</tr>
 		
 		
@@ -127,6 +128,11 @@
 					<input type="radio" name="eval${user.userId }" value="2"> 称职
 					<input type="radio" name="eval${user.userId }" value="3"> 基本称职
 					<input type="radio" name="eval${user.userId }" value="4"> 不称职
+				</td>
+				<td>
+					<%-- <img alt="" height="10" width="10" src="${pageContext.request.contextPath }/upload/1481966691829.png"> --%>
+					<a class="image-icon" rel="gallery[modal]" href="${pageContext.request.contextPath }/${user.userReport}">
+					<img height="20" width="50" src="${pageContext.request.contextPath }/${user.userReport}"></a>
 				</td>
 			</tr>
 		</c:forEach>
@@ -146,3 +152,15 @@
 </c:if>
 </body>
 </html>
+
+
+
+
+<head>
+<!-- 去掉这3行，则点击直接显示原图，如果移动至下面则IE浏览器报错 begin -->
+<script type='text/javascript' src='${pageContext.request.contextPath }/ly/js/jquery.js'></script>
+<script type='text/javascript' src='${pageContext.request.contextPath }/ly/js/jquery.scripts.js'></script>
+<script type='text/javascript' src='${pageContext.request.contextPath }/ly/js/jquery.custom.js'></script>
+<!-- 去掉这3行，则点击直接显示原图，如果移动至下面则IE浏览器报错 end -->
+<link rel="stylesheet" type="text/css" media="all" href="${pageContext.request.contextPath }/ly/css/style.min.css" />
+</head>

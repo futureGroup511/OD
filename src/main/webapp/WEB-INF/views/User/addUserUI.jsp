@@ -24,7 +24,7 @@
 </head>
 <body>
 添加用户页面/修改<%-- ${user.userId != null:updateUser?addUser} --%>
-<form:form action="${user.userId == null}" method="POST" modelAttribute="user">
+<form:form action="${user.userId == null}" method="POST" modelAttribute="user" enctype="multipart/form-data">
 	
 	<c:if test="${user.userId !=null }">
 		<form:hidden path="userId"/>
@@ -35,13 +35,47 @@
 	密码：<form:input path="userPassword"/><br>
 	用户角色:<form:select path="userRole" items="${userRole }" itemLabel="roleName" itemValue="roleId"></form:select><br>
 	所属单位：<form:select path="userDep" items="${userDep }" itemLabel="depName" itemValue="depId"></form:select><br>
-	正副:<select name="userNp" >
-			<option value="0">正</option>
-			<option value="1">副</option>
-		</select>
+	正副:
+			<c:if test="${user.userId != null}">
+				<c:if test="${user.userNp == 0 }">
+					<select name="userNp" >
+						<option value="0" selected="selected">正</option>
+						<option value="1">副</option>
+						<option value="3">其他</option>
+					</select>
+				</c:if>
+				<c:if test="${user.userNp == 1 }">
+					<select name="userNp" >
+						<option value="0" >正</option>
+						<option value="1" selected="selected">副</option>
+						<option value="3">其他</option>
+					</select>
+				</c:if>
+				<c:if test="${user.userNp == 3 }">
+					<select name="userNp" >
+						<option value="0" >正</option>
+						<option value="1">副</option>
+						<option value="3" selected="selected">其他</option>
+					</select>
+				</c:if>
+				<c:if test="${user.userNp == null }">
+					<select name="userNp" >
+						<option value="0" >正</option>
+						<option value="1">副</option>
+						<option value="3">其他</option>
+					</select>
+				</c:if>
+			</c:if>
+			<c:if test="${user.userId == null }">
+					<select name="userNp" >
+							<option value="0" >正</option>
+							<option value="1">副</option>
+							<option value="3">其他</option>
+					</select>
+			</c:if>
 	<br>
 	职务：<form:input path="userDuty"/><br>
-	述职文件：<form:input path="userReport"/><br>
+	述职文件：<%-- <form:input path="userReport"/> --%><input type="file" name="uploadfile"><br>
 	描述：<form:input path="userDesc"/><br>
 	<input type="submit" value="提交">
 </form:form>
