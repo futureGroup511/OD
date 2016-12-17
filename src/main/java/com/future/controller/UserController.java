@@ -155,7 +155,7 @@ public class UserController extends BaseAction {
                 e.printStackTrace();
             }
         } 
-		user.setUserReport(filename);
+		user.setUserReport("upload/" + filename);
 		userService.insert(user);
 		return "redirect:getAllUser";
 	}
@@ -195,7 +195,7 @@ public class UserController extends BaseAction {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            user.setUserReport(filename);
+            user.setUserReport("upload/" + filename);
             userService.updateByPrimaryKey(user);
 		}
 		return "redirect:getAllUser";
