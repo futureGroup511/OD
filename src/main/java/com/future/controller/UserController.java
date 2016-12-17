@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.future.base.BaseAction;
@@ -55,15 +56,33 @@ public class UserController extends BaseAction {
 	 * @author 刘阳阳
 	 */
 	@RequestMapping(value="login",method=RequestMethod.POST)
-	public String login(@RequestParam("username") String username,@RequestParam("password") String password,ModelMap session){
+	public ModelAndView login(@RequestParam("username") String username,@RequestParam("password") String password,ModelMap session){
 		User user = userService.login(username,password);
 		if(user != null){
+			String viewname = "User/shouye";
+			ModelAndView modelAndView = new ModelAndView(viewname);
 			session.addAttribute("user",user);
-			return "User/shouye";
+			return modelAndView;
 		} else{
+			String viewname = "User/loginUI";
+			ModelAndView modelAndView = new ModelAndView(viewname);
 			session.addAttribute("message","账号或密码错误");
-			return "redirect:loginUI";
+			return modelAndView;
 		}
+	}
+	
+	/**
+	 * 处理登出请求
+	 * @author 刘阳阳
+	 * @throws IOException 
+	 */
+	@RequestMapping(value="logout",method=RequestMethod.GET)
+	//public void logout(ModelMap session){
+	//public ModelAndView logout(SessionStatus sessionStatus) throws IOException{
+	public String logout(SessionStatus sessionStatus) throws IOException{
+		sessionStatus.setComplete();  
+		//ModelAndView modelAndView = new ModelAndView("User/loginUI");
+		return "redirect:loginUI";
 	}
 	
 	

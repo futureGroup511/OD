@@ -8,13 +8,18 @@
 <title>欢迎登陆</title>
 </head>
 <body>
-${sessionScope.message }
+${message }
+<script type="text/javascript">
+//在被嵌套时就刷新上级窗口
+if(window.parent != window){
+	//window.parent.location.reload(true);
+	window.parent.location.href="http://localhost:8080/OD";
+}
+</script>
 <form action="${pageContext.request.contextPath }/user/login" method="post">
 	账号：<input type="text" name="username">
 	密码：<input type="text" name="password">
 	<input type="submit" value="登陆">
 </form>
-
-<form action=""></form>
 </body>
 </html>

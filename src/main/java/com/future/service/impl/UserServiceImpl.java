@@ -43,6 +43,7 @@ public class UserServiceImpl implements UserServiceI {
 	 */
 	public User login(String username, String password) {
 		User user = userMapper.login(username);
+		System.out.println(username);
 		if(user!=null){
 			if(password.equals(user.getUserPassword())){
 				return user;

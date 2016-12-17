@@ -8,7 +8,7 @@
 <title>查询所有用户</title>
 </head>
 <body>
-查询所有用户
+查询所有用户===${sessionScope.user.userName }
 <a href="addUserUI">增加用户</a>
 <table border="1" cellpadding="1" cellspacing="0">
 	<tr>
