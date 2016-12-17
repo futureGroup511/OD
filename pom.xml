@@ -156,7 +156,7 @@
 
 
 	<build>
-		<finalName>demo</finalName>
+		<finalName>OD</finalName>
 		<plugins>
 			<!-- 添加插件，自动成成代码插件 -->
 			<plugin>
