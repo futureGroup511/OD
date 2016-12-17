@@ -173,4 +173,16 @@ public interface UserServiceI {
 	 * @author 刘阳阳
 	 */
 	List<User> YxYzGetAllDepDown(User user);
+
+	/**
+	 *	添加用户时请求Ajax，查询是否存在同名用户 
+	 */
+	User ajaxgetisOrNotUser(String userNum);
+
+	/**
+	 * 删除用户
+	 * 
+	 * @author 刘阳阳
+	 */
+	void deleteUser(Integer id);
 }

@@ -37,6 +37,25 @@ import com.future.domain.User;
 public class UserController extends BaseAction {
 	
 	//@SessionAttributes("user")
+	
+	/**
+	 *	添加用户时请求Ajax，查询是否存在同名用户 
+	 */
+	@ResponseBody
+	@RequestMapping(value="ajaxgetisOrNotUser",method=RequestMethod.POST)
+	public Boolean ajaxgetisOrNotUser(@RequestParam("usernum") String userNum){
+		System.out.println(userNum);
+		User user = userService.ajaxgetisOrNotUser(userNum);
+		if(user == null){
+			System.out.println("不存在可以插入！");
+			return false;
+		}
+		return true;
+		
+	}
+	
+	
+	
 	/**
 	 * 左侧菜单请求
 	 * 
@@ -154,8 +173,10 @@ public class UserController extends BaseAction {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-        } 
-		user.setUserReport("upload/" + filename);
+        }
+		if(filename != ""){
+			user.setUserReport("upload/" + filename);
+		}
 		userService.insert(user);
 		return "redirect:getAllUser";
 	}
@@ -195,10 +216,20 @@ public class UserController extends BaseAction {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            user.setUserReport("upload/" + filename);
+            if(filename != ""){
+    			user.setUserReport("upload/" + filename);
+    		}
+            
             userService.updateByPrimaryKey(user);
 		}
 		return "redirect:getAllUser";
+	}
+	
+	@RequestMapping(value="deleteUser/{id}",method=RequestMethod.GET)
+	public String deleteUser(@PathVariable("id") Integer id){
+		System.out.println(id);
+		userService.deleteUser(id);
+		return "redirect:/user/getAllUser";
 	}
 	
 	

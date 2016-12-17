@@ -118,9 +118,9 @@
 			<if test="userNum != null">
 				user_num = #{userNum,jdbcType=VARCHAR},
 			</if>
-			<if test="userPassword != null">
+			<!-- <if test="userPassword != null">
 				user_password = #{userPassword,jdbcType=VARCHAR},
-			</if>
+			</if> -->
 			<if test="userNp != null">
 				user_np = #{userNp,jdbcType=INTEGER},
 			</if>
@@ -146,7 +146,7 @@
 		update od_user
 		set user_name = #{userName,jdbcType=VARCHAR},
 		user_num = #{userNum,jdbcType=VARCHAR},
-		user_password = #{userPassword,jdbcType=VARCHAR},
+		<!-- user_password = #{userPassword,jdbcType=VARCHAR}, -->
 		user_np = #{userNp,jdbcType=INTEGER},
 		user_report = #{userReport,jdbcType=VARCHAR},
 		user_duty = #{userDuty,jdbcType=VARCHAR},
@@ -275,5 +275,11 @@
 	<select id="YxYzGetAllDepDown" parameterType="com.future.domain.User" resultMap="BaseResultMap">
 		select user.* from od_user user where user.user_dep = #{userDep} and user.user_np = 1 and user.user_role = #{userRole}
 	</select>
+	
+	<!-- 添加用户时请求Ajax，查询是否存在同名用户 -->
+	<select id="ajaxgetisOrNotUser" parameterType="java.lang.String" resultMap="BaseResultMap">
+		select user.* from od_user user where user.user_num = #{name}
+	</select>
+
 
 </mapper>
