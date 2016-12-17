@@ -75,7 +75,14 @@
 			</c:if>
 	<br>
 	职务：<form:input path="userDuty"/><br>
-	述职文件：<%-- <form:input path="userReport"/> --%><input type="file" name="uploadfile"><br>
+	述职文件：<%-- <form:input path="userReport"/> --%>
+		<c:if test="${user.userId == null}">
+			<input type="file" name="uploadfile"><br>
+		</c:if>
+		<c:if test="${user.userId != null}">
+			<form:hidden path="userReport"/>
+			<input type="file" name="uploadfile"><br>
+		</c:if>
 	描述：<form:input path="userDesc"/><br>
 	<input type="submit" value="提交">
 </form:form>

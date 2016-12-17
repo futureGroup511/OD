@@ -154,8 +154,6 @@
 </html>
 
 
-
-
 <head>
 <!-- 去掉这3行，则点击直接显示原图，如果移动至下面则IE浏览器报错 begin -->
 <script type='text/javascript' src='${pageContext.request.contextPath }/ly/js/jquery.js'></script>

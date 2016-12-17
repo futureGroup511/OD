@@ -157,7 +157,6 @@ public class UserController extends BaseAction {
         } 
 		user.setUserReport(filename);
 		userService.insert(user);
-    
 		return "redirect:getAllUser";
 	}
 	
@@ -181,8 +180,24 @@ public class UserController extends BaseAction {
 	 * @author 刘阳阳
 	 */
 	@RequestMapping(value="updateUser",method=RequestMethod.POST)
-	public String updateUser(User user){
-		userService.updateByPrimaryKey(user);
+	public String updateUser(User user,@RequestParam("uploadfile") CommonsMultipartFile file,HttpServletRequest request){
+		
+		if(file.isEmpty()){
+			userService.updateByPrimaryKey(user);
+		}else {
+			String filename = "";
+            String type = file.getOriginalFilename().substring(file.getOriginalFilename().indexOf("."));// 取文件格式后缀名
+            filename = System.currentTimeMillis() + type;// 取当前时间戳作为文件名
+            String path = request.getSession().getServletContext().getRealPath("/upload/" + filename);// 存放位置
+            File destFile = new File(path);
+            try {
+                FileUtils.copyInputStreamToFile(file.getInputStream(), destFile);// 复制临时文件到指定目录下
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            user.setUserReport(filename);
+            userService.updateByPrimaryKey(user);
+		}
 		return "redirect:getAllUser";
 	}
 	
