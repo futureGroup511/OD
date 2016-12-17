@@ -13,6 +13,27 @@ public class Evaluate {
 
     private String evalDesc;
 
+    private User userBy;
+
+    private User userTo;
+
+
+    public User getUserTo() {
+        return userTo;
+    }
+
+    public User getUserBy() {
+        return userBy;
+    }
+
+    public void setUserBy(User userBy) {
+        this.userBy = userBy;
+    }
+
+    public void setUserTo(User userTo) {
+        this.userTo = userTo;
+    }
+
     public Integer getEvalId() {
         return evalId;
     }
@@ -59,5 +80,17 @@ public class Evaluate {
 
     public void setEvalDesc(String evalDesc) {
         this.evalDesc = evalDesc == null ? null : evalDesc.trim();
+    }
+
+    @Override
+    public String toString() {
+        return "Evaluate{" +
+                "evalId=" + evalId +
+                ", evalEvalby=" + evalEvalby +
+                ", evalEvalto=" + evalEvalto +
+                ", evalRank=" + evalRank +
+                ", evalCate=" + evalCate +
+                ", evalDesc='" + evalDesc + '\'' +
+                '}';
     }
 }

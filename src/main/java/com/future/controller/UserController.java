@@ -1,32 +1,23 @@
 package com.future.controller;
 
+import com.future.base.BaseAction;
+import com.future.domain.Department;
+import com.future.domain.Evaluate;
+import com.future.domain.Role;
+import com.future.domain.User;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-
-import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.SessionAttributes;
-import org.springframework.web.bind.support.SessionStatus;
-import org.springframework.web.servlet.ModelAndView;
-
-import com.future.base.BaseAction;
-import com.future.domain.Department;
-import com.future.domain.Evaluate;
-import com.future.domain.Role;
-import com.future.domain.User;
 
 @Controller
 @Scope("prototype")
@@ -235,7 +226,7 @@ public class UserController extends BaseAction {
 			//评价人
 			eva.setEvalEvalto(evalEvalto);
 			//被评价人
-			eva.setEvalEvalby(evalEvalby[i]);
+			//eva.setEvalEvalby(evalEvalby[i]);
 			//级别 优良中茶
 			eva.setEvalRank(Integer.parseInt(result1[i]));
 			//设置级别
@@ -307,7 +298,7 @@ public class UserController extends BaseAction {
 			//评价人
 			eva.setEvalEvalto(evalEvalto);
 			//被评价人
-			eva.setEvalEvalby(evalEvalby[i]);
+			//eva.setEvalEvalby(evalEvalby[i]);
 			//级别 优良中茶
 			eva.setEvalRank(Integer.parseInt(result1[i]));
 			//设置级别
@@ -375,7 +366,7 @@ public class UserController extends BaseAction {
 			//评价人
 			eva.setEvalEvalto(evalEvalto);
 			//被评价人
-			eva.setEvalEvalby(evalEvalby[i]);
+			//eva.setEvalEvalby(evalEvalby[i]);
 			//级别 优良中茶
 			eva.setEvalRank(Integer.parseInt(result1[i]));
 			//设置级别
@@ -740,7 +731,7 @@ public class UserController extends BaseAction {
 			//评价人
 			eva.setEvalEvalto(evalEvalto);
 			//被评价人
-			eva.setEvalEvalby(evalEvalby[i]);
+			//eva.setEvalEvalby(evalEvalby[i]);
 			//级别 优良中茶
 			eva.setEvalRank(Integer.parseInt(result1[i]));
 			//设置级别
