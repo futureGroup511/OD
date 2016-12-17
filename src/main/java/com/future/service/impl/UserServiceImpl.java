@@ -246,4 +246,20 @@ public class UserServiceImpl implements UserServiceI {
 		return userMapper.YxYzGetAllDepDown(user);
 	}
 
+	/**
+	 *	添加用户时请求Ajax，查询是否存在同名用户 
+	 */
+	public User ajaxgetisOrNotUser(String userNum) {
+		return userMapper.ajaxgetisOrNotUser(userNum);
+	}
+
+	/**
+	 * 删除用户
+	 * 
+	 * @author 刘阳阳
+	 */
+	public void deleteUser(Integer id) {
+		userMapper.deleteByPrimaryKey(id);
+	}
+
 }

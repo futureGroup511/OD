@@ -36,7 +36,10 @@
 			</td>
 			<td>${user.userReport }</td>
 			<td>${user.userDesc }</td>
-			<td><a href="updateUserUI/${user.userId }">修改</a></td>
+			<td>
+				<a href="updateUserUI/${user.userId }">修改</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<a href="${pageContext.request.contextPath }/user/deleteUser/${user.userId }">删除</a>
+			</td>
 		</tr>
 	</c:forEach>
 
