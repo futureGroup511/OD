@@ -7,6 +7,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -28,9 +30,9 @@ import com.future.domain.User;
 @Controller
 @Scope("prototype")
 @RequestMapping("user")
-@SessionAttributes("user")
 public class UserController extends BaseAction {
 	
+	//@SessionAttributes("user")
 	/**
 	 * 左侧菜单请求
 	 * 
@@ -56,17 +58,20 @@ public class UserController extends BaseAction {
 	 * @author 刘阳阳
 	 */
 	@RequestMapping(value="login",method=RequestMethod.POST)
-	public ModelAndView login(@RequestParam("username") String username,@RequestParam("password") String password,ModelMap session){
+	//public ModelAndView login(@RequestParam("username") String username,@RequestParam("password") String password,ModelMap session){
+	public ModelAndView login(@RequestParam("username") String username,@RequestParam("password") String password,HttpSession session){
 		User user = userService.login(username,password);
 		if(user != null){
 			String viewname = "User/shouye";
 			ModelAndView modelAndView = new ModelAndView(viewname);
-			session.addAttribute("user",user);
+			//session.addAttribute("user",user);
+			session.setAttribute("user", user);
 			return modelAndView;
 		} else{
 			String viewname = "User/loginUI";
 			ModelAndView modelAndView = new ModelAndView(viewname);
-			session.addAttribute("message","账号或密码错误");
+			//session.addAttribute("message","账号或密码错误");
+			session.setAttribute("message","账号或密码错误");
 			return modelAndView;
 		}
 	}
@@ -79,8 +84,10 @@ public class UserController extends BaseAction {
 	@RequestMapping(value="logout",method=RequestMethod.GET)
 	//public void logout(ModelMap session){
 	//public ModelAndView logout(SessionStatus sessionStatus) throws IOException{
-	public String logout(SessionStatus sessionStatus) throws IOException{
-		sessionStatus.setComplete();  
+	//public String logout(SessionStatus sessionStatus) throws IOException{
+	public String logout(HttpSession session) throws IOException{
+		//sessionStatus.setComplete();  
+		session.removeAttribute("user");
 		//ModelAndView modelAndView = new ModelAndView("User/loginUI");
 		return "redirect:loginUI";
 	}
@@ -160,14 +167,16 @@ public class UserController extends BaseAction {
 	 * 校正厅对所有正职评价,请求页面
 	 * @author 刘阳阳
 	 */
+	//public ModelAndView xzAllzUI(ModelMap session){
 	@RequestMapping(value="xzAllzUI",method=RequestMethod.GET)
-	public ModelAndView xzAllzUI(ModelMap session){
+	public ModelAndView xzAllzUI(HttpSession session){
 		String viewname = "User/xzAllzUI";
 		ModelAndView modelAndView = new ModelAndView(viewname);
 		//首先判断是否评价过，评价过的条件为，拿当前session 评价人 的userid，然后根据本次评价的类型 类别(1互评、2厅级上对下、3本单位上对下)，  （注意，本次查询在mapper只用到了一个userid其余写死的死的，如果修改代码请注意）
 		//查到有记录就代表评价过，
 		Evaluate isEval = new Evaluate();
-		User tempuser = (User) session.get("user");
+		//User tempuser = (User) session.get("user");
+		User tempuser = (User) session.getAttribute("user");
 		isEval.setEvalEvalto(tempuser.getUserId());
 		isEval.setEvalCate(2);
 		isEval.setEvalDesc("0");
@@ -243,15 +252,17 @@ public class UserController extends BaseAction {
 	 * 校正厅对所有分管单位正副职评价,请求页面
 	 * @author 刘阳阳
 	 */
+	//public ModelAndView xzAllFenGuanUI(ModelMap session){
 	@RequestMapping(value="xzAllFenGuanUI",method=RequestMethod.GET)
-	public ModelAndView xzAllFenGuanUI(ModelMap session){
+	public ModelAndView xzAllFenGuanUI(HttpSession session){
 		
 		String viewname = "User/xzAllzUI";
 		ModelAndView modelAndView = new ModelAndView(viewname);
 		
 		//查询之前判断是否评价过，评价过的条件为，拿到session 评价人的userid，然后根据本次评价类别 2 厅级对上机，在在加上描述中 desc 为 1 代表校正厅对其分管单位打得分。
 		Evaluate isEval = new Evaluate();
-		User tempuser = (User) session.get("user");
+		//User tempuser = (User) session.get("user");
+		User tempuser = (User) session.getAttribute("user");
 		isEval.setEvalEvalto(tempuser.getUserId());
 		isEval.setEvalCate(2);
 		isEval.setEvalDesc("1");
@@ -262,7 +273,8 @@ public class UserController extends BaseAction {
 		} else {
 			//未评价过
 			//查询分管单位的所有人   从当前session拿到单位id，传到dao层查询
-			User user = (User) session.get("user");
+			//User user = (User) session.get("user");
+			User user = (User) session.getAttribute("user");
 			List<User> userList = userService.xzAllFenGuanUI(user.getUserName());
 			modelAndView.addObject("userList",userList);
 			modelAndView.addObject("userNum",userList.size());
@@ -313,13 +325,13 @@ public class UserController extends BaseAction {
 	 * @author 刘阳阳
 	 */
 	@RequestMapping(value="xfAllFenGuanUI",method=RequestMethod.GET)
-	public ModelAndView xfAllFenGuanUI(ModelMap session){
+	public ModelAndView xfAllFenGuanUI(HttpSession session){
 		String viewname = "User/xzAllzUI";
 		ModelAndView modelAndView = new ModelAndView(viewname);
 		
 		//查询之前判断是否评价过，评价过的条件为，拿到session 评价人的userid，然后根据本次评价类别 2 厅级对上机，在在加上描述中 desc 为 1 代表校正厅对其分管单位打得分。
 		Evaluate isEval = new Evaluate();
-		User tempuser = (User) session.get("user");
+		User tempuser = (User) session.getAttribute("user");
 		isEval.setEvalEvalto(tempuser.getUserId());
 		isEval.setEvalCate(2);
 		isEval.setEvalDesc("1");
@@ -330,7 +342,7 @@ public class UserController extends BaseAction {
 		} else {
 			//未评价过
 			//查询分管单位的所有人   从当前session拿到单位id，传到dao层查询
-			User user = (User) session.get("user");
+			User user = (User) session.getAttribute("user");
 			List<User> userList = userService.xfAllFenGuanUI(user.getUserName());
 			modelAndView.addObject("userList",userList);
 			modelAndView.addObject("userNum",userList.size());
@@ -380,12 +392,12 @@ public class UserController extends BaseAction {
 	 * dangqunGetAllJiaoxueShujiUI
 	 */
 	@RequestMapping(value="dangqunGetAllJiaoxueShujiUI",method=RequestMethod.GET)
-	public ModelAndView dangqunGetAllJiaoxueShujiUI(ModelMap session){
+	public ModelAndView dangqunGetAllJiaoxueShujiUI(HttpSession session){
 		String viewname = "User/xzAllzUI";
 		ModelAndView modelAndView = new ModelAndView(viewname);
 		//查询之前判断是否评价过，评价过的条件为，拿到session 评价人的userid，然后根据本次评价类别 2 厅级对上机，在在加上描述中 desc 为 1 代表校正厅对其分管单位打得分。
 		Evaluate isEval = new Evaluate();
-		User tempuser = (User) session.get("user");
+		User tempuser = (User) session.getAttribute("user");
 		isEval.setEvalEvalto(tempuser.getUserId());
 		isEval.setEvalCate(1);
 		//isEval.setEvalDesc("1");
@@ -395,7 +407,7 @@ public class UserController extends BaseAction {
 			modelAndView.addObject("message","您已对院系书记副书记评价过！！");
 		} else {
 			//未评价过
-			User user = (User) session.get("user");
+			User user = (User) session.getAttribute("user");
 			List<User> userList = userService.dangquanAllHPUser();
 			modelAndView.addObject("userList",userList);
 			modelAndView.addObject("userNum",userList.size());
@@ -419,12 +431,12 @@ public class UserController extends BaseAction {
 	 * dangqunGetAllDepZFUI
 	 */
 	@RequestMapping(value="dangqunGetAllDepZFUI",method=RequestMethod.GET)
-	public ModelAndView dangqunGetAllDepZFUI(ModelMap session){
+	public ModelAndView dangqunGetAllDepZFUI(HttpSession session){
 		String viewname = "User/xzAllzUI";
 		ModelAndView modelAndView = new ModelAndView(viewname);
 		//查询之前判断是否评价过，评价过的条件为，拿到session 评价人的userid，然后根据本次评价类别 2 厅级对上机，在在加上描述中 desc 为 1 代表校正厅对其分管单位打得分。
 		Evaluate isEval = new Evaluate();
-		User tempuser = (User) session.get("user");
+		User tempuser = (User) session.getAttribute("user");
 		isEval.setEvalEvalto(tempuser.getUserId());
 		isEval.setEvalCate(3);
 		//isEval.setEvalDesc("1");
@@ -434,7 +446,7 @@ public class UserController extends BaseAction {
 			modelAndView.addObject("message","您已本单位副职评价过！");
 		} else {
 			//未评价过
-			User user = (User) session.get("user");
+			User user = (User) session.getAttribute("user");
 			List<User> userList = userService.dangquanAllDepDwon(tempuser);
 			modelAndView.addObject("userList",userList);
 			modelAndView.addObject("userNum",userList.size());
@@ -459,12 +471,12 @@ public class UserController extends BaseAction {
 	 * @author 刘阳阳
 	 */
 	@RequestMapping(value="JiaoxueShujiGetAlldangqunUI",method=RequestMethod.GET)
-	public ModelAndView JiaoxueShujiGetAlldangqunUI(ModelMap session){
+	public ModelAndView JiaoxueShujiGetAlldangqunUI(HttpSession session){
 		String viewname = "User/xzAllzUI";
 		ModelAndView modelAndView = new ModelAndView(viewname);
 		//查询之前判断是否评价过，评价过的条件为，拿到session 评价人的userid，然后根据本次评价类别 2 厅级对上机，在在加上描述中 desc 为 1 代表校正厅对其分管单位打得分。
 		Evaluate isEval = new Evaluate();
-		User tempuser = (User) session.get("user");
+		User tempuser = (User) session.getAttribute("user");
 		isEval.setEvalEvalto(tempuser.getUserId());
 		isEval.setEvalCate(1);
 		//isEval.setEvalDesc("1");
@@ -500,12 +512,12 @@ public class UserController extends BaseAction {
 	 * @author 刘阳阳
 	 */
 	@RequestMapping(value="JiaoxueShujiGetAllDepDownUI",method=RequestMethod.GET)
-	public ModelAndView JiaoxueShujiGetAllDepDownUI(ModelMap session){
+	public ModelAndView JiaoxueShujiGetAllDepDownUI(HttpSession session){
 		String viewname = "User/xzAllzUI";
 		ModelAndView modelAndView = new ModelAndView(viewname);
 		//查询之前判断是否评价过，评价过的条件为，拿到session 评价人的userid，然后根据本次评价类别 2 厅级对上机，在在加上描述中 desc 为 1 代表校正厅对其分管单位打得分。
 		Evaluate isEval = new Evaluate();
-		User tempuser = (User) session.get("user");
+		User tempuser = (User) session.getAttribute("user");
 		isEval.setEvalEvalto(tempuser.getUserId());
 		isEval.setEvalCate(3);
 		//isEval.setEvalDesc("1");
@@ -515,7 +527,7 @@ public class UserController extends BaseAction {
 			modelAndView.addObject("message","您已本单位副职评价过！");
 		} else {
 			//未评价过
-			User user = (User) session.get("user");
+			User user = (User) session.getAttribute("user");
 			List<User> userList = userService.jiaoxueshujiAllGetDepDown(user);
 			modelAndView.addObject("userList",userList);
 			modelAndView.addObject("userNum",userList.size());
@@ -541,12 +553,12 @@ public class UserController extends BaseAction {
 	 * @author 刘阳阳
 	 */
 	@RequestMapping(value="XzGetAllYxYzUI",method=RequestMethod.GET)
-	public ModelAndView XzGetAllYxYzUI(ModelMap session){
+	public ModelAndView XzGetAllYxYzUI(HttpSession session){
 		String viewname = "User/xzAllzUI";
 		ModelAndView modelAndView = new ModelAndView(viewname);	
 		//查询之前判断是否评价过，评价过的条件为，拿到session 评价人的userid，然后根据本次评价类别 1 厅级对上机
 		Evaluate isEval = new Evaluate();
-		User tempuser = (User) session.get("user");
+		User tempuser = (User) session.getAttribute("user");
 		isEval.setEvalEvalto(tempuser.getUserId());
 		isEval.setEvalCate(1);
 		//isEval.setEvalDesc("1");
@@ -582,12 +594,12 @@ public class UserController extends BaseAction {
 	 * 
 	 */
 	@RequestMapping(value="XzGetAllDepDownUI",method=RequestMethod.GET)
-	public ModelAndView XzGetAllDepDownUI(ModelMap session){
+	public ModelAndView XzGetAllDepDownUI(HttpSession session){
 		String viewname = "User/xzAllzUI";
 		ModelAndView modelAndView = new ModelAndView(viewname);	
 		//查询之前判断是否评价过，评价过的条件为，拿到session 评价人的userid，然后根据本次评价类别 1 厅级对上机
 		Evaluate isEval = new Evaluate();
-		User tempuser = (User) session.get("user");
+		User tempuser = (User) session.getAttribute("user");
 		isEval.setEvalEvalto(tempuser.getUserId());
 		isEval.setEvalCate(3);
 		//isEval.setEvalDesc("1");
@@ -597,7 +609,7 @@ public class UserController extends BaseAction {
 			modelAndView.addObject("message","您已本单位所有副职评价过！");
 		} else {
 			//未评价过
-			User user = (User) session.get("user");
+			User user = (User) session.getAttribute("user");
 			List<User> userList = userService.XzGetAllDepDown(user);
 			modelAndView.addObject("userList",userList);
 			modelAndView.addObject("userNum",userList.size());
@@ -626,12 +638,12 @@ public class UserController extends BaseAction {
 	 * @author 刘阳阳
 	 */
 	@RequestMapping(value="YxYzGetXzUI",method=RequestMethod.GET)
-	public ModelAndView YxYzGetXzUI(ModelMap session){
+	public ModelAndView YxYzGetXzUI(HttpSession session){
 		String viewname = "User/xzAllzUI";
 		ModelAndView modelAndView = new ModelAndView(viewname);	
 		//查询之前判断是否评价过，评价过的条件为，拿到session 评价人的userid，然后根据本次评价类别 1 厅级对上机
 		Evaluate isEval = new Evaluate();
-		User tempuser = (User) session.get("user");
+		User tempuser = (User) session.getAttribute("user");
 		isEval.setEvalEvalto(tempuser.getUserId());
 		isEval.setEvalCate(1);
 		//isEval.setEvalDesc("1");
@@ -666,12 +678,12 @@ public class UserController extends BaseAction {
 	 * @author 刘阳阳
 	 */
 	@RequestMapping(value="YxYzGetDepDownUI",method=RequestMethod.GET)
-	public ModelAndView YxYzGetDepDownUI(ModelMap session){
+	public ModelAndView YxYzGetDepDownUI(HttpSession session){
 		String viewname = "User/xzAllzUI";
 		ModelAndView modelAndView = new ModelAndView(viewname);
 		//查询之前判断是否评价过，评价过的条件为，拿到session 评价人的userid，然后根据本次评价类别 2 厅级对上机，在在加上描述中 desc 为 1 代表校正厅对其分管单位打得分。
 		Evaluate isEval = new Evaluate();
-		User tempuser = (User) session.get("user");
+		User tempuser = (User) session.getAttribute("user");
 		isEval.setEvalEvalto(tempuser.getUserId());
 		isEval.setEvalCate(3);
 		//isEval.setEvalDesc("1");
@@ -681,7 +693,7 @@ public class UserController extends BaseAction {
 			modelAndView.addObject("message","您已本单位副职评价过！");
 		} else {
 			//未评价过
-			User user = (User) session.get("user");
+			User user = (User) session.getAttribute("user");
 			List<User> userList = userService.YxYzGetAllDepDown(user);
 			modelAndView.addObject("userList",userList);
 			modelAndView.addObject("userNum",userList.size());
