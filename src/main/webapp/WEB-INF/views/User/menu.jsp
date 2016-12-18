@@ -88,8 +88,8 @@
 		<br>
 	</c:if>
 	<br>
-	
-	<a target="right" href="${pageContext.request.contextPath }/user/updatePasswordUI/${sessionScope.user.userId}">修改密码</a>
+	<a target="right" href="${pageContext.request.contextPath }/user/updateUserUI/${sessionScope.user.userId}">修改个人信息</a><br>
+	<a target="right" href="${pageContext.request.contextPath }/user/updatePasswordUI/${sessionScope.user.userId}">修改密码</a><br>
 	<a href="${pageContext.request.contextPath }/user/logout">退出</a>
 </body>
 </html>
