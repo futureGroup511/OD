@@ -5,6 +5,7 @@ import java.util.List;
 import com.future.domain.Evaluate;
 import com.future.domain.Role;
 import com.future.domain.User;
+import com.future.utils.PageBean;
 
 public interface UserServiceI {
 	
@@ -234,4 +235,11 @@ public interface UserServiceI {
 	 * 修改角色
 	 */
 	void updateRole(Role role);
+	
+	/**
+	 * 查询所有用户信息，分页显示
+	 * @param pageBean 
+	 * @return modelAndView视图显示
+	 */
+	PageBean pageBeanGetAllUser(PageBean pageBean);
 }

@@ -1,5 +1,7 @@
 package com.future.service.impl;
 
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +16,7 @@ import com.future.domain.Evaluate;
 import com.future.domain.Role;
 import com.future.domain.User;
 import com.future.service.UserServiceI;
+import com.future.utils.PageBean;
 
 @Service
 @Transactional
@@ -329,6 +332,19 @@ public class UserServiceImpl implements UserServiceI {
 	 */
 	public void updateRole(Role role) {
 		roleMapper.updateByPrimaryKey(role);
+	}
+
+	/**
+	 * 查询所有用户信息，分页显示
+	 * @return modelAndView视图显示
+	 */
+	public PageBean pageBeanGetAllUser(PageBean pageBean) {
+		//1、User 2、总人数
+		List<User> userList = userMapper.getPageBeanAllUser(((pageBean.getCurrentPage()-1)*pageBean.getPageSize()),pageBean.getPageSize());
+		int count = userMapper.getAllUserNum();
+		pageBean.setRecordlist(userList);
+		pageBean.setRecordCount(count);
+		return pageBean;
 	}
 
 }
