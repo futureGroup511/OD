@@ -262,4 +262,13 @@ public class UserServiceImpl implements UserServiceI {
 		userMapper.deleteByPrimaryKey(id);
 	}
 
+	/**
+	 * 修改密码
+	 * 
+	 * @author 刘阳阳
+	 */
+	public void updateByPrimaryKeySelective(User user) {
+		userMapper.updateByPrimaryKeySelective(user);
+	}
+
 }

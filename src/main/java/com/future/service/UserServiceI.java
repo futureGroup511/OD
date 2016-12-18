@@ -185,4 +185,11 @@ public interface UserServiceI {
 	 * @author 刘阳阳
 	 */
 	void deleteUser(Integer id);
+
+	/**
+	 * 修改密码
+	 * 
+	 * @author 刘阳阳
+	 */
+	void updateByPrimaryKeySelective(User user);
 }

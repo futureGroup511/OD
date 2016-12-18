@@ -25,6 +25,7 @@ import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.alibaba.druid.sql.dialect.mysql.ast.statement.MySqlCreateUserStatement.UserSpecification;
 import com.future.base.BaseAction;
 import com.future.domain.Department;
 import com.future.domain.Evaluate;
@@ -784,8 +785,51 @@ public class UserController extends BaseAction {
 		return "User/successEval";
 	}
 	
+	/**
+	 * 请求修改密码页面
+	 * 
+	 * @author 刘阳阳
+	 */
+	@RequestMapping(value="updatePasswordUI/{id}",method=RequestMethod.GET)
+	public ModelAndView updatePasswordUI(@PathVariable("id") Integer id){
+		System.out.println(id);
+		String viewname = "User/updatePasswprdUI";
+		ModelAndView modelAndView = new ModelAndView(viewname);
+		modelAndView.addObject("userId", id);
+		return modelAndView;
+	}
 	
+	/**
+	 * 修改密码前Ajax检测密码是否正确
+	 * @author 刘阳阳
+	 */
+	@ResponseBody
+	@RequestMapping(value="ajaxNotOrSuccess",method=RequestMethod.POST)
+	public boolean ajaxNotOrSuccess(@RequestParam("id") Integer id,@RequestParam("password") String password){
+		System.out.println("id" + id);
+		System.out.println("password" + password);
+		User user = userService.selectByPrimaryKey(id);
+		if(password.equals(user.getUserPassword())){
+			return true;
+		}
+		return false;
+		
+	}
 	
+	/**
+	 * 处理修改密码，更改密码
+	 * 
+	 * @author 刘阳阳
+	 */
+	@RequestMapping(value="updatePassword",method=RequestMethod.POST)
+	public String updatePassword(@RequestParam("userId") Integer userId,@RequestParam("password") String password,HttpSession session){
+		System.out.println(userId + "===" + password);
+		User user = userService.selectByPrimaryKey(userId);
+		user.setUserPassword(password);
+		userService.updateByPrimaryKeySelective(user);
+		session.removeAttribute("user");
+		return "redirect:/user/loginUI";
+	}
 	
 	
 	

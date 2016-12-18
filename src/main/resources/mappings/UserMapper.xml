@@ -118,9 +118,9 @@
 			<if test="userNum != null">
 				user_num = #{userNum,jdbcType=VARCHAR},
 			</if>
-			<!-- <if test="userPassword != null">
+			<if test="userPassword != null">
 				user_password = #{userPassword,jdbcType=VARCHAR},
-			</if> -->
+			</if>
 			<if test="userNp != null">
 				user_np = #{userNp,jdbcType=INTEGER},
 			</if>
