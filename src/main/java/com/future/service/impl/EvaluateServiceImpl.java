@@ -19,7 +19,9 @@ public class EvaluateServiceImpl implements EvaluateServiceI {
 	private EvaluateMapper evaluateMapper;
 
 
-	public List<Evaluate> findEvalByUser(Integer id) {
-		return evaluateMapper.findEvalByUser(id);
+
+
+	public List<Evaluate> findEvalByUser(Map<String, Object> hashMap) {
+		return evaluateMapper.findEvalByUser(hashMap);
 	}
 }

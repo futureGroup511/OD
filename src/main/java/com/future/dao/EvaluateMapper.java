@@ -3,6 +3,7 @@ package com.future.dao;
 import com.future.domain.Evaluate;
 
 import java.util.List;
+import java.util.Map;
 
 public interface EvaluateMapper {
     int deleteByPrimaryKey(Integer evalId);
@@ -17,7 +18,7 @@ public interface EvaluateMapper {
 
     int updateByPrimaryKey(Evaluate record);
 
-	List<Evaluate> findEvalByUser(Integer id);
+	List<Evaluate> findEvalByUser(Map<String,Object> hashMap);
 
 
     /**

@@ -21,6 +21,7 @@ public class User {
 
 	private Integer userRole;
 
+
 	public Integer getUserId() {
 		return userId;
 	}
