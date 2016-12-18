@@ -1,5 +1,7 @@
 package com.future.controller;
 
+import static org.springframework.test.web.client.response.MockRestResponseCreators.withBadRequest;
+
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -830,6 +832,92 @@ public class UserController extends BaseAction {
 		session.removeAttribute("user");
 		return "redirect:/user/loginUI";
 	}
+	
+	/**
+	 * 删除部门
+	 * 
+	 * @author 刘阳阳
+	 */
+	@RequestMapping(value="deleteDep/{id}",method=RequestMethod.GET)
+	public String deleteDep(@PathVariable("id") Integer id){
+		userService.deleteDep(id);
+		return "redirect:/department/getAllDep";
+	}
+	
+	/**
+	 * 
+	 * 查询所有角色
+	 * 
+	 * @author 刘阳阳
+	 */
+	@RequestMapping(value="getAllRole",method=RequestMethod.GET)
+	public ModelAndView getAllRole(){
+		String viewname = "User/allRole";
+		ModelAndView modelAndView = new ModelAndView(viewname);
+		List<Role> roleList = userService.getAllRole();
+		modelAndView.addObject("roleList", roleList);
+		
+		return modelAndView;
+	}
+	
+	/**
+	 * 添加角色，请求页面
+	 * 
+	 * @author 刘阳阳
+	 */
+	@RequestMapping(value="addRoleUI",method=RequestMethod.GET)
+	public ModelAndView addRoleUI(){
+		String viewname = "User/addRoleUI";
+		ModelAndView modelAndViewa = new ModelAndView(viewname);
+		modelAndViewa.addObject("role", new Role());
+		return modelAndViewa;
+	}
+	
+	/**
+	 * 添加角色，
+	 * 
+	 * @author 刘阳阳
+	 */
+	@RequestMapping(value="addRole",method=RequestMethod.POST)
+	public String addRole(Role role){
+		userService.insertRole(role);
+		return "redirect:getAllRole";
+	}
+	
+	/**
+	 * 删除角色，
+	 * 
+	 * @author 刘阳阳
+	 */
+	@RequestMapping(value="deleteRole/{id}",method=RequestMethod.GET)
+	public String deleteRole(@PathVariable("id") Integer id){
+		userService.deleteRole(id);
+		return "redirect:/user/getAllRole";
+	}
+	
+	/**
+	 * 修改角色，请求页面
+	 * 
+	 * @author 刘阳阳
+	 */
+	@RequestMapping(value="updateRoleUI/{id}",method=RequestMethod.GET)
+	public ModelAndView updateRoleUI(@PathVariable("id") Integer id){
+		Role role = userService.getByIdRole(id);		
+		String viewname = "User/updateRoleUI";
+		ModelAndView modelAndViewa = new ModelAndView(viewname);
+		modelAndViewa.addObject("role", role);
+		return modelAndViewa;
+	}
+	
+	/**
+	 * 修改角色
+	 */
+	@RequestMapping(value="updateRole",method=RequestMethod.POST)
+	public String updateRole(Role role){
+		userService.updateRole(role);
+		return "redirect:/user/getAllRole";
+	}
+	
 	
 	
 	

@@ -12,8 +12,8 @@
 		<a target="right"
 			href="${pageContext.request.contextPath }/user/getAllUser">查看所有用户信息</a>
 		<br>
-		<a target="right"
-			href="${pageContext.request.contextPath }/department/getAllDep">查看所有单位信息</a>
+		<a target="right" href="${pageContext.request.contextPath }/department/getAllDep">查看所有单位信息</a><br>
+		<a target="right" href="${pageContext.request.contextPath }/user/getAllRole">查看所有角色</a>
 	</c:if>
 	<br>
 	<c:if test="${sessionScope.user.userRole == 1 }">

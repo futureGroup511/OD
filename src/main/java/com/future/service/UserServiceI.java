@@ -3,6 +3,7 @@ package com.future.service;
 import java.util.List;
 
 import com.future.domain.Evaluate;
+import com.future.domain.Role;
 import com.future.domain.User;
 
 public interface UserServiceI {
@@ -192,4 +193,45 @@ public interface UserServiceI {
 	 * @author 刘阳阳
 	 */
 	void updateByPrimaryKeySelective(User user);
+
+	/**
+	 * 删除部门
+	 * 
+	 * @author 刘阳阳
+	 */
+	void deleteDep(Integer id);
+
+	/**
+	 * 
+	 * 查询所有角色
+	 * 
+	 * @author 刘阳阳
+	 */
+	List<Role> getAllRole();
+
+	/**
+	 * 添加角色，
+	 * 
+	 * @author 刘阳阳
+	 */
+	void insertRole(Role role);
+	
+	/**
+	 * 删除角色，
+	 * 
+	 * @author 刘阳阳
+	 */
+	void deleteRole(Integer id);
+
+	/**
+	 * 通过ip查到角色
+	 * 
+	 * @author 刘阳阳
+	 */
+	Role getByIdRole(Integer id);
+
+	/**
+	 * 修改角色
+	 */
+	void updateRole(Role role);
 }
