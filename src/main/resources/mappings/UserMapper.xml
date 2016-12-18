@@ -118,9 +118,9 @@
 			<if test="userNum != null">
 				user_num = #{userNum,jdbcType=VARCHAR},
 			</if>
-			<!-- <if test="userPassword != null">
+			<if test="userPassword != null">
 				user_password = #{userPassword,jdbcType=VARCHAR},
-			</if> -->
+			</if>
 			<if test="userNp != null">
 				user_np = #{userNp,jdbcType=INTEGER},
 			</if>
@@ -279,6 +279,32 @@
 	<!-- 添加用户时请求Ajax，查询是否存在同名用户 -->
 	<select id="ajaxgetisOrNotUser" parameterType="java.lang.String" resultMap="BaseResultMap">
 		select user.* from od_user user where user.user_num = #{name}
+	</select>
+
+	<!-- 查询所有用户信息，分页显示 -->
+	<select id="getPageBeanAllUser" resultMap="userAndRoleAndDeprtment">
+		select 
+		user.*,role.role_id,role.role_name,role.role_desc,
+		dep.dep_id,dep.dep_name,dep.dep_desc,dep.dep_role,dep.dep_manager
+		from 
+		od_user user,
+		od_role role,
+		od_department dep
+		where user.user_role = role.role_id and user.user_dep = dep.dep_id
+		limit #{0},#{1}
+	</select>
+	
+	<!-- 查询总记录书 -->
+	<select id="getAllUserNum" resultType="int">
+		select count(*) from od_user
+		<!-- select 
+		user.*,role.role_id,role.role_name,role.role_desc,
+		dep.dep_id,dep.dep_name,dep.dep_desc,dep.dep_role,dep.dep_manager
+		from 
+		od_user user,
+		od_role role,
+		od_department dep
+		where user.user_role = role.role_id and user.user_dep = dep.dep_id -->
 	</select>
 
 

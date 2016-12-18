@@ -119,5 +119,19 @@ public interface UserMapper {
 	 */
 	User ajaxgetisOrNotUser(String name);
 
+	/**
+	 * 查询指定记录
+	 * 查询所有用户信息，分页显示
+	 * @return modelAndView视图显示
+	 */
+	List<User> getPageBeanAllUser(Integer currentPage, Integer pageSize);
+
+	/**
+	 * 查询总记录数
+	 * 
+	 * @author 刘阳阳
+	 */
+	int getAllUserNum();
+
 
 }

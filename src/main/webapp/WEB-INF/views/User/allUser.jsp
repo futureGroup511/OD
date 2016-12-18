@@ -23,7 +23,7 @@
 	    <td>编辑</td>
 	</tr>
 
-	<c:forEach items="${userList }" var="user">
+	<c:forEach items="${pageBean.recordlist }" var="user">
 		<tr>
 			<td>${user.userName }</td>
 			<td>${user.userNum }</td>
@@ -42,7 +42,25 @@
 			</td>
 		</tr>
 	</c:forEach>
-
 </table>
+<p>
+每页显示${pageBean.pageSize }条，总记录数${pageBean.recordCount }条
+<a href="javascript:gotoPage(1)">首页</a>
+<a href="javascript:gotoPage(${pageBean.currentPage }-1)">上一页</a>
+${currentPage }/${pageBean.pageCount }
+<a href="javascript:gotoPage(${pageBean.currentPage }+1)">下一页</a>
+<a href="javascript:gotoPage(${pageBean.pageCount })">尾页</a>
+</p>
+<script type="text/javascript">
+	function gotoPage(pageNum){
+		if(pageNum > "${pageBean.pageCount}"){
+			pageNum = "${pageBean.pageCount}"
+		}
+		if(pageNum < 1){
+			pageNum = 1;
+		}	
+		window.location.href="${pageContext.request.contextPath}/user/getAllUser/" + pageNum;
+}					
+</script>
 </body>
 </html>
