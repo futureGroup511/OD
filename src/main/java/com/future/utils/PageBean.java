@@ -14,10 +14,17 @@ public class PageBean {
     private Integer endPageIndex; //尾页
     private Integer beginPageIndex; //首页
     private Integer pageCount; //显示的页数
+    private Integer offset; //数据库中开始查的条数
+
+
 
     public static PageBean newInstance(){
         PageBean pageBean=new PageBean();
         return pageBean;
+    }
+
+    public Integer getOffset() {
+        return (currentPage-1)*pageSize;
     }
 
     public Integer getCurrentPage() {
@@ -90,7 +97,7 @@ public class PageBean {
      * 通过当前页和一页显示的条数计算起始页和结束页
      */
     public void calbeginAndEnd(){
-        if(pageSize == null && currentPage == null) {
+        if(pageSize == null && currentPage == null && recordCount != null) {
             System.err.println("参数不够");
         }
         pageCount = (recordCount+pageSize-1)/pageSize;  //显示页数
@@ -113,4 +120,17 @@ public class PageBean {
 
     }
 
+    @Override
+    public String toString() {
+        return "PageBean{" +
+                "currentPage=" + currentPage +
+                ", pageSize=" + pageSize +
+                ", recordCount=" + recordCount +
+                ", recordlist=" + recordlist +
+                ", endPageIndex=" + endPageIndex +
+                ", beginPageIndex=" + beginPageIndex +
+                ", pageCount=" + pageCount +
+                ", offset=" + offset +
+                '}';
+    }
 }

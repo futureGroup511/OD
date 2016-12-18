@@ -48,8 +48,8 @@
 <a target="right" href="${pageContext.request.contextPath }/user/YxYzGetXzUI">与行政教辅部门互评</a><br>
 </c:if>
 <br>
-<a href="evaluate/findByUserIdOrEvalByName">查看自己评价过的人</a>
+<a href="/OD/evaluate/findByUserIdOrEvalByName/?id=${user.userId}" target="right">查看自己评价过的人</a>
 <br>
-<a href="${pageContext.request.contextPath }/user/logout">退出</a>
+<a href="${pageContext.request.contextPath}/user/logout">退出</a>
 </body>
 </html>

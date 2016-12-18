@@ -1,6 +1,7 @@
 package com.future.service.impl;
 
 import com.future.domain.Evaluate;
+import com.future.utils.PageBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -21,7 +22,14 @@ public class EvaluateServiceImpl implements EvaluateServiceI {
 
 
 
-	public List<Evaluate> findEvalByUser(Map<String, Object> hashMap) {
-		return evaluateMapper.findEvalByUser(hashMap);
+	public PageBean findEvalByUser(Map<String, Object> hashMap) {
+		int count=evaluateMapper.findEvalByUserCount(hashMap);
+		List<Evaluate> evaluates=evaluateMapper.findEvalByUser(hashMap);
+		PageBean pageBean= (PageBean) hashMap.get("page");
+		pageBean.setRecordCount(count);
+		pageBean.setRecordlist(evaluates);
+		pageBean.calbeginAndEnd();
+		return pageBean;
+
 	}
 }
