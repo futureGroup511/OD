@@ -1,0 +1,596 @@
+
+<script language="JavaScript" src='../include/scr/ind_HTML_hr.js'></script>
+<html><head><meta http-equiv='Content-Type' content='text/html; charset=gb2312'><link rel='stylesheet' href='../_style/styles_rpt.css' type='text/css'><title>提交教学评价表</title></head><body style='margin:0px' topmargin='0' oncontextmenu=window.event.returnValue=false ondragstart=window.event.returnValue=false onsource=window.event.returnValue=false leftmargin='0'><center><form name='form1' action='' method='post'>
+<table width="99%" border="0" align="center" cellpadding="0" cellspacing="0" height="50px" >
+<tr><td valign="top" align="center">   
+	  <table width="100%" border=0 cellspacing="0" cellpadding="0" align="center"  height="26">
+        	<tr><td valign="bottom" align="center"><b>提交教学评价表</b><br>
+			<script language="JavaScript" >Draw_HR('99.5%')</script></td></tr>
+      </table>
+</td></tr>
+<tr><td width="100%"> 
+<form name=form1 action=Stu_WSKP_pj.aspx method=post>
+<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" >
+<tr><td colspan=3 heigh='26px'>课程/环节：[1315034135]软件工程&nbsp;&nbsp; 学分:3.5  &nbsp;&nbsp;类别：普通课    &nbsp;&nbsp;教师：郭晓娟</td></tr>
+<tr class='T' align=left ><td>&nbsp;&nbsp;&nbsp;<b>第一部分&nbsp;教学态度</b></td></tr><tr class='H'><td>1.为人师表，注重教书育人，严格管理和要求学生	
+		
+&nbsp;</td></tr><tr class='B'><td id='sel_score0' name='sel_score0' item='4358' djdm='' value=''>
+
+
+<input type='radio' name='cj0' djdm='01' value=10.00 onclick='this.parentNode.setAttribute("value",this.value);this.parentNode.setAttribute("djdm",this.getAttribute("djdm"));'>10	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<input type='radio' name='cj0' djdm='02' value=9.00 onclick='this.parentNode.setAttribute("value",this.value);this.parentNode.setAttribute("djdm",this.getAttribute("djdm"));'>9	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<input type='radio' name='cj0' djdm='03' value=8.00 onclick='this.parentNode.setAttribute("value",this.value);this.parentNode.setAttribute("djdm",this.getAttribute("djdm"));'>8	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<input type='radio' name='cj0' djdm='04' value=7.00 onclick='this.parentNode.setAttribute("value",this.value);this.parentNode.setAttribute("djdm",this.getAttribute("djdm"));'>7	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<input type='radio' name='cj0' djdm='05' value=6.00 onclick='this.parentNode.setAttribute("value",this.value);this.parentNode.setAttribute("djdm",this.getAttribute("djdm"));'>6	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<input type='radio' name='cj0' djdm='06' value=5.00 onclick='this.parentNode.setAttribute("value",this.value);this.parentNode.setAttribute("djdm",this.getAttribute("djdm"));'>5	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<input type='radio' name='cj0' djdm='07' value=4.00 onclick='this.parentNode.setAttribute("value",this.value);this.parentNode.setAttribute("djdm",this.getAttribute("djdm"));'>4
+<input type='hidden' id='sel_scorecj0' name='sel_scorecj0'></td></tr><tr class='H'>
+
+
+<td>2.备课充分，讲课熟练。认真批改作业，耐心答疑&nbsp;</td></tr><tr class='B'><td id='sel_score1' name='sel_score1' item='4371' djdm='' value=''>
+<input type='radio' name='cj1' djdm='01' value=10.00 onclick='this.parentNode.setAttribute("value",this.value);this.parentNode.setAttribute("djdm",this.getAttribute("djdm"));'>10&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type='radio' name='cj1' djdm='02' value=9.00 onclick='this.parentNode.setAttribute("value",this.value);this.parentNode.setAttribute("djdm",this.getAttribute("djdm"));'>9&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type='radio' name='cj1' djdm='03' value=8.00 onclick='this.parentNode.setAttribute("value",this.value);this.parentNode.setAttribute("djdm",this.getAttribute("djdm"));'>8&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type='radio' name='cj1' djdm='04' value=7.00 onclick='this.parentNode.setAttribute("value",this.value);this.parentNode.setAttribute("djdm",this.getAttribute("djdm"));'>7&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type='radio' name='cj1' djdm='05' value=6.00 onclick='this.parentNode.setAttribute("value",this.value);this.parentNode.setAttribute("djdm",this.getAttribute("djdm"));'>6&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type='radio' name='cj1' djdm='06' value=5.00 onclick='this.parentNode.setAttribute("value",this.value);this.parentNode.setAttribute("djdm",this.getAttribute("djdm"));'>5&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type='radio' name='cj1' djdm='07' value=4.00 onclick='this.parentNode.setAttribute("value",this.value);this.parentNode.setAttribute("djdm",this.getAttribute("djdm"));'>4<input type='hidden' id='sel_scorecj1' name='sel_scorecj1'></td></tr><tr ><td><br></td></tr><tr class='T' align=left ><td>&nbsp;&nbsp;&nbsp;<b>第二部分&nbsp;教学内容</b></td></tr><tr class='H'><td>3.教材选用得当&nbsp;</td></tr><tr class='B'><td id='sel_score2' name='sel_score2' item='4347' djdm='' value=''><input type='radio' name='cj2' djdm='01' value=10.00 onclick='this.parentNode.setAttribute("value",this.value);this.parentNode.setAttribute("djdm",this.getAttribute("djdm"));'>10&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type='radio' name='cj2' djdm='02' value=9.00 onclick='this.parentNode.setAttribute("value",this.value);this.parentNode.setAttribute("djdm",this.getAttribute("djdm"));'>9&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type='radio' name='cj2' djdm='03' value=8.00 onclick='this.parentNode.setAttribute("value",this.value);this.parentNode.setAttribute("djdm",this.getAttribute("djdm"));'>8&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type='radio' name='cj2' djdm='04' value=7.00 onclick='this.parentNode.setAttribute("value",this.value);this.parentNode.setAttribute("djdm",this.getAttribute("djdm"));'>7&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type='radio' name='cj2' djdm='05' value=6.00 onclick='this.parentNode.setAttribute("value",this.value);this.parentNode.setAttribute("djdm",this.getAttribute("djdm"));'>6&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type='radio' name='cj2' djdm='06' value=5.00 onclick='this.parentNode.setAttribute("value",this.value);this.parentNode.setAttribute("djdm",this.getAttribute("djdm"));'>    5&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type='radio' name='cj2' djdm='07' value=4.00 onclick='this.parentNode.setAttribute("value",this.value);this.parentNode.setAttribute("djdm",this.getAttribute("djdm"));'>     4<input type='hidden' id='sel_scorecj2' name='sel_scorecj2'></td></tr><tr class='H'><td>4.循序渐进，重点突出，难点剖析清楚&nbsp;</td></tr><tr class='B'><td id='sel_score3' name='sel_score3' item='4359' djdm='' value=''><input type='radio' name='cj3' djdm='01' value=10.00 onclick='this.parentNode.setAttribute("value",this.value);this.parentNode.setAttribute("djdm",this.getAttribute("djdm"));'>10&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type='radio' name='cj3' djdm='02' value=9.00 onclick='this.parentNode.setAttribute("value",this.value);this.parentNode.setAttribute("djdm",this.getAttribute("djdm"));'>9&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type='radio' name='cj3' djdm='03' value=8.00 onclick='this.parentNode.setAttribute("value",this.value);this.parentNode.setAttribute("djdm",this.getAttribute("djdm"));'>8&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type='radio' name='cj3' djdm='04' value=7.00 onclick='this.parentNode.setAttribute("value",this.value);this.parentNode.setAttribute("djdm",this.getAttribute("djdm"));'>7&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type='radio' name='cj3' djdm='05' value=6.00 onclick='this.parentNode.setAttribute("value",this.value);this.parentNode.setAttribute("djdm",this.getAttribute("djdm"));'>6&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type='radio' name='cj3' djdm='06' value=5.00 onclick='this.parentNode.setAttribute("value",this.value);this.parentNode.setAttribute("djdm",this.getAttribute("djdm"));'>     5&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type='radio' name='cj3' djdm='07' value=4.00 onclick='this.parentNode.setAttribute("value",this.value);this.parentNode.setAttribute("djdm",this.getAttribute("djdm"));'>     4<input type='hidden' id='sel_scorecj3' name='sel_scorecj3'></td></tr><tr class='H'><td>5.内容充实，信息量大&nbsp;</td></tr><tr class='B'><td id='sel_score4' name='sel_score4' item='4360' djdm='' value=''><input type='radio' name='cj4' djdm='01' value=10.00 onclick='this.parentNode.setAttribute("value",this.value);this.parentNode.setAttribute("djdm",this.getAttribute("djdm"));'>10&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type='radio' name='cj4' djdm='02' value=9.00 onclick='this.parentNode.setAttribute("value",this.value);this.parentNode.setAttribute("djdm",this.getAttribute("djdm"));'>9&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type='radio' name='cj4' djdm='03' value=8.00 onclick='this.parentNode.setAttribute("value",this.value);this.parentNode.setAttribute("djdm",this.getAttribute("djdm"));'>8&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type='radio' name='cj4' djdm='04' value=7.00 onclick='this.parentNode.setAttribute("value",this.value);this.parentNode.setAttribute("djdm",this.getAttribute("djdm"));'>7&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type='radio' name='cj4' djdm='05' value=6.00 onclick='this.parentNode.setAttribute("value",this.value);this.parentNode.setAttribute("djdm",this.getAttribute("djdm"));'>6&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type='radio' name='cj4' djdm='06' value=5.00 onclick='this.parentNode.setAttribute("value",this.value);this.parentNode.setAttribute("djdm",this.getAttribute("djdm"));'>     5&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type='radio' name='cj4' djdm='07' value=4.00 onclick='this.parentNode.setAttribute("value",this.value);this.parentNode.setAttribute("djdm",this.getAttribute("djdm"));'>     4<input type='hidden' id='sel_scorecj4' name='sel_scorecj4'></td></tr><tr class='H'><td>6.理论联系实际&nbsp;</td></tr><tr class='B'><td id='sel_score5' name='sel_score5' item='4361' djdm='' value=''><input type='radio' name='cj5' djdm='01' value=10.00 onclick='this.parentNode.setAttribute("value",this.value);this.parentNode.setAttribute("djdm",this.getAttribute("djdm"));'>10&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type='radio' name='cj5' djdm='02' value=9.00 onclick='this.parentNode.setAttribute("value",this.value);this.parentNode.setAttribute("djdm",this.getAttribute("djdm"));'>9&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type='radio' name='cj5' djdm='03' value=8.00 onclick='this.parentNode.setAttribute("value",this.value);this.parentNode.setAttribute("djdm",this.getAttribute("djdm"));'>8&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type='radio' name='cj5' djdm='04' value=7.00 onclick='this.parentNode.setAttribute("value",this.value);this.parentNode.setAttribute("djdm",this.getAttribute("djdm"));'>7&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type='radio' name='cj5' djdm='05' value=6.00 onclick='this.parentNode.setAttribute("value",this.value);this.parentNode.setAttribute("djdm",this.getAttribute("djdm"));'>6&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type='radio' name='cj5' djdm='06' value=5.00 onclick='this.parentNode.setAttribute("value",this.value);this.parentNode.setAttribute("djdm",this.getAttribute("djdm"));'>    5&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type='radio' name='cj5' djdm='07' value=4.00 onclick='this.parentNode.setAttribute("value",this.value);this.parentNode.setAttribute("djdm",this.getAttribute("djdm"));'>    4<input type='hidden' id='sel_scorecj5' name='sel_scorecj5'></td></tr><tr ><td><br></td></tr><tr class='T' align=left ><td>&nbsp;&nbsp;&nbsp;<b>第三部分&nbsp;教学方法与技能</b></td></tr><tr class='H'><td>7.善于启发，注重师生交流和学习方法指导&nbsp;</td></tr><tr class='B'><td id='sel_score6' name='sel_score6' item='4345' djdm='' value=''><input type='radio' name='cj6' djdm='01' value=10.00 onclick='this.parentNode.setAttribute("value",this.value);this.parentNode.setAttribute("djdm",this.getAttribute("djdm"));'>10&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type='radio' name='cj6' djdm='02' value=9.00 onclick='this.parentNode.setAttribute("value",this.value);this.parentNode.setAttribute("djdm",this.getAttribute("djdm"));'>9&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type='radio' name='cj6' djdm='03' value=8.00 onclick='this.parentNode.setAttribute("value",this.value);this.parentNode.setAttribute("djdm",this.getAttribute("djdm"));'>8&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type='radio' name='cj6' djdm='04' value=7.00 onclick='this.parentNode.setAttribute("value",this.value);this.parentNode.setAttribute("djdm",this.getAttribute("djdm"));'>7&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type='radio' name='cj6' djdm='05' value=6.00 onclick='this.parentNode.setAttribute("value",this.value);this.parentNode.setAttribute("djdm",this.getAttribute("djdm"));'>6&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type='radio' name='cj6' djdm='06' value=5.00 onclick='this.parentNode.setAttribute("value",this.value);this.parentNode.setAttribute("djdm",this.getAttribute("djdm"));'>   5&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type='radio' name='cj6' djdm='07' value=4.00 onclick='this.parentNode.setAttribute("value",this.value);this.parentNode.setAttribute("djdm",this.getAttribute("djdm"));'>    4<input type='hidden' id='sel_scorecj6' name='sel_scorecj6'></td></tr><tr class='H'><td>8.讲课语言规范、清晰、准确，逻辑性强&nbsp;</td></tr><tr class='B'><td id='sel_score7' name='sel_score7' item='4346' djdm='' value=''><input type='radio' name='cj7' djdm='01' value=10.00 onclick='this.parentNode.setAttribute("value",this.value);this.parentNode.setAttribute("djdm",this.getAttribute("djdm"));'>10&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type='radio' name='cj7' djdm='02' value=9.00 onclick='this.parentNode.setAttribute("value",this.value);this.parentNode.setAttribute("djdm",this.getAttribute("djdm"));'>9&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type='radio' name='cj7' djdm='03' value=8.00 onclick='this.parentNode.setAttribute("value",this.value);this.parentNode.setAttribute("djdm",this.getAttribute("djdm"));'>8&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type='radio' name='cj7' djdm='04' value=7.00 onclick='this.parentNode.setAttribute("value",this.value);this.parentNode.setAttribute("djdm",this.getAttribute("djdm"));'>7&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type='radio' name='cj7' djdm='05' value=6.00 onclick='this.parentNode.setAttribute("value",this.value);this.parentNode.setAttribute("djdm",this.getAttribute("djdm"));'>6&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type='radio' name='cj7' djdm='06' value=5.00 onclick='this.parentNode.setAttribute("value",this.value);this.parentNode.setAttribute("djdm",this.getAttribute("djdm"));'>     5&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type='radio' name='cj7' djdm='07' value=4.00 onclick='this.parentNode.setAttribute("value",this.value);this.parentNode.setAttribute("djdm",this.getAttribute("djdm"));'>    4<input type='hidden' id='sel_scorecj7' name='sel_scorecj7'></td></tr><tr class='H'><td>9.有效地利用各种教学辅助手段&nbsp;</td></tr><tr class='B'><td id='sel_score8' name='sel_score8' item='4348' djdm='' value=''><input type='radio' name='cj8' djdm='01' value=10.00 onclick='this.parentNode.setAttribute("value",this.value);this.parentNode.setAttribute("djdm",this.getAttribute("djdm"));'>10&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type='radio' name='cj8' djdm='02' value=9.00 onclick='this.parentNode.setAttribute("value",this.value);this.parentNode.setAttribute("djdm",this.getAttribute("djdm"));'>9&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type='radio' name='cj8' djdm='03' value=8.00 onclick='this.parentNode.setAttribute("value",this.value);this.parentNode.setAttribute("djdm",this.getAttribute("djdm"));'>8&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type='radio' name='cj8' djdm='04' value=7.00 onclick='this.parentNode.setAttribute("value",this.value);this.parentNode.setAttribute("djdm",this.getAttribute("djdm"));'>7&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type='radio' name='cj8' djdm='05' value=6.00 onclick='this.parentNode.setAttribute("value",this.value);this.parentNode.setAttribute("djdm",this.getAttribute("djdm"));'>6&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type='radio' name='cj8' djdm='06' value=5.00 onclick='this.parentNode.setAttribute("value",this.value);this.parentNode.setAttribute("djdm",this.getAttribute("djdm"));'>     5&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type='radio' name='cj8' djdm='07' value=4.00 onclick='this.parentNode.setAttribute("value",this.value);this.parentNode.setAttribute("djdm",this.getAttribute("djdm"));'>     4<input type='hidden' id='sel_scorecj8' name='sel_scorecj8'></td></tr><tr ><td><br></td></tr><tr class='T' align=left ><td>&nbsp;&nbsp;&nbsp;<b>第四部分&nbsp;教学效果</b></td></tr><tr class='H'><td>10.课堂气氛活跃、激发学习兴趣，从本课程学到了知识、培养了能力&nbsp;</td></tr><tr class='B'><td id='sel_score9' name='sel_score9' item='4344' djdm='' value=''><input type='radio' name='cj9' djdm='01' value=10.00 onclick='this.parentNode.setAttribute("value",this.value);this.parentNode.setAttribute("djdm",this.getAttribute("djdm"));'>10&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type='radio' name='cj9' djdm='02' value=9.00 onclick='this.parentNode.setAttribute("value",this.value);this.parentNode.setAttribute("djdm",this.getAttribute("djdm"));'>9&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type='radio' name='cj9' djdm='03' value=8.00 onclick='this.parentNode.setAttribute("value",this.value);this.parentNode.setAttribute("djdm",this.getAttribute("djdm"));'>8&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type='radio' name='cj9' djdm='04' value=7.00 onclick='this.parentNode.setAttribute("value",this.value);this.parentNode.setAttribute("djdm",this.getAttribute("djdm"));'>7&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type='radio' name='cj9' djdm='05' value=6.00 onclick='this.parentNode.setAttribute("value",this.value);this.parentNode.setAttribute("djdm",this.getAttribute("djdm"));'>6&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type='radio' name='cj9' djdm='06' value=5.00 onclick='this.parentNode.setAttribute("value",this.value);this.parentNode.setAttribute("djdm",this.getAttribute("djdm"));'>     5&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type='radio' name='cj9' djdm='07' value=4.00 onclick='this.parentNode.setAttribute("value",this.value);this.parentNode.setAttribute("djdm",this.getAttribute("djdm"));'>     4<input type='hidden' id='sel_scorecj9' name='sel_scorecj9'></td></tr><tr><td align='center' height='30px'><br><input type='button' onClick='go_12735()' name='Submit' value='提交' class='but20'>&nbsp;&nbsp;&nbsp;<input type='reset' name='Submit2' value='返回' onclick='top.close();return false;' class='but20'><input name='txt_count' type='hidden' size='1' value='10'><input type='hidden' name='hidschoolcode' value='10467'></td></tr></table>
+	<input name="txtjs" type="hidden" size="1" value="0001666">
+	<input name="txtkc" type="hidden" size="1" value="500963">
+	<input name="txtuser" type="hidden" size="1" value="">
+	<input name="txtxn" type="hidden" size="1" value="2016">
+	<input name="txtxq" type="hidden" size="1" value="0">
+	<input name="txtkclx" type="hidden" size="1" value="01">
+	<input name="txtlb" type="hidden" size="1" value="20">
+	<input name="score" type="hidden" size="1" value="">
+	<input name="item" type="hidden" size="1" value="">
+	<input name="djdm" type="hidden" size="1" value="">
+	<!--input name="cj" type="hidden" size="1" value=""-->
+  	<input type="hidden" name="txts" value=3>
+  	<input name="txtkclb" type="hidden" size="1" value="0">
+  	<input name="txtPJLC" type="hidden" value="2016001">
+  	<input name="txtZJ" type="hidden" value="1">
+  	<input id="txtSKBJ" name="txtSKBJ" type="hidden" value="500963-001">
+  	<input id="txtSKFS" name="txtSKFS" type="hidden" value="">
+  	<input type="hidden" name="hid_zhdf">
+  	</form>	
+</form></center></body></html>
+<script language="JavaScript" type="text/JavaScript"> 
+function go(){
+	var m_c,m_score,m_item,m_djdm,m_scoreall,m_itemreall,m_djdmreall;
+	var m_js,m_kc,m_b,m_user,m_kclx,m_pjry,m_s, m_lb;
+	m_b=true;
+	m_scoreall="";
+	m_itemreall="";
+	m_djdmreall="";
+	var frm = document.getElementsByName('form1')[0];
+	m_c=frm.txt_count.value;
+	m_js=frm.txtjs.value;
+	m_kc=frm.txtkc.value;
+	m_xn=frm.txtxn.value;
+	m_xq=frm.txtxq.value;
+	m_kclx=frm.txtkclx.value;
+	m_pjry=frm.txtlb.value;
+	m_user=frm.txtuser.value;
+	m_s=frm.txts.value;
+	m_lb=frm.txtlb.value;
+	m_kclb=frm.txtkclb.value;
+	if(m_js==""){
+		alert("需选定教师！");
+	}
+	else{
+		for(k=0;k<m_c;k++){
+			var obj = document.getElementById('sel_score'+k);
+			m_score = obj.getAttribute('value');
+			m_item = obj.getAttribute('item');
+			m_djdm = obj.getAttribute('djdm');
+			
+			if(m_score==""){
+				m_b=false;
+			}else
+			{
+				m_scoreall=m_scoreall + m_score+"|";
+				m_itemreall=m_itemreall+m_item+"|";
+				m_djdmreall=m_djdmreall+m_djdm+"|";
+			}
+		}
+	}
+	if(m_b==true){
+		if (confirm('评价结果提交后将不可修改，\r\n请确认评价结果,是否要提交？'))
+		{
+			frm.score.value=m_scoreall;
+			frm.item.value=m_itemreall;
+			frm.djdm.value=m_djdmreall;
+			frm.action='Stu_WSKP_pj.aspx?s='+ m_s +'&id=' + m_user + '&pjry=' + m_pjry + '&xn=' + m_xn + '&xq=' + m_xq +'&js=' + m_js +'&kclx=' + m_kclx + '&kc=' +m_kc +'&lb='+m_lb+'&kclb='+m_kclb;
+			frm.Submit.disabled=true;
+			frm.submit();
+			//document.location.href='Stu_WSKP_pj.aspx?s='+ m_s +'&id=' + m_user + '&pjry=' + m_pjry + '&xn=' + m_xn + '&xq=' + m_xq +'&js=' + m_js +'&kclx=' + m_kclx + '&kc=' +m_kc +'&lb='+m_lb+'&score=' +m_scoreall+'&item='+m_itemreall;
+		}
+	}
+	else{
+		alert("需给每一项打分！");
+	}	
+}
+
+function go_12735(){		//铁道警官高等专科学校需求、新疆医科大学需求
+	var m_c,m_score,m_item,m_djdm="",m_scoreall,m_itemreall,m_djdmreall,m_score_text,m_score_textall;
+	var m_js,m_kc,m_b,m_user,m_kclx,m_pjry,m_s,m_lb;
+	var djxt="1";
+	var schoolcode="";
+	var ld_zhdf = 0;
+	try
+	{
+	   schoolcode=document.all.hidschoolcode.value;
+	}
+	catch(e){}
+	m_b=true;
+	m_scoreall="";
+	m_itemreall="";
+	m_djdmreall="";
+	var frm = document.getElementsByName('form1')[0];
+	m_c=frm.txt_count.value;
+	m_js=frm.txtjs.value;
+	m_kc=frm.txtkc.value;
+	m_xn=frm.txtxn.value;
+	m_xq=frm.txtxq.value;
+	m_kclx=frm.txtkclx.value;
+	m_pjry=frm.txtlb.value;
+	m_user=frm.txtuser.value;
+	m_s=frm.txts.value;
+	m_lb=frm.txtlb.value;
+	m_kclb=frm.txtkclb.value;
+	if(m_js==""){
+		alert("需选定教师！");
+	}
+	else{
+		for(k=0;k<m_c;k++){
+			var obj = document.getElementById('sel_score'+k);
+			var obj_cj = document.getElementById('sel_scorecj'+k);
+	
+		//	try{m_score=eval("document.all.sel_score"+k+".value");}catch(Exception){m_score="";}			
+		//	try{m_score_text=eval("document.all.sel_scorecj"+k+".value");}catch(Exception){m_score_text="";}
+			try{m_score = obj.getAttribute('value');}catch(e){m_score='';}
+			//try{m_score = obj.value;}catch(e){m_score='';}
+			try{m_score_text = obj_cj.value;}catch(e){m_score_text='';}
+			m_item = obj.getAttribute('item');
+			m_djdm = obj.getAttribute('djdm');
+			//alert(m_djdm);alert(obj.getAttribute('item'));
+			if((m_score=="" && m_score_text=="") || (typeof m_score=="undefined" && typeof m_score_text=="undefined") || (m_score=="" && typeof m_score_text=="undefined") || (typeof m_score=="undefined" && m_score_text=="")){
+				m_b=false;
+			}else{
+			//	m_scoreall=m_scoreall+ m_score+m_score_text+"|";
+				if(m_score_text != "")
+				{
+					m_scoreall += m_score_text+"|";
+					try{ld_zhdf += parseFloat(m_score_text);}catch(e){}
+			    }
+			    else if(m_score != "")
+			    {
+					m_scoreall += m_score+"|";
+					try{ld_zhdf += parseFloat(m_score);}catch(e){}
+			    }
+				m_itemreall=m_itemreall+m_item+"|";
+				m_djdmreall=m_djdmreall+m_djdm+"|";
+		
+				
+				
+			}
+			
+		}
+	}
+	if(schoolcode=="13850" || schoolcode=="10536" || schoolcode=="10608"||schoolcode=="10367" || schoolcode=="14187")//安徽新闻出版职业技术学院 长沙理工大学 广西民族大学所、蚌埠医学院、包头铁道职业技术学院 有答案不能全部一样
+	{
+		var m=0;
+		var djdmss=m_djdmreall.split("|");
+		djxt="0";
+		for(k=0;k<m_c;k++)
+		{
+		    for(m=0;m<m_c;m++)
+		    {
+		        if(djdmss[k]!=djdmss[m])
+		           djxt="1";
+		    }
+		}
+		if(schoolcode=="10608")//广西民族大学
+		{
+		    if(m_c>=9)
+		    {
+
+				for(k=0;k<m_c-8;k++)
+				{
+					if(djdmss[k]==djdmss[k+3] && djdmss[k+1]==djdmss[k+4] && djdmss[k+2]==djdmss[k+5] && djdmss[k]==djdmss[k+6] && djdmss[k+1]==djdmss[k+7] && djdmss[k+2]==djdmss[k+8])
+						djxt="3";
+				}
+				
+				if(djxt!="3")
+				{
+					if(m_c>=12)
+					{
+						for(k=0;k<m_c-11;k++)
+						{
+							if(djdmss[k]==djdmss[k+4] && djdmss[k+1]==djdmss[k+5] && djdmss[k+2]==djdmss[k+6] && djdmss[k+3]==djdmss[k+7] && djdmss[k]==djdmss[k+8] && djdmss[k+1]==djdmss[k+9] && djdmss[k+2]==djdmss[k+10] && djdmss[k+3]==djdmss[k+11])
+								djxt="4";
+						}
+					}
+				}
+			}
+		}
+	}
+	if(m_b==true){
+	
+	
+		if(schoolcode=="12034")  //湖南第一师范
+		{	
+			if(""!="")
+			{
+				var arr=eval("[]");
+				for(var i=0;i<arr.length;i++)
+				{
+					var obj=arr[i];
+					if(obj.zhdf==ld_zhdf)
+					{
+						alert(obj.msg);
+						return;
+					}
+				}
+				obj=null;
+			}
+			document.all.hid_zhdf.value=ld_zhdf;
+		}
+			
+			
+			
+		if(djxt=="0"){
+		    //if(schoolcode=="10608")//广西民族大学
+		    //{
+		       alert("您提交的各项结果完全相同，请重新认真评价！");
+		    //}
+		    //else 2015.12.4改成上述提示
+		    //   alert("请客观评价你的授课教师！");
+		}
+		else if(schoolcode=="10608" && (djxt=="3" || djxt=="4"))//广西民族大学
+		{
+		    alert("请认真评价！");
+		}
+		else if("0"=="1"&&document.all.sel_yj.value=="")
+		{
+			alert("意见建议不允许为空！");
+		}
+		else if (confirm('请确认评价结果，是否要提交？'))
+		{
+			frm.score.value=m_scoreall;
+			frm.item.value=m_itemreall;
+			frm.djdm.value=m_djdmreall;
+			frm.action='Stu_WSKP_pj.aspx?s='+ m_s +'&id=' + m_user + '&pjry=' + m_pjry + '&xn=' + m_xn + '&xq=' + m_xq +'&js=' + m_js +'&kclx=' + m_kclx + '&kc=' +m_kc +'&lb='+m_lb+'&kclb='+m_kclb+'&zhdf='+ld_zhdf;
+			frm.Submit.disabled=true;
+			frm.submit();
+			//document.location.href='Stu_WSKP_pj.aspx?s='+ m_s +'&id=' + m_user + '&pjry=' + m_pjry + '&xn=' + m_xn + '&xq=' + m_xq +'&js=' + m_js +'&kclx=' + m_kclx + '&kc=' +m_kc +'&lb='+m_lb+'&score=' +m_scoreall+'&item='+m_itemreall;
+		}
+	}
+	else{
+		alert("需给每一项打分！");
+	}	
+}
+
+function go_10610(){		//四川大学锦城学院	需求
+	var m_c,m_score,m_item,m_djdm,m_scoreall,m_itemreall,m_djdmreall,m_score_text,m_score_textall,m_talk;
+	var m_js,m_kc,m_b,m_user,m_kclx,m_pjry,m_s,m_lb;
+	m_b=true;
+	m_scoreall="";
+	m_itemreall="";
+	m_djdmreall="";
+	var frm = document.getElementsByName('form1')[0];
+	m_c=frm.txt_count.value;
+	m_js=frm.txtjs.value;
+	m_kc=frm.txtkc.value;
+	m_xn=frm.txtxn.value;
+	m_xq=frm.txtxq.value;
+	m_kclx=frm.txtkclx.value;
+	m_pjry=frm.txtlb.value;
+	m_user=frm.txtuser.value;
+	m_s=frm.txts.value;
+	m_lb=frm.txtlb.value;
+	m_kclb=frm.txtkclb.value;
+	//alert(document.body.innerHTML);
+	//alert("sel_yj："+document.all.sel_yj.value);
+	if(m_js==""){
+		alert("需选定教师！");
+	}
+	else{
+		for(k=0;k<m_c;k++){
+		    var obj = document.all('sel_score'+k);
+			var obj_cj = document.all('sel_scorecj'+k);
+			//try{m_score=eval("document.all.sel_score"+k+".value");}catch(Exception){m_score="";}			
+			//try{m_score_text=eval("document.all.sel_scorecj"+k+".value");}catch(Exception){m_score_text="";}
+			//try{m_score = obj.value;}catch(e){m_score='';}
+			try{m_score = obj.getAttribute('value');}catch(e){m_score='';}
+			try{m_score_text = obj_cj.value;}catch(e){m_score_text='';}
+			//m_item=eval("document.all.sel_score"+k+".item");
+			//m_djdm=eval("document.all.sel_score"+k+".djdm");
+			m_item = obj.getAttribute('item');
+			m_djdm = obj.getAttribute('djdm');
+			if(m_score=="" && m_score_text==""){
+				m_b=false;
+			}else{
+				m_scoreall=m_scoreall+ m_score+m_score_text+"|";
+				m_itemreall=m_itemreall+m_item+"|";
+				m_djdmreall=m_djdmreall+m_djdm+"|";
+			}
+		}
+	}
+	
+	if(m_b==true){
+		if(document.all.sel_yj.value.replace(' ','')==''){
+		alert('须录入意见与建议！');
+		return;
+		}
+		else if (confirm('请确认评价结果，是否要提交？'))
+		{
+			document.all.score.value=m_scoreall;
+			document.all.item.value=m_itemreall;
+			document.all.djdm.value=m_djdmreall;
+			m_talk=document.all.sel_yj.value;
+			form1.action='Stu_WSKP_pj.aspx?s='+ m_s +'&id=' + m_user + '&pjry=' + m_pjry + '&xn=' + m_xn + '&xq=' + m_xq +'&js=' + m_js +'&kclx=' + m_kclx + '&kc=' +m_kc +'&lb='+m_lb+'&kclb='+m_kclb+'&talk='+m_talk;
+			document.all.Submit.disabled=true;
+			form1.submit();			
+		}
+	}
+	else{
+		alert("需给每一项打分！");
+		return;
+	}	
+}
+
+function go_10524(){		//中南民族大学	需求
+	var m_c,m_score,m_item,m_djdm,m_scoreall,m_itemreall,m_djdmreall,m_score_text,m_score_textall,m_talk;
+	var m_js,m_kc,m_b,m_user,m_kclx,m_pjry,m_s,m_lb;
+	m_b=true;
+	m_scoreall="";
+	m_itemreall="";
+	m_djdmreall="";
+	m_c=form1.txt_count.value;
+	m_js=form1.txtjs.value;
+	m_kc=form1.txtkc.value;
+	m_xn=form1.txtxn.value;
+	m_xq=form1.txtxq.value;
+	m_kclx=form1.txtkclx.value;
+	m_pjry=form1.txtlb.value;
+	m_user=form1.txtuser.value;
+	m_s=form1.txts.value;
+	m_lb=form1.txtlb.value;
+	m_kclb=form1.txtkclb.value;
+	//alert(document.body.innerHTML);
+	//alert("sel_yj："+document.all.sel_yj.value);
+	if(m_js==""){
+		alert("需选定教师！");
+	}
+	else{
+		for(k=0;k<m_c;k++){
+			//try{m_score=eval("document.all.sel_score"+k+".value");}catch(Exception){m_score="";}			
+			var obj = document.all('sel_score'+k);
+			var obj_cj = document.all('sel_scorecj'+k);
+			try{m_score_text = obj_cj.value;}catch(e){m_score_text='';}
+			//try{m_score_text=eval("document.all.sel_scorecj"+k+".value");}catch(Exception){m_score_text="";}
+			//m_item=eval("document.all.sel_score"+k+".item");
+			//m_djdm=eval("document.all.sel_score"+k+".djdm");
+			m_item = obj.getAttribute('item');
+			m_djdm = obj.getAttribute('djdm');
+			if( m_score_text==""){
+				m_b=false;
+			}else{
+				m_scoreall=m_scoreall+m_score_text+"|";
+				m_itemreall=m_itemreall+m_item+"|";
+				m_djdmreall=m_djdmreall+m_djdm+"|";
+			}
+		}
+	}
+	
+	if(m_b==true){
+		if(document.all.sel_yj.value.replace(' ','')==''){
+		alert('须录入意见与建议！');
+		return;
+		}
+		else if (confirm('请确认评价结果，是否要提交？'))
+		{
+			document.all.score.value=m_scoreall;
+			document.all.item.value=m_itemreall;
+			document.all.djdm.value=m_djdmreall;
+			m_talk=document.all.sel_yj.value;
+			form1.action='Stu_WSKP_pj.aspx?s='+ m_s +'&id=' + m_user + '&pjry=' + m_pjry + '&xn=' + m_xn + '&xq=' + m_xq +'&js=' + m_js +'&kclx=' + m_kclx + '&kc=' +m_kc +'&lb='+m_lb+'&kclb='+m_kclb+'&talk='+m_talk;
+			document.all.Submit.disabled=true;
+			form1.submit();			
+		}
+	}
+	else{
+		alert("需给每一项打分！");
+		return;
+	}	
+}
+
+function go_10643(){		//重庆三峡需求
+	var m_c,m_score,m_item,m_djdm,m_scoreall,m_itemreall,m_djdmreall,m_score_text;
+	var m_js,m_kc,m_b,m_user,m_kclx,m_pjry,m_s,m_lb;
+	m_b=true;
+	m_scoreall="";
+	m_itemreall="";
+	m_djdmreall="";
+	m_c=form1.txt_count.value;
+	m_js=form1.txtjs.value;
+	m_kc=form1.txtkc.value;
+	m_xn=form1.txtxn.value;
+	m_xq=form1.txtxq.value;
+	m_kclx=form1.txtkclx.value;
+	m_pjry=form1.txtlb.value;
+	m_user=form1.txtuser.value;
+	m_s=form1.txts.value;
+	m_lb=form1.txtlb.value;
+	m_kclb=form1.txtkclb.value;
+	if(m_js==""){
+		alert("需选定教师！");
+	}
+	else{
+		for(k=0;k<m_c;k++){
+			var obj = document.all('sel_score'+k);
+			m_score=obj.getAttribute('value');
+			m_item = obj.getAttribute('item');
+			m_djdm = obj.getAttribute('djdm');
+			//m_score=eval("document.all.sel_score"+k+".value");			
+			//m_item=eval("document.all.sel_score"+k+".item");
+			//m_djdm=eval("document.all.sel_score"+k+".djdm");
+			if(m_score==""){
+				m_b=false;				
+			}else{
+				m_scoreall=m_scoreall + m_score+"|";
+				m_itemreall=m_itemreall+m_item+"|";
+				m_djdmreall=m_djdmreall+m_djdm+"|";
+			}
+		}
+	}
+	if(m_b==true){
+		alert("请打分时，尽量不要选择同一选项！");
+		if (confirm('请确认评价结果，是否要提交？')){
+			document.all.score.value=m_scoreall;
+			document.all.item.value=m_itemreall;
+			document.all.djdm.value=m_djdmreall;
+			form1.action='Stu_WSKP_pj.aspx?s='+ m_s +'&id=' + m_user + '&pjry=' + m_pjry + '&xn=' + m_xn + '&xq=' + m_xq +'&js=' + m_js +'&kclx=' + m_kclx + '&kc=' +m_kc +'&lb='+m_lb+'&kclb='+m_kclb;
+			document.all.Submit.disabled=true;
+			form1.submit();	
+		}
+	}else{	
+		alert("请打分时，尽量不要选择同一选项！");
+		alert("需给每一项打分！");
+	}	
+
+}
+
+function selchk(theID,m){
+var i,j,s,objCJ;
+eval("objCJ=document.all.chkCJ"+m);
+s='';
+j=objCJ.length;
+for(i=0;i<=j;i++){
+	if(objCJ(i).checked){
+	if(s=='') {s=objCJ(i).value;}
+	else {s+='$'+objCJ(i).value;}
+	}
+}
+eval("document.all.sel_score"+m+".value=s")
+}
+
+function selrad(theID,m){
+eval("document.all.sel_score"+m+".value=theID.value")
+}
+//判断输入的分数是否符合格式
+function Blur_me(upper,lower,i)
+{
+	var fs=document.getElementById("sel_scorecj"+i).value;
+	var cj=document.getElementById("sel_scorecj"+i).value;
+	var reg=/^(\d{1,9})\.(\d{1})$/;	
+	var regstr=/^\d{1,9}$/;	
+	var r=fs.match(reg);
+	if(cj != "")
+	{
+		var r1=fs.match(regstr);
+		if(r1 == null)
+		{
+			if(r==null)
+			{		
+				alert("格式不正确，必须为数字并且可以有一位小数！如：19.0");
+				document.getElementById("sel_scorecj"+i).value="";	
+				try
+				{
+					document.getElementById("sel_score"+i).value="";
+				}
+				catch(e){}	
+				document.getElementById("sel_scorecj"+i).focus();
+			}
+			else if((parseFloat(fs)<parseFloat(lower)) || (parseFloat(fs)>parseFloat(upper)) ){
+				alert("输入的分数不正确，范围："+lower+"-"+upper+"之间！");
+				document.getElementById("sel_scorecj"+i).value="";	
+				try
+				{
+					document.getElementById("sel_score"+i).value="";
+				}
+				catch(e){}				
+				document.getElementById("sel_scorecj"+i).focus();
+		    }
+		}
+		else if((parseFloat(fs)<parseFloat(lower)) || (parseFloat(fs)>parseFloat(upper)) ){
+			alert("输入的分数不正确，范围："+lower+"-"+upper+"之间！");
+			document.getElementById("sel_scorecj"+i).value="";
+			try
+			{
+			    document.getElementById("sel_score"+i).value="";
+			}
+			catch(e){}			
+			document.getElementById("sel_scorecj"+i).focus();
+		}
+	}
+	else
+	{
+	    try
+		{
+			document.getElementById("sel_score"+i).value="";
+		}
+		catch(e){}	
+    }
+}
+//判断输入的分数是否符合格式
+function Blur(upper,lower,i)
+{
+	var fs=document.all("sel_scorecj"+i).value;
+	var cj=document.all("sel_scorecj"+i).value;
+	var reg=/^\d{1,9}$/;
+	var r=fs.match(reg);
+	
+	if(cj != "")
+	{
+		if((parseFloat(fs)<parseFloat(lower)) || (parseFloat(fs)>parseFloat(upper)) ){
+			alert("输入的分数不正确，范围："+lower+"-"+upper+"之间!");
+			document.all("sel_scorecj"+i).value="";	
+			try
+			{
+			    document.all("sel_score"+i).value="";
+			}
+			catch(e){}	
+			document.all("sel_scorecj"+i).focus();
+		}
+		if(r==null){		
+			alert("格式不正确，必须为整数！如：9");
+			document.all("sel_scorecj"+i).value="";	
+			try
+			{
+			    document.all("sel_score"+i).value="";
+			}
+			catch(e){}	
+			document.all("sel_scorecj"+i).focus();
+		}	
+	}
+	else
+	{
+	    try
+		{
+			document.all("sel_score"+i).value="";
+		}
+		catch(e){}	
+    }
+}
+//限制录入评语的长度
+function pdzfcd()
+{
+   var str=document.all("sel_yj").value;
+   var cd=str.length;
+   if(cd>50)
+   {
+    	alert("请简短您的语言！");
+   }
+   str=str.substr(0,50);
+   document.all("sel_yj").value=str;
+}
+function chkYj(obj)
+{
+   if(obj.value!="")
+   {
+       if(obj.value.length>255)
+       {
+          alert("意见与建议不能超过255个字！");
+          obj.value=obj.value.substring(0,255);
+          obj.focus();
+       }
+   }
+}
+</script>

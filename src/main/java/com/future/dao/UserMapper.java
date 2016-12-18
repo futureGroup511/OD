@@ -114,5 +114,10 @@ public interface UserMapper {
 	 */
 	List<User> YxYzGetAllDepDown(User user);
 
+	/**
+	 *	添加用户时请求Ajax，查询是否存在同名用户 
+	 */
+	User ajaxgetisOrNotUser(String name);
+
 
 }

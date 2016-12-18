@@ -1,6 +1,9 @@
 package com.future.controller;
 
 import com.future.base.BaseAction;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import com.future.base.BaseAction;
 import com.future.domain.Department;
 import com.future.domain.Evaluate;
 import com.future.domain.Role;
@@ -12,6 +15,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+
+import java.io.File;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -19,12 +25,57 @@ import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 
+
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
+import org.apache.commons.io.FileUtils;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
+import org.springframework.web.servlet.ModelAndView;
+
+import com.future.base.BaseAction;
+import com.future.domain.Department;
+import com.future.domain.Evaluate;
+import com.future.domain.Role;
+import com.future.domain.User;
+
+
 @Controller
 @Scope("prototype")
 @RequestMapping("user")
 public class UserController extends BaseAction {
 	
 	//@SessionAttributes("user")
+	
+	/**
+	 *	添加用户时请求Ajax，查询是否存在同名用户 
+	 */
+	@ResponseBody
+	@RequestMapping(value="ajaxgetisOrNotUser",method=RequestMethod.POST)
+	public Boolean ajaxgetisOrNotUser(@RequestParam("usernum") String userNum){
+		System.out.println(userNum);
+		User user = userService.ajaxgetisOrNotUser(userNum);
+		if(user == null){
+			System.out.println("不存在可以插入！");
+			return false;
+		}
+		return true;
+		
+	}
+	
+	
+	
 	/**
 	 * 左侧菜单请求
 	 * 
@@ -121,9 +172,31 @@ public class UserController extends BaseAction {
 	/**
 	 * 添加用户
 	 * @author 刘阳阳
-	 */
 	@RequestMapping(value="addUser",method=RequestMethod.POST)
 	public String addUser(User user){
+		userService.insert(user);
+		return "redirect:getAllUser";
+	}
+	 */
+	@RequestMapping(value="addUser",method=RequestMethod.POST)
+	public String addUser(User user,@RequestParam("uploadfile") CommonsMultipartFile file,HttpServletRequest request){
+	//public String addUser(User user){
+		//userService.insert(user);
+		String filename = "";
+		if (!file.isEmpty()) {
+            String type = file.getOriginalFilename().substring(file.getOriginalFilename().indexOf("."));// 取文件格式后缀名
+            filename = System.currentTimeMillis() + type;// 取当前时间戳作为文件名
+            String path = request.getSession().getServletContext().getRealPath("/upload/" + filename);// 存放位置
+            File destFile = new File(path);
+            try {
+                FileUtils.copyInputStreamToFile(file.getInputStream(), destFile);// 复制临时文件到指定目录下
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+		if(filename != ""){
+			user.setUserReport("upload/" + filename);
+		}
 		userService.insert(user);
 		return "redirect:getAllUser";
 	}
@@ -148,9 +221,35 @@ public class UserController extends BaseAction {
 	 * @author 刘阳阳
 	 */
 	@RequestMapping(value="updateUser",method=RequestMethod.POST)
-	public String updateUser(User user){
-		userService.updateByPrimaryKey(user);
+	public String updateUser(User user,@RequestParam("uploadfile") CommonsMultipartFile file,HttpServletRequest request){
+		
+		if(file.isEmpty()){
+			userService.updateByPrimaryKey(user);
+		}else {
+			String filename = "";
+            String type = file.getOriginalFilename().substring(file.getOriginalFilename().indexOf("."));// 取文件格式后缀名
+            filename = System.currentTimeMillis() + type;// 取当前时间戳作为文件名
+            String path = request.getSession().getServletContext().getRealPath("/upload/" + filename);// 存放位置
+            File destFile = new File(path);
+            try {
+                FileUtils.copyInputStreamToFile(file.getInputStream(), destFile);// 复制临时文件到指定目录下
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            if(filename != ""){
+    			user.setUserReport("upload/" + filename);
+    		}
+            
+            userService.updateByPrimaryKey(user);
+		}
 		return "redirect:getAllUser";
+	}
+	
+	@RequestMapping(value="deleteUser/{id}",method=RequestMethod.GET)
+	public String deleteUser(@PathVariable("id") Integer id){
+		System.out.println(id);
+		userService.deleteUser(id);
+		return "redirect:/user/getAllUser";
 	}
 	
 	
@@ -743,4 +842,24 @@ public class UserController extends BaseAction {
 		int num = userService.insertAll(evaList);
 		return num;
 	}
+}
+
+class Np{
+	
+	private Integer id;
+	private String name;
+	public Integer getId() {
+		return id;
+	}
+	public void setId(Integer id) {
+		this.id = id;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	
 }
