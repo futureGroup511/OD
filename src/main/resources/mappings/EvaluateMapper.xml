@@ -38,13 +38,27 @@
 			<if test="name != null">
 				and u.user_name = #{name}
 			</if>
-			<if test="page != null">
-				limit(#{page.currentPage-1})
-			</if>
-		</where>
 
+		</where>
+		ORDER BY eval_rank
+		<if test="page != null">
+			limit #{page.offset},#{page.pageSize}
+		</if>
 	</select>
 
+	<select id="findEvalByUserCount"  parameterType="hashmap" resultType="int">
+		SELECT COUNT(eval_id)
+		FROM od_evaluate oe join od_user u on u.user_id=oe.eval_evalby
+		join od_role odr on odr.role_id=u.user_role join od_department ode on ode.dep_id=u.user_dep
+		<where>
+			<if test="id != null">
+				oe.eval_evalto = #{id}
+			</if>
+			<if test="name != null">
+				and u.user_name = #{name}
+			</if>
+		</where>
+	</select>
 
 	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
 		parameterType="java.lang.Integer">

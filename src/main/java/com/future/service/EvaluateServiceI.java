@@ -1,11 +1,10 @@
 package com.future.service;
 
-import com.future.domain.Evaluate;
+import com.future.utils.PageBean;
 
-import java.util.List;
 import java.util.Map;
 
 public interface EvaluateServiceI {
 
-    public List<Evaluate> findEvalByUser(Map<String,Object> hashMap);
+    public PageBean findEvalByUser(Map<String,Object> hashMap);
 }

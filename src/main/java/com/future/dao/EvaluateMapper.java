@@ -20,7 +20,7 @@ public interface EvaluateMapper {
 
 	List<Evaluate> findEvalByUser(Map<String,Object> hashMap);
 
-
+	int findEvalByUserCount(Map<String,Object> hashMap);
     /**
 	 * 
 	 * 校正厅查询所有正职
