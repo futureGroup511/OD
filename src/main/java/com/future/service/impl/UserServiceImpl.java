@@ -20,7 +20,8 @@ public class UserServiceImpl implements UserServiceI {
 	private UserMapper userMapper;
 	@Autowired
 	private EvaluateMapper evaluateMapp;
-	
+
+
 	public int insert(User user) {
 		return userMapper.insert(user);
 	}

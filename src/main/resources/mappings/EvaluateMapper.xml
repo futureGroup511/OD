@@ -176,4 +176,52 @@
 		where eval_evalto = #{evalEvalto} and eval_cate=#{evalCate} <!-- and eval_desc=#{evalDesc} -->
 	</select>
 
+	<!-- by zhaoshuo -->
+	<resultMap id="UserMap" type="com.future.domain.User">
+		<id property="userId" column="user_id"></id>
+		<result property="userName" column="user_name"></result>
+		<result property="userNp" column="user_np"></result>
+		<result property="userDuty" column="user_duty"></result>
+		<result property="userDesc" column="user_desc"></result>
+	</resultMap>
+
+	<resultMap id="EvaluatedMePeople" type="com.future.domain.Evaluate">
+		<id property="evalId" column="od_evaluate.eval_id"></id>
+		<result property="evalRank" column="od_evaluate.eval_rank"></result>
+		<result property="evalCate" column="od_evaluate.eval_cate"></result>
+		<result property="evalDesc" column="od_evaluate.eval_desc"></result>
+
+		<result property="evaluatedBy.userName" column="od_user.user_name"></result>
+		<result property="evaluatedBy.userDuty" column="od_user.user_duty"></result>
+	</resultMap>
+
+	<select id="getAllValuatedByInfo" parameterType="com.future.commonUtils.PageBean" resultMap="UserMap">
+	  SELECT * FROM od_user WHERE
+	  od_user.user_id in (SELECT DISTINCT od_evaluate.eval_evalto from od_evaluate) ORDER  BY od_user.user_id DESC
+	  limit ${(currentPage-1)*pageSize}, #{pageSize};
+	</select>
+
+	<select id="getAllValuatedToInfo" parameterType="com.future.commonUtils.PageBean" resultMap="UserMap">
+	  SELECT * FROM od_user WHERE
+	  od_user.user_id in (SELECT DISTINCT od_evaluate.eval_evalby from od_evaluate) ORDER  BY od_user.user_id DESC
+	  limit ${(currentPage-1)*pageSize}, #{pageSize};
+	</select>
+
+	<!--  查询 被评价的总人数 构造 分页类-->
+	<select id="getValuatedByCount" resultType="int">
+	  SELECT count(DISTINCT od_evaluate.eval_evalby) from od_evaluate;
+	</select>
+
+	<!--  查询 评价的总人数 构造分页类-->
+	<select id="getValuatedToCount" resultType="int">
+	  SELECT count(DISTINCT od_evaluate.eval_evalto) from od_evaluate;
+	</select>
+
+	<select id="getValuatedMe" parameterType="int" resultMap="EvaluatedMePeople">
+		select od_user.*, od_evaluate.* from od_user
+		inner join od_evaluate
+		on od_evaluate.eval_evalby = od_user.user_id and od_evaluate.eval_evalto = #{meId};
+	</select>
+	<!-- by zhaoshuo -->
+
 </mapper>

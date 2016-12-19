@@ -49,5 +49,12 @@
 </c:if>
 <br>
 <a href="${pageContext.request.contextPath }/user/logout">退出</a>
+
+<!-- by 赵硕 -->
+<br/>
+<br/>
+<a target="right" href="${pageContext.request.contextPath }/evaluate/valuatedByInfo/1">查看被评价详细信息</a><br/>
+<a target="right" href="${pageContext.request.contextPath }/evaluate/valuateToInfo/1">查看评价详细信息</a>
+
 </body>
 </html>
