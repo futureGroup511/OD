@@ -1,10 +1,7 @@
 package com.future.domain;
 
 import com.future.Interface.Grade;
-import com.future.Interface.Impl.AssistantdeanGrade;
-import com.future.Interface.Impl.DeputyCommissionerGrade;
-import com.future.Interface.Impl.SectionchiefGrade;
-import com.future.Interface.Impl.SubdecanalGrade;
+import com.future.Interface.Impl.*;
 
 import java.io.IOException;
 
@@ -69,6 +66,8 @@ public class Statistics {
                 grade = new SectionchiefGrade();
             }else if(roleid == 4 || roleid == 6){  //书记和院长
                 grade = new AssistantdeanGrade();
+            }else{
+                grade = new NullGrade();
             }
 
         }else if(stati_user.getUserNp() == 0){ //副职
@@ -76,6 +75,8 @@ public class Statistics {
                 grade = new DeputyCommissionerGrade();
             }else if(roleid == 4 || roleid == 6){ //书记和院长
                 grade = new SubdecanalGrade();
+            }else{
+                grade = new NullGrade();
             }
         }
         try {
