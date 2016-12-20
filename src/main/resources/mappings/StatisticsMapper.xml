@@ -28,6 +28,7 @@
 		JOIN od_user u on s.stati_user_id=u.user_id
 		join od_role odr on odr.role_id=u.user_role
 		JOIN od_department dep on u.user_dep=dep.dep_id
+
 		<where>
 			<if test="roleId != null">
 				odr.role_id = #{roleId}
@@ -37,4 +38,32 @@
 
 
 </select>
+
+
+
+	<!-- 得到所有的总评结果  statistic 对象的集合-->
+	<resultMap id="AllEvaluatedResult" type="com.future.domain.Statistics">
+		<id property="stati_id" column="stati_id"></id>
+		<result property="static_hp" column="stati_hp"></result>
+		<result property="static_ztf" column="stati_ztf"></result>
+		<result property="static_ft" column="stati_ft"></result>
+		<result property="static_dw" column="stati_dw"></result>
+		<association property="stati_user" column="stati_user_id" javaType="com.future.domain.User">
+			<result property="userName" column="user_name"></result>
+			<result property="userNp" column="user_np"></result>
+			<result property="userDuty" column="user_duty"></result>
+			<association property="role" column="user_role" javaType="com.future.domain.Role">
+				<id property="roleId" column="role_id"></id>
+			</association>
+		</association>
+	</resultMap>
+	<select id="getAllEvaluateResult" resultMap="AllEvaluatedResult">
+		SELECT od_statistics.stati_id,
+		od_statistics.stati_hp, od_statistics.stati_ztf,
+		od_statistics.stati_ft,od_statistics.stati_dw,
+		od_user.user_name,od_user.user_np,od_user.user_duty,
+		od_role.role_id from od_statistics,od_user,od_role WHERE od_statistics.stati_user_id = od_user.user_id
+		AND od_user.user_role = od_role.role_id;
+	</select>
+
 </mapper>

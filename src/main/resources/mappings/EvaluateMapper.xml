@@ -295,20 +295,6 @@
 		from od_user, od_evaluate WHERE
 		od_evaluate.eval_evalby = od_user.user_id and od_evaluate.eval_evalto = #{meId};
 	</select>
-	<!-- 得到所有的总评结果  statistic 对象的集合-->
-	<resultMap id="AllEvaluatedResult" type="com.future.domain.Statistics">
-		<id property="" column=""></id>
-		<result property="" column=""></result>
-	</resultMap>
-	<select id="getAllEvaluateResult" resultMap="">
-		SELECT od_statistics.stati_id,
-		od_statistics.stati_hp, od_statistics.stati_ztf,
-		 od_statistics.stati_ft,od_statistics.stati_dw,
-		 od_user.
 
-	</select>
 	<!-- by zhaoshuo -->
-
-
-
 </mapper>

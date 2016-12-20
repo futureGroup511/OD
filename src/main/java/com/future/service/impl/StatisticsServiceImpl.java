@@ -21,4 +21,7 @@ public class StatisticsServiceImpl implements StatisticsServiceI {
     public List<Statistics> findAllStatisticsByRole(Integer roleId) {
         return statistics.findAllStatisticsByRole(roleId);
     }
+    public List<Statistics> getAllEvaluateResult() {
+        return statistics.getAllEvaluateResult();
+    }
 }
