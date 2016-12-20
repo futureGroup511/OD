@@ -1,10 +1,9 @@
 package com.future.dao;
 
-import java.util.List;
-
-import com.future.commonUtils.PageBean;
 import com.future.domain.Evaluate;
-import com.future.domain.User;
+
+import java.util.List;
+import java.util.Map;
 
 public interface EvaluateMapper {
     int deleteByPrimaryKey(Integer evalId);
@@ -83,35 +82,6 @@ public interface EvaluateMapper {
 	 * @author 刘阳阳
 	 */
 	List<Evaluate> getIsOrNoAllYxYzDepDown(Evaluate isEval);
-	//=================================================
-	// by zhaoshuo
-	//==================================================
-	/**
-	 * 分页查询 被评人的全部信息
-	 * @return
-	 */
-	List<User> getAllValuatedByInfo(PageBean pageBean);
-
-	/**
-	 * 分页查询 评价人的全部信息
-	 * @return
-	 */
-
-	List<User> getAllValuatedToInfo(PageBean pageBean);
-
-	/**
-	 * 查询被评人的总数量
-	 */
-	Integer getValuatedByCount();
-	/**
-	 * 查询评价人的总数量
-	 */
-	Integer getValuatedToCount();
-
-	/**
-	 * 查询得到 评价此人的所有 评价人信息
-	 */
-	List<Evaluate> 	getValuatedMe(Integer meId);
-
-	//==================================================
+	
+	
 }

@@ -1,14 +1,13 @@
 package com.future.service.impl;
 
-import java.util.List;
-
+import com.future.dao.DepartmentMapper;
+import com.future.domain.Department;
+import com.future.service.DepartmentServiceI;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.future.dao.DepartmentMapper;
-import com.future.domain.Department;
-import com.future.service.DepartmentServiceI;
+import java.util.List;
 
 @Service
 @Transactional

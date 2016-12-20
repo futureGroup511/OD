@@ -5,26 +5,26 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>查看所有单位</title>
+<title>查看所有角色</title>
 </head>
 <body>
-查询所有单位
-<a href="addDepUI">添加单位</a>
+查询所有角色
+<a href="${pageContext.request.contextPath }/user/addRoleUI">添加角色</a>
 <table border="1" cellpadding="1" cellspacing="0">
 	<tr>
+	    <td>id</td>
 	    <td>名称</td>
-	    <td>分管人</td>
 	    <td>编辑</td>
 
 	</tr>
 
-	<c:forEach items="${depList }" var="dep">
+	<c:forEach items="${roleList }" var="role" varStatus="id">
 		<tr>
-			<td>${dep.depName }</td>
-			<td>${dep.depManager }</td>
+			<td>${id.count }</td>
+			<td>${role.roleName }</td>
 			<td>
-				<a href="updateDepUI/${dep.depId }">修改</a> &nbsp;&nbsp;&nbsp;
-				<a href="${pageContext.request.contextPath }/user/deleteDep/${dep.depId }">删除</a>
+				<a href="${pageContext.request.contextPath }/user/updateRoleUI/${role.roleId }">修改</a> &nbsp;&nbsp;&nbsp;
+				<a href="${pageContext.request.contextPath }/user/deleteRole/${role.roleId }">删除</a> 
 			</td>
 		</tr>
 	</c:forEach>

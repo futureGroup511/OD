@@ -6,11 +6,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.future.dao.DepartmentMapper;
 import com.future.dao.EvaluateMapper;
+import com.future.dao.RoleMapper;
 import com.future.dao.UserMapper;
 import com.future.domain.Evaluate;
+import com.future.domain.Role;
 import com.future.domain.User;
 import com.future.service.UserServiceI;
+import com.future.utils.PageBean;
 
 @Service
 @Transactional
@@ -20,6 +24,11 @@ public class UserServiceImpl implements UserServiceI {
 	private UserMapper userMapper;
 	@Autowired
 	private EvaluateMapper evaluateMapp;
+	@Autowired
+	private DepartmentMapper departmentMapper;
+	@Autowired
+	private RoleMapper roleMapper;
+
 
 
 	public int insert(User user) {

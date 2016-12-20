@@ -9,9 +9,57 @@
 		<result column="eval_cate" property="evalCate" jdbcType="INTEGER" />
 		<result column="eval_desc" property="evalDesc" jdbcType="VARCHAR" />
 	</resultMap>
+
 	<sql id="Base_Column_List">
 		eval_id, eval_evalby, eval_evalto, eval_rank, eval_cate, eval_desc
 	</sql>
+
+	<resultMap id="evalto" type="Evaluate" extends="BaseResultMap">
+		<association property="userBy"  javaType="User">
+			<result column="user_name" property="userName" jdbcType="VARCHAR" />
+			<association property="role" javaType="Role">
+				<result column="role_name" property="roleName"></result>
+			</association>
+			<association  property="department" javaType="Department">
+				<result column="dep_name" property="depName"></result>
+			</association>
+		</association>
+	</resultMap>
+
+	<!--查看自己已经评价过的信息-->
+	<select id="findEvalByUser" parameterType="hashmap" resultMap="evalto">
+		SELECT odr.role_name,ode.dep_name,u.user_name,eval_id,eval_evalby,eval_evalto,eval_rank,eval_cate,eval_desc
+		FROM od_evaluate oe join od_user u on u.user_id=oe.eval_evalby
+		join od_role odr on odr.role_id=u.user_role join od_department ode on ode.dep_id=u.user_dep
+		<where>
+			<if test="id != null">
+				oe.eval_evalto = #{id}
+			</if>
+			<if test="name != null">
+				and u.user_name = #{name}
+			</if>
+
+		</where>
+		ORDER BY eval_rank
+		<if test="page != null">
+			limit #{page.offset},#{page.pageSize}
+		</if>
+	</select>
+
+	<select id="findEvalByUserCount"  parameterType="hashmap" resultType="int">
+		SELECT COUNT(eval_id)
+		FROM od_evaluate oe join od_user u on u.user_id=oe.eval_evalby
+		join od_role odr on odr.role_id=u.user_role join od_department ode on ode.dep_id=u.user_dep
+		<where>
+			<if test="id != null">
+				oe.eval_evalto = #{id}
+			</if>
+			<if test="name != null">
+				and u.user_name = #{name}
+			</if>
+		</where>
+	</select>
+
 	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
 		parameterType="java.lang.Integer">
 		select

@@ -7,6 +7,10 @@ import com.future.domain.User;
 
 import java.util.List;
 
+import com.future.utils.PageBean;
+
+import java.util.Map;
+
 public interface EvaluateServiceI {
 
     //得到分页查询的被评价人 信息
@@ -20,4 +24,5 @@ public interface EvaluateServiceI {
     Integer getValuatedToCount();
     // 得到评价此人的  评价人信息
     List<Evaluate> 	getValuatedMe(Integer meId);
+    public PageBean findEvalByUser(Map<String,Object> hashMap);
 }
