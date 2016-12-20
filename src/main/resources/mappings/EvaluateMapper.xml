@@ -234,24 +234,36 @@
 	</resultMap>
 
 	<resultMap id="EvaluatedMePeople" type="com.future.domain.Evaluate">
-		<id property="evalId" column="od_evaluate.eval_id"></id>
-		<result property="evalRank" column="od_evaluate.eval_rank"></result>
-		<result property="evalCate" column="od_evaluate.eval_cate"></result>
-		<result property="evalDesc" column="od_evaluate.eval_desc"></result>
-
-		<result property="evaluatedBy.userName" column="od_user.user_name"></result>
-		<result property="evaluatedBy.userDuty" column="od_user.user_duty"></result>
+		<id property="evalId" column="eval_id"></id>
+		<result property="evalRank" column="eval_rank"></result>
+		<result property="evalCate" column="eval_cate"></result>
+		<result property="evalDesc" column="eval_desc"></result>
+		<association property="evaluatedBy" column="eval_evalby" javaType="com.future.domain.User">
+			<result property="userName" column="user_name"></result>
+			<result property="userDuty" column="user_duty"></result>
+		</association>
+	</resultMap>
+	<!-- 我评价了谁-->
+	<resultMap id="EvaluatedOthersPeople" type="com.future.domain.Evaluate">
+		<id property="evalId" column="eval_id"></id>
+		<result property="evalRank" column="eval_rank"></result>
+		<result property="evalCate" column="eval_cate"></result>
+		<result property="evalDesc" column="eval_desc"></result>
+		<association property="evaluatedTo" column="eval_evalto" javaType="com.future.domain.User">
+			<result property="userName" column="user_name"></result>
+			<result property="userDuty" column="user_duty"></result>
+		</association>
 	</resultMap>
 
-	<select id="getAllValuatedByInfo" parameterType="com.future.commonUtils.PageBean" resultMap="UserMap">
+	<select id="getAllValuatedByInfo" parameterType="com.future.commonUtils.MyPageBean" resultMap="UserMap">
 	  SELECT * FROM od_user WHERE
-	  od_user.user_id in (SELECT DISTINCT od_evaluate.eval_evalto from od_evaluate) ORDER  BY od_user.user_id DESC
+	  od_user.user_id in (SELECT DISTINCT od_evaluate.eval_evalby from od_evaluate) ORDER  BY od_user.user_id DESC
 	  limit ${(currentPage-1)*pageSize}, #{pageSize};
 	</select>
 
-	<select id="getAllValuatedToInfo" parameterType="com.future.commonUtils.PageBean" resultMap="UserMap">
+	<select id="getAllValuatedToInfo" parameterType="com.future.commonUtils.MyPageBean" resultMap="UserMap">
 	  SELECT * FROM od_user WHERE
-	  od_user.user_id in (SELECT DISTINCT od_evaluate.eval_evalby from od_evaluate) ORDER  BY od_user.user_id DESC
+	  od_user.user_id in (SELECT DISTINCT od_evaluate.eval_evalto from od_evaluate) ORDER  BY od_user.user_id DESC
 	  limit ${(currentPage-1)*pageSize}, #{pageSize};
 	</select>
 
@@ -266,10 +278,30 @@
 	</select>
 
 	<select id="getValuatedMe" parameterType="int" resultMap="EvaluatedMePeople">
-		select od_user.*, od_evaluate.* from od_user
-		inner join od_evaluate
-		on od_evaluate.eval_evalby = od_user.user_id and od_evaluate.eval_evalto = #{meId};
+		select od_evaluate.eval_id,od_evaluate.eval_rank,
+		od_evaluate.eval_cate,od_evaluate.eval_desc
+		,od_user.user_name,od_user.user_duty
+		from od_user, od_evaluate WHERE
+		od_evaluate.eval_evalto = od_user.user_id and od_evaluate.eval_evalby = #{meId};
 	</select>
-	<!-- by zhaoshuo -->
 
+
+	<select id="getValuateByPeople" parameterType="int" resultMap="EvaluatedOthersPeople">
+		select od_evaluate.eval_id,od_evaluate.eval_rank,
+		od_evaluate.eval_cate,od_evaluate.eval_desc
+		,od_user.user_name,od_user.user_duty
+		from od_user, od_evaluate WHERE
+		od_evaluate.eval_evalby = od_user.user_id and od_evaluate.eval_evalto = #{meId};
+	</select>
+
+    
+    <!-- 
+       导出所有被评价人的 评价得分情况
+    -->
+    <select id="exportEvaluateInfoToExcel">
+
+
+    </select>
+    
+	<!-- by zhaoshuo -->
 </mapper>

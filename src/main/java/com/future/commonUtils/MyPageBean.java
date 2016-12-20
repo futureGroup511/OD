@@ -2,7 +2,7 @@ package com.future.commonUtils;
 
 import java.util.List;
 
-public class PageBean {
+public class MyPageBean {
 
 
 	private Integer currentPage; //当前页
@@ -14,7 +14,7 @@ public class PageBean {
 	private Integer beginPageIndex; //首页
 	private Integer pageCount; //显示的页数
 	
-	public PageBean(Integer currentPage, Integer pageSize, Integer recordCount, List recordlist) {
+	public MyPageBean(Integer currentPage, Integer pageSize, Integer recordCount, List recordlist) {
 		super();
 		this.currentPage = currentPage;
 		this.pageSize = pageSize;
@@ -26,10 +26,10 @@ public class PageBean {
 
 
 
-	public static PageBean newInstance(){
-		return new PageBean();
+	public static MyPageBean newInstance(){
+		return new MyPageBean();
 	}
-	public PageBean() {
+	public MyPageBean() {
 		super();
 	}
 
@@ -99,8 +99,8 @@ public class PageBean {
 	 * 得到默认值当前页为第一页，一页显示十条的page
 	 * @return
 	 */
-	public static PageBean getDefaultInstace(){
-		PageBean page=PageBean.newInstance();
+	public static MyPageBean getDefaultInstace(){
+		MyPageBean page= MyPageBean.newInstance();
 		page.setPageSize(8);
 		return page;
 	}

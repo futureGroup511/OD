@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -5,22 +6,21 @@
 </head>
 <body>
 <table class="table">
+    <h3>导出结果</h3>
     <tr>
-        <th>用户姓名</th>
-        <th>用户账号</th>
-        <th>用户正副职</th>
-        <th>用户职务</th>
-        <th>用户描述</th>
-        <th>查看此人被评详细信息</th>
+        <th>评价人姓名</th>
+        <th>评价人职务</th>
+        <th>评价级别</th>
+        <th>评价类型</th>
+        <th>评价描述</th>
     </tr>
-    <c:forEach items="${requestScope.userList }" var="userInfo">
+    <c:forEach items="${requestScope.evaluatesList }" var="valuatedMeInfo">
         <tr>
-            <td>${userInfo.userName }</td>
-            <td>${userInfo.userNum }</td>
-            <td>${userInfo.userNp==''?"无信息":userInfo.userNp=='0'?"正职":"副职" }</td>
-            <td>${userInfo.userDuty }</td>
-            <td>${userInfo.userDesc }</td>
-            <td><a href="${pageContext.request.contextPath}/evaluate/getValuatedMe/${userInfo.userId}">查看</a></td>
+            <td>${valuatedMeInfo.evaluatedBy.userName }</td>
+            <td>${valuatedMeInfo.evaluatedBy.userDuty }</td>
+            <td>${valuatedMeInfo.evalRank }</td>
+            <td>${valuatedMeInfo.evalCate }</td>
+            <td>${valuatedMeInfo.evalDesc }</td>
         </tr>
     </c:forEach>
 </table>

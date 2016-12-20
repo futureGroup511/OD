@@ -37,17 +37,6 @@ public class Evaluate {
     //===============
 
 
-//*******************************************
-    // 不用
-    // 被评价人
-    private Integer evalEvalby;
-    // 评价人
-    private Integer evalEvalto;
-//******************************************
-
-
-
-
     public Integer getEvalId() {
         return evalId;
     }
