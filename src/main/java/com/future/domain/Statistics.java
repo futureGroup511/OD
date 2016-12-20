@@ -12,6 +12,7 @@ import java.io.IOException;
  * Created by 牛洧鹏 on 2016/12/20.
  */
 public class Statistics {
+
     private Integer stati_id;
     private User stati_user;
     private Double static_hp;
@@ -20,6 +21,8 @@ public class Statistics {
     private Double static_dw;
     private Double static_result;
     private Grade grade;
+
+
     public Double getStatic_hp() {
         return static_hp;
     }
@@ -102,6 +105,7 @@ public class Statistics {
     public void setStati_user(User stati_user) {
         this.stati_user = stati_user;
     }
+
 
 
 }

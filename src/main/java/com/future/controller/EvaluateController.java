@@ -4,6 +4,7 @@ import com.future.base.BaseAction;
 import com.future.commonUtils.MyPageBean;
 import com.future.commonUtils.PropertiesUtils;
 import com.future.domain.Evaluate;
+import com.future.domain.Statistics;
 import com.future.domain.User;
 import com.future.utils.PageBean;
 import org.springframework.context.annotation.Scope;
@@ -88,7 +89,7 @@ System.out.println("%%%%%");
 
         List<Evaluate> evaluatesList = evaluateService.getValuateByPeople(meId);
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("Manager/valuateOthersPeople");
+        modelAndView.setViewName("Manager/allEvaluateResult");
 
         Map<String,Object> map = new HashMap<String,Object>();
         map.put("evaluatesList", evaluatesList);
@@ -103,8 +104,16 @@ System.out.println("%%%%%");
     @RequestMapping("/seeAllEvaluateResult")
     public ModelAndView seeAllEvaluateResult(){
 
+        List<Statistics> statisticList = statisticsService.getAllEvaluateResult();
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("Manager/allEvaluateResult");
 
-        return null;
+        Map<String,Object> map = new HashMap<String,Object>();
+        map.put("statisticList", statisticList);
+
+        modelAndView.addAllObjects(map);
+
+        return modelAndView;
     }
 
 
