@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.future.dao.StatisticsMapper">
+	<resultMap id="BaseResultMap" type="com.future.domain.Statistics">
+		<id column="stati_id" property="stati_id" jdbcType="INTEGER" />
+		<result column="stati_hp" property="static_hp"></result>
+		<result column="stati_ztf" property="static_ztf"></result>
+		<result column="stati_ft" property="static_ft"></result>
+		<result column="stati_dw" property="static_dw"></result>
+	</resultMap>
+
+	<resultMap id="findUser" type="Statistics" extends="BaseResultMap">
+		<association  property="stati_user" javaType="User">
+			<result column="user_name" property="userName" jdbcType="VARCHAR" />
+			<association property="role" javaType="Role">
+				<result column="role_name" property="roleName"></result>
+			</association>
+			<association  property="department" javaType="Department">
+				<result column="dep_name" property="depName"></result>
+			</association>
+		</association>
+	</resultMap>
+
+	<select id="findAllStatistics" resultMap="findUser">
+		SELECT odr.role_name,u.user_name,dep.dep_name,s.* from od_statistics s
+		JOIN od_user u on s.stati_user_id=u.user_id
+		join od_role odr on odr.role_id=u.user_role
+		JOIN od_department dep on u.user_dep=dep.dep_id
+		WHERE s.stati_hp IS not null OR  s.stati_ztf IS NOT  NULL  OR  s.stati_ft IS NOT  NULL  OR  s.stati_dw IS NOT  NULL
+	</select>
+</mapper>

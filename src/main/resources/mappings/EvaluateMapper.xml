@@ -26,6 +26,8 @@
 		</association>
 	</resultMap>
 
+
+
 	<!--查看自己已经评价过的信息-->
 	<select id="findEvalByUser" parameterType="hashmap" resultMap="evalto">
 		SELECT odr.role_name,ode.dep_name,u.user_name,eval_id,eval_evalby,eval_evalto,eval_rank,eval_cate,eval_desc
