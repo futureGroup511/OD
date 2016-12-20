@@ -12,7 +12,9 @@
 	<resultMap id="findUser" type="Statistics" extends="BaseResultMap">
 		<association  property="stati_user" javaType="User">
 			<result column="user_name" property="userName" jdbcType="VARCHAR" />
+			<result column="user_np" property="userNp"></result>
 			<association property="role" javaType="Role">
+				<id column="role_id" property="roleId"></id>
 				<result column="role_name" property="roleName"></result>
 			</association>
 			<association  property="department" javaType="Department">
@@ -21,11 +23,18 @@
 		</association>
 	</resultMap>
 
-	<select id="findAllStatistics" resultMap="findUser">
-		SELECT odr.role_name,u.user_name,dep.dep_name,s.* from od_statistics s
+	<select id="findAllStatisticsByRole" resultMap="findUser" parameterType="int">
+		SELECT odr.role_id,odr.role_name,u.user_np,u.user_name,dep.dep_name,s.* from od_statistics s
 		JOIN od_user u on s.stati_user_id=u.user_id
 		join od_role odr on odr.role_id=u.user_role
 		JOIN od_department dep on u.user_dep=dep.dep_id
-		WHERE s.stati_hp IS not null OR  s.stati_ztf IS NOT  NULL  OR  s.stati_ft IS NOT  NULL  OR  s.stati_dw IS NOT  NULL
-	</select>
+		<where>
+			<if test="roleId != null">
+				odr.role_id = #{roleId}
+			</if>
+			AND s.stati_hp IS not null OR  s.stati_ztf IS NOT  NULL  OR  s.stati_ft IS NOT  NULL  OR  s.stati_dw IS NOT  NULL
+		</where>
+
+
+</select>
 </mapper>
