@@ -272,4 +272,79 @@ public class UserServiceImpl implements UserServiceI {
 		userMapper.deleteByPrimaryKey(id);
 	}
 
+	/**
+	 * 修改密码
+	 * 
+	 * @author 刘阳阳
+	 */
+	public void updateByPrimaryKeySelective(User user) {
+		userMapper.updateByPrimaryKeySelective(user);
+	}
+
+	/**
+	 * 删除部门
+	 * 
+	 * @author 刘阳阳
+	 */
+	public void deleteDep(Integer id) {
+		departmentMapper.deleteByPrimaryKey(id);
+	}
+
+	/**
+	 * 
+	 * 查询所有角色
+	 * 
+	 * @author 刘阳阳
+	 */
+	public List<Role> getAllRole() {
+		return roleMapper.getAllRole();
+	}
+
+	/**
+	 * 添加角色，
+	 * 
+	 * @author 刘阳阳
+	 */
+	public void insertRole(Role role) {
+		roleMapper.insert(role);
+	}
+	
+	/**
+	 * 删除角色，
+	 * 
+	 * @author 刘阳阳
+	 */
+	public void deleteRole(Integer id){
+		roleMapper.deleteByPrimaryKey(id);
+	}
+
+	/**
+	 * 通过ip查到角色
+	 * 
+	 * @author 刘阳阳
+	 */
+	public Role getByIdRole(Integer id) {
+		return roleMapper.selectByPrimaryKey(id);
+	}
+
+	/**
+	 * 修改角色
+	 */
+	public void updateRole(Role role) {
+		roleMapper.updateByPrimaryKey(role);
+	}
+
+	/**
+	 * 查询所有用户信息，分页显示
+	 * @return modelAndView视图显示
+	 */
+	public PageBean pageBeanGetAllUser(PageBean pageBean) {
+		//1、User 2、总人数
+		List<User> userList = userMapper.getPageBeanAllUser(((pageBean.getCurrentPage()-1)*pageBean.getPageSize()),pageBean.getPageSize());
+		int count = userMapper.getAllUserNum();
+		pageBean.setRecordlist(userList);
+		pageBean.setRecordCount(count);
+		return pageBean;
+	}
+
 }

@@ -69,8 +69,39 @@
 				//alert(one);
 				var result = one/count*100;
 				if(result < data){
-					flag = true;
-					$("#form").submit();  
+					var countResult = $("#result").val();
+					var countUsre = "";
+					var els =document.getElementsByName("evalEvalby");
+					for (var i = 0, j = els.length; i < j; i++){
+						//alert(els[i].value)
+						countUsre = countUsre + (els[i].value)+",";
+					}
+					
+					
+					var date = {
+							"countUsre":countUsre,
+							"countResult" : countResult
+					}
+					
+					$.ajax({
+						//先走校验的action
+						url : '${pageContext.request.contextPath }/user/ajaxgetBiliAfter',
+						type : 'post',
+						data : date,
+						dataType : 'text',
+						success : function(date) {
+							//alert("结果:" + date);
+							if(date == "true"){
+								//alert(date + "提交")
+								$("#form").submit(); 
+							} else{
+								alert("优秀结果里副职所占的比例不超过30%")
+								//alert(date + "不提交");
+							}
+						}
+
+					});		
+					 
 				} else{
 					alert("本次评价的优秀人数超过50%，请重新评价！")
 				}
@@ -111,6 +142,8 @@
 	<table border="1" cellpadding="1" cellspacing="0">
 		<tr>
 			<td>序号</td>
+			<td>id</td>
+			<td>正副</td>
 			<td>姓名</td>
 			<td>评价</td>
 			<td>述职报告</td>
@@ -122,6 +155,8 @@
 			<input type="hidden" name="evalEvalby" value="${user.userId }">
 			<tr>
 				<td>${id.count }</td>
+				<td>${user.userId }</td>
+				<td>${user.userNp }</td>
 				<td>${user.userName }</td>
 				<td>
 					<input type="radio" name="eval${user.userId }" value="1"> 优秀

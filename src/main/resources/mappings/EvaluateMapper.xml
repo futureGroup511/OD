@@ -158,7 +158,7 @@
 	<select id="getIsOrNoAllZheng" resultMap="BaseResultMap" parameterType="com.future.domain.Evaluate">
 		select *
 		from od_evaluate
-		where eval_evalto = #{evalEvalto} and eval_cate=2 and eval_desc='0'
+		where eval_evalto = #{evalEvalto} and eval_cate=#{evalCate} and eval_desc=#{evalDesc}
 	</select>
 	
 	<!-- 校正厅对 ====分管单位====领导评价之前，先检查是否评价过 -->
