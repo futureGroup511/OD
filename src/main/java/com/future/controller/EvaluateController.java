@@ -99,6 +99,15 @@ System.out.println("%%%%%");
     }
 
 
+    // 查看总评结果
+    @RequestMapping("/seeAllEvaluateResult")
+    public ModelAndView seeAllEvaluateResult(){
+
+
+        return null;
+    }
+
+
 
 
 

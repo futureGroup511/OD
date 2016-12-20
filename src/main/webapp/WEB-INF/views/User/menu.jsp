@@ -148,5 +148,8 @@
 <br/>
 <a target="right" href="${pageContext.request.contextPath }/evaluate/valuatedByInfo/1">查看人的 被评价</a><br/>
 <a target="right" href="${pageContext.request.contextPath }/evaluate/valuateToInfo/1">查看人的 评价</a>
+
+<a target="right" href="${pageContext.request.contextPath }/evaluate/seeAllEvaluateResult">查看总评结果</a>
+
 </body>
 </html>
