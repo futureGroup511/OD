@@ -226,4 +226,77 @@
 		where eval_evalto = #{evalEvalto} and eval_cate=#{evalCate} <!-- and eval_desc=#{evalDesc} -->
 	</select>
 
+	<!-- by zhaoshuo -->
+	<resultMap id="UserMap" type="com.future.domain.User">
+		<id property="userId" column="user_id"></id>
+		<result property="userName" column="user_name"></result>
+		<result property="userNp" column="user_np"></result>
+		<result property="userDuty" column="user_duty"></result>
+		<result property="userDesc" column="user_desc"></result>
+	</resultMap>
+
+	<resultMap id="EvaluatedMePeople" type="com.future.domain.Evaluate">
+		<id property="evalId" column="eval_id"></id>
+		<result property="evalRank" column="eval_rank"></result>
+		<result property="evalCate" column="eval_cate"></result>
+		<result property="evalDesc" column="eval_desc"></result>
+		<association property="evaluatedBy" column="eval_evalby" javaType="com.future.domain.User">
+			<result property="userName" column="user_name"></result>
+			<result property="userDuty" column="user_duty"></result>
+		</association>
+	</resultMap>
+	<!-- 我评价了谁-->
+	<resultMap id="EvaluatedOthersPeople" type="com.future.domain.Evaluate">
+		<id property="evalId" column="eval_id"></id>
+		<result property="evalRank" column="eval_rank"></result>
+		<result property="evalCate" column="eval_cate"></result>
+		<result property="evalDesc" column="eval_desc"></result>
+		<association property="evaluatedTo" column="eval_evalto" javaType="com.future.domain.User">
+			<result property="userName" column="user_name"></result>
+			<result property="userDuty" column="user_duty"></result>
+		</association>
+	</resultMap>
+
+	<select id="getAllValuatedByInfo" parameterType="com.future.commonUtils.MyPageBean" resultMap="UserMap">
+	  SELECT * FROM od_user WHERE
+	  od_user.user_id in (SELECT DISTINCT od_evaluate.eval_evalby from od_evaluate) ORDER  BY od_user.user_id DESC
+	  limit ${(currentPage-1)*pageSize}, #{pageSize};
+	</select>
+
+	<select id="getAllValuatedToInfo" parameterType="com.future.commonUtils.MyPageBean" resultMap="UserMap">
+	  SELECT * FROM od_user WHERE
+	  od_user.user_id in (SELECT DISTINCT od_evaluate.eval_evalto from od_evaluate) ORDER  BY od_user.user_id DESC
+	  limit ${(currentPage-1)*pageSize}, #{pageSize};
+	</select>
+
+	<!--  查询 被评价的总人数 构造 分页类-->
+	<select id="getValuatedByCount" resultType="int">
+	  SELECT count(DISTINCT od_evaluate.eval_evalby) from od_evaluate;
+	</select>
+
+	<!--  查询 评价的总人数 构造分页类-->
+	<select id="getValuatedToCount" resultType="int">
+	  SELECT count(DISTINCT od_evaluate.eval_evalto) from od_evaluate;
+	</select>
+
+	<select id="getValuatedMe" parameterType="int" resultMap="EvaluatedMePeople">
+		select od_evaluate.eval_id,od_evaluate.eval_rank,
+		od_evaluate.eval_cate,od_evaluate.eval_desc
+		,od_user.user_name,od_user.user_duty
+		from od_user, od_evaluate WHERE
+		od_evaluate.eval_evalto = od_user.user_id and od_evaluate.eval_evalby = #{meId};
+	</select>
+
+
+	<select id="getValuateByPeople" parameterType="int" resultMap="EvaluatedOthersPeople">
+		select od_evaluate.eval_id,od_evaluate.eval_rank,
+		od_evaluate.eval_cate,od_evaluate.eval_desc
+		,od_user.user_name,od_user.user_duty
+		from od_user, od_evaluate WHERE
+		od_evaluate.eval_evalby = od_user.user_id and od_evaluate.eval_evalto = #{meId};
+	</select>
+	<!-- by zhaoshuo -->
+
+
+
 </mapper>

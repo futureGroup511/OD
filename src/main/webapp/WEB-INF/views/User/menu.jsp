@@ -139,7 +139,14 @@
 <a href="${pageContext.request.contextPath}/user/logout">退出</a>
 =======
 <a href="${pageContext.request.contextPath }/user/logout">退出</a>
+<<<<<<< HEAD
+
 >>>>>>> 97879c303ce865df8793ea39d17f0c787247db21 --%>
 
+<!-- by 赵硕 -->
+<br/>
+<br/>
+<a target="right" href="${pageContext.request.contextPath }/evaluate/valuatedByInfo/1">查看人的 被评价</a><br/>
+<a target="right" href="${pageContext.request.contextPath }/evaluate/valuateToInfo/1">查看人的 评价</a>
 </body>
 </html>
