@@ -34,6 +34,7 @@ import org.apache.commons.io.FileUtils;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -58,6 +59,34 @@ public class UserController extends BaseAction {
 
 	// @SessionAttributes("user")
 
+	/**
+	 * ajax获取所有用户姓名
+	 */
+	@ResponseBody
+	@RequestMapping(value="ajaxgetAllUserName",method=RequestMethod.POST)
+	public List<String> ajaxgetAllUserName(){
+		System.out.println("aaaaa");
+		List<String> list = userService.ajaxgetAllUserName();
+		System.out.println(list);
+		return list;
+	}
+	
+	
+	/**
+	 * 
+	 * 根据用户名称，查询改用户，模糊查询
+	 */
+	@RequestMapping(value="findByNameForUser",method=RequestMethod.POST)
+	public ModelAndView findByNameForUser(@RequestParam("name") String username){
+		System.out.println(username);
+		User user = userService.findByNameForUser(username);
+		System.out.println(user);
+		String viewname = "User/allUser";
+		ModelAndView modelAndView = new ModelAndView(viewname);
+		modelAndView.addObject("user", user);
+		return modelAndView;
+	}
+	
 	/**
 	 * 添加用户时请求Ajax，查询是否存在同名用户
 	 */
@@ -224,6 +253,11 @@ public class UserController extends BaseAction {
 		return "redirect:getAllUser";
 	}
 
+	/**
+	 * 请求修改用户信息  页面
+	 * 
+	 * @author 刘阳阳
+	 */
 	@RequestMapping(value = "updateUserUI/{id}", method = RequestMethod.GET)
 	public ModelAndView updateUserUI(@PathVariable("id") Integer id, Map<String, Object> map) {
 		String viewname = "User/addUserUI";
@@ -266,7 +300,7 @@ public class UserController extends BaseAction {
 
 			userService.updateByPrimaryKey(user);
 		}
-		return "redirect:getAllUser";
+		return "redirect:/user/getAllUser/1";
 	}
 
 	@RequestMapping(value = "deleteUser/{id}", method = RequestMethod.GET)
@@ -277,7 +311,7 @@ public class UserController extends BaseAction {
 	}
 
 	/**
-	 * 校正厅对所有正职评价,请求页面
+	 * 校正厅对所有处级干部评价（校正厅对所有正职评价,请求页面）
 	 * 
 	 * @author 刘阳阳
 	 */
@@ -287,7 +321,7 @@ public class UserController extends BaseAction {
 		String viewname = "User/xzAllzUI";
 		ModelAndView modelAndView = new ModelAndView(viewname);
 		// 首先判断是否评价过，评价过的条件为，拿当前session 评价人 的userid，然后根据本次评价的类型
-		// 类别(1互评、2厅级上对下、3本单位上对下)， （注意，本次查询在mapper只用到了一个userid其余写死的死的，如果修改代码请注意）
+		// 类别(1互评、2正厅级领导和分管领导0.7  3、其他副厅0.3  、4本单位上对下)
 		// 查到有记录就代表评价过，
 		Evaluate isEval = new Evaluate();
 		// User tempuser = (User) session.get("user");
@@ -327,14 +361,68 @@ public class UserController extends BaseAction {
 		return a;
 	}
 
+	
 	/**
-	 * 校正厅对所有正职评价，处理结果
+	 * 获取比例之后的 30%计算
+	 * @throws IOException 
+	 */
+	@ResponseBody
+	@RequestMapping(value="ajaxgetBiliAfter",method=RequestMethod.POST)
+	public boolean ajaxgetBiliAfter(@RequestParam("countUsre") String countUsre,@RequestParam("countResult") String countResult) throws IOException{
+		//拿到人数和评价对应的数组
+		String[] user = countUsre.split(",");
+		String[] result = countResult.split(",");
+		List<String> goodUserList = new ArrayList();
+		//循环评价，是优秀的就把人id存到list中
+		for(int i=0;i<result.length;i++){
+			if(result[i].equals("1")){
+				goodUserList.add(user[i]);
+			}
+		}
+		//查询优秀评价结果有多少是副职
+		System.out.println(goodUserList);
+		if(goodUserList.size() != 0){
+			int num = userService.getUserGoodFuZhi(goodUserList);
+			//百分之30
+			float baifenzhisanshi = ((float)num)/((float)goodUserList.size());
+			System.out.println("num:" + num);
+			System.out.println("zong:" + goodUserList.size());
+			System.out.println(baifenzhisanshi);
+			//读取0.3
+			InputStream inputStream = this.getClass().getClassLoader().getResourceAsStream("date.properties");
+			
+			Properties pro = new Properties();
+			pro.load(inputStream);
+			String a = pro.getProperty("xibili");
+			float xibili = Float.parseFloat(a);
+			System.out.println("xiblli:" + xibili);
+			if(baifenzhisanshi >= xibili/100){
+				//大于百分之30返回true
+				System.out.println("大于0.3");
+				return true;
+			} else {
+				//System.out.println("小玉0.3");
+				return false;
+			}
+		} else {
+			return true;
+		}
+	}
+	
+	
+	
+	
+	
+	
+	/**
+	 * 校正厅对所有处级干部评价，处理结果
 	 * 
 	 * @author 刘阳阳
+	 * @throws IOException 
 	 */
 	@RequestMapping(value = "xzAllz", method = RequestMethod.GET)
 	public String xzAllz(@RequestParam("evalEvalto") Integer evalEvalto,
-			@RequestParam("evalEvalby") Integer[] evalEvalby, @RequestParam("resultt") String result) {
+			@RequestParam("evalEvalby") Integer[] evalEvalby, @RequestParam("resultt") String result) throws IOException {
 		System.out.println("评价人" + evalEvalto);
 		System.out.println("被评价人数" + evalEvalby.length);
 		System.out.println("被评价人：");
@@ -344,6 +432,29 @@ public class UserController extends BaseAction {
 		System.out.println("评价结果");
 		String[] result1 = result.split(",");
 
+		
+		InputStream inputStream = this.getClass().getClassLoader().getResourceAsStream("date.properties");
+
+		Properties pro = new Properties();
+		pro.load(inputStream);
+		String you = pro.getProperty("you");
+		String liang = pro.getProperty("liang");
+		String zhong = pro.getProperty("zhong");
+		String cha = pro.getProperty("cha");
+
+		for(int i = 0;i<result1.length;i++){
+			if(result1[i].equals("1")){
+				result1[i] = you;
+			} else if(result1[i].equals("2")){
+				result1[i] = liang;
+			} else if(result1[i].equals("3")){
+				result1[i] = zhong;
+			} else if(result1[i].equals("4")){
+				result1[i] = cha;
+			}
+		}
+		
+		
 		// 拿到结合，已备存储结果
 		List<Evaluate> evaList = new ArrayList<Evaluate>();
 		for (int i = 0; i < result1.length; i++) {
@@ -351,12 +462,12 @@ public class UserController extends BaseAction {
 			// 评价人
 			eva.setEvalEvalto(evalEvalto);
 			// 被评价人
-			// eva.setEvalEvalby(evalEvalby[i]);
+			eva.setEvalEvalby(evalEvalby[i]);
 			// 级别 优良中茶
 			eva.setEvalRank(Integer.parseInt(result1[i]));
 			// 设置级别
 			eva.setEvalCate(2);
-			// 设置校正厅对正职大的分
+			// 设置校正厅对所有处级干部打的分
 			eva.setEvalDesc("0");
 			evaList.add(eva);
 		}
@@ -406,10 +517,11 @@ public class UserController extends BaseAction {
 	 * 校正厅对所有=分管单位=评价，处理结果
 	 * 
 	 * @author 刘阳阳
+	 * @throws IOException 
 	 */
 	@RequestMapping(value = "xzAllFenGuan", method = RequestMethod.GET)
 	public String xzAllFenGuan(@RequestParam("evalEvalto") Integer evalEvalto,
-			@RequestParam("evalEvalby") Integer[] evalEvalby, @RequestParam("resultt") String result) {
+			@RequestParam("evalEvalby") Integer[] evalEvalby, @RequestParam("resultt") String result) throws IOException {
 		System.out.println("评价人" + evalEvalto);
 		System.out.println("被评价人数" + evalEvalby.length);
 		System.out.println("被评价人：");
@@ -418,7 +530,28 @@ public class UserController extends BaseAction {
 		}
 		System.out.println("评价结果");
 		String[] result1 = result.split(",");
+		
+		
+		InputStream inputStream = this.getClass().getClassLoader().getResourceAsStream("date.properties");
 
+		Properties pro = new Properties();
+		pro.load(inputStream);
+		String you = pro.getProperty("you");
+		String liang = pro.getProperty("liang");
+		String zhong = pro.getProperty("zhong");
+		String cha = pro.getProperty("cha");
+
+		for(int i = 0;i<result1.length;i++){
+			if(result1[i].equals("1")){
+				result1[i] = you;
+			} else if(result1[i].equals("2")){
+				result1[i] = liang;
+			} else if(result1[i].equals("3")){
+				result1[i] = zhong;
+			} else if(result1[i].equals("4")){
+				result1[i] = cha;
+			}
+		}
 		// 拿到结合，已备存储结果
 		List<Evaluate> evaList = new ArrayList<Evaluate>();
 		for (int i = 0; i < result1.length; i++) {
@@ -426,12 +559,12 @@ public class UserController extends BaseAction {
 			// 评价人
 			eva.setEvalEvalto(evalEvalto);
 			// 被评价人
-			// eva.setEvalEvalby(evalEvalby[i]);
+			eva.setEvalEvalby(evalEvalby[i]);
 			// 级别 优良中茶
 			eva.setEvalRank(Integer.parseInt(result1[i]));
 			// 设置级别
 			eva.setEvalCate(2);
-			// 设置校正厅对正职大的分
+			// 设置校正厅对分管单位
 			eva.setEvalDesc("1");
 			evaList.add(eva);
 		}
@@ -440,6 +573,50 @@ public class UserController extends BaseAction {
 		return "User/successEval";
 	}
 
+	
+	/**
+	 *校副厅对所有处级干部评价，比例cate为3 
+	 * xfAllzfUI
+	 */
+	@RequestMapping(value = "xfAllzfUI", method = RequestMethod.GET)
+	public ModelAndView xfAllzfUI(HttpSession session) {
+		String viewname = "User/xzAllzUI";
+		ModelAndView modelAndView = new ModelAndView(viewname);
+		// 首先判断是否评价过，评价过的条件为，拿当前session 评价人 的userid，然后根据本次评价的类型
+		// 类别(1互评、2正厅级打分和分管领导打分0.7 3、其他副厅级打分0.3  3本单位上对下)， 
+		//（注意，本次查询在mapper只用到了一个userid其余写死的死的，如果修改代码请注意）
+		// 查到有记录就代表评价过，
+		Evaluate isEval = new Evaluate();
+		// User tempuser = (User) session.get("user");
+		User tempuser = (User) session.getAttribute("user");
+		isEval.setEvalEvalto(tempuser.getUserId());
+		isEval.setEvalCate(3);
+		isEval.setEvalDesc("0");
+		List<Evaluate> num = userService.getIsOrNoAllZheng(isEval);
+		if (num.size() > 0) {
+			// 评价过
+			modelAndView.addObject("message", "您已对所有正职评价过！！");
+		} else {
+			// 未评价过
+			List<User> user = userService.getxzAllz();
+			modelAndView.addObject("userList", user);
+			modelAndView.addObject("userNum", user.size());
+			modelAndView.addObject("url", "/user/xfAllzf");
+		}
+		return modelAndView;
+	}
+	
+	/**
+	 * 校副厅对所有处级干部评价   
+	 */
+	@RequestMapping(value = "xfAllzf", method = RequestMethod.GET)
+	public String xfAllzf(@RequestParam("evalEvalto") Integer evalEvalto,
+			@RequestParam("evalEvalby") Integer[] evalEvalby, @RequestParam("resultt") String result) {
+		int num = publicAccountInsert(evalEvalto, evalEvalby, result, 3, "0");
+		return "User/successEval";
+	}
+	
+	
 	/**
 	 * 校副厅--对所有 分管单位 正副职评价,请求页面
 	 * 
@@ -477,10 +654,11 @@ public class UserController extends BaseAction {
 	 * 校副厅对所有=分管单位=评价，处理结果
 	 * 
 	 * @author 刘阳阳
+	 * @throws IOException 
 	 */
 	@RequestMapping(value = "xfAllFenGuan", method = RequestMethod.GET)
 	public String xfAllFenGuan(@RequestParam("evalEvalto") Integer evalEvalto,
-			@RequestParam("evalEvalby") Integer[] evalEvalby, @RequestParam("resultt") String result) {
+			@RequestParam("evalEvalby") Integer[] evalEvalby, @RequestParam("resultt") String result) throws IOException {
 		System.out.println("评价人" + evalEvalto);
 		System.out.println("被评价人数" + evalEvalby.length);
 		System.out.println("被评价人：");
@@ -490,6 +668,28 @@ public class UserController extends BaseAction {
 		System.out.println("评价结果");
 		String[] result1 = result.split(",");
 
+		
+		InputStream inputStream = this.getClass().getClassLoader().getResourceAsStream("date.properties");
+
+		Properties pro = new Properties();
+		pro.load(inputStream);
+		String you = pro.getProperty("you");
+		String liang = pro.getProperty("liang");
+		String zhong = pro.getProperty("zhong");
+		String cha = pro.getProperty("cha");
+
+		for(int i = 0;i<result1.length;i++){
+			if(result1[i].equals("1")){
+				result1[i] = you;
+			} else if(result1[i].equals("2")){
+				result1[i] = liang;
+			} else if(result1[i].equals("3")){
+				result1[i] = zhong;
+			} else if(result1[i].equals("4")){
+				result1[i] = cha;
+			}
+		}
+		
 		// 拿到结合，已备存储结果
 		List<Evaluate> evaList = new ArrayList<Evaluate>();
 		for (int i = 0; i < result1.length; i++) {
@@ -497,12 +697,12 @@ public class UserController extends BaseAction {
 			// 评价人
 			eva.setEvalEvalto(evalEvalto);
 			// 被评价人
-			// eva.setEvalEvalby(evalEvalby[i]);
+			eva.setEvalEvalby(evalEvalby[i]);
 			// 级别 优良中茶
 			eva.setEvalRank(Integer.parseInt(result1[i]));
 			// 设置级别
 			eva.setEvalCate(2);
-			// 设置校 副厅 厅对正职大的分
+			//设置校 副厅 厅对分管单位
 			eva.setEvalDesc("1");
 			evaList.add(eva);
 		}
@@ -511,6 +711,20 @@ public class UserController extends BaseAction {
 		return "User/successEval";
 	}
 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	/**
 	 * 党群部门 评价所有教学书记副书记,请求页面 dangqunGetAllJiaoxueShujiUI
 	 */
@@ -981,13 +1195,13 @@ public class UserController extends BaseAction {
 			// 评价人
 			eva.setEvalEvalto(evalEvalto);
 			// 被评价人
-			// eva.setEvalEvalby(evalEvalby[i]);
+			eva.setEvalEvalby(evalEvalby[i]);
 			// 级别 优良中茶
 			eva.setEvalRank(Integer.parseInt(result1[i]));
 			// 设置级别
 			eva.setEvalCate(cate);
 			// 设置互评
-			// eva.setEvalDesc(desc);
+			eva.setEvalDesc(desc);
 			evaList.add(eva);
 		}
 		int num = userService.insertAll(evaList);

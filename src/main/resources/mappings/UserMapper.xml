@@ -198,9 +198,9 @@
 		where user.user_role = role.role_id and user.user_dep = dep.dep_id and user.user_num =#{username}
 	</select>
 	
-	<!-- 校正厅查询所有正职 -->
+	<!-- 校正厅查询所有处级干部 -->
 	<select id="getxzAllz" resultType="com.future.domain.User" resultMap="BaseResultMap">
-		select user.* from od_user user where user.user_np = 0 and user_desc != '1'
+		select user.* from od_user user where user.user_np != 3 and user_desc != '1'
 	</select>
 	
 	
@@ -232,48 +232,50 @@
 	
 	<!-- 校副厅查询所有分管单位 -->
 	<select id="xfAllFenGuanUI" parameterType="java.lang.String" resultMap="BaseResultMap">
-		select user.* from od_user user where user.user_dep in (select dep_id from od_department where dep_manager = #{name} ) 
+		select user.* from od_user user where user_desc != '1' and user.user_dep in (select dep_id from od_department where dep_manager = #{name} ) 
 	</select>
 	
 	<!-- 党群查询所有互评的 院系书记副书记 -->
 	<select id="dangquanAllHPUser" parameterType="java.lang.String" resultMap="BaseResultMap">
-		select user.* from od_user user where user.user_role = 4 
+		select user.* from od_user user where user.user_role = 4  and  user_desc != '1'
 	</select>
 	
 	<!-- 党群查询所有下级 -->
 	<select id="dangquanAllDepDwon" parameterType="com.future.domain.User" resultMap="BaseResultMap">
-		select user.* from od_user user where user.user_dep = #{userDep} and user.user_np = 1
+		select user.* from od_user user where user.user_dep = #{userDep} and user.user_np = 1 and  user_desc != '1'
 	</select>
 	
 	<!-- 教学书记  查询所有党群成员 -->
 	<select id="JiaoxueShujiGetAlldangqun" resultMap="BaseResultMap">
-		select user.* from od_user user where user.user_role = 3
+		select user.* from od_user user where user.user_role = 3 and  user_desc != '1'
 	</select>
 
 	<!--教学书记 查询 本单位所有副职  -->
 	<select id="jiaoxueshujiAllGetDepDown" parameterType="com.future.domain.User" resultMap="BaseResultMap">
-		select user.* from od_user user where user.user_dep = #{userDep} and user.user_np = 1 and user.user_role = #{userRole}
+		<!-- select user.* from od_user user where user.user_dep = #{userDep} and user.user_np = 1 and user.user_role = #{userRole} -->
+		select user.* from od_user user where user.user_dep = #{userDep} and user.user_np = 1 and  user_desc != '1'
 	</select>
 	
 	<!-- 行政教辅部门，与院系院长副院长 互评,拿到所有院系院长副院长的名单 -->
 	<select id="XzGetAllYxYz" resultMap="BaseResultMap">
-		select user.* from od_user user where user.user_role = 6
+		select user.* from od_user user where user.user_role = 6 and  user_desc != '1'
 	</select>
 	
 	<!-- 行政教辅部门， 对其 所属单位的副职评价 -->
 	<select id="XzGetAllDepDown" parameterType="com.future.domain.User" resultMap="BaseResultMap">
-		select user.* from od_user user where user.user_dep = #{userDep} and user.user_np = 1
+		select user.* from od_user user where user.user_dep = #{userDep} and user.user_np = 1 and  user_desc != '1'
 	</select>
 	
 	<!-- 院系院长，与 行政教辅部门 互评 -->
 	<select id="YxYzGetXz" resultMap="BaseResultMap">
-		select user.* from od_user user where user.user_role = 5
+		select user.* from od_user user where user.user_role = 5 and  user_desc != '1'
 	</select>
 	
 	
 	<!-- 院系院长，对本单位所有副职评价，得到所有副职列表 -->
 	<select id="YxYzGetAllDepDown" parameterType="com.future.domain.User" resultMap="BaseResultMap">
-		select user.* from od_user user where user.user_dep = #{userDep} and user.user_np = 1 and user.user_role = #{userRole}
+		<!-- select user.* from od_user user where user.user_dep = #{userDep} and user.user_np = 1 and user.user_role = #{userRole} -->
+		select user.* from od_user user where user.user_dep = #{userDep} and user.user_np = 1 and  user_desc != '1'
 	</select>
 	
 	<!-- 添加用户时请求Ajax，查询是否存在同名用户 -->
@@ -306,6 +308,30 @@
 		od_department dep
 		where user.user_role = role.role_id and user.user_dep = dep.dep_id -->
 	</select>
-
-
+	
+	<!-- 根据用户名称，查询改用户，模糊查询 -->
+	<select id="findByNameForUser" resultType="java.lang.String" resultMap="userAndRoleAndDeprtment">
+		select 
+		user.*,role.role_id,role.role_name,role.role_desc,
+		dep.dep_id,dep.dep_name,dep.dep_desc,dep.dep_role,dep.dep_manager
+		from 
+		od_user user,
+		od_role role,
+		od_department dep
+		where user.user_role = role.role_id and user.user_dep = dep.dep_id and user.user_name = #{username}
+	</select>
+	
+	<!-- ajax获取所有用户姓名 -->
+	<select id="ajaxgetAllUserName" resultType="java.lang.String">
+		select user.user_name from od_user user;
+	</select>
+	
+	<!-- 查询优秀评价结果有多少是副职 -->
+	<select id="getUserGoodFuZhi" resultType="int">
+		select count(*) from od_user user where user.user_np = 1 and user.user_id in
+		 <foreach collection="list" item="goodUserList" index="index"
+		    open="(" close=")" separator=",">
+		    #{goodUserList}
+		 </foreach>
+	</select>
 </mapper>

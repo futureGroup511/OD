@@ -66,6 +66,14 @@ public class SpringTestUser {
 		System.out.println(listUser);
 	}
 	
+	/**
+	 * ajax
+	 */
+	@Test
+	public void testAjax(){
+		System.out.println(4f/6f);
+	}
+	
 	
 	
 }
