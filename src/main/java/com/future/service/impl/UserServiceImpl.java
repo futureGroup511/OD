@@ -1,5 +1,7 @@
 package com.future.service.impl;
 
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,13 +26,13 @@ public class UserServiceImpl implements UserServiceI {
 	private UserMapper userMapper;
 	@Autowired
 	private EvaluateMapper evaluateMapp;
+
+
 	@Autowired
 	private DepartmentMapper departmentMapper;
 	@Autowired
 	private RoleMapper roleMapper;
-
-
-
+	
 	public int insert(User user) {
 		return userMapper.insert(user);
 	}

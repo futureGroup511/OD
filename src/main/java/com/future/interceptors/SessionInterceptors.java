@@ -21,7 +21,7 @@ public class SessionInterceptors implements HandlerInterceptor{
 			if(url.contains("login")){
 				return true;
 			} else {
-				request.getRequestDispatcher("/user/loginUI").forward(request, response);
+				request.getRequestDispatcher("loginUI").forward(request, response);
 			}
 			//request.getRequestDispatcher("user/longinUI").forward(request, response);
 			System.out.println("放行");

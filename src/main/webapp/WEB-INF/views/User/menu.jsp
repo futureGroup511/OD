@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -17,31 +17,23 @@
 	</c:if>
 	<br>
 	<c:if test="${sessionScope.user.userRole == 1 }">
-		校正厅---<br>
 		<a target="right"
 			href="${pageContext.request.contextPath }/user/xzAllzUI">所有正职</a>
 		<a target="right"
 			href="${pageContext.request.contextPath }/user/xzAllFenGuanUI">分管单位</a>
 	</c:if>
 	<c:if test="${sessionScope.user.userRole == 2 }">
-		校副厅<br>
-		<a target="right"
-			href="${pageContext.request.contextPath }/user/xfAllzfUI">校副厅评价所有处级干部</a><br>
 		<a target="right"
 			href="${pageContext.request.contextPath }/user/xfAllFenGuanUI">校副厅1类对分管单位</a>
 	</c:if>
-	
-	
-	
-	
 	<c:if
 		test="${sessionScope.user.userRole == 3 && sessionScope.user.userNp == 0}">
-		党群部门正<br>
 		<a target="right"
 			href="${pageContext.request.contextPath }/user/dangqunGetAllJiaoxueShujiUI">互评</a>
 		<br>
 		<a target="right"
-			href="${pageContext.request.contextPath }/user/dangqunGetAllDepZFUI">评价本单位所有副职</a>
+			href="${pageContext.request.contextPath }/user/dangqunGetAllDepZFUI">党群部门
+			正评价本单位所有副职</a>
 		<br>
 	</c:if>
 	<c:if
@@ -52,7 +44,6 @@
 	</c:if>
 	<c:if
 		test="${sessionScope.user.userRole == 4 && sessionScope.user.userNp == 0}">
-		教学书记副书记<br>
 		<a target="right"
 			href="${pageContext.request.contextPath }/user/JiaoxueShujiGetAlldangqunUI">互评</a>
 		<br>
@@ -142,6 +133,20 @@
 <a target="right" href="${pageContext.request.contextPath }/user/YxYzGetXzUI">与行政教辅部门互评</a><br>
 </c:if>
 <br>
+<a href="/OD/evaluate/findByUserIdOrEvalByName/?id=${user.userId}" target="right">查看自己评价过的人</a>
+<br>
+<<<<<<< HEAD
+<a href="${pageContext.request.contextPath}/user/logout">退出</a>
+=======
 <a href="${pageContext.request.contextPath }/user/logout">退出</a>
+<<<<<<< HEAD
+
+>>>>>>> 97879c303ce865df8793ea39d17f0c787247db21 --%>
+
+<!-- by 赵硕 -->
+<br/>
+<br/>
+<a target="right" href="${pageContext.request.contextPath }/evaluate/valuatedByInfo/1">查看人的 被评价</a><br/>
+<a target="right" href="${pageContext.request.contextPath }/evaluate/valuateToInfo/1">查看人的 评价</a>
 </body>
 </html>
