@@ -43,6 +43,7 @@
 		var four=0;
 		
 		for(var i=0;i<result.length;i++){
+			console.log(1);
 			if(result.charAt(i) == 1){
 				one = one + 1;
 			}
