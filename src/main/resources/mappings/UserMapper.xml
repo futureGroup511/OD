@@ -324,7 +324,7 @@
 	<!-- ajax获取所有用户姓名 -->
 	<select id="ajaxgetAllUserName" resultType="java.lang.String">
 		select user.user_name from od_user user;
-	</select>
+	</select>  
 	
 	<!-- 查询优秀评价结果有多少是副职 -->
 	<select id="getUserGoodFuZhi" resultType="int">

@@ -141,6 +141,8 @@ public interface UserMapper {
 	User findByNameForUser(String username);
 
 	/**
+	 * 
+	 * 
 	 * ajax获取所有用户姓名
 	 */
 	List<String> ajaxgetAllUserName();
