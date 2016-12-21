@@ -18,12 +18,16 @@ public interface UserServiceI {
 	int updateByPrimaryKey(User user);
 
 	/**
+	 * 
+	 * 
 	 * 登陆 
 	 * @author 刘阳阳
 	 */
 	User login(String username, String password);
 
 	/**
+	 * 
+	 * 
 	 * 批量插入评价数据
 	 * 
 	 * @author 刘阳阳
