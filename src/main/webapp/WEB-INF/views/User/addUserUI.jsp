@@ -19,7 +19,7 @@
 			//alert("c")
 			$("form").attr("action","${pageContext.request.contextPath }/user/updateUser")
 		}
-	})
+	}) 
 	
 	$(document).ready(function(){
 	    $("#button").click(function(){ 

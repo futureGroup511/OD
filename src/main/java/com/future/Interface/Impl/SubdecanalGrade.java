@@ -17,7 +17,7 @@ public class SubdecanalGrade implements Grade {
         /**
          * hpweight=0.3
          xtweight=0.2
-         dwwight=0.2
+         dwwight=0.2 
          */
         Properties properties = new Properties();
         properties.load(inputStream);

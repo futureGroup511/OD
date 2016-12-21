@@ -11,6 +11,7 @@ public final class PropertiesUtils {
 
    private static String pathSrc = "staticData.properties";
 
+   
     // 传入指定文件
     public static void setPath(String path){
         pathSrc = path;

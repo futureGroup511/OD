@@ -19,7 +19,7 @@ public class DepartmentServiceImpl implements DepartmentServiceI {
 	public List<Department> getAllDep(){
 		return departmentMapper.getAllDep();
 	}
-
+ 
 	public int insert(Department record) {
 		return departmentMapper.insert(record);
 	}

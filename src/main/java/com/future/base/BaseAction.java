@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 @Scope("prototype")
 public abstract class BaseAction {
 
+	
 	//=========所有service实例声明==============
 	@Autowired
 	protected UserServiceI userService;

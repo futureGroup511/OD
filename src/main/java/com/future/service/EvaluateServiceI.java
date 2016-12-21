@@ -41,3 +41,4 @@ public interface EvaluateServiceI {
      */
     List<Evaluate> getValuateByPeople(Map<String,Object> hashMap);
 }
+ 

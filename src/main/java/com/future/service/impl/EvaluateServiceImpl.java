@@ -42,7 +42,6 @@ public class EvaluateServiceImpl implements EvaluateServiceI {
 		return evaluateMapper.getValuatedMe(meId);
 	}
 
-
 	public PageBean findEvalByUser(Map<String, Object> hashMap) {
 		int count=evaluateMapper.findEvalByUserCount(hashMap);
 		List<Evaluate> evaluates=evaluateMapper.findEvalByUser(hashMap);

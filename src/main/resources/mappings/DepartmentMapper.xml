@@ -28,7 +28,7 @@
 		values (#{depId,jdbcType=INTEGER}, #{depName,jdbcType=VARCHAR},
 		#{depDesc,jdbcType=VARCHAR},
 		#{depRole,jdbcType=INTEGER}, #{depManager,jdbcType=VARCHAR})
-	</insert>
+	</insert> 
 	<insert id="insertSelective" parameterType="com.future.domain.Department">
 		insert into od_department
 		<trim prefix="(" suffix=")" suffixOverrides=",">

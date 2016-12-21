@@ -10,6 +10,7 @@ public class MyPageBean {
 	private Integer recordCount; //查询总记录数
 	private List<?> recordlist;    //查询出来所需要的数据
 	
+	
 	private Integer endPageIndex; //尾页
 	private Integer beginPageIndex; //首页
 	private Integer pageCount; //显示的页数

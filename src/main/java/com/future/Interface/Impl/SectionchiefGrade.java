@@ -21,5 +21,5 @@ public class SectionchiefGrade  implements Grade{
         String xtweight=properties.getProperty("xtweight");
         Double result=statistics.getStatic_hp()*Double.valueOf(hpweight)+(statistics.getStatic_ztf()*0.7+statistics.getStatic_ft()*0.3)*Double.valueOf(xtweight);
         statistics.setStatic_result(result);
-    }
+    } 
 }

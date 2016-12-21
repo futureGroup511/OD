@@ -21,7 +21,7 @@ public class PageBean {
     public static PageBean newInstance(){
         PageBean pageBean=new PageBean();
         return pageBean;
-    }
+    } 
 
     public Integer getOffset() {
         return (currentPage-1)*pageSize;

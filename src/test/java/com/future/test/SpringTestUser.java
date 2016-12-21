@@ -18,7 +18,7 @@ import com.future.service.UserServiceI;
 @ContextConfiguration(locations = {"classpath:applicationContext.xml"})
 public class SpringTestUser {
 
-	//注入userService
+	//注入userService 
 	@Autowired
 	private UserServiceI userService;
 	

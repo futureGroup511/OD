@@ -16,7 +16,7 @@
 	</resultMap>
 	<sql id="Base_Column_List">
 		user_id, user_name, user_num, user_password, user_np, user_report, user_duty,
-		user_desc,
+		user_desc, 
 		user_dep, user_role
 	</sql>
 	<select id="selectByPrimaryKey" resultMap="BaseResultMap"

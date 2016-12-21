@@ -23,6 +23,7 @@ public interface UserMapper {
 	User login(String username);
 
 	/**
+	 * 
 	 * 校正厅对所有正职评价
 	 * @author 刘阳阳
 	 * @return 

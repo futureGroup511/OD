@@ -17,3 +17,4 @@ public interface StatisticsMapper {
      */
     List<Statistics> getAllEvaluateResult();
 }
+

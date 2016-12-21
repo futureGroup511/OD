@@ -16,7 +16,7 @@ import com.future.service.UserServiceI;
 //配置了@ContextConfiguration注解并使用该注解的locations属性指明spring和配置文件之后，
 @ContextConfiguration(locations = {"classpath:applicationContext.xml"})
 public class SpringTestRole {
-
+ 
 	//注入roleService
 	@Autowired
 	private RoleServiceI roleService;
