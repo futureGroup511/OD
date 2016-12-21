@@ -89,7 +89,7 @@ System.out.println("%%%%%");
 
         List<Evaluate> evaluatesList = evaluateService.getValuateByPeople(meId);
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("Manager/allEvaluateResult");
+        modelAndView.setViewName("Manager/valuateOthersPeople");
 
         Map<String,Object> map = new HashMap<String,Object>();
         map.put("evaluatesList", evaluatesList);
