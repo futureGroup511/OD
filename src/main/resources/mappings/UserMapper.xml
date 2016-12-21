@@ -306,10 +306,6 @@
 		od_department dep
 		where user.user_role = role.role_id and user.user_dep = dep.dep_id -->
 	</select>
-<<<<<<< HEAD
-
-
-=======
 	
 	<!-- 根据用户名称，查询改用户，模糊查询 -->
 	<select id="findByNameForUser" resultType="java.lang.String" resultMap="userAndRoleAndDeprtment">
@@ -336,5 +332,4 @@
 		    #{goodUserList}
 		 </foreach>
 	</select>
->>>>>>> dev
 </mapper>
