@@ -112,7 +112,6 @@ System.out.println("%%%%%");
         map.put("statisticList", statisticList);
 
         modelAndView.addAllObjects(map);
-        System.out.println("nininn");
 
         return modelAndView;
     }
