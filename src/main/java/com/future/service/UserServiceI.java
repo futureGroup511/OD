@@ -261,7 +261,12 @@ public interface UserServiceI {
 	/**
 	 * //查询优秀评价结果有多少是副职
 	 * 
+	 * 
+	 * 
 	 * @author 刘阳阳
 	 */
 	int getUserGoodFuZhi(List<String> goodUserList);
+	
+	
+	
 }
