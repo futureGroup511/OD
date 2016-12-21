@@ -72,6 +72,39 @@
 				if(result < data){
 					flag = true;
 					$("#form").submit();  
+					var countResult = $("#result").val();
+					var countUsre = "";
+					var els =document.getElementsByName("evalEvalby");
+					for (var i = 0, j = els.length; i < j; i++){
+						//alert(els[i].value)
+						countUsre = countUsre + (els[i].value)+",";
+					}
+					
+					
+					var date = {
+							"countUsre":countUsre,
+							"countResult" : countResult
+					}
+					
+					$.ajax({
+						//先走校验的action
+						url : '${pageContext.request.contextPath }/user/ajaxgetBiliAfter',
+						type : 'post',
+						data : date,
+						dataType : 'text',
+						success : function(date) {
+							//alert("结果:" + date);
+							if(date == "true"){
+								//alert(date + "提交")
+								$("#form").submit(); 
+							} else{
+								alert("优秀结果里副职所占的比例不超过30%")
+								//alert(date + "不提交");
+							}
+						}
+
+					});		
+					 
 				} else{
 					alert("本次评价的优秀人数超过50%，请重新评价！")
 				}
