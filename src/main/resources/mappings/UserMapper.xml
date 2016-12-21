@@ -198,9 +198,11 @@
 		where user.user_role = role.role_id and user.user_dep = dep.dep_id and user.user_num =#{username}
 	</select>
 	
+	
 	<!-- 校正厅查询所有处级干部 -->
 	<select id="getxzAllz" resultType="com.future.domain.User" resultMap="BaseResultMap">
 		select user.* from od_user user where user.user_np != 3 and user_desc != '1'
+		
 	</select>
 	
 	
@@ -225,13 +227,16 @@
 		</foreach>
 	</insert>
 	
+	
 	<!-- 校正厅查询所有分管单位 -->
 	<select id="xzAllFenGuanUI" parameterType="java.lang.String" resultMap="BaseResultMap">
+	
 		select user.* from od_user user where user.user_desc != '1' and user.user_name != '王清连'and user.user_dep in (select dep_id from od_department where dep_manager = #{name} ) 
 	</select>
 	
 	<!-- 校副厅查询所有分管单位 -->
 	<select id="xfAllFenGuanUI" parameterType="java.lang.String" resultMap="BaseResultMap">
+		
 		select user.* from od_user user where user_desc != '1' and user.user_dep in (select dep_id from od_department where dep_manager = #{name} ) 
 	</select>
 	
@@ -258,22 +263,26 @@
 	
 	<!-- 行政教辅部门，与院系院长副院长 互评,拿到所有院系院长副院长的名单 -->
 	<select id="XzGetAllYxYz" resultMap="BaseResultMap">
+		
 		select user.* from od_user user where user.user_role = 6 and  user_desc != '1'
 	</select>
 	
 	<!-- 行政教辅部门， 对其 所属单位的副职评价 -->
 	<select id="XzGetAllDepDown" parameterType="com.future.domain.User" resultMap="BaseResultMap">
+		
 		select user.* from od_user user where user.user_dep = #{userDep} and user.user_np = 1 and  user_desc != '1'
 	</select>
 	
 	<!-- 院系院长，与 行政教辅部门 互评 -->
 	<select id="YxYzGetXz" resultMap="BaseResultMap">
+		
 		select user.* from od_user user where user.user_role = 5 and  user_desc != '1'
 	</select>
 	
 	
 	<!-- 院系院长，对本单位所有副职评价，得到所有副职列表 -->
 	<select id="YxYzGetAllDepDown" parameterType="com.future.domain.User" resultMap="BaseResultMap">
+		
 		<!-- select user.* from od_user user where user.user_dep = #{userDep} and user.user_np = 1 and user.user_role = #{userRole} -->
 		select user.* from od_user user where user.user_dep = #{userDep} and user.user_np = 1 and  user_desc != '1'
 	</select>
