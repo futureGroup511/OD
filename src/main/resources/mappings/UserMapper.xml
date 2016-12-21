@@ -306,6 +306,35 @@
 		od_department dep
 		where user.user_role = role.role_id and user.user_dep = dep.dep_id -->
 	</select>
+<<<<<<< HEAD
 
 
+=======
+	
+	<!-- 根据用户名称，查询改用户，模糊查询 -->
+	<select id="findByNameForUser" resultType="java.lang.String" resultMap="userAndRoleAndDeprtment">
+		select 
+		user.*,role.role_id,role.role_name,role.role_desc,
+		dep.dep_id,dep.dep_name,dep.dep_desc,dep.dep_role,dep.dep_manager
+		from 
+		od_user user,
+		od_role role,
+		od_department dep
+		where user.user_role = role.role_id and user.user_dep = dep.dep_id and user.user_name = #{username}
+	</select>
+	
+	<!-- ajax获取所有用户姓名 -->
+	<select id="ajaxgetAllUserName" resultType="java.lang.String">
+		select user.user_name from od_user user;
+	</select>  
+	
+	<!-- 查询优秀评价结果有多少是副职 -->
+	<select id="getUserGoodFuZhi" resultType="int">
+		select count(*) from od_user user where user.user_np = 1 and user.user_id in
+		 <foreach collection="list" item="goodUserList" index="index"
+		    open="(" close=")" separator=",">
+		    #{goodUserList}
+		 </foreach>
+	</select>
+>>>>>>> dev
 </mapper>

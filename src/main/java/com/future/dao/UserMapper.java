@@ -134,5 +134,25 @@ public interface UserMapper {
 	 */
 	int getAllUserNum();
 
+	/**
+	 * 
+	 * 根据用户名称，查询改用户，模糊查询
+	 */
+	User findByNameForUser(String username);
+
+	/**
+	 * 
+	 * 
+	 * ajax获取所有用户姓名
+	 */
+	List<String> ajaxgetAllUserName();
+
+	/**
+	 * //查询优秀评价结果有多少是副职
+	 * 
+	 * @author 刘阳阳
+	 */
+	int getUserGoodFuZhi(List<String> goodUserList);
+
 
 }
