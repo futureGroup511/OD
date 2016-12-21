@@ -326,6 +326,57 @@ public class UserController extends BaseAction {
 		String a = pro.getProperty("bili");
 		return a;
 	}
+	
+	/**
+	 * 获取比例之后的 30%计算 
+	 * 
+	 * 增加两行注释
+	 * @throws IOException 
+	 */
+	@ResponseBody
+	@RequestMapping(value="ajaxgetBiliAfter",method=RequestMethod.POST)
+	public boolean ajaxgetBiliAfter(@RequestParam("countUsre") String countUsre,@RequestParam("countResult") String countResult) throws IOException{
+		//拿到人数和评价对应的数组
+		String[] user = countUsre.split(",");
+		String[] result = countResult.split(",");
+		List<String> goodUserList = new ArrayList();
+		//循环评价，是优秀的就把人id存到list中
+		for(int i=0;i<result.length;i++){
+			if(result[i].equals("1")){
+				goodUserList.add(user[i]);
+			}
+		}
+		//查询优秀评价结果有多少是副职
+		System.out.println(goodUserList);
+		if(goodUserList.size() != 0){
+			int num = userService.getUserGoodFuZhi(goodUserList);
+			//百分之30
+			float baifenzhisanshi = ((float)num)/((float)goodUserList.size());
+			System.out.println("num:" + num);
+			System.out.println("zong:" + goodUserList.size());
+			System.out.println(baifenzhisanshi);
+			//读取0.3
+			InputStream inputStream = this.getClass().getClassLoader().getResourceAsStream("date.properties");
+			
+			Properties pro = new Properties();
+			pro.load(inputStream);
+			String a = pro.getProperty("xibili");
+			float xibili = Float.parseFloat(a);
+			System.out.println("xiblli:" + xibili);
+			if(baifenzhisanshi >= xibili/100){
+				//大于百分之30返回true
+				System.out.println("大于0.3");
+				return true;
+			} else {
+				//System.out.println("小玉0.3");
+				return false;
+			}
+		} else {
+			return true;
+		}
+	}
+	
+	
 
 	/**
 	 * 校正厅对所有正职评价，处理结果
