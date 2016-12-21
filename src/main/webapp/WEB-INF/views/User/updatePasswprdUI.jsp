@@ -10,7 +10,7 @@
 <script type="text/javascript" src="${pageContext.request.contextPath }/js/jquery-1.11.1.js"></script>
 </head>
 <body>
-
+ 
 	<form id="form" action="${pageContext.request.contextPath }/user/updatePassword" method="post">
         	<input type="hidden" name="userId" value="${userId }">
         	<p>请输入原始密码：</p>

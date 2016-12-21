@@ -8,3 +8,4 @@ public interface EvaluateServiceI {
 
     public PageBean findEvalByUser(Map<String,Object> hashMap);
 }
+ 

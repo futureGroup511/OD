@@ -20,4 +20,4 @@ public class RoleServiceImpl implements RoleServiceI {
 	public List<Role> getAllRole() {
 		return roleMapper.getAllRole();
 	}
-}
+}  

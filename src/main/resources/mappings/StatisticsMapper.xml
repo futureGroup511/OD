@@ -16,7 +16,7 @@
 			<association property="role" javaType="Role">
 				<id column="role_id" property="roleId"></id>
 				<result column="role_name" property="roleName"></result>
-			</association>
+			</association> 
 			<association  property="department" javaType="Department">
 				<result column="dep_name" property="depName"></result>
 			</association>

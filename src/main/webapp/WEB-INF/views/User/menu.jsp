@@ -17,7 +17,7 @@
 	</c:if>
 	<br>
 	<c:if test="${sessionScope.user.userRole == 1 }">
-		校正厅---<br>
+		校正厅---<br> 
 		<a target="right"
 			href="${pageContext.request.contextPath }/user/xzAllzUI">所有正职</a>
 		<a target="right"

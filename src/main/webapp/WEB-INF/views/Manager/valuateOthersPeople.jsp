@@ -11,7 +11,7 @@
 <head>
     <title>查看所有总评结果</title>
 </head>
-<body>
+<body> 
 
 <form action="/OD/evaluate/getValuatedOthers" method="post" id="form">
     <input type="hidden" name="meId" value="${requestScope.meId}">

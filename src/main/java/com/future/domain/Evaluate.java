@@ -11,7 +11,7 @@ public class Evaluate {
     private Integer evalRank;
     // 评价类别 厅级评价
     private Integer evalCate;
-    // 评价描述
+    // 评价描述 
     private String evalDesc;
 
     private User userBy;

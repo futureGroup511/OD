@@ -370,5 +370,5 @@ public class UserServiceImpl implements UserServiceI {
 	public int getUserGoodFuZhi(List<String> goodUserList) {
 		return userMapper.getUserGoodFuZhi(goodUserList);
 	}
-
+ 
 }

@@ -12,4 +12,4 @@ public class NullGrade implements Grade {
     public void grade(Statistics statistics) throws IOException {
         statistics.setStatic_result(0.0);
     }
-}
+} 

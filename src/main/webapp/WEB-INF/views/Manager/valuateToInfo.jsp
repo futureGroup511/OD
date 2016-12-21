@@ -10,7 +10,7 @@
     <title>查看被评价详细信息</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 </head>
-<body>
+<body> 
 <table class="table">
     <tr>
         <th>用户姓名</th>

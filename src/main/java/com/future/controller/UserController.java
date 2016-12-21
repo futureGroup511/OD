@@ -381,6 +381,7 @@ public class UserController extends BaseAction {
 				goodUserList.add(user[i]);
 			}
 		}
+		
 		//查询优秀评价结果有多少是副职
 		System.out.println(goodUserList);
 		if(goodUserList.size() != 0){

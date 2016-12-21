@@ -13,7 +13,7 @@
 	<sql id="Base_Column_List">
 		eval_id, eval_evalby, eval_evalto, eval_rank, eval_cate, eval_desc
 	</sql>
-
+ 
 	<resultMap id="evalto" type="Evaluate" extends="BaseResultMap">
 		<association property="userBy"  javaType="User">
 			<result column="user_name" property="userName" jdbcType="VARCHAR" />

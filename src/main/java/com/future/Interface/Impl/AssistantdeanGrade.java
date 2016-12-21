@@ -15,7 +15,7 @@ import java.util.Properties;
 public class AssistantdeanGrade implements Grade {
     private InputStream inputStream=getClass().getResourceAsStream("AGweigth.properties");
     public void grade(Statistics statistics) throws IOException {
-
+ 
         Properties properties=new Properties();
         properties.load(inputStream);
         Double hpweight = Double.valueOf(properties.getProperty("hpweight"));

@@ -15,7 +15,7 @@ $(document).ready(function () {
 		 	$( "#txtIput" ).autocomplete({
 		      source:availableTags;
 		   });
-		
+		 
 		$.ajax({
  			url:'${pageContext.request.contextPath }/user/ajaxgetAllUserName',
  			type:'post',
