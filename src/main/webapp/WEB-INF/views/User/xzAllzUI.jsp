@@ -82,7 +82,7 @@
 							"countUsre":countUsre,
 							"countResult" : countResult
 					}
-					
+					console.log(1);
 					$.ajax({
 						//先走校验的action
 						url : '${pageContext.request.contextPath }/user/ajaxgetBiliAfter',
