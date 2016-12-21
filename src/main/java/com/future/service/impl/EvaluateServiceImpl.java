@@ -57,4 +57,8 @@ public class EvaluateServiceImpl implements EvaluateServiceI {
 	public List<Evaluate> getValuateByPeople(Integer meId) {
 		return evaluateMapper.getValuateByPeople(meId);
 	}
+
+	public List<Evaluate> getValuateByPeople(Map<String, Object> hashMap) {
+		return evaluateMapper.getValuateByPeople(hashMap);
+	}
 }

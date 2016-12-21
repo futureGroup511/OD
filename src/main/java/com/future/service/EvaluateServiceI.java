@@ -32,4 +32,12 @@ public interface EvaluateServiceI {
      * @return
      */
     List<Evaluate> getValuateByPeople(Integer meId);
+
+    /**
+     * 我评了谁 的所有记录
+     * map中包含有被评价人的姓名和被评价的类型
+     * @param hashMap
+     * @return
+     */
+    List<Evaluate> getValuateByPeople(Map<String,Object> hashMap);
 }

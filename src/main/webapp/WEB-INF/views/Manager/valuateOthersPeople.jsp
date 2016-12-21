@@ -12,6 +12,19 @@
     <title>查看所有总评结果</title>
 </head>
 <body>
+
+<form action="/OD/evaluate/getValuatedOthers" method="post" id="form">
+    <input type="hidden" name="meId" value="${requestScope.meId}">
+    <input type="text" name="name" >
+    <select name="rank" >
+        <option value="">请选择</option>
+        <option value="100">优</option>
+        <option value="80">良</option>
+        <option value="60">中</option>
+        <option value="40">差</option>
+    </select>
+    <input type="submit" value="提交">
+</form>
 <table class="table">
     <tr>
         <th>被评价人姓名</th>

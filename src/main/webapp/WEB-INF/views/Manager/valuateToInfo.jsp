@@ -29,7 +29,7 @@
             <td>${userInfo.userNp==''?"无信息":userInfo.userNp=='0'?"正职":"副职" }</td>
             <td>${userInfo.userDuty }</td>
             <td>${userInfo.userDesc }</td>
-            <td><a href="${pageContext.request.contextPath}/evaluate/getValuatedOthers/${userInfo.userId}">查看</a></td>
+            <td><a href="${pageContext.request.contextPath}/evaluate/getValuatedOthers/?meId=${userInfo.userId}">查看</a></td>
         </tr>
     </c:forEach>
 </table>
