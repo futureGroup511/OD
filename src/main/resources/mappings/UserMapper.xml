@@ -290,14 +290,10 @@
 	
 	
 	<!-- 院系院长，对本单位所有副职评价，得到所有副职列表 -->
-	<select id="YxYzGetAllDepDown" parameterType="com.future.domain.User" resultMap="BaseResultMap">
-<<<<<<< HEAD
-		select user.* from od_user user where user.user_dep = #{userDep} and user.user_np = 1 and user.user_role = #{userRole}
-=======
-		
+	<select id="YxYzGetAllDepDown" parameterType="com.future.domain.User" resultMap="BaseResultMap">		
 		<!-- select user.* from od_user user where user.user_dep = #{userDep} and user.user_np = 1 and user.user_role = #{userRole} -->
 		select user.* from od_user user where user.user_dep = #{userDep} and user.user_np = 1 and  user_desc != '1'
->>>>>>> dev
+
 	</select>
 	
 	<!-- 添加用户时请求Ajax，查询是否存在同名用户 -->
