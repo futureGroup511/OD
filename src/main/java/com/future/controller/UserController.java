@@ -363,7 +363,9 @@ public class UserController extends BaseAction {
 
 	
 	/**
-	 * 获取比例之后的 30%计算
+	 * 获取比例之后的 30%计算 
+	 * 
+	 * 增加两行注释
 	 * @throws IOException 
 	 */
 	@ResponseBody
