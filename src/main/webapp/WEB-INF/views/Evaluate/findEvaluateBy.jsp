@@ -11,7 +11,11 @@
 <head>
     <title>查看被评价人</title>
     <script type="text/javascript"  src="${pageContext.request.contextPath}/js/paging.js"></script>
-
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-1.11.1.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/xlsx.core.min.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/blob.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/FileSaver.min.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/tableexport.js"></script>
 </head>
 <style>
     table.gridtable {
@@ -33,10 +37,10 @@
 </script>
 <body>
     <form action="/OD/evaluate/findByUserIdOrEvalByName" method="post" id="form">
-        <input type="hidden" name="id" value="${user.userId}">
+        <input type="hidden" name="id" value="${sessionScope.user.userId}">
         <input type="hidden" name="currentPage" value="${page.currentPage}" id="currentPage">
         姓名:<input type="text" name="name" value="${findname}">
-        <input type="submit" value="提交">
+        <input type="submit" value="确定">
     </form>
     <c:if test="${page.recordCount ne 0}">
         <table  class="gridtable">

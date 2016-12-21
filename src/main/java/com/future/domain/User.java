@@ -3,7 +3,7 @@ package com.future.domain;
 public class User {
 
 	private Integer userId;
-
+	//用户姓名
 	private String userName;
 	// 账号
 	private String userNum;

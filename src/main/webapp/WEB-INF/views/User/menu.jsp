@@ -17,31 +17,23 @@
 	</c:if>
 	<br>
 	<c:if test="${sessionScope.user.userRole == 1 }">
-		校正厅---<br>
 		<a target="right"
 			href="${pageContext.request.contextPath }/user/xzAllzUI">所有正职</a>
 		<a target="right"
 			href="${pageContext.request.contextPath }/user/xzAllFenGuanUI">分管单位</a>
 	</c:if>
 	<c:if test="${sessionScope.user.userRole == 2 }">
-		校副厅<br>
-		<a target="right"
-			href="${pageContext.request.contextPath }/user/xfAllzfUI">校副厅评价所有处级干部</a><br>
 		<a target="right"
 			href="${pageContext.request.contextPath }/user/xfAllFenGuanUI">校副厅1类对分管单位</a>
 	</c:if>
-	
-	
-	
-	
 	<c:if
 		test="${sessionScope.user.userRole == 3 && sessionScope.user.userNp == 0}">
-		党群部门正<br>
 		<a target="right"
 			href="${pageContext.request.contextPath }/user/dangqunGetAllJiaoxueShujiUI">互评</a>
 		<br>
 		<a target="right"
-			href="${pageContext.request.contextPath }/user/dangqunGetAllDepZFUI">评价本单位所有副职</a>
+			href="${pageContext.request.contextPath }/user/dangqunGetAllDepZFUI">党群部门
+			正评价本单位所有副职</a>
 		<br>
 	</c:if>
 	<c:if
@@ -52,7 +44,6 @@
 	</c:if>
 	<c:if
 		test="${sessionScope.user.userRole == 4 && sessionScope.user.userNp == 0}">
-		教学书记副书记<br>
 		<a target="right"
 			href="${pageContext.request.contextPath }/user/JiaoxueShujiGetAlldangqunUI">互评</a>
 		<br>
@@ -97,7 +88,7 @@
 		<br>
 	</c:if>
 	<br>
-	<a href="/OD/evaluate/findByUserIdOrEvalByName" target="right">查看自己评价过的人</a><br>
+	<a href="/OD/evaluate/findByUserIdOrEvalByName/?id=${sessionScope.user.userId}" target="right">查看自己评价过的人</a><br>
 	<a target="right" href="${pageContext.request.contextPath }/user/updateUserUI/${sessionScope.user.userId}">修改个人信息</a><br>
 	<a target="right" href="${pageContext.request.contextPath }/user/updatePasswordUI/${sessionScope.user.userId}">修改密码</a><br>
 	<a href="${pageContext.request.contextPath }/user/logout">退出</a>
@@ -148,7 +139,17 @@
 <a href="${pageContext.request.contextPath}/user/logout">退出</a>
 =======
 <a href="${pageContext.request.contextPath }/user/logout">退出</a>
+<<<<<<< HEAD
+
 >>>>>>> 97879c303ce865df8793ea39d17f0c787247db21 --%>
+
+<!-- by 赵硕 -->
+<br/>
+<br/>
+<a target="right" href="${pageContext.request.contextPath }/evaluate/valuatedByInfo/1">查看人的 被评价</a><br/>
+<a target="right" href="${pageContext.request.contextPath }/evaluate/valuateToInfo/1">查看人的 评价</a>
+
+<a target="right" href="${pageContext.request.contextPath }/evaluate/seeAllEvaluateResult">查看总评结果</a>
 
 </body>
 </html>

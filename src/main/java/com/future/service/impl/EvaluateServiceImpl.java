@@ -1,6 +1,8 @@
 package com.future.service.impl;
 
+import com.future.commonUtils.MyPageBean;
 import com.future.domain.Evaluate;
+import com.future.domain.User;
 import com.future.utils.PageBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,7 +21,26 @@ public class EvaluateServiceImpl implements EvaluateServiceI {
 	@Autowired
 	private EvaluateMapper evaluateMapper;
 
+	public List<User> getAllValuatedBy(MyPageBean pageBean) {
 
+		return evaluateMapper.getAllValuatedByInfo(pageBean);
+	}
+
+	public List<User> getAllValuatedTo(MyPageBean pageBean) {
+		return evaluateMapper.getAllValuatedToInfo(pageBean);
+	}
+
+	public Integer getValuatedByCount() {
+		return evaluateMapper.getValuatedByCount();
+	}
+
+	public Integer getValuatedToCount() {
+		return evaluateMapper.getValuatedToCount();
+	}
+
+	public List<Evaluate> getValuatedMe(Integer meId) {
+		return evaluateMapper.getValuatedMe(meId);
+	}
 
 
 	public PageBean findEvalByUser(Map<String, Object> hashMap) {
@@ -31,5 +52,13 @@ public class EvaluateServiceImpl implements EvaluateServiceI {
 		pageBean.calbeginAndEnd();
 		return pageBean;
 
+	}
+
+	public List<Evaluate> getValuateByPeople(Integer meId) {
+		return evaluateMapper.getValuateByPeople(meId);
+	}
+
+	public List<Evaluate> getValuateByPeople(Map<String, Object> hashMap) {
+		return evaluateMapper.getValuateByPeople(hashMap);
 	}
 }
