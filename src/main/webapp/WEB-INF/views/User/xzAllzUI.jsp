@@ -69,9 +69,9 @@
 			success : function(data) {
 				//alert(one);
 				var result = one/count*100;
-				if(result < data){
-					flag = true;
-					$("#form").submit();  
+				if(result <= data){
+					//flag = true;
+					//$("#form").submit();  
 					var countResult = $("#result").val();
 					var countUsre = "";
 					var els =document.getElementsByName("evalEvalby");
@@ -98,7 +98,7 @@
 								//alert(date + "提交")
 								$("#form").submit(); 
 							} else{
-								alert("优秀结果里副职所占的比例不超过30%")
+								alert("优秀结果里副职所占的比例不超过30%");
 								//alert(date + "不提交");
 							}
 						} 
@@ -145,6 +145,8 @@
 	<table border="1" cellpadding="1" cellspacing="0">
 		<tr>
 			<td>序号</td>
+			<td>id</td>
+			<td>正副</td>	
 			<td>姓名</td>
 			<td>评价</td>
 			<td>述职报告</td>
@@ -156,6 +158,8 @@
 			<input type="hidden" name="evalEvalby" value="${user.userId }">
 			<tr>
 				<td>${id.count }</td>
+				<td>${user.userId }</td>				
+				<td>${user.userNp }</td>
 				<td>${user.userName }</td>
 				<td>
 					<input type="radio" name="eval${user.userId }" value="1"> 优秀
@@ -188,6 +192,7 @@
 </html>
 
 
+
 <head>
 <!-- 去掉这3行，则点击直接显示原图，如果移动至下面则IE浏览器报错 begin -->
 <script type='text/javascript' src='${pageContext.request.contextPath }/ly/js/jquery.js'></script>
@@ -196,3 +201,5 @@
 <!-- 去掉这3行，则点击直接显示原图，如果移动至下面则IE浏览器报错 end -->
 <link rel="stylesheet" type="text/css" media="all" href="${pageContext.request.contextPath }/ly/css/style.min.css" />
 </head>
+
+
