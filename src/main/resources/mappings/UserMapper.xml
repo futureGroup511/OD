@@ -197,18 +197,11 @@
 		od_department dep
 		where user.user_role = role.role_id and user.user_dep = dep.dep_id and user.user_num =#{username}
 	</select>
-	
-<<<<<<< HEAD
-	<!-- 校正厅查询所有正职 -->
-	<select id="getxzAllz" resultType="com.future.domain.User" resultMap="BaseResultMap">
-		select user.* from od_user user where user.user_np = 0 and user_desc != '1'
-=======
-	
+		
 	<!-- 校正厅查询所有处级干部 -->
 	<select id="getxzAllz" resultType="com.future.domain.User" resultMap="BaseResultMap">
 		select user.* from od_user user where user.user_np != 3 and user_desc != '1'
 		
->>>>>>> dev
 	</select>
 	
 	
@@ -242,12 +235,7 @@
 	
 	<!-- 校副厅查询所有分管单位 -->
 	<select id="xfAllFenGuanUI" parameterType="java.lang.String" resultMap="BaseResultMap">
-<<<<<<< HEAD
-		select user.* from od_user user where user.user_dep in (select dep_id from od_department where dep_manager = #{name} ) 
-=======
-		
 		select user.* from od_user user where user_desc != '1' and user.user_dep in (select dep_id from od_department where dep_manager = #{name} ) 
->>>>>>> dev
 	</select>
 	
 	<!-- 党群查询所有互评的 院系书记副书记 -->
