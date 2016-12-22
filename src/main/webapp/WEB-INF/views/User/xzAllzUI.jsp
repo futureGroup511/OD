@@ -146,7 +146,7 @@
 		<tr>
 			<td>序号</td>
 			<td>id</td>
-			<td>正副</td>
+			<td>正副</td>	
 			<td>姓名</td>
 			<td>评价</td>
 			<td>述职报告</td>
@@ -158,6 +158,8 @@
 			<input type="hidden" name="evalEvalby" value="${user.userId }">
 			<tr>
 				<td>${id.count }</td>
+				<td>${user.userId }</td>				
+				<td>${user.userNp }</td>
 				<td>${user.userName }</td>
 				<td>
 					<input type="radio" name="eval${user.userId }" value="1"> 优秀
@@ -190,6 +192,7 @@
 </html>
 
 
+
 <head>
 <!-- 去掉这3行，则点击直接显示原图，如果移动至下面则IE浏览器报错 begin -->
 <script type='text/javascript' src='${pageContext.request.contextPath }/ly/js/jquery.js'></script>
@@ -198,3 +201,5 @@
 <!-- 去掉这3行，则点击直接显示原图，如果移动至下面则IE浏览器报错 end -->
 <link rel="stylesheet" type="text/css" media="all" href="${pageContext.request.contextPath }/ly/css/style.min.css" />
 </head>
+
+
