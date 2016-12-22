@@ -69,9 +69,9 @@
 			success : function(data) {
 				//alert(one);
 				var result = one/count*100;
-				if(result < data){
-					flag = true;
-					$("#form").submit();  
+				if(result <= data){
+					//flag = true;
+					//$("#form").submit();  
 					var countResult = $("#result").val();
 					var countUsre = "";
 					var els =document.getElementsByName("evalEvalby");
