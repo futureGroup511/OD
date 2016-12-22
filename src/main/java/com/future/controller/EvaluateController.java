@@ -84,16 +84,23 @@ System.out.println("%%%%%");
 
     // 它评价了谁 的最后一页
 
-    @RequestMapping("/getValuatedOthers/{meId}")
-    public ModelAndView getValuatedOthers(@PathVariable("meId") Integer meId){
+    @RequestMapping(value = "/getValuatedOthers")
+    public ModelAndView getValuatedOthers(@RequestParam(value="meId",required=false)Integer meId,
+                                          @RequestParam(value="name",required=false)String himName,
+                                          @RequestParam(value="rank",required=false)Integer rank){
 
-        List<Evaluate> evaluatesList = evaluateService.getValuateByPeople(meId);
+        Map<String,Object> datas=new HashMap<String, Object>();
+        datas.put("meId",meId);
+        if(himName != null && himName.equals("")) himName = null;
+        else datas.put("himName",himName);
+        datas.put("rank",rank);
+        List<Evaluate> evaluatesList = evaluateService.getValuateByPeople(datas);
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("Manager/valuateOthersPeople");
 
         Map<String,Object> map = new HashMap<String,Object>();
         map.put("evaluatesList", evaluatesList);
-
+        map.put("meId",meId);
         modelAndView.addAllObjects(map);
 
         return modelAndView;
@@ -103,7 +110,6 @@ System.out.println("%%%%%");
     // 查看总评结果
     @RequestMapping("/seeAllEvaluateResult")
     public ModelAndView seeAllEvaluateResult(){
-
         List<Statistics> statisticList = statisticsService.getAllEvaluateResult();
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("Manager/allEvaluateResult");
@@ -123,6 +129,7 @@ System.out.println("%%%%%");
 
 
     /**
+     *
      *
      * @param id  评价人的ID
      * @param name 被评人的姓名

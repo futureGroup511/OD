@@ -11,4 +11,5 @@ import com.future.base.BaseAction;
 @RequestMapping("role")
 public class RoleController extends BaseAction {
 
+	
 }

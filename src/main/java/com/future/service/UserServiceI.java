@@ -18,12 +18,16 @@ public interface UserServiceI {
 	int updateByPrimaryKey(User user);
 
 	/**
-	 * 登陆
+	 * 
+	 * 
+	 * 登陆 
 	 * @author 刘阳阳
 	 */
 	User login(String username, String password);
 
 	/**
+	 * 
+	 * 
 	 * 批量插入评价数据
 	 * 
 	 * @author 刘阳阳
@@ -242,4 +246,24 @@ public interface UserServiceI {
 	 * @return modelAndView视图显示
 	 */
 	PageBean pageBeanGetAllUser(PageBean pageBean);
+
+	/**
+	 * 
+	 * 根据用户名称，查询改用户，模糊查询
+	 */
+	User findByNameForUser(String username);
+
+	/**
+	 * ajax获取所有用户姓名
+	 */
+	List<String> ajaxgetAllUserName();
+
+	/**
+	 * //查询优秀评价结果有多少是副职
+	 * 
+	 * 
+	 * 
+	 * @author 刘阳阳
+	 */
+	int getUserGoodFuZhi(List<String> goodUserList);
 }

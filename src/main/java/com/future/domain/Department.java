@@ -21,6 +21,7 @@ public class Department {
         this.depId = depId;
     }
 
+    
     public String getDepName() {
         return depName;
     }

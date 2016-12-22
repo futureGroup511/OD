@@ -21,7 +21,7 @@ public class DeputyCommissionerGrade implements Grade{
         Double xtweight=Double.valueOf(properties.getProperty("xtweight"));
         Double dwweight=Double.valueOf(properties.getProperty("dwweight"));
         Double result=statistics.getStatic_hp()*hpweight+(statistics.getStatic_ztf()*0.7+statistics.getStatic_ft()*0.3)*xtweight+
-                        statistics.getStatic_dw()*dwweight;
+                         statistics.getStatic_dw()*dwweight;
         statistics.setStatic_result(result);
 
     }

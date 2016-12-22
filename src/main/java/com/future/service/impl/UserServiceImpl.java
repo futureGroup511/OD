@@ -349,4 +349,28 @@ public class UserServiceImpl implements UserServiceI {
 		return pageBean;
 	}
 
+	/**
+	 * 
+	 * 根据用户名称，查询改用户，模糊查询
+	 */
+	public User findByNameForUser(String username) {
+		return userMapper.findByNameForUser(username);
+	}
+
+	/**
+	 * ajax获取所有用户姓名
+	 */
+	public List<String> ajaxgetAllUserName() {
+		return userMapper.ajaxgetAllUserName();
+	}
+
+	/**
+	 * //查询优秀评价结果有多少是副职
+	 * 
+	 * @author 刘阳阳
+	 */
+	public int getUserGoodFuZhi(List<String> goodUserList) {
+		return userMapper.getUserGoodFuZhi(goodUserList);
+	}
+
 }

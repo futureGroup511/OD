@@ -8,3 +8,4 @@ public interface RoleServiceI {
 
 	List<Role> getAllRole();
 }
+ 

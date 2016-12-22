@@ -17,7 +17,10 @@ import java.util.List;
 public class StatisticsServiceImpl implements StatisticsServiceI {
     @Autowired
     private StatisticsMapper statistics;
-
+ 
+    public List<Statistics> findAllStatisticsByRole(Integer roleId) {
+        return statistics.findAllStatisticsByRole(roleId);
+    }
     public List<Statistics> getAllEvaluateResult() {
         return statistics.getAllEvaluateResult();
     }

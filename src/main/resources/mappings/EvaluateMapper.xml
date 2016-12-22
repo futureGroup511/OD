@@ -13,7 +13,7 @@
 	<sql id="Base_Column_List">
 		eval_id, eval_evalby, eval_evalto, eval_rank, eval_cate, eval_desc
 	</sql>
-
+ 
 	<resultMap id="evalto" type="Evaluate" extends="BaseResultMap">
 		<association property="userBy"  javaType="User">
 			<result column="user_name" property="userName" jdbcType="VARCHAR" />
@@ -288,12 +288,29 @@
 	</select>
 
 
-	<select id="getValuateByPeople" parameterType="int" resultMap="EvaluatedOthersPeople">
+	<!--<select id="getValuateByPeople" parameterType="int" resultMap="EvaluatedOthersPeople">
 		select od_evaluate.eval_id,od_evaluate.eval_rank,
 		od_evaluate.eval_cate,od_evaluate.eval_desc
 		,od_user.user_name,od_user.user_duty
 		from od_user, od_evaluate WHERE
 		od_evaluate.eval_evalby = od_user.user_id and od_evaluate.eval_evalto = #{meId};
+	</select>-->
+	<select id="getValuateByPeople" parameterType="hashMap" resultMap="EvaluatedOthersPeople">
+		select od_evaluate.eval_id,od_evaluate.eval_rank,
+		od_evaluate.eval_cate,od_evaluate.eval_desc
+		,od_user.user_name,od_user.user_duty
+		from od_user, od_evaluate
+		<where>
+			od_evaluate.eval_evalby = od_user.user_id and od_evaluate.eval_evalto = #{meId}
+			<if test="himName != null">
+				AND od_user.user_name = #{himName}
+			</if>
+			<if test="rank != null">
+				AND od_evaluate.eval_rank = #{rank}
+			</if>
+		</where>
+
+
 	</select>
 
 	<!-- by zhaoshuo -->

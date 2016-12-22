@@ -6,6 +6,28 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>查询所有用户</title>
+
+<script type="text/javascript" src="${pageContext.request.contextPath }/js/jquery-1.11.1.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath }/js/jquery.ui.js"></script>
+<script type="text/javascript">
+$(document).ready(function () {
+			var availableTags = ["ActionScript","AppleScript","Asp","BASIC"];
+		 	$( "#txtIput" ).autocomplete({
+		      source:availableTags;
+		   });
+		 
+		$.ajax({
+ 			url:'${pageContext.request.contextPath }/user/ajaxgetAllUserName',
+ 			type:'post',
+			data:null,
+			dataType:'json',
+ 			success:function(msg) {
+                 /* var datas = eval(msg);
+                 $("#txtIput").autocomplete(datas); */
+             }
+         });
+     });
+</script>
 </head>
 <body>
 查询所有用户===${sessionScope.user.userName }

@@ -10,7 +10,7 @@
 <script type="text/javascript">
  $(function(){
 	 alert("123");
-	 
+	  
  })
 </script>
 </head>

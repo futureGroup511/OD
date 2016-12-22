@@ -13,4 +13,4 @@ public interface DepartmentServiceI {
 	Department selectByPrimaryKey(Integer depId);
 	
 	int updateByPrimaryKey(Department record);
-}
+} 

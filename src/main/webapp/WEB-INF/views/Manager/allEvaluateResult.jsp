@@ -6,7 +6,7 @@
 </head>
 <body>
 <table>
-    <tr>
+    <tr> 
         <td>被评价人姓名</td>
         <td>被评价人职务</td>
         <td>互评平均得分</td>

@@ -16,7 +16,7 @@ if(window.parent != window){
 	//window.parent.location.reload(true);
 	window.parent.location.href="http://localhost:8080/OD";
 }
-
+ 
 
 	function checkReg(){
 		var loginName = document.frm.username.value;

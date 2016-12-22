@@ -13,13 +13,13 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Created by Å£ä¢Åô on 2016/12/17.
+ * Created by Å£ï¿½ï¿½ï¿½ on 2016/12/17.
  */
 
 @RunWith(SpringJUnit4ClassRunner.class)
-//ÅäÖÃÁË@ContextConfiguration×¢½â²¢Ê¹ÓÃ¸Ã×¢½âµÄlocationsÊôĞÔÖ¸Ã÷springºÍÅäÖÃÎÄ¼şÖ®ºó£¬
+//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½@ContextConfiguration×¢ï¿½â²¢Ê¹ï¿½Ã¸ï¿½×¢ï¿½ï¿½ï¿½locationsï¿½ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½springï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½Ö®ï¿½ï¿½
 @ContextConfiguration(locations = {"classpath:applicationContext.xml"})
-public class SpringEvaluate {
+public class SpringEvaluate { 
     @Autowired
     private EvaluateServiceI evaluateService;
 
@@ -30,7 +30,7 @@ public class SpringEvaluate {
         user.setUserId(9);
         Map<String,Object> hashMap = new HashMap<String, Object>();
         hashMap.put("id",user.getUserId());
-        hashMap.put("name","Àî¹âÀÚ");
+        hashMap.put("name","ï¿½ï¿½ï¿½ï¿½ï¿½");
         hashMap.put("page",page);
         evaluateService.findEvalByUser(hashMap);
         System.out.println(page);

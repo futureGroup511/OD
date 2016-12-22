@@ -6,7 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>查看所有单位</title>
-</head>
+</head> 
 <body>
 查询所有单位
 <a href="addDepUI">添加单位</a>

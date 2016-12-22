@@ -11,7 +11,7 @@
 
 	<!-- 引入dbconfig.properties属性文件 -->
 	<context:property-placeholder location="classpath:dbconfig.properties"/>
-
+ 
 	<!-- spring扫描的包 除了controller包 -->
 	<context:component-scan base-package="com.future">
 		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller" />

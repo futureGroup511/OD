@@ -10,7 +10,7 @@
     <title>查看被评价详细信息</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 </head>
-<body>
+<body> 
 <table class="table">
     <tr>
         <th>用户姓名</th>
@@ -29,7 +29,7 @@
             <td>${userInfo.userNp==''?"无信息":userInfo.userNp=='0'?"正职":"副职" }</td>
             <td>${userInfo.userDuty }</td>
             <td>${userInfo.userDesc }</td>
-            <td><a href="${pageContext.request.contextPath}/evaluate/getValuatedOthers/${userInfo.userId}">查看</a></td>
+            <td><a href="${pageContext.request.contextPath}/evaluate/getValuatedOthers/?meId=${userInfo.userId}">查看</a></td>
         </tr>
     </c:forEach>
 </table>
