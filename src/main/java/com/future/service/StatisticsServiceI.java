@@ -20,4 +20,10 @@ public interface StatisticsServiceI {
      * by zhaoshuo 查询得到所有的统计结果
      */
     List<Statistics> getAllEvaluateResult();
-} 
+}
+
+
+    List<Statistics> getAllEvaluateResultByType(Integer peopleType);
+}
+
+

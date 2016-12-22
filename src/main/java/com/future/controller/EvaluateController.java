@@ -4,6 +4,7 @@ import com.future.base.BaseAction;
 import com.future.commonUtils.MyPageBean;
 import com.future.commonUtils.PropertiesUtils;
 import com.future.domain.Evaluate;
+import com.future.domain.PeopleType;
 import com.future.domain.Statistics;
 import com.future.domain.User;
 import com.future.utils.PageBean;
@@ -14,9 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Controller
 @Scope("prototype")
@@ -111,11 +110,20 @@ System.out.println("%%%%%");
     @RequestMapping("/seeAllEvaluateResult")
     public ModelAndView seeAllEvaluateResult(){
         List<Statistics> statisticList = statisticsService.getAllEvaluateResult();
+
+        /**
+         * 以总评结果进行排序
+         */
+         Collections.sort(statisticList);
+
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("Manager/allEvaluateResult");
-
         Map<String,Object> map = new HashMap<String,Object>();
         map.put("statisticList", statisticList);
+
+        PeopleType peopleType = new PeopleType();
+        peopleType.setRoleType(1);
+        map.put("pType", peopleType);
 
         modelAndView.addAllObjects(map);
 
@@ -123,6 +131,30 @@ System.out.println("%%%%%");
     }
 
 
+    @RequestMapping("/redirectHere")
+    public ModelAndView redirectHere(PeopleType pType){
+
+        List<Statistics> statisticList = statisticsService.getAllEvaluateResultByType(pType.getRoleType());
+
+        /**
+         * 以总评结果进行排序
+         */
+        Collections.sort(statisticList);
+
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("Manager/allEvaluateResult");
+        Map<String,Object> map = new HashMap<String,Object>();
+        map.put("statisticList", statisticList);
+
+        PeopleType peopleType = new PeopleType();
+        peopleType.setRoleType(1);
+        map.put("pType", peopleType);
+
+        modelAndView.addAllObjects(map);
+
+        return modelAndView;
+
+    }
 
 
 

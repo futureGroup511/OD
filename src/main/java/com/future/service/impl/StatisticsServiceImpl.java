@@ -24,4 +24,8 @@ public class StatisticsServiceImpl implements StatisticsServiceI {
     public List<Statistics> getAllEvaluateResult() {
         return statistics.getAllEvaluateResult();
     }
+
+    public List<Statistics> getAllEvaluateResultByType(Integer peopleType) {
+        return statistics.getAllEvaluateResultByType(peopleType);
+    }
 }

@@ -8,7 +8,7 @@ import java.io.IOException;
 /**
  * Created by 牛洧鹏 on 2016/12/20. 
  */
-public class Statistics {
+public class Statistics implements Comparable<Statistics>{
 
     private Integer stati_id;
     private User stati_user;
@@ -108,5 +108,16 @@ public class Statistics {
     }
 
 
-
+    /**
+     * 赵硕 added
+     */
+    public int compareTo(Statistics o) {
+        if(this.getStatic_result()>o.getStatic_result()){
+            return 1;
+        }else if(this.getStatic_result()<o.getStatic_result()){
+            return -1;
+        }else{
+            return 0;
+        }
+    }
 }
