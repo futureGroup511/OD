@@ -484,7 +484,7 @@ public class UserController extends BaseAction {
 			// 设置级别
 			eva.setEvalCate(2);
 			// 设置校正厅对正职大的分
-			//eva.setEvalDesc("1");
+			eva.setEvalDesc("1");
 			evaList.add(eva);
 		}
 		int num = userService.insertAll(evaList);
