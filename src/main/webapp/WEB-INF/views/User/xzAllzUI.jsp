@@ -145,6 +145,8 @@
 	<table border="1" cellpadding="1" cellspacing="0">
 		<tr>
 			<td>序号</td>
+			<td>id</td>
+			<td>正副</td>
 			<td>姓名</td>
 			<td>评价</td>
 			<td>述职报告</td>
