@@ -98,7 +98,7 @@
 								//alert(date + "提交")
 								$("#form").submit(); 
 							} else{
-								alert("优秀结果里副职所占的比例不超过30%")
+								alert("优秀结果里副职所占的比例不超过30%");
 								//alert(date + "不提交");
 							}
 						} 

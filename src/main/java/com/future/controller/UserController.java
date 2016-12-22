@@ -403,7 +403,7 @@ public class UserController extends BaseAction {
 			// 评价人
 			eva.setEvalEvalto(evalEvalto);
 			// 被评价人
-			// eva.setEvalEvalby(evalEvalby[i]);
+			eva.setEvalEvalby(evalEvalby[i]);
 			// 级别 优良中茶
 			eva.setEvalRank(Integer.parseInt(result1[i]));
 			// 设置级别
@@ -478,13 +478,13 @@ public class UserController extends BaseAction {
 			// 评价人
 			eva.setEvalEvalto(evalEvalto);
 			// 被评价人
-			// eva.setEvalEvalby(evalEvalby[i]);
+			eva.setEvalEvalby(evalEvalby[i]);
 			// 级别 优良中茶
 			eva.setEvalRank(Integer.parseInt(result1[i]));
 			// 设置级别
 			eva.setEvalCate(2);
 			// 设置校正厅对正职大的分
-			eva.setEvalDesc("1");
+			//eva.setEvalDesc("1");
 			evaList.add(eva);
 		}
 		int num = userService.insertAll(evaList);
@@ -549,7 +549,7 @@ public class UserController extends BaseAction {
 			// 评价人
 			eva.setEvalEvalto(evalEvalto);
 			// 被评价人
-			// eva.setEvalEvalby(evalEvalby[i]);
+			eva.setEvalEvalby(evalEvalby[i]);
 			// 级别 优良中茶
 			eva.setEvalRank(Integer.parseInt(result1[i]));
 			// 设置级别
@@ -1033,7 +1033,7 @@ public class UserController extends BaseAction {
 			// 评价人
 			eva.setEvalEvalto(evalEvalto);
 			// 被评价人
-			// eva.setEvalEvalby(evalEvalby[i]);
+			eva.setEvalEvalby(evalEvalby[i]);
 			// 级别 优良中茶
 			eva.setEvalRank(Integer.parseInt(result1[i]));
 			// 设置级别
