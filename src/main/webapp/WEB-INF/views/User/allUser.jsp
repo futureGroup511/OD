@@ -53,6 +53,7 @@ $(document).ready(function () {
 	    <td>编辑</td>
 	</tr>
 	<c:if test="${pageBean.recordlist != null }">
+	
 		<c:forEach items="${pageBean.recordlist }" var="user">
 			<tr>
 				<td>${user.userName }</td>
@@ -74,6 +75,7 @@ $(document).ready(function () {
 		</c:forEach>
 	</c:if>
 	<c:if test="${user != null }">
+	
 				<tr>
 					<td>${user.userName }</td>
 					<td>${user.userNum }</td>
@@ -94,10 +96,12 @@ $(document).ready(function () {
 	</c:if>
 </table>
 <p>
+
 每页显示${pageBean.pageSize }条，总记录数${pageBean.recordCount }条
 <a href="javascript:gotoPage(1)">首页</a>
 <a href="javascript:gotoPage(${pageBean.currentPage }-1)">上一页</a>
 ${currentPage }/${pageBean.pageCount }
+
 <a href="javascript:gotoPage(${pageBean.currentPage }+1)">下一页</a>
 <a href="javascript:gotoPage(${pageBean.pageCount })">尾页</a>
 </p>
