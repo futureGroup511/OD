@@ -155,5 +155,12 @@ public interface UserMapper {
 	 */
 	int getUserGoodFuZhi(List<String> goodUserList);
 
+	/**
+	 * 更新static表全部为0
+	 * 
+	 * @author 刘阳阳
+	 */
+	int updateDateStatistic();
+
 
 }

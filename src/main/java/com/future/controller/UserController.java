@@ -59,6 +59,16 @@ public class UserController extends BaseAction {
 	// @SessionAttributes("user")
 
 	/**
+	 * 清空数据
+	 */
+	@RequestMapping(value="empetDate",method=RequestMethod.GET)
+	public void empetDate(){
+		int a = userService.delteDateFromEvaluate();
+		int b = userService.updateDateStatistic();
+		System.out.println(123);
+	}
+	
+	/**
 	 * ajax获取所有用户姓名
 	 */
 	@ResponseBody

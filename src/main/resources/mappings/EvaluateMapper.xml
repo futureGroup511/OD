@@ -225,6 +225,10 @@
 		from od_evaluate
 		where eval_evalto = #{evalEvalto} and eval_cate=#{evalCate} <!-- and eval_desc=#{evalDesc} -->
 	</select>
+	
+	<delete id="delteDateFromEvaluate">
+		delete from od_evaluate
+	</delete>
 
 	<!-- by zhaoshuo -->
 	<resultMap id="UserMap" type="com.future.domain.User">

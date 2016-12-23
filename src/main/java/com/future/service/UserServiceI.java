@@ -266,4 +266,18 @@ public interface UserServiceI {
 	 * @author 刘阳阳
 	 */
 	int getUserGoodFuZhi(List<String> goodUserList);
+
+	/**
+	 * 清空evalue数据
+	 * 
+	 * @author 刘阳阳
+	 */
+	int delteDateFromEvaluate();
+
+	/**
+	 * 更新static表全部为0
+	 * 
+	 * @author 刘阳阳
+	 */
+	int updateDateStatistic();
 }

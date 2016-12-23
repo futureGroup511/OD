@@ -342,4 +342,12 @@
 		    #{goodUserList}
 		 </foreach>
 	</select>
+	
+	<update id="updateDateStatistic" >
+		update od_statistics
+		set stati_hp = 0,
+			stati_ztf = 0,
+			stati_ft = 0,
+			stati_dw = 0
+	</update>
 </mapper>

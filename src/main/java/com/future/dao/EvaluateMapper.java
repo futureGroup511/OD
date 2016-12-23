@@ -133,4 +133,11 @@ public interface EvaluateMapper {
 	 */
 	List<Evaluate> getValuateByPeople(Map<String,Object> hashMap);
 	//==================================================
+
+	/**
+	 * 清空evalue数据
+	 * 
+	 * @author 刘阳阳
+	 */
+	int delteDateFromEvaluate();
 }
