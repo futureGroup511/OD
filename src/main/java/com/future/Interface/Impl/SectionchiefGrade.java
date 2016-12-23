@@ -13,7 +13,7 @@ import java.util.Properties;
  * 党群正处、行政正处：互评成绩*0.3 + 厅级打分* 0.4
  */
 public class SectionchiefGrade  implements Grade{
-    private InputStream inputStream=getClass().getResourceAsStream("SGweigth.properties");
+    private InputStream inputStream=getClass().getClassLoader().getResourceAsStream("SGweigth.properties");
     public void grade(Statistics statistics) throws IOException {
         Properties properties=new Properties();
         properties.load(inputStream);

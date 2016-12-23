@@ -1,3 +1,4 @@
+
 package com.future.domain;
 
 import com.future.Interface.Grade;
@@ -78,7 +79,7 @@ public class Statistics implements Comparable<Statistics>{
             }else{
                 grade = new NullGrade();
             }
-        }
+        }else grade = new NullGrade();
         try {
             grade.grade(this);
         } catch (IOException e) {

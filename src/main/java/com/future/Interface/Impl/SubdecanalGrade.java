@@ -12,7 +12,7 @@ import java.util.Properties;
  * 教学副书记、教学副院长：互评成绩*0.3 + 厅级打分*0.2  +  单位正职* 0.2
  */
 public class SubdecanalGrade implements Grade {
-    private InputStream inputStream=getClass().getResourceAsStream("SBGweigth.properties");
+    private InputStream inputStream=getClass().getClassLoader().getResourceAsStream("SBGweigth.properties");
     public void grade(Statistics statistics) throws IOException {
         /**
          * hpweight=0.3

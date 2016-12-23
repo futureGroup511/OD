@@ -13,7 +13,7 @@ import java.util.Properties;
  * 教学正书记、教学正院长：互评成绩*0.3 + 厅级打分*0.3
  */
 public class AssistantdeanGrade implements Grade {
-    private InputStream inputStream=getClass().getResourceAsStream("AGweigth.properties");
+    private InputStream inputStream=getClass().getClassLoader().getResourceAsStream("AGweigth.properties");
     public void grade(Statistics statistics) throws IOException {
  
         Properties properties=new Properties();
