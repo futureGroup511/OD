@@ -151,8 +151,9 @@
 	<table border="1" cellpadding="1" cellspacing="0">
 		<tr>
 			<td>序号</td>
-			<td>id</td>
-			<td>正副</td>	
+			<!-- <td>id</td>
+			<td>正副</td>	 -->
+			<td>所属单位</td>
 			<td>姓名</td>
 			<td>评价</td>
 			<td>述职报告</td>
@@ -164,8 +165,9 @@
 			<input type="hidden" name="evalEvalby" value="${user.userId }">
 			<tr>
 				<td>${id.count }</td>
-				<td>${user.userId }</td>				
-				<td>${user.userNp }</td>
+				<%-- <td>${user.userId }</td>				
+				<td>${user.userNp }</td> --%>
+				<td>${user.department.depName }</td>
 				<td>${user.userName }</td>
 				<td>
 					<input type="radio" name="eval${user.userId }" value="1"> 优秀
