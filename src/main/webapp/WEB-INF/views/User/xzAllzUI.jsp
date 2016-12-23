@@ -9,6 +9,10 @@
 <script type="text/javascript" src="${pageContext.request.contextPath }/js/jquery-1.11.1.js"></script>
 <script type="text/javascript"> 
 
+	function xuanzhong(){
+		$("input[type='radio']").attr("checked",'checked');
+	}
+
 	$(document).ready(function(){
 	    $("#button").click(function(){ 
 	    	if(checkout()==true){ 
@@ -137,7 +141,7 @@
 </head>
 <body>
 <c:if test="${message == null }">
-校正厅评价所有正职
+校正厅评价所有正职<br>一一键选中称职<input type="button" onclick="xuanzhong()" value="选中">
 ====${sessionScope.user.userName }===
 <%-- <form id="form" action="${pageContext.request.contextPath }/user/xzAllz"> --%>
 <form id="form" action="${pageContext.request.contextPath }${url}">
