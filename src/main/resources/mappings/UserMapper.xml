@@ -259,6 +259,7 @@
 	<select id="jiaoxueshujiAllGetDepDown" parameterType="com.future.domain.User" resultMap="BaseResultMap">
 		<!-- select user.* from od_user user where user.user_dep = #{userDep} and user.user_np = 1 and user.user_role = #{userRole} -->
 		select user.* from od_user user where user.user_dep = #{userDep} and user.user_np = 1 and  user_desc != '1'
+	
 	</select>
 	
 	<!-- 行政教辅部门，与院系院长副院长 互评,拿到所有院系院长副院长的名单 -->
