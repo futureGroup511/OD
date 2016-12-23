@@ -1,6 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%
+	//得到url的根路径
+	String path = request.getContextPath();
+	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
+			+ path + "/";
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -11,11 +17,12 @@
 <body>
 ${message }
 <script type="text/javascript">
-//在被嵌套时就刷新上级窗口
-if(window.parent != window){
-	//window.parent.location.reload(true);
-	window.parent.location.href="http://localhost:8080/OD";
-}
+	
+	//在被嵌套时就刷新上级窗口
+	if(window.parent != window){
+		//window.parent.location.reload(true);
+		window.parent.location.href='$("#address").val()';
+	}
  
 
 	function checkReg(){
@@ -33,7 +40,9 @@ if(window.parent != window){
 	}
 
 </script>
+
 <form name="frm" action="${pageContext.request.contextPath }/user/login" method="post" onsubmit="return checkReg()">
+	<input type="hidden" id="address" value="<%=basePath %>">
 	账号：<input type="text" name="username" id="username" />
 	密码：<input type="password" name="password" id="password" />
 	<input type="submit" value="登陆">
