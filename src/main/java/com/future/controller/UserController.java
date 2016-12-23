@@ -662,7 +662,7 @@ public class UserController extends BaseAction {
 		Evaluate isEval = new Evaluate();
 		User tempuser = (User) session.getAttribute("user");
 		isEval.setEvalEvalto(tempuser.getUserId());
-		isEval.setEvalCate(3);
+		isEval.setEvalCate(4);
 		// isEval.setEvalDesc("1");
 		List<Evaluate> num = userService.getIsOrNoAllDangQunDepDown(isEval);
 		if (num.size() > 0) {
@@ -685,7 +685,7 @@ public class UserController extends BaseAction {
 	@RequestMapping(value = "dangqunGetAllDepZF", method = RequestMethod.GET)
 	public String dangqunGetAllDepZF(@RequestParam("evalEvalto") Integer evalEvalto,
 			@RequestParam("evalEvalby") Integer[] evalEvalby, @RequestParam("resultt") String result) {
-		int num = publicAccountInsert(evalEvalto, evalEvalby, result, 3, null);
+		int num = publicAccountInsert(evalEvalto, evalEvalby, result, 4, null);
 		return "User/successEval";
 	}
 
@@ -745,7 +745,7 @@ public class UserController extends BaseAction {
 		Evaluate isEval = new Evaluate();
 		User tempuser = (User) session.getAttribute("user");
 		isEval.setEvalEvalto(tempuser.getUserId());
-		isEval.setEvalCate(3);
+		isEval.setEvalCate(4);
 		// isEval.setEvalDesc("1");
 		List<Evaluate> num = userService.getIsOrNoAllJiaoShuShuJiDepDown(isEval);
 		if (num.size() > 0) {
@@ -768,7 +768,7 @@ public class UserController extends BaseAction {
 	@RequestMapping(value = "JiaoxueShujiGetAllDepDown", method = RequestMethod.GET)
 	public String JiaoxueShujiGetAllDepDown(@RequestParam("evalEvalto") Integer evalEvalto,
 			@RequestParam("evalEvalby") Integer[] evalEvalby, @RequestParam("resultt") String result) {
-		int num = publicAccountInsert(evalEvalto, evalEvalby, result, 1, null);
+		int num = publicAccountInsert(evalEvalto, evalEvalby, result, 4, null);
 		return "User/successEval";
 	}
 
@@ -824,7 +824,7 @@ public class UserController extends BaseAction {
 		Evaluate isEval = new Evaluate();
 		User tempuser = (User) session.getAttribute("user");
 		isEval.setEvalEvalto(tempuser.getUserId());
-		isEval.setEvalCate(3);
+		isEval.setEvalCate(4);
 		// isEval.setEvalDesc("1");
 		List<Evaluate> num = userService.getIsOrNoAllDepDown(isEval); // YxYz
 																		// 院系院长
@@ -849,7 +849,7 @@ public class UserController extends BaseAction {
 	@RequestMapping(value = "XzGetAllDepDown", method = RequestMethod.GET)
 	public String XzGetAllDepDown(@RequestParam("evalEvalto") Integer evalEvalto,
 			@RequestParam("evalEvalby") Integer[] evalEvalby, @RequestParam("resultt") String result) {
-		int num = publicAccountInsert(evalEvalto, evalEvalby, result, 3, null);
+		int num = publicAccountInsert(evalEvalto, evalEvalby, result, 4, null);
 		return "User/successEval";
 	}
 
@@ -910,7 +910,7 @@ public class UserController extends BaseAction {
 		Evaluate isEval = new Evaluate();
 		User tempuser = (User) session.getAttribute("user");
 		isEval.setEvalEvalto(tempuser.getUserId());
-		isEval.setEvalCate(3);
+		isEval.setEvalCate(4);
 		// isEval.setEvalDesc("1");
 		List<Evaluate> num = userService.getIsOrNoAllYxYzDepDown(isEval);
 		if (num.size() > 0) {
@@ -934,7 +934,7 @@ public class UserController extends BaseAction {
 	@RequestMapping(value = "YxYzGetDepDown", method = RequestMethod.GET)
 	public String YxYzGetDepDown(@RequestParam("evalEvalto") Integer evalEvalto,
 			@RequestParam("evalEvalby") Integer[] evalEvalby, @RequestParam("resultt") String result) {
-		int num = publicAccountInsert(evalEvalto, evalEvalby, result, 3, null);
+		int num = publicAccountInsert(evalEvalto, evalEvalby, result, 4, null);
 		return "User/successEval";
 	}
 

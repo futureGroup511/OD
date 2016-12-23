@@ -73,7 +73,9 @@
 			success : function(data) {
 				//alert(one);
 				var result = one/count*100;
-				if(result <= data){
+				//alert(result);
+				//alert(data);
+				if(result <= data || result == 100){
 					//flag = true;
 					//$("#form").submit();  
 					var countResult = $("#result").val();
