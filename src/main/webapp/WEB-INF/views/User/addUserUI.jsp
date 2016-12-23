@@ -182,7 +182,12 @@
 			<form:hidden path="userReport"/>
 			<input type="file" name="uploadfile"><br>
 		</c:if>
-	描述：<form:input path="userDesc"/><br>
+	是否在职：
+		<select name="userDesc" >
+				<option value="0" >在职</option>
+				<option value="1">不在职</option>
+		</select>
+	<br>
 	<input type="button" id="button" value="提交">
 </form:form>
 </body>
