@@ -491,9 +491,56 @@ public class UserController extends BaseAction {
 		System.out.println(num);
 		return "User/successEval";
 	}
-
+	
+	
+	/**
+	 *校副厅对所有处级干部评价，比例cate为3 
+	 * xfAllzfUI
+	 * 
+	 */
+	@RequestMapping(value = "xfAllzfUI", method = RequestMethod.GET)
+	public ModelAndView xfAllzfUI(HttpSession session) {
+		String viewname = "User/xzAllzUI";
+		ModelAndView modelAndView = new ModelAndView(viewname);
+		// 首先判断是否评价过，评价过的条件为，拿当前session 评价人 的userid，然后根据本次评价的类型
+		// 类别(1互评、2正厅级打分和分管领导打分0.7 3、其他副厅级打分0.3  3本单位上对下)， 
+		//（注意，本次查询在mapper只用到了一个userid其余写死的死的，如果修改代码请注意）
+		// 查到有记录就代表评价过，
+		Evaluate isEval = new Evaluate();
+		// User tempuser = (User) session.get("user");
+		User tempuser = (User) session.getAttribute("user");
+		isEval.setEvalEvalto(tempuser.getUserId());
+		isEval.setEvalCate(3);
+		isEval.setEvalDesc("0");
+		List<Evaluate> num = userService.getIsOrNoAllZheng(isEval);
+		if (num.size() > 0) {
+			// 评价过
+			modelAndView.addObject("message", "您已对所有正职评价过！！");
+		} else {
+			// 未评价过
+			List<User> user = userService.getxzAllz();
+			modelAndView.addObject("userList", user);
+			modelAndView.addObject("userNum", user.size());
+			modelAndView.addObject("url", "/user/xfAllzf");
+		}
+		return modelAndView;
+	}
+	
+	/**
+	 * 校副厅对所有处级干部评价   
+	 * 
+	 */
+	@RequestMapping(value = "xfAllzf", method = RequestMethod.GET)
+	public String xfAllzf(@RequestParam("evalEvalto") Integer evalEvalto,
+			@RequestParam("evalEvalby") Integer[] evalEvalby, @RequestParam("resultt") String result) {
+		int num = publicAccountInsert(evalEvalto, evalEvalby, result, 3, "0");
+		return "User/successEval";
+	}
+	
+	
 	/**
 	 * 校副厅--对所有 分管单位 正副职评价,请求页面
+	 * 
 	 * 
 	 * @author 刘阳阳
 	 */
@@ -527,6 +574,7 @@ public class UserController extends BaseAction {
 
 	/**
 	 * 校副厅对所有=分管单位=评价，处理结果
+	 * 
 	 * 
 	 * @author 刘阳阳
 	 */
