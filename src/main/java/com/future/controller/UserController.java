@@ -577,9 +577,11 @@ public class UserController extends BaseAction {
 	}
 
 	
+	
 	/**
 	 *校副厅对所有处级干部评价，比例cate为3 
 	 * xfAllzfUI
+	 * 
 	 */
 	@RequestMapping(value = "xfAllzfUI", method = RequestMethod.GET)
 	public ModelAndView xfAllzfUI(HttpSession session) {
@@ -611,6 +613,7 @@ public class UserController extends BaseAction {
 	
 	/**
 	 * 校副厅对所有处级干部评价   
+	 * 
 	 */
 	@RequestMapping(value = "xfAllzf", method = RequestMethod.GET)
 	public String xfAllzf(@RequestParam("evalEvalto") Integer evalEvalto,
@@ -622,6 +625,7 @@ public class UserController extends BaseAction {
 	
 	/**
 	 * 校副厅--对所有 分管单位 正副职评价,请求页面
+	 * 
 	 * 
 	 * @author 刘阳阳
 	 */
@@ -655,6 +659,7 @@ public class UserController extends BaseAction {
 
 	/**
 	 * 校副厅对所有=分管单位=评价，处理结果
+	 * 
 	 * 
 	 * @author 刘阳阳
 	 * @throws IOException 
