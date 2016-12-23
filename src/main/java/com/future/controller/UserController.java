@@ -74,6 +74,7 @@ public class UserController extends BaseAction {
 	
 	/**
 	 * 
+	 * 
 	 * 根据用户名称，查询改用户，模糊查询
 	 */
 	@RequestMapping(value="findByNameForUser",method=RequestMethod.POST)
@@ -81,6 +82,7 @@ public class UserController extends BaseAction {
 		System.out.println(username);
 		User user = userService.findByNameForUser(username);
 		System.out.println(user);
+		
 		String viewname = "User/allUser";
 		ModelAndView modelAndView = new ModelAndView(viewname);
 		modelAndView.addObject("user", user);

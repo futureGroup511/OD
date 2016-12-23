@@ -320,6 +320,7 @@
 	</select>
 	
 	<!-- 根据用户名称，查询改用户，模糊查询 -->
+	
 	<select id="findByNameForUser" resultType="java.lang.String" resultMap="userAndRoleAndDeprtment">
 		select 
 		user.*,role.role_id,role.role_name,role.role_desc,

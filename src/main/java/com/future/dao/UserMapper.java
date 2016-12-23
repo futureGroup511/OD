@@ -137,6 +137,7 @@ public interface UserMapper {
 	/**
 	 * 
 	 * 根据用户名称，查询改用户，模糊查询
+	 * 
 	 */
 	User findByNameForUser(String username);
 
