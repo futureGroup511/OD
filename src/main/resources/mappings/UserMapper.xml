@@ -299,13 +299,13 @@
 		od_user user,
 		od_role role,
 		od_department dep
-		where user.user_role = role.role_id and user.user_dep = dep.dep_id
+		where user.user_role = role.role_id and user.user_dep = dep.dep_id and user.user_num != 'admin'
 		limit #{0},#{1}
 	</select>
 	
 	<!-- 查询总记录书 -->
 	<select id="getAllUserNum" resultType="int">
-		select count(*) from od_user
+		select count(*) from od_user user where user.user_num != 'admin'
 		<!-- select 
 		user.*,role.role_id,role.role_name,role.role_desc,
 		dep.dep_id,dep.dep_name,dep.dep_desc,dep.dep_role,dep.dep_manager

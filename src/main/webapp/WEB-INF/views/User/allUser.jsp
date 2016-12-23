@@ -26,12 +26,12 @@ $(document).ready(function () {
                  $("#txtIput").autocomplete(datas); */
              }
          });
-     });
+     })
 </script>
 </head>
 <body>
 查询所有用户===${sessionScope.user.userName }
-<a href="addUserUI">增加用户</a>
+<a href="${ pageContext.request.contextPath}/user/addUserUI">增加用户</a>
 <br>根据姓名查询用户
 
 <form action="${ pageContext.request.contextPath}/user/findByNameForUser" method="post">
@@ -95,23 +95,23 @@ $(document).ready(function () {
 			</tr>
 		</c:forEach>
 	</c:if>
-	<c:if test="${user != null }">
+	<c:if test="${userr != null }">
 	
 				<tr>
-					<td>${user.userName }</td>
-					<td>${user.userNum }</td>
-					<td>${user.role.roleName }</td>
-					<td>${user.department.depName }</td>
-					<td>${user.userDuty }</td>
+					<td>${userr.userName }</td>
+					<td>${userr.userNum }</td>
+					<td>${userr.role.roleName }</td>
+					<td>${userr.department.depName }</td>
+					<td>${userr.userDuty }</td>
 					<td>
-						<c:if test="${user.userNp ==0 }">正</c:if>
-						<c:if test="${user.userNp ==1 }">副</c:if>
+						<c:if test="${userr.userNp ==0 }">正</c:if>
+						<c:if test="${userr.userNp ==1 }">副</c:if>
 					</td>
-					<td>${user.userReport }</td>
-					<td>${user.userDesc }</td>
+					<td>${userr.userReport }</td>
+					<td>${userr.userDesc }</td>
 					<td>
-						<a href="updateUserUI/${user.userId }">修改</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-						<a href="${pageContext.request.contextPath }/user/deleteUser/${user.userId }">删除</a>
+						<a href="updateUserUI/${userr.userId }">修改</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						<a href="${pageContext.request.contextPath }/user/deleteUser/${userr.userId }">删除</a>
 					</td>
 				</tr>
 	</c:if>

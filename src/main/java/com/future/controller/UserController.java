@@ -84,7 +84,7 @@ public class UserController extends BaseAction {
 		
 		String viewname = "User/allUser";
 		ModelAndView modelAndView = new ModelAndView(viewname);
-		modelAndView.addObject("user", user);
+		modelAndView.addObject("userr", user);
 		return modelAndView;
 	}
 	
@@ -251,7 +251,7 @@ public class UserController extends BaseAction {
 			user.setUserReport("upload/" + filename);
 		}
 		userService.insert(user);
-		return "redirect:getAllUser";
+		return "redirect:getAllUser/1";
 	}
 
 	@RequestMapping(value = "updateUserUI/{id}", method = RequestMethod.GET)
@@ -296,14 +296,14 @@ public class UserController extends BaseAction {
 
 			userService.updateByPrimaryKey(user);
 		}
-		return "redirect:getAllUser";
+		return "redirect:/user/getAllUser/1";
 	}
 
 	@RequestMapping(value = "deleteUser/{id}", method = RequestMethod.GET)
 	public String deleteUser(@PathVariable("id") Integer id) {
 		System.out.println(id);
 		userService.deleteUser(id);
-		return "redirect:/user/getAllUser";
+		return "redirect:/user/getAllUser/1";
 	}
 
 	/**

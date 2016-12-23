@@ -118,75 +118,59 @@
 添加用户页面/修改<%-- ${user.userId != null:updateUser?addUser} --%>
 <form:form id="form" action="${user.userId == null}" method="POST" modelAttribute="user" enctype="multipart/form-data">
 	
+	<!-- 修改 -->
 	<c:if test="${user.userId !=null }">
 		<form:hidden path="userId"/>
+		用户名：<form:input path="userName" id="username" onblur="checkoutname()"/><label id="nameMess"style="font:bold;color: red" hidden>用户名不能为空</label><br>
+		账号：<form:input path="userNum" id="usernum" readonly="true"/>
+		用户角色:<form:select path="userRole" items="${userRole }" itemLabel="roleName" itemValue="roleId"></form:select><br>
+		所属单位：<form:select path="userDep" items="${userDep }" itemLabel="depName" itemValue="depId"></form:select><br>
+		正副:<select name="userNp" >
+			<option value="0" <c:if test="${user.userNp == 0 }">selected</c:if>>正</option>
+			<option value="1" <c:if test="${user.userNp == 1 }">selected</c:if>>副</option>
+			<option value="3" <c:if test="${user.userNp == 3 }">selected</c:if>>其他</option>
+		</select><br>
+		职务：<form:input path="userDuty"/><br>
+		
+		述职文件：<form:hidden path="userReport"/>
+			   <input type="file" name="uploadfile"><br>
+		是否在职：
+		<select name="userDesc">
+				<option value="0"     <c:if test="${user.userDesc == '0' }">selected</c:if>     >在职</option>
+				<option value="1"     <c:if test="${user.userDesc == '1' }">selected</c:if>     >不在职</option>
+		</select>
+	<br>
 	</c:if>
 	
-	用户名：<form:input path="userName" id="username" onblur="checkoutname()"/><label id="nameMess"style="font:bold;color: red" hidden>用户名不能为空</label><br>
-	账号：<form:input path="userNum" id="usernum" onblur="checkoutUsrename()"/>
-	<label id="usernameMess"style="font:bold;color: red" hidden>账号不能为空</label>
-	<label id="usernameMess1"style="font:bold;color: red" hidden>此用户已存在</label>
-	<br><br>
-	<c:if test="${user.userId == null }">
+	
+	<c:if test="${user.userId ==null }">
+		用户名：<form:input path="userName" id="username" onblur="checkoutname()"/><label id="nameMess"style="font:bold;color: red" hidden>用户名不能为空</label><br>
+		账号：<form:input path="userNum" id="usernum" onblur="checkoutUsrename()"/>
+		<label id="usernameMess"style="font:bold;color: red" hidden>账号不能为空</label>
+		<label id="usernameMess1"style="font:bold;color: red" hidden>此用户已存在</label>
+		<br><br>
 		密码：
-		<form:password path="userPassword" id="password" onblur="checkpassword()"/>
-		<label id="passwordMess"style="font:bold;color: red" hidden>密码不能为空</label><br>
+			<form:password path="userPassword" id="password" onblur="checkpassword()"/>
+			<label id="passwordMess"style="font:bold;color: red" hidden>密码不能为空</label><br>
+		
+		用户角色:<form:select path="userRole" items="${userRole }" itemLabel="roleName" itemValue="roleId"></form:select><br>
+		所属单位：<form:select path="userDep" items="${userDep }" itemLabel="depName" itemValue="depId"></form:select><br>
+		正副:	
+			<select name="userNp" >
+					<option value="0" >正</option>
+					<option value="1">副</option>
+					<option value="3">其他</option>
+			</select><br>
+		职务：<form:input path="userDuty"/><br>
+		述职文件： <input type="file" name="uploadfile"><br>
+		
+		是否在职：
+			<select name="userDesc">
+					<option value="0"     <c:if test="${user.userDesc == '0' }">selected</c:if>                >在职</option>
+					<option value="1"     <c:if test="${user.userDesc == '1' }">selected</c:if>     >不在职</option>
+			</select>
 	</c:if>
-	用户角色:<form:select path="userRole" items="${userRole }" itemLabel="roleName" itemValue="roleId"></form:select><br>
-	所属单位：<form:select path="userDep" items="${userDep }" itemLabel="depName" itemValue="depId"></form:select><br>
-	正副:
-			<c:if test="${user.userId != null}">
-				<c:if test="${user.userNp == 0 }">
-					<select name="userNp" >
-						<option value="0" selected="selected">正</option>
-						<option value="1">副</option>
-						<option value="3">其他</option>
-					</select>
-				</c:if>
-				<c:if test="${user.userNp == 1 }">
-					<select name="userNp" >
-						<option value="0" >正</option>
-						<option value="1" selected="selected">副</option>
-						<option value="3">其他</option>
-					</select>
-				</c:if>
-				<c:if test="${user.userNp == 3 }">
-					<select name="userNp" >
-						<option value="0" >正</option>
-						<option value="1">副</option>
-						<option value="3" selected="selected">其他</option>
-					</select>
-				</c:if>
-				<c:if test="${user.userNp == null }">
-					<select name="userNp" >
-						<option value="0" >正</option>
-						<option value="1">副</option>
-						<option value="3">其他</option>
-					</select>
-				</c:if>
-			</c:if>
-			<c:if test="${user.userId == null }">
-					<select name="userNp" >
-							<option value="0" >正</option>
-							<option value="1">副</option>
-							<option value="3">其他</option>
-					</select>
-			</c:if>
-	<br>
-	职务：<form:input path="userDuty"/><br>
-	述职文件：<%-- <form:input path="userReport"/> --%>
-		<c:if test="${user.userId == null}">
-			<input type="file" name="uploadfile"><br>
-		</c:if>
-		<c:if test="${user.userId != null}">
-			<form:hidden path="userReport"/>
-			<input type="file" name="uploadfile"><br>
-		</c:if>
-	是否在职：
-		<select name="userDesc" >
-				<option value="0" >在职</option>
-				<option value="1">不在职</option>
-		</select>
+	
 	<br>
 	<input type="button" id="button" value="提交">
 </form:form>

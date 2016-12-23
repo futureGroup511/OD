@@ -35,7 +35,7 @@ if(window.parent != window){
 </script>
 <form name="frm" action="${pageContext.request.contextPath }/user/login" method="post" onsubmit="return checkReg()">
 	账号：<input type="text" name="username" id="username" />
-	密码：<input type="text" name="password" id="password" />
+	密码：<input type="password" name="password" id="password" />
 	<input type="submit" value="登陆">
 </form>
 </body>
