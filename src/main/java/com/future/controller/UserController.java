@@ -1087,7 +1087,7 @@ public class UserController extends BaseAction {
 			// 设置级别
 			eva.setEvalCate(cate);
 			// 设置互评
-			// eva.setEvalDesc(desc);
+			eva.setEvalDesc(desc);
 			evaList.add(eva);
 		}
 		int num = userService.insertAll(evaList);
