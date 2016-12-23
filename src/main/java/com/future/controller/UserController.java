@@ -59,6 +59,39 @@ public class UserController extends BaseAction {
 	// @SessionAttributes("user")
 
 	/**
+<<<<<<< HEAD
+=======
+	 * ajax获取所有用户姓名
+	 */
+	@ResponseBody
+	@RequestMapping(value="ajaxgetAllUserName",method=RequestMethod.POST)
+	public List<String> ajaxgetAllUserName(){
+		System.out.println("aaaaa");
+		List<String> list = userService.ajaxgetAllUserName();
+		System.out.println(list);
+		return list;
+	}
+	
+	
+	/**
+	 * 
+	 * 
+	 * 根据用户名称，查询改用户，模糊查询
+	 */
+	@RequestMapping(value="findByNameForUser",method=RequestMethod.POST)
+	public ModelAndView findByNameForUser(@RequestParam("name") String username){
+		System.out.println(username);
+		User user = userService.findByNameForUser(username);
+		System.out.println(user);
+		
+		String viewname = "User/allUser";
+		ModelAndView modelAndView = new ModelAndView(viewname);
+		modelAndView.addObject("user", user);
+		return modelAndView;
+	}
+	
+	/**
+>>>>>>> dev
 	 * 添加用户时请求Ajax，查询是否存在同名用户
 	 */
 	@ResponseBody

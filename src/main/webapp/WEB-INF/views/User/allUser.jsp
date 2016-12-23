@@ -32,6 +32,13 @@ $(document).ready(function () {
 <body>
 查询所有用户===${sessionScope.user.userName }
 <a href="addUserUI">增加用户</a>
+<br>根据姓名查询用户
+
+<form action="${ pageContext.request.contextPath}/user/findByNameForUser" method="post">
+	姓名1：<input name="name" id="txtIput" type="text">
+	
+	<input type="submit" value="提交">
+</form>
 <table border="1" cellpadding="1" cellspacing="0">
 	<tr>
 	    <td>姓名</td>
