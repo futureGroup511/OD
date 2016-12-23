@@ -59,8 +59,6 @@ public class UserController extends BaseAction {
 	// @SessionAttributes("user")
 
 	/**
-<<<<<<< HEAD
-=======
 	 * ajax获取所有用户姓名
 	 */
 	@ResponseBody
@@ -91,7 +89,6 @@ public class UserController extends BaseAction {
 	}
 	
 	/**
->>>>>>> dev
 	 * 添加用户时请求Ajax，查询是否存在同名用户
 	 */
 	@ResponseBody
