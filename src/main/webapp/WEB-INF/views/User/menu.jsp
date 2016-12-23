@@ -27,6 +27,7 @@
 		校副厅<br>
 		<a target="right"
 			href="${pageContext.request.contextPath }/user/xfAllzfUI">校副厅评价所有处级干部</a><br>
+		
 		<a target="right"
 			href="${pageContext.request.contextPath }/user/xfAllFenGuanUI">校副厅1类对分管单位</a>
 	</c:if>
@@ -56,12 +57,14 @@
 		<a target="right"
 			href="${pageContext.request.contextPath }/user/JiaoxueShujiGetAlldangqunUI">互评</a>
 		<br>
+		
 		<a target="right"
 			href="${pageContext.request.contextPath }/user/JiaoxueShujiGetAllDepDownUI">评价本单位所有副职</a>
 		<br>
 	</c:if>
 	<c:if
 		test="${sessionScope.user.userRole == 4 && sessionScope.user.userNp == 1}">
+		
 		<a target="right"
 			href="${pageContext.request.contextPath }/user/JiaoxueShujiGetAlldangqunUI">互评</a>
 		<br>
@@ -70,6 +73,7 @@
 		test="${sessionScope.user.userRole == 5 && sessionScope.user.userNp == 0}">
 		<a target="right"
 			href="${pageContext.request.contextPath }/user/XzGetAllYxYzUI">与院系院长副院长互评</a>
+		
 		<br>
 		<a target="right"
 			href="${pageContext.request.contextPath }/user/XzGetAllDepDownUI">评价本单位所有副职</a>
@@ -85,6 +89,7 @@
 		test="${sessionScope.user.userRole == 6 && sessionScope.user.userNp == 0}">
 		<a target="right"
 			href="${pageContext.request.contextPath }/user/YxYzGetXzUI">与行政教辅部门互评</a>
+		
 		<br>
 		<a target="right"
 			href="${pageContext.request.contextPath }/user/YxYzGetDepDownUI">评价自己单位所有副职</a>
