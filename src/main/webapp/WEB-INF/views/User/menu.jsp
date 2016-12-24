@@ -8,13 +8,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<c:if test="${sessionScope.user.userRole == 7 }">
-		<a target="right"
-			href="${pageContext.request.contextPath }/user/getAllUser/1">查看所有用户信息</a>
-		<br>
-		<a target="right" href="${pageContext.request.contextPath }/department/getAllDep">查看所有单位信息</a><br>
-		<a target="right" href="${pageContext.request.contextPath }/user/getAllRole">查看所有角色</a>
-	</c:if>
 	<br>
 	<c:if test="${sessionScope.user.userRole == 1 }">
 		校正厅---<br> 
@@ -96,7 +89,21 @@
 		<br>
 	</c:if>
 	<br>
-	<a href="/OD/evaluate/findByUserIdOrEvalByName/?id=${sessionScope.user.userId}" target="right">查看自己评价过的人</a><br>
+	
+	
+	<c:if test="${sessionScope.user.userNum == 'admin'}">
+		<a target="right" href="${pageContext.request.contextPath }/user/getAllUser/1">查看所有用户信息</a><br>
+		<a target="right" href="${pageContext.request.contextPath }/department/getAllDep">查看所有单位信息</a><br>
+		<a target="right" href="${pageContext.request.contextPath }/user/getAllRole">查看所有角色</a><br>
+		<a target="right" href="${pageContext.request.contextPath }/evaluate/valuatedByInfo/1">查看人的 被评价</a><br/>
+		<a target="right" href="${pageContext.request.contextPath }/evaluate/valuateToInfo/1">查看人的 评价</a><br>
+		<a target="right" href="${pageContext.request.contextPath }/evaluate/seeAllEvaluateResult">查看总评结果</a><br>
+		=======<a target="right" href="${pageContext.request.contextPath }/user/empetDate">清空数据</a>=====<br>
+	</c:if>
+	<c:if test="${sessionScope.user.userNum != 'admin'}">
+		<a href="/OD/evaluate/findByUserIdOrEvalByName/?id=${sessionScope.user.userId}" target="right">查看自己评价过的人</a><br>
+	</c:if>
+	
 	<a target="right" href="${pageContext.request.contextPath }/user/updateUserUI/${sessionScope.user.userId}">修改个人信息</a><br>
 	<a target="right" href="${pageContext.request.contextPath }/user/updatePasswordUI/${sessionScope.user.userId}">修改密码</a><br>
 	<a href="${pageContext.request.contextPath }/user/logout">退出</a>
@@ -154,11 +161,7 @@
 <!-- by 赵硕 -->
 <br/>
 <br/>
-<a target="right" href="${pageContext.request.contextPath }/evaluate/valuatedByInfo/1">查看人的 被评价</a><br/>
-<a target="right" href="${pageContext.request.contextPath }/evaluate/valuateToInfo/1">查看人的 评价</a>
 
-<a target="right" href="${pageContext.request.contextPath }/evaluate/seeAllEvaluateResult">查看总评结果</a>
-<a target="right" href="${pageContext.request.contextPath }/user/empetDate">清空数据</a>
 
 </body>
 </html>

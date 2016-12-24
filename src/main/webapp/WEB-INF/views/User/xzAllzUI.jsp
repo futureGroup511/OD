@@ -10,7 +10,8 @@
 <script type="text/javascript"> 
 
 	function xuanzhong(){
-		$("input[type='radio']").attr("checked",'checked');
+		//$("input[type='radio']").attr("checked",'checked');
+		$(".chenzhi").attr("checked",'checked');
 	}
 
 	$(document).ready(function(){
@@ -47,7 +48,6 @@
 		var four=0;
 		
 		for(var i=0;i<result.length;i++){
-			console.log(1);
 			if(result.charAt(i) == 1){
 				one = one + 1;
 			}
@@ -75,7 +75,10 @@
 				var result = one/count*100;
 				//alert(result);
 				//alert(data);
-				if(result <= data || result == 100){
+				if(result == '100'){
+					result = 50;
+				}
+				if(result <= data){
 					//flag = true;
 					//$("#form").submit();  
 					var countResult = $("#result").val();
@@ -104,7 +107,7 @@
 								//alert(date + "提交")
 								$("#form").submit(); 
 							} else{
-								alert("优秀结果里副职所占的比例不超过30%");
+								alert("优秀结果里副职所占的比例不能少于30%");
 								//alert(date + "不提交");
 							}
 						} 
@@ -170,8 +173,8 @@
 				<td>${user.department.depName }</td>
 				<td>${user.userName }</td>
 				<td>
-					<input type="radio" name="eval${user.userId }" value="1"> 优秀
-					<input type="radio" name="eval${user.userId }" value="2"> 称职
+					<input type="radio"  name="eval${user.userId }" value="1"> 优秀
+					<input type="radio" class="chenzhi" name="eval${user.userId }" value="2"> 称职
 					<input type="radio" name="eval${user.userId }" value="3"> 基本称职
 					<input type="radio" name="eval${user.userId }" value="4"> 不称职
 				</td>

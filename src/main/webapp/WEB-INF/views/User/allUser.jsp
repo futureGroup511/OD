@@ -44,7 +44,7 @@ $(document).ready(function () {
 <br>根据姓名查询用户
 
 <form action="${ pageContext.request.contextPath}/user/findByNameForUser" method="post">
-	姓名1：<input name="name" id="txtIput" type="text">
+	姓名：<input name="name" id="txtIput" type="text">
 	
 	<input type="submit" value="提交">
 </form>
@@ -57,31 +57,9 @@ $(document).ready(function () {
 	    <td>职务</td>
 	    <td>正/副</td>
 	    <td>述职报告</td>
-	    <td>描述</td>
+	    <td>是否在职</td>
 	    <td>编辑</td>
 	</tr>
-<%-- <<<<<<< HEAD
-
-	<c:forEach items="${pageBean.recordlist }" var="user">
-		<tr>
-			<td>${user.userName }</td>
-			<td>${user.userNum }</td>
-			<td>${user.role.roleName }</td>
-			<td>${user.department.depName }</td>
-			<td>${user.userDuty }</td>
-			<td>
-				<c:if test="${user.userNp ==0 }">正</c:if>
-				<c:if test="${user.userNp ==1 }">副</c:if>
-			</td>
-			<td>${user.userReport }</td>
-			<td>${user.userDesc }</td>
-			<td>
-				<a href="updateUserUI/${user.userId }">修改</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				<a href="${pageContext.request.contextPath }/user/deleteUser/${user.userId }">删除</a>
-			</td>
-		</tr>
-	</c:forEach>
-======= --%>
 	<c:if test="${pageBean.recordlist != null }">
 	
 		<c:forEach items="${pageBean.recordlist }" var="user">
@@ -96,7 +74,10 @@ $(document).ready(function () {
 					<c:if test="${user.userNp ==1 }">副</c:if>
 				</td>
 				<td>${user.userReport }</td>
-				<td>${user.userDesc }</td>
+				<td>
+					<c:if test="${user.userDesc == '0' }">在职</c:if>
+					<c:if test="${user.userDesc == '1' }">不在职</c:if>
+				</td>
 				<td>
 					<a href="${pageContext.request.contextPath }/user/updateUserUI/${user.userId }">修改</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					<a href="${pageContext.request.contextPath }/user/deleteUser/${user.userId }">删除</a>
