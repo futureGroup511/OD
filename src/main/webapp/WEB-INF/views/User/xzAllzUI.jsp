@@ -75,7 +75,7 @@
 				var result = one/count*100;
 				//alert(result);
 				//alert(data);
-				if(result == '100'){
+				if(one == '1'){
 					result = 50;
 				}
 				if(result <= data){
@@ -173,7 +173,7 @@
 				<td>${user.department.depName }</td>
 				<td>${user.userName }</td>
 				<td>
-					<input type="radio"  name="eval${user.userId }" value="1"> 优秀
+					<input type="radio"   name="eval${user.userId }" value="1"> 优秀
 					<input type="radio" class="chenzhi" name="eval${user.userId }" value="2"> 称职
 					<input type="radio" name="eval${user.userId }" value="3"> 基本称职
 					<input type="radio" name="eval${user.userId }" value="4"> 不称职

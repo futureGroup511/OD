@@ -60,4 +60,13 @@ public class EvaluateServiceImpl implements EvaluateServiceI {
 	public List<Evaluate> getValuateByPeople(Map<String, Object> hashMap) {
 		return evaluateMapper.getValuateByPeople(hashMap);
 	}
+
+	/**
+     * 根据姓名模糊查询评价人
+     * 
+     * @author 刘阳阳
+     */
+	public List<User> getUserByNameLY(String nameLYY) {
+		return evaluateMapper.getUserByNameLY(nameLYY);
+	}
 }

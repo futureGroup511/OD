@@ -40,5 +40,12 @@ public interface EvaluateServiceI {
      * @return
      */
     List<Evaluate> getValuateByPeople(Map<String,Object> hashMap);
+
+    /**
+     * 根据姓名模糊查询评价人
+     * 
+     * @author 刘阳阳
+     */
+	List<User> getUserByNameLY(String nameLYY);
 }
  

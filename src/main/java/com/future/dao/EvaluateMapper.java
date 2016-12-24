@@ -140,4 +140,11 @@ public interface EvaluateMapper {
 	 * @author 刘阳阳
 	 */
 	int delteDateFromEvaluate();
+
+	/**
+     * 根据姓名模糊查询评价人
+     * 
+     * @author 刘阳阳
+     */
+	List<User> getUserByNameLY(String nameLYY);
 }

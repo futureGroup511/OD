@@ -96,7 +96,7 @@
 		<a target="right" href="${pageContext.request.contextPath }/department/getAllDep">查看所有单位信息</a><br>
 		<a target="right" href="${pageContext.request.contextPath }/user/getAllRole">查看所有角色</a><br>
 		<a target="right" href="${pageContext.request.contextPath }/evaluate/valuatedByInfo/1">查看人的 被评价</a><br/>
-		<a target="right" href="${pageContext.request.contextPath }/evaluate/valuateToInfo/1">查看人的 评价</a><br>
+		<a target="right" href="${pageContext.request.contextPath }/evaluate/valuateToInfo/1">查看干部打分情况</a><br>
 		<a target="right" href="${pageContext.request.contextPath }/evaluate/seeAllEvaluateResult">查看总评结果</a><br>
 		=======<a target="right" href="${pageContext.request.contextPath }/user/empetDate">清空数据</a>=====<br>
 	</c:if>

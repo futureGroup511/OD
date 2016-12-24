@@ -511,6 +511,21 @@ public class UserController extends BaseAction {
 		System.out.println("评价结果");
 		String[] result1 = result.split(",");
 
+		for(int i=0;i<result1.length;i++){
+			if(result1[i].equals("1")){
+				result1[i] = "100";
+			}
+			if(result1[i].equals("2")){
+				result1[i] = "80";
+			}
+			if(result1[i].equals("3")){
+				result1[i] = "60";
+			}
+			if(result1[i].equals("4")){
+				result1[i] = "40";
+			}
+		}
+		
 		// 拿到结合，已备存储结果
 		List<Evaluate> evaList = new ArrayList<Evaluate>();
 		for (int i = 0; i < result1.length; i++) {

@@ -12,10 +12,16 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
+
+import java.io.UnsupportedEncodingException;
 import java.util.*;
+
+import javax.servlet.http.HttpServletRequest;
 
 @Controller
 @Scope("prototype")
@@ -51,17 +57,20 @@ public class EvaluateController extends BaseAction {
     @RequestMapping("/valuateToInfo/{currentPage}")
     public ModelAndView showAllValuatedTo(@PathVariable("currentPage") Integer currentPage){
 
-System.out.println("%%%%%");
+    	System.out.println("%%%%%");
         Integer pageSize = Integer.parseInt(PropertiesUtils.getProperties("pageSize"));
         Integer recordCount = evaluateService.getValuatedToCount();
         MyPageBean pageBean = new MyPageBean(currentPage,pageSize,recordCount,null);
+        
+        
         List<User> userList = evaluateService.getAllValuatedTo(pageBean);
-        pageBean.setRecordlist(userList);
+        //pageBean.setRecordlist(userList);
 
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("Manager/valuateToInfo");
         Map<String,Object> map = new HashMap<String,Object>();
-        map.put("pageBean", pageBean);
+        //map.put("pageBean", pageBean);
+        map.put("userList", userList);
         modelAndView.addAllObjects(map);
         return modelAndView;
     }
@@ -84,10 +93,18 @@ System.out.println("%%%%%");
     // 它评价了谁 的最后一页
 
     @RequestMapping(value = "/getValuatedOthers")
-    public ModelAndView getValuatedOthers(@RequestParam(value="meId",required=false)Integer meId,
+    public ModelAndView getValuatedOthers(HttpServletRequest request,
+    									@RequestParam(value="meId",required=false)Integer meId,
                                           @RequestParam(value="name",required=false)String himName,
-                                          @RequestParam(value="rank",required=false)Integer rank){
-
+                                          @RequestParam(value="rank",required=false)Integer rank,
+                                          @RequestParam(value="nameLY",required=false)String nameLY){
+    	String str = "";
+    	try {
+			 str = new String(request.getParameter("nameLY").getBytes("iso-8859-1"), "utf-8");
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
         Map<String,Object> datas=new HashMap<String, Object>();
         datas.put("meId",meId);
         if(himName != null && himName.equals("")) himName = null;
@@ -100,6 +117,7 @@ System.out.println("%%%%%");
         Map<String,Object> map = new HashMap<String,Object>();
         map.put("evaluatesList", evaluatesList);
         map.put("meId",meId);
+        map.put("nameLY",str);
         modelAndView.addAllObjects(map);
 
         return modelAndView;
@@ -185,6 +203,20 @@ System.out.println("%%%%%");
         if(name != null)mv.addObject("findname",name);
         mv.setViewName("Evaluate/findEvaluateBy");
         return mv;
+    }
+    
+    /**
+     * 根据姓名模糊查询评价人
+     * 
+     * @author 刘阳阳
+     */
+    @RequestMapping(value = "getUserByNameLY",method=RequestMethod.POST)
+    public ModelAndView getUserByNameLY(@RequestParam("nameLYY") String nameLYY){
+    	System.out.println(nameLYY);
+    	List<User> userList = evaluateService.getUserByNameLY(nameLYY);
+    	ModelAndView modelAndView = new ModelAndView("Manager/valuateToInfo");
+    	modelAndView.addObject("userList", userList);
+    	return modelAndView;
     }
 
 }
