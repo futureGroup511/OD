@@ -18,7 +18,7 @@ public class SessionInterceptors implements HandlerInterceptor{
 		String url = request.getRequestURI();
 		String beUrl = "loginUI,login";
 		if(user == null){
-			if(url.contains("login")){
+			if(url.contains("login") || url.contains("js") ||url.contains("jquery") || url.contains("img") || url.contains("css") ){
 				return true;
 			} else {
 				request.getRequestDispatcher("loginUI").forward(request, response);

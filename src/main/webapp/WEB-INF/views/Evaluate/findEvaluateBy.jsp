@@ -29,14 +29,7 @@
                  border-collapse: collapse;
              }
 </style>
-<script>
-    $("table").tableExport({
-        bootstrap: false
-    });
-    $(function(){
-        $("table").tableExport({formats:["xlsx","xls"]});
-    })
-</script>
+
 <body>
 
     <div class="row form">
@@ -58,9 +51,11 @@
 
 
 
+    <div class="table-responsive">
+
 
     <c:if test="${page.recordCount ne 0}">
-        <table  class="gridtable">
+        <table  class="table table-striped" style="font-size:16px;" >
             <tr>
                 <th>序号</th>
                 <th>姓名</th>
@@ -80,13 +75,19 @@
                 </tr>
             </c:forEach>
         </table>
-        <a href="#" onclick="turning(1)">首页</a>
-        <a href="#" onclick="turning(${page.currentPage-1})">上一页</a>
-        <a href="#" onclick="turning(${page.currentPage+1},${page.pageCount})">下一页</a>
-        <a href="#" onclick="turning(${page.pageCount},${page.pageCount})">尾页</a>
+        <nav>
+            <ul class="pagination">
+                <li><a href="#" onclick="turning(1)">首页</a></li>
+                <li><a href="#" onclick="turning(${page.currentPage-1})">上一页</a></li>
+                <li><a href="#" onclick="turning(${page.currentPage+1},${page.pageCount})">下一页</a></li>
+                <li><a href="#" onclick="turning(${page.pageCount},${page.pageCount})">尾页</a></li>
+            </ul>
+        </nav>
+
     </c:if>
     <c:if test="${page.recordCount == 0}">
         没有数据
     </c:if>
+    </div>
 </body>
 </html>

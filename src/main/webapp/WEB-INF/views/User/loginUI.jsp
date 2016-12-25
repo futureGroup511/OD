@@ -12,18 +12,18 @@
 
         <meta charset="utf-8">
         <title>Fullscreen Login</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!-- CSS -->
         <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/reset.css.css">
         <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/css/style.css">
 		
 </head>
 
-    <body oncontextmenu="return false">
-    <p>test<p>
+    <body>
      <div class="connect">
         <div class="page-container">
             <h1>Login</h1>
-           <form name="frm" action="${pageContext.request.contextPath }/user/login" method="post" >
+           <form name="fosrm" id="form" action="${pageContext.request.contextPath }/user/login" method="post">
             	<input type="hidden" id="address" value="<%=basePath %>">
 
 				<div>
@@ -32,7 +32,8 @@
                 <div>
 					<input type="password" name="password" class="password" placeholder="Password" oncontextmenu="return false" onpaste="return false" />
                 </div>
-                <button id="submit" type="button">Sign in</button>
+                <input id="submit" type="submit" value="提交" onclick="juge();">
+               
             </form>
 
                 <p>Henan institute of science and technology department of login system interface.</p>
@@ -48,14 +49,15 @@
 		</div>
 
         <!-- Javascript -->
-		<script src="http://apps.bdimg.com/libs/jquery/1.6.4/jquery.min.js" type="text/javascript"></script>
+		<script src="${pageContext.request.contextPath }/js/js.js" type="text/javascript"></script>
 		<script>
+		
 		$(".btn").click(function(){
 			is_hide();
 		})
 		var u = $("input[name=username]");
 		var p = $("input[name=password]");
-		$("#submit").live('click',function(){
+		function juge(){
 			if(u.val() == '' || p.val() =='')
 			{
 				$("#ts").html("用户名或密码不能为空");
@@ -71,6 +73,12 @@
 					return false;
 				}
 			}
+		
+			return true;
+		}
+		
+		$("#submit").live('click',function(){
+			
 		});
 		window.onload = function()
 		{
@@ -85,3 +93,68 @@
 
 </html>
 
+
+
+
+
+
+
+
+
+
+
+
+<%-- <%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%
+	//得到url的根路径
+	String path = request.getContextPath();
+	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
+			+ path + "/";
+%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/css/reset.css">
+        <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/css/style.css">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>欢迎登陆</title>
+<script type="text/javascript" src="${pageContext.request.contextPath }/js/jquery-1.11.1.js"></script>
+</head>
+<body>
+${message }
+<script type="text/javascript">
+	
+	//在被嵌套时就刷新上级窗口
+	if(window.parent != window){
+		//window.parent.location.reload(true);
+		window.parent.location.href='$("#address").val()';
+	}
+ 
+
+	function checkReg(){
+		var loginName = document.frm.username.value;
+		var password = document.frm.password.value;
+		if( loginName == ""){
+			alert("请输入账号！");
+			return false;
+		}
+		if(password == ""){
+			alert("请输入密码！");
+			return false;
+		}
+		return true;
+	}
+
+</script>
+
+<form name="frm" action="${pageContext.request.contextPath }/user/login" method="post" onsubmit="return checkReg()">
+	<input type="hidden" id="address" value="<%=basePath %>">
+	账号：<input type="text" name="username" id="username" />
+	密码：<input type="password" name="password" id="password" />
+	<input type="submit" value="登陆">
+</form>
+</body>
+</html> --%>
+>>>>>>> 0ece51de13145aa838df5b33ddf8300933afd253

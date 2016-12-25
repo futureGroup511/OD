@@ -6,7 +6,8 @@
 <head>
     <title>评价人信息及评价信息</title>
 
-
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/yemian7.css">
     <script type="text/javascript"  src="${pageContext.request.contextPath}/js/paging.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath }/ly/auto/jquery-1.7.1.min.js"></script>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/ly/auto/jquery.autocomplete.css">
@@ -16,6 +17,8 @@
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/FileSaver.min.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/tableexport.js"></script>
     <style rel="stylesheet" href="${pageContext.request.contextPath}/js/myJs/bootstrap.min.css"    />
+
+
 </head>
 <style>
     table.gridtable {
@@ -40,10 +43,7 @@
                             'itemHeight': 20,
                             'width': 280
                         });
-
-
                  }
-
         });
     });
     $("table").tableExport({
@@ -54,43 +54,48 @@
     })
 </script>
 <body>
-<%--<form:form modelAttribute="pType" action="${pageContext.request.contextPath }/evaluate/redirectHere" method="post">
-    <form:select path="roleType">
-        <form:option value="1">校正厅</form:option>
-        <form:option value="2">校副厅</form:option>
-        <form:option value="3">党群部门</form:option>
-        <form:option value="4">教学书记副书记</form:option>
-        <form:option value="5">行政教辅部门</form:option>
-        <form:option value="6">院系院长副院长</form:option>
-        <input type="submit" name="确定"/>
-    </form:select>
-</form:form>--%>
+
+<div class="container-one">
+    <div class="row form">
         <form action="${pageContext.request.contextPath }/evaluate/redirectHere" method="post">
-            姓名：<input type="text" name="userName" value="${requestScope.user.userName}">
-            单位：<input type="text" name="department.depName" value="${requestScope.user.department.depName}" id="dw">
-            <input type="submit" value="提交">
+            <div class="col-lg-2 col-lg-offset-3 col-md-2 col-md-offset-3 col-xs-3 col-xs-offfet-3">
+                姓名：<input type="text" name="userName" value="${requestScope.user.userName}">
+            </div>
+            <div class="col-lg-2 col-lg-offset-1 col-md-2 col-md-offset-1 col-xs-3 col-xs-offfet-1">
+                单位：<input type="text" name="department.depName" value="${requestScope.user.department.depName}" id="dw">
+            </div>
+
+
         </form>
-<table class="valuateResult">
-    <tr>
-        <td>被评价人单位</td>
-        <td>被评价人姓名</td>
-        <td>总评得分</td>
-        <td>互评得分</td>
-        <td>厅级得分</td>
-        <td>单位上级评价得分</td>
-        <td>查看</td>
-    </tr>
-    <c:forEach items="${requestScope.statisticList }" var="statistic">
+        <div class="col-lg-1  col-md-1 col-xs-2">
+            <input type="submit" class="btn btn-block btn-lg" value="提交">
+        </div>
+    </div>
+</div>
+<div class="table-responsive">
+    <table class="table table-bordered table-hover table-striped">
         <tr>
-            <td>${statistic.stati_user.department.depName}</td>
-            <td>${statistic.stati_user.userName}</td>
-            <td>${statistic.static_result }</td>
-            <td>${statistic.static_xhp }</td>
-            <td>${statistic.static_t }</td>
-            <td>${statistic.static_xdw }</td>
-            <td><a href="/OD/evaluate/getValuatedMe/${statistic.stati_user.userId}">查看</a></td>
+            <td>被评价人单位</td>
+            <td>被评价人姓名</td>
+            <td>总评得分</td>
+            <td>互评得分</td>
+            <td>厅级得分</td>
+            <td>单位上级评价得分</td>
+            <td>查看</td>
         </tr>
-    </c:forEach>
-</table>
+        <c:forEach items="${requestScope.statisticList }" var="statistic">
+            <tr>
+                <td>${statistic.stati_user.department.depName}</td>
+                <td>${statistic.stati_user.userName}</td>
+                <td>${statistic.static_result }</td>
+                <td>${statistic.static_xhp }</td>
+                <td>${statistic.static_t }</td>
+                <td>${statistic.static_xdw }</td>
+                <td><a class="btn" href="/OD/evaluate/getValuatedMe/${statistic.stati_user.userId}">查看</a></td>
+            </tr>
+        </c:forEach>
+    </table>
+</div>
+
 </body>
 </html>
