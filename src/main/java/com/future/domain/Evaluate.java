@@ -9,7 +9,10 @@ public class Evaluate {
     private Integer evalCate;
     // 评价描述 
     private String evalDesc;
-
+    //评价类别
+    private String evalsort;
+    // 评价等级
+    private String evalgrade;
     //单位
     private Department evalDep;
     
@@ -25,6 +28,30 @@ public class Evaluate {
 
 	private User evaluatedBy;
     private User evaluatedTo;
+
+    public String getEvalgrade() {
+        if(evalRank == 100) evalgrade="优秀";
+        else if(evalRank == 80) evalgrade="称职";
+        else if(evalRank == 60) evalgrade="基本称职";
+        else if(evalRank == 40) evalgrade="不称职";
+        return evalgrade;
+    }
+
+    public void setEvalgrade(String evalgrade) {
+        this.evalgrade = evalgrade;
+    }
+
+    public String getEvalsort() {
+        if(evalCate == 1) evalsort= "互评";
+        else if(evalCate == 2 && evalDesc.equals("1")) evalsort= "分管评价";
+        else if(evalCate == 3 || (evalCate == 2 && evalDesc.equals("0"))) evalsort= "厅级评价";
+        else if(evalCate == 4) evalsort= "单位评价";
+        return evalsort;
+    }
+
+    public void setEvalsort(String evalsort) {
+        this.evalsort = evalsort;
+    }
 
     public User getEvaluatedBy() {
         return evaluatedBy;
@@ -109,12 +136,9 @@ public class Evaluate {
         this.evalRank = evalRank;
     }
 
-    public String getEvalCate() {
-        if(evalCate == 1) return "互评";
-        if(evalCate == 2 && evalDesc.equals("1")) return "分管评价";
-        if(evalCate == 3 || (evalCate == 2 && evalDesc.equals("0"))) return "厅级评价";
-        if(evalCate == 4) return "单位评价";
-        return "未知";
+    public Integer getEvalCate() {
+
+        return evalCate;
     }
 
     public void setEvalCate(Integer evalCate) {
