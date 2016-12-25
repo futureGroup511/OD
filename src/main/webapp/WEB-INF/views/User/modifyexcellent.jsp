@@ -53,7 +53,7 @@
     </form>
 </div>
 
-<button type="button" onclick="lookPDF('/OD/user/lookpdf');">查看pdf</button>
+
 <p id="message">${message}</p>
 </body>
 </html>

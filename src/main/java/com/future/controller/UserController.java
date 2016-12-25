@@ -1389,9 +1389,9 @@ public class UserController extends BaseAction {
 	}
 
 	@RequestMapping("/lookpdf")
-	public ModelAndView lookpdf(HttpSession session){
+	public ModelAndView lookpdf(@RequestParam("reportName") String reportName,HttpSession session){
 		ModelAndView modelAndView = new ModelAndView();
-		String path="upload/xiaowangzi.pdf";
+		String path=reportName;
 		modelAndView.addObject("url",path);
 		modelAndView.setViewName("User/lookPDF");
 		return modelAndView;
