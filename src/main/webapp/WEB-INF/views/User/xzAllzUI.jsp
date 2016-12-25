@@ -197,10 +197,10 @@ a, a:visited{text-decoration:none;}
 								<td>${user.userName }</td>
 								<td class="biaodan">
 		                        	<label class="radio-inline">
-		                            	<input type="radio" class="chenzhi"  name="eval${user.userId }"  id="inlineRadio1" value="1"> 优秀
+		                            	<input type="radio"   name="eval${user.userId }"  id="inlineRadio1" value="1"> 优秀
 		                            </label>
 		                            <label class="radio-inline">
-		                              <input type="radio"  name="eval${user.userId }" id="inlineRadio2" value="2"> 称职
+		                              <input type="radio"  class="chenzhi" name="eval${user.userId }" id="inlineRadio2" value="2"> 称职
 		                            </label>
 		                            <label class="radio-inline">
 		                              <input type="radio" name="eval${user.userId }" id="inlineRadio3" value="3">基本称职

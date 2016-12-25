@@ -6,6 +6,13 @@
 .container p .btn{
 	background-color: #12A1EC;
 }
+body{
+ 	border: 1px solid #B4B4B4;
+  	margin-top: 10px;
+	margin-left: 10px;
+	margin-right: 10px;
+	margin-bottom: 10px;
+}
 
 .row{width:100%;}
 .col-lg-2{margin-top:2%;}

@@ -63,7 +63,7 @@
            <img src="img/logo.png" id="image2"> 
         </div>
         <div class="col-lg-3 col-md-3 col-xs-3">
-           <p class="two">组织部登录界面</p>
+           <p class="two">欢迎访问组织部评分系统</p>
         </div>
     </div>
 </div>
