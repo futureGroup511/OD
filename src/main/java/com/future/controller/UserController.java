@@ -15,13 +15,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Properties;
+import java.io.*;
+import java.util.*;
 
 @Controller
 @Scope("prototype")
@@ -34,10 +29,14 @@ public class UserController extends BaseAction {
 	 * 清空数据
 	 */
 	@RequestMapping(value="empetDate",method=RequestMethod.GET)
-	public void empetDate(){
+	public ModelAndView empetDate(){
 		int a = userService.delteDateFromEvaluate();
 		int b = userService.updateDateStatistic();
+		String viewname = "User/success";
+		ModelAndView modelAndView = new ModelAndView(viewname);
+		modelAndView.addObject("message", "数据清除成功！");
 		System.out.println(123);
+		return modelAndView;
 	}
 	
 	/**
@@ -170,7 +169,10 @@ public class UserController extends BaseAction {
 	 * @return modelAndView视图显示
 	 */
 	@RequestMapping(value="getAllUser/{currentPage}",method=RequestMethod.GET)
-	public ModelAndView getAllUser(@PathVariable("currentPage") Integer currentPage){
+	public ModelAndView getAllUser(@PathVariable("currentPage") Integer currentPage,HttpServletRequest request){
+		String message = (String) request.getSession().getAttribute("userDeleteMessage");
+		request.getSession().removeAttribute("userDeleteMessage");
+		
 		String viewname="User/allUser";
 		ModelAndView modelAndView = new ModelAndView(viewname);
 		//PageBean pageBean = PageBean.newInstance(); 
@@ -179,6 +181,7 @@ public class UserController extends BaseAction {
 		pageBean = userService.pageBeanGetAllUser(pageBean);
 		pageBean.calbeginAndEnd();
 		modelAndView.addObject("pageBean",pageBean);
+		modelAndView.addObject("userDeleteMessage", message);
 		return modelAndView;
 	}
 
@@ -282,9 +285,13 @@ public class UserController extends BaseAction {
 	}
 
 	@RequestMapping(value = "deleteUser/{id}", method = RequestMethod.GET)
-	public String deleteUser(@PathVariable("id") Integer id) {
+	public String deleteUser(@PathVariable("id") Integer id,HttpServletRequest request) {
 		System.out.println(id);
-		userService.deleteUser(id);
+		try {
+			userService.deleteUser(id);
+		} catch (Exception e) {
+			request.getSession().setAttribute("userDeleteMessage", "因为此用户有关联记录，所有无法删除！");
+		}
 		return "redirect:/user/getAllUser/1";
 	}
 
@@ -1049,8 +1056,12 @@ public class UserController extends BaseAction {
 	 * @author 刘阳阳
 	 */
 	@RequestMapping(value = "deleteDep/{id}", method = RequestMethod.GET)
-	public String deleteDep(@PathVariable("id") Integer id) {
-		userService.deleteDep(id);
+	public String deleteDep(@PathVariable("id") Integer id,HttpServletRequest request) {
+		try {
+			userService.deleteDep(id);
+		} catch (Exception e) {
+			request.getSession().setAttribute("deleteDepMessage", "因为此单位有与之关联的记录，所以无法删除");
+		}
 		return "redirect:/department/getAllDep";
 	}
 
@@ -1076,10 +1087,14 @@ public class UserController extends BaseAction {
 	 * @author 刘阳阳
 	 */
 	@RequestMapping(value = "addRoleUI", method = RequestMethod.GET)
-	public ModelAndView addRoleUI() {
+	public ModelAndView addRoleUI(HttpServletRequest request) {
+		
+		String message = (String) request.getSession().getAttribute("deleteRoleMessage");
+		request.getSession().removeAttribute("deleteRoleMessage");
 		String viewname = "User/addRoleUI";
 		ModelAndView modelAndViewa = new ModelAndView(viewname);
 		modelAndViewa.addObject("role", new Role());
+		modelAndViewa.addObject("deleteRoleMessage", message);
 		return modelAndViewa;
 	}
 
@@ -1100,8 +1115,12 @@ public class UserController extends BaseAction {
 	 * @author 刘阳阳
 	 */
 	@RequestMapping(value = "deleteRole/{id}", method = RequestMethod.GET)
-	public String deleteRole(@PathVariable("id") Integer id) {
-		userService.deleteRole(id);
+	public String deleteRole(@PathVariable("id") Integer id,HttpServletRequest request) {
+		try {
+			userService.deleteRole(id);
+		} catch (Exception e) {
+			request.getSession().setAttribute("deleteRoleMessage", "此角色有与之对应的记录，所以无法删除！");
+		}
 		return "redirect:/user/getAllRole";
 	}
 
@@ -1260,6 +1279,39 @@ public class UserController extends BaseAction {
 		modelAndView.setViewName("/User/modifyDCProperties");
 		modelAndView.addObject("file",file);
 		return modelAndView;
+	}
+
+	@RequestMapping("/modifyexcellent")
+	public ModelAndView modifyexcellent(@RequestParam(value="bili",required = false)String bili
+										,@RequestParam("juge")Integer juge
+										,@RequestParam(value = "xibili",required = false)String xibili){
+
+		ModelAndView modelAndView=new ModelAndView();
+		Properties properties=new Properties();
+		String path="src/main/resources/date.properties";
+		try {
+			InputStream inputStream = new BufferedInputStream(new FileInputStream(path));
+			properties.load(inputStream);
+			inputStream.close();
+			if(juge != 1) {
+				OutputStream out=new FileOutputStream(path);
+				properties.setProperty("bili",bili);
+				properties.setProperty("xibili",xibili);
+				properties.store(out,"Modify"+(new Date()).toLocaleString());
+				modelAndView.addObject("message","修改成功");
+				out.close();
+			}
+			String bl=properties.getProperty("bili");
+			String xbl=properties.getProperty("xibili");
+			modelAndView.addObject("bl",bl);
+			modelAndView.addObject("xbl",xbl);
+			modelAndView.setViewName("/User/modifyexcellent");
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return  modelAndView;
 	}
 
 	// 竞赛分页相关

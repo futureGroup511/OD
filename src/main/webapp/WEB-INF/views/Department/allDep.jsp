@@ -16,7 +16,7 @@
 	<div class="container">
 		<div class="row">
 			<div
-				class="col-lg-1 col-lg-offset-1 col-md-2  col-xs-2 col-xs-offset-1">
+				class="col-lg-1 col-lg-offset-3 col-md-2 col-md-offset-3 col-xs-2 col-xs-offset-3">
 				<a><p>
 						<a class="btn btn-primary" href="addDepUI">
 							<img
@@ -25,17 +25,19 @@
 						</a>
 					</p></a>
 			</div>
-			<div
+			<!-- <div
 				class="col-lg-2 col-lg-offset-6 col-md-3 scol-md-offset-3 col-xs-5  col-xs-offset-1">
 				<p>当前位置：管理员>>查看所有单位信息</p>
 			</div>
 			<div class="col-lg-2 col-md-3 col-xs-3">
 				<p>欢迎登录本系统</p>
-			</div>
+			</div> -->
 		</div>
 	</div>
 
+	
 	<div class="table-responsive">
+		${deleteDepMessage }
 		<table class="table table-bordered table-hover table-striped">
 			<thead>
 				<tr class="two">

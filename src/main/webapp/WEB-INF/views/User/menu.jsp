@@ -6,16 +6,12 @@
 <head>
 <meta charset="UTF-8">
 <title>caidan</title>
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath }/css/caidan.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/css/caidan.css">
 </head>
 <body id="bg">
-
 	<div class="container">
-
 		<div class="leftsidebar_box">
 			<div class="line"></div>
-
 			<dl class="channel">
 			<c:if test="${sessionScope.user.userRole == 1 }">
 				<a target="right"
@@ -100,6 +96,7 @@
 
 			<c:if test="${sessionScope.user.userNum == 'admin'}">
 				<dl class="channel">
+
 					<a target="right"
 						href="${pageContext.request.contextPath }/user/getAllUser/1"><dt>查看所有用户信息</dt></a>
 					<a target="right"
@@ -113,9 +110,30 @@
 						href="${pageContext.request.contextPath }/evaluate/valuateToInfo/1"><dt>查看干部打分情况</dt></a>
 					<a target="right"
 						href="${pageContext.request.contextPath }/evaluate/seeAllEvaluateResult"><dt>查看总评结果</dt></a>
-					<a target="right"
+					<a target="right" onClick="if(confirm( '确定要清空吗！ ')==false)return   false;"
 						href="${pageContext.request.contextPath }/user/empetDate"><dt>清空数据</dt></a>
+					<%--<a href="/OD/user/modifyexcellent/?juge=1" target="right">修改优秀比例权重</a>
+					<a href="/OD/user/modifyProperties/?juge=1" target="right"><dt>修改校厅级权重</dt</a><br>
+					<a href="/OD/user/modifySGProperties/?juge=1" target="right"><dt>党群正处、行政正处权重</dt></a>
+					<a href="/OD/user/modifySBGProperties/?juge=1" target="right"><dt>教学副书记、教学副院长权重</dt</a>
+					<a href="/OD/user/modifyAGProperties/?juge=1" target="right"><dt>教学正书记、教学正院长权重</dt></a>
+					<a href="/OD/user/modifyDCProperties/?juge=1" target="right"><dt>党群副处、行政副处权重</dt></a>--%>
+
 				</dl>
+						
+					<!-- <dl class="channel">
+		              	<dt>教务处服务</dt>
+		                <dd><a href="#">待审核竞赛项目</a></dd>
+		                <dd><a href="#">正在进行竞赛项目</a></dd>
+               		</dl> -->
+						
+						<%-- <a href="${pageContext.request.contextPath }/user/logout">退出</a><br>
+						<a href="/OD/user/modifyProperties/?juge=1" target="right">修改校厅级权重</a><br>
+						<a href="/OD/user/modifySGProperties/?juge=1" target="right">党群正处、行政正处权重</a>
+						<a href="/OD/user/modifySBGProperties/?juge=1" target="right">教学副书记、教学副院长权重</a>
+						<a href="/OD/user/modifyAGProperties/?juge=1" target="right">教学正书记、教学正院长权重</a>
+						<a href="/OD/user/modifyDCProperties/?juge=1" target="right">党群副处、行政副处权重</a> --%>
+				
 
 
 			</c:if>
@@ -138,7 +156,7 @@
 		</div>
 	</div>
 
-	<script type="text/javascript" src="js/jquery-2.1.4.js"></script>
+	<script type="text/javascript" src="${pageContet.request.contextPath }/js/jquery-2.1.4.js"></script>
 	<script type="text/javascript">
 		$(".leftsidebar_box dt").css({
 			"background-color" : "#1E68B5"
@@ -347,7 +365,7 @@
 
 >>>>>>> 97879c303ce865df8793ea39d17f0c787247db21 --%>
 
-<!-- by 赵硕 -->
+<%-- <!-- by 赵硕 -->
 	<a href="${pageContext.request.contextPath }/user/logout">退出</a>
 <br/>
 <br/>
@@ -355,4 +373,4 @@
 <a target="right" href="${pageContext.request.contextPath }/evaluate/redirectHere">查看总评结果</a>
 
 </body>
-</html> --%>
+</html>  --%>
