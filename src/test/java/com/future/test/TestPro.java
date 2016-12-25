@@ -16,11 +16,10 @@ public class TestPro {
         Properties properties=new Properties();
         properties.load(inputStream);
         String value=properties.getProperty("123");
-        System.out.println(Double.valueOf(value));
+       // System.out.println(Double.valueOf(value));
     }
     @Test
     public void testDoubleDefault(){
-        Double a = null;
-        System.out.println(a+"");
+    
     }
 }

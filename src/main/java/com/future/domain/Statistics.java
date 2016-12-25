@@ -89,7 +89,7 @@ public class Statistics implements Comparable<Statistics>{
             System.out.println();
         }
         Integer roleid=stati_user.getRole().getRoleId();
-        if(stati_user.getUserNp()==1 ){ //正职
+        if(stati_user.getUserNp()==0 ){ //正职
             if(roleid == 3 ||roleid == 5){ //党群和行政
                 grade = new SectionchiefGrade();
             }else if(roleid == 4 || roleid == 6){  //书记和院长
@@ -98,7 +98,7 @@ public class Statistics implements Comparable<Statistics>{
                 grade = new NullGrade();
             }
 
-        }else if(stati_user.getUserNp() == 0){ //副职
+        }else if(stati_user.getUserNp() == 1){ //副职
             if(roleid == 3 ||roleid == 5){//党群和行政
                 grade = new DeputyCommissionerGrade();
             }else if(roleid == 4 || roleid == 6){ //书记和院长
