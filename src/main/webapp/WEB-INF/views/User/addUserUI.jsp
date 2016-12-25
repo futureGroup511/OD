@@ -245,6 +245,16 @@
 	                   <button type="button" class="btn btn-primary btn-md">浏览</button> 
 	            </div>
 	    </div>
+	    
+	    <div class="row">
+	    	<div class="col-lg-1 col-lg-offset-3 col-md-1 col-md-offset-3 col-xs-2 col-xs-offset-3"><p>密码：</p></div>
+	            <div class="col-lg-2 col-md-2 col-xs-2">
+	            		<form:password class="navbar-link" path="userPassword" id="password" onblur="checkpassword()"/>
+						<label id="passwordMess"style="font:bold;color: red" hidden>密码不能为空</label><br>
+	            </div>
+	            
+	    </div>
+	    
 	</c:if>
 	
 	
