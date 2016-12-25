@@ -70,8 +70,8 @@
                     <td>${eval.userBy.userName}</td>
                     <td>${eval.userBy.role.roleName}</td>
                     <td>${eval.userBy.department.depName}</td>
-                    <td>${eval.evalCate}</td>
-                    <td>${eval.evalRank}</td>
+                    <td>${eval.evalsort}</td>
+                    <td>${eval.evalgrade}</td>
                 </tr>
             </c:forEach>
         </table>
