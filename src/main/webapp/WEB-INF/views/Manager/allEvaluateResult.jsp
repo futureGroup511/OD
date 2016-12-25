@@ -34,7 +34,7 @@
     })
 </script>
 <body>
-<form:form modelAttribute="pType" action="${pageContext.request.contextPath }/evaluate/redirectHere" method="post">
+<%--<form:form modelAttribute="pType" action="${pageContext.request.contextPath }/evaluate/redirectHere" method="post">
     <form:select path="roleType">
         <form:option value="1">校正厅</form:option>
         <form:option value="2">校副厅</form:option>
@@ -44,27 +44,31 @@
         <form:option value="6">院系院长副院长</form:option>
         <input type="submit" name="确定"/>
     </form:select>
-</form:form>
-
+</form:form>--%>
+        <form action="${pageContext.request.contextPath }/evaluate/redirectHere" method="post">
+            姓名：<input type="text" name="userName" value="${requestScope.user.userName}">
+            单位：<input type="text" name="department.depName" value="${requestScope.user.department.depName}">
+            <input type="submit" value="提交">
+        </form>
 <table class="valuateResult">
     <tr>
+        <td>被评价人单位</td>
         <td>被评价人姓名</td>
-        <td>被评价人职务</td>
-        <td>互评平均得分</td>
-        <td>正厅分管单位评价平均得分</td>
-        <td>副厅评价平均得分</td>
-        <td>单位上级评价平均得分</td>
         <td>总评得分</td>
+        <td>互评得分</td>
+        <td>厅级得分</td>
+        <td>单位上级评价得分</td>
+        <td>查看</td>
     </tr>
     <c:forEach items="${requestScope.statisticList }" var="statistic">
         <tr>
-            <td>${statistic.stati_user.userName }</td>
-            <td>${statistic.stati_user.userDuty }</td>
-            <td>${statistic.static_hp }</td>
-            <td>${statistic.static_ztf }</td>
-            <td>${statistic.static_ft }</td>
-            <td>${statistic.static_dw }</td>
+            <td>${statistic.stati_user.department.depName}</td>
+            <td>${statistic.stati_user.userName}</td>
             <td>${statistic.static_result }</td>
+            <td>${statistic.static_xhp }</td>
+            <td>${statistic.static_t }</td>
+            <td>${statistic.static_xdw }</td>
+            <td><a href="/OD/evaluate/getValuatedMe/${statistic.stati_user.userId}">查看</a></td>
         </tr>
     </c:forEach>
 </table>

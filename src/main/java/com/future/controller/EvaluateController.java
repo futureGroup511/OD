@@ -132,10 +132,10 @@ System.out.println("%%%%%");
 
 
     @RequestMapping("/redirectHere")
-    public ModelAndView redirectHere(PeopleType pType){
-
-        List<Statistics> statisticList = statisticsService.getAllEvaluateResultByType(pType.getRoleType());
-
+    public ModelAndView redirectHere(/*PeopleType pType*/ User user){
+        if (user.getUserName()!= null && user.getUserName().equals("")) user.setUserName(null);
+        if (user.getDepartment()!=null && user.getDepartment().getDepName().equals(""))user.setDepartment(null);
+        List<Statistics> statisticList = statisticsService.getAllEvaluateResultByType(user);
         /**
          * 以总评结果进行排序
          */

@@ -99,7 +99,12 @@
 	<a href="/OD/evaluate/findByUserIdOrEvalByName/?id=${sessionScope.user.userId}" target="right">查看自己评价过的人</a><br>
 	<a target="right" href="${pageContext.request.contextPath }/user/updateUserUI/${sessionScope.user.userId}">修改个人信息</a><br>
 	<a target="right" href="${pageContext.request.contextPath }/user/updatePasswordUI/${sessionScope.user.userId}">修改密码</a><br>
-	<a href="${pageContext.request.contextPath }/user/logout">退出</a>
+	<a href="${pageContext.request.contextPath }/user/logout">退出</a><br>
+	<a href="/OD/user/modifyProperties/?juge=1" target="right">修改校厅级权重</a><br>
+	<a href="/OD/user/modifySGProperties/?juge=1" target="right">党群正处、行政正处权重</a>
+	<a href="/OD/user/modifySBGProperties/?juge=1" target="right">教学副书记、教学副院长权重</a>
+	<a href="/OD/user/modifyAGProperties/?juge=1" target="right">教学正书记、教学正院长权重</a>
+	<a href="/OD/user/modifyDCProperties/?juge=1" target="right">党群副处、行政副处权重</a>
 <%-- =======
 <a target="right" href="${pageContext.request.contextPath }/user/getAllUser" >查看所有用户信息</a><br>
 <a target="right"  href="${pageContext.request.contextPath }/department/getAllDep" >查看所有单位信息</a>
@@ -157,7 +162,7 @@
 <a target="right" href="${pageContext.request.contextPath }/evaluate/valuatedByInfo/1">查看人的 被评价</a><br/>
 <a target="right" href="${pageContext.request.contextPath }/evaluate/valuateToInfo/1">查看人的 评价</a>
 
-<a target="right" href="${pageContext.request.contextPath }/evaluate/seeAllEvaluateResult">查看总评结果</a>
+<a target="right" href="${pageContext.request.contextPath }/evaluate/redirectHere">查看总评结果</a>
 
 </body>
 </html>

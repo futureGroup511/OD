@@ -2,6 +2,7 @@ package com.future.service.impl;
 
 import com.future.dao.StatisticsMapper;
 import com.future.domain.Statistics;
+import com.future.domain.User;
 import com.future.service.StatisticsServiceI;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -27,5 +28,10 @@ public class StatisticsServiceImpl implements StatisticsServiceI {
 
     public List<Statistics> getAllEvaluateResultByType(Integer peopleType) {
         return statistics.getAllEvaluateResultByType(peopleType);
+    }
+
+    public List<Statistics> getAllEvaluateResultByType(User user) {
+
+        return statistics.getAllEvaluateResultByType(user);
     }
 }

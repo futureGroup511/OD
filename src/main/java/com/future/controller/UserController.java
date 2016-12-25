@@ -1,24 +1,20 @@
 package com.future.controller;
 
-import static org.springframework.test.web.client.response.MockRestResponseCreators.withBadRequest;
-import com.future.base.BaseAction;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
 import com.future.base.BaseAction;
 import com.future.domain.Department;
 import com.future.domain.Evaluate;
 import com.future.domain.Role;
 import com.future.domain.User;
 import com.future.utils.PageBean;
-
+import org.apache.commons.io.FileUtils;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import org.springframework.web.servlet.ModelAndView;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import javax.servlet.jsp.PageContext;
-
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -26,30 +22,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-
-import org.apache.commons.io.FileUtils;
-import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.SessionAttributes;
-import org.springframework.web.bind.support.SessionStatus;
-import org.springframework.web.multipart.commons.CommonsMultipartFile;
-import org.springframework.web.servlet.ModelAndView;
-
-import com.alibaba.druid.sql.dialect.mysql.ast.statement.MySqlCreateUserStatement.UserSpecification;
-import com.future.base.BaseAction;
-import com.future.domain.Department;
-import com.future.domain.Evaluate;
-import com.future.domain.Role;
-import com.future.domain.User;
 
 @Controller
 @Scope("prototype")
@@ -1122,6 +1094,102 @@ public class UserController extends BaseAction {
 		}
 		int num = userService.insertAll(evaList);
 		return num;
+	}
+
+	/**
+	 *
+	 * @param file
+	 * @param status 为1的时候进入页面，为2是修改数值
+	 * @return
+	 */
+	@RequestMapping("/modifyProperties")
+	public ModelAndView modifyProperties(com.future.utils.File file,@RequestParam("juge")Integer status) throws IOException {
+		ModelAndView modelAndView=new ModelAndView();
+		Properties properties = new Properties();
+		String path="src/main/resources/President.properties";
+		if (status == 1) {
+			file.getAllvalue(path);
+		}else if (status ==2){
+			file.update(path);
+			modelAndView.addObject("message","修改成功");
+		}
+		modelAndView.setViewName("/User/modifyProperties");
+		modelAndView.addObject("file",file);
+		return  modelAndView;
+	}
+
+	/**
+	 * 修改党群正处、行政正处权重
+	 * @param file
+	 * @param status
+	 * @return
+	 */
+	@RequestMapping("/modifySGProperties")
+	public ModelAndView modifySGProperties(com.future.utils.File file,@RequestParam("juge")Integer status){
+		ModelAndView modelAndView=new ModelAndView();
+		Properties properties = new Properties();
+		String path="src/main/resources/SGweigth.properties";
+		if(status == 1) file.getAllvalue(path);
+		else if(status == 2){
+			file.update(path);
+			modelAndView.addObject("message","修改成功");
+		}
+		modelAndView.setViewName("/User/modifySGProperties");
+		modelAndView.addObject("file",file);
+		return  modelAndView;
+	}
+	/**
+	 * 修改教学副书记，教学副院长权重
+	 * @param file
+	 * @param status
+	 * @return
+	 */
+	@RequestMapping("/modifySBGProperties")
+	public ModelAndView modifySBGProperties(com.future.utils.File file,@RequestParam("juge")Integer status){
+		ModelAndView modelAndView=new ModelAndView();
+		String path="src/main/resources/SBGweigth.properties";
+		if(status == 1) file.getAllvalue(path);
+		else if(status == 2){
+			file.update(path);
+			modelAndView.addObject("message","修改成功");
+		}
+		modelAndView.setViewName("/User/modifySBGProperties");
+		modelAndView.addObject("file",file);
+		return modelAndView;
+	}
+
+	/**
+	 * 教学正书记、教学正院长
+	 * @param file
+	 * @param status
+	 * @return
+	 */
+	@RequestMapping("/modifyAGProperties")
+	public ModelAndView modifyAGProperties(com.future.utils.File file,@RequestParam("juge")Integer status){
+		ModelAndView modelAndView=new ModelAndView();
+		String path="src/main/resources/AGweigth.properties";
+		if(status == 1) file.getAllvalue(path);
+		else if(status == 2){
+			file.update(path);
+			modelAndView.addObject("message","修改成功");
+		}
+		modelAndView.setViewName("/User/modifyAGProperties");
+		modelAndView.addObject("file",file);
+		return modelAndView;
+	}
+
+	@RequestMapping("/modifyDCProperties")
+	public ModelAndView modifyDCProperties(com.future.utils.File file,@RequestParam("juge")Integer status){
+		ModelAndView modelAndView=new ModelAndView();
+		String path="src/main/resources/DCweigth.properties";
+		if(status == 1) file.getAllvalue(path);
+		else if(status == 2){
+			file.update(path);
+			modelAndView.addObject("message","修改成功");
+		}
+		modelAndView.setViewName("/User/modifyDCProperties");
+		modelAndView.addObject("file",file);
+		return modelAndView;
 	}
 
 	// 竞赛分页相关

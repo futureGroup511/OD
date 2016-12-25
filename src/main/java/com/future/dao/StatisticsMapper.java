@@ -1,8 +1,7 @@
 package com.future.dao;
 
 import com.future.domain.Statistics;
-
-import java.util.List;
+import com.future.domain.User;
 
 import java.util.List;
 /**
@@ -18,5 +17,7 @@ public interface StatisticsMapper {
     List<Statistics> getAllEvaluateResult();
 
     List<Statistics> getAllEvaluateResultByType(Integer peopleType);
+
+    List<Statistics> getAllEvaluateResultByType(User user);
 }
 

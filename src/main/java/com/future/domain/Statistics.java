@@ -18,8 +18,23 @@ public class Statistics implements Comparable<Statistics>{
     private Double static_ft;
     private Double static_dw;
     private Double static_result;
+    private Double static_t;
+    private Double static_xhp;
+    private Double static_xdw;
     private Grade grade;
 
+    public Double getStatic_xhp(){return  static_xhp;}
+    public Double getStatic_xdw(){return  static_xdw;}
+    public void   setStatic_xhp(Double static_xhp){this.static_xhp=static_xhp;}
+    public void   setStatic_xdw(Double static_xdw){this.static_xdw=static_xdw;}
+    public Double getStatic_t() {
+        return static_t;
+    }
+
+
+    public void setStatic_t(Double static_t) {
+        this.static_t = static_t;
+    }
 
     public Double getStatic_hp() {
         return static_hp;
@@ -61,6 +76,9 @@ public class Statistics implements Comparable<Statistics>{
             教学副书记、教学副院长：互评成绩*0.3 + 厅级打分*0.2  +  单位正职* 0.2
 
          */
+        if(stati_user.getUserName().equals("宋飞琼")){
+            System.out.println();
+        }
         Integer roleid=stati_user.getRole().getRoleId();
         if(stati_user.getUserNp()==1 ){ //正职
             if(roleid == 3 ||roleid == 5){ //党群和行政

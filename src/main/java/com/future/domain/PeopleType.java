@@ -7,6 +7,7 @@ public class PeopleType {
 
     private Integer roleType;
 
+
     public Integer getRoleType() {
         return roleType;
     }
