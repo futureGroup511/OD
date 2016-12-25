@@ -10,7 +10,7 @@
 <body>
 <div class="container">
   <img src="${pageContext.request.contextPath }/img/success1.png" width="200" height="200"> 
-  <p>${message }</p>
+  <p style="margin-left:40%;">${message }</p>
 </div>
 </body>
 </html>

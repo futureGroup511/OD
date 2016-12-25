@@ -62,7 +62,7 @@
         <div class="col-lg-1 col-md-1 col-xs-1" >
            <img src="img/logo.png" id="image2"> 
         </div>
-        <div class="col-lg-3 col-md-3 col-xs-3">
+        <div class="col-lg-5 col-md-5 col-xs-5">
            <p class="two">欢迎访问组织部评分系统</p>
         </div>
     </div>

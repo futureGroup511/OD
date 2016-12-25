@@ -41,13 +41,13 @@
 }
 .container .row .col-lg-3 .one{
   font-size:35px;
-  font-family: 华文行楷
+  font-family: 华文行楷;
 }
 .container .row .col-lg-1 #image2{
   width:105px;  
   margin-top: 6px;
 }
-.container .row .col-lg-3 .two{
+.container .row .col-lg-5 .two{
   font-size:40px;
   margin-top: 25px;
   color:white;
