@@ -11,7 +11,7 @@
 <head>
     <title>查看被评价人</title>
     <script type="text/javascript"  src="${pageContext.request.contextPath}/js/paging.js"></script>
-    <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-1.11.1.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/]js/jquery-1.11.1.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/xlsx.core.min.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/blob.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/FileSaver.min.js"></script>

@@ -64,12 +64,11 @@
             <div class="col-lg-2 col-lg-offset-1 col-md-2 col-md-offset-1 col-xs-3 col-xs-offfet-1">
                 单位：<input type="text" name="department.depName" value="${requestScope.user.department.depName}" id="dw">
             </div>
-
-
+            <div class="col-lg-1  col-md-1 col-xs-2">
+                <input type="submit" class="btn btn-block btn-lg" value="提交">
+            </div>
         </form>
-        <div class="col-lg-1  col-md-1 col-xs-2">
-            <input type="submit" class="btn btn-block btn-lg" value="提交">
-        </div>
+
     </div>
 </div>
 <div class="table-responsive">
