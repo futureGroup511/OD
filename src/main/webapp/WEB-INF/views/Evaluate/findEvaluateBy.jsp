@@ -79,6 +79,7 @@
             <ul class="pagination">
                 <li><a href="#" onclick="turning(1)">首页</a></li>
                 <li><a href="#" onclick="turning(${page.currentPage-1})">上一页</a></li>
+                <li><a href="#">${page.currentPage }/${page.pageCount }</a></li>
                 <li><a href="#" onclick="turning(${page.currentPage+1},${page.pageCount})">下一页</a></li>
                 <li><a href="#" onclick="turning(${page.pageCount},${page.pageCount})">尾页</a></li>
             </ul>

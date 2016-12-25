@@ -11,7 +11,7 @@
 	<frame src="${pageContext.request.contextPath }/head.jsp" scrolling="no"></frame>
 <frameset cols="13%,87%" rows="100%" frameborder="yes"  framespacing="1">
 	<frame src="${pageContext.request.contextPath }/user/returnMeun" scrolling="no"></frame>
-    <frame src=""  frameborder="yes" framespacing="1" name="right"></frame>
+    <frame src="${pageContext.request.contextPath }/welcome.jsp"  frameborder="yes" framespacing="1" name="right"></frame>
     </frameset>
     <noframes></noframes>
   </frameset>
