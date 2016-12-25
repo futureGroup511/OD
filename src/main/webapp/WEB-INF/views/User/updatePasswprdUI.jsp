@@ -4,34 +4,64 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>修改密码页面</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<link rel="stylesheet" href="${pageContext.request.contextPath }/css/bootstrap.css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath }/css/two.css" />
 <script type="text/javascript" src="${pageContext.request.contextPath }/js/jquery-1.11.1.js"></script>
 </head>
-<body>
- 
-	<form id="form" action="${pageContext.request.contextPath }/user/updatePassword" method="post">
-        	<input type="hidden" name="userId" value="${userId }">
-        	<p>请输入原始密码：</p>
-            <input type="password"  id="psword" onblur="verify(${userId })"> 
-            <p id="mess1" style="color:red;display:none">原始密码不正确！</p>
 
-    
-        	<p>请输入密码：</p>
-            <input type="password" id="password1" name="password" onblur="mess2()"> 
-            <p id="mess2" style="color:red;display:none">密码不能为空！</p>
+<body>
+<div class="dangqian">
+	<div class="row">
+    	<div class="container">
+  <div class="row">
+        <div class="col-lg-3 col-lg-offset-5 col-md-3 scol-md-offset-3 col-xs-5  col-xs-offset-1">
+            <p>当前位置：老师互评>>党委</p>
+        </div>
+        <div class="col-lg-2 col-md-3 col-xs-3">
+            <p>欢迎登录本系统</p>
+        </div>
+  </div>
+</div>
+
+    </div>
+</div>
+
+
+        	
+
 
 	    
-			<p>请再次输入密码：</p>
-            <input type="password" id="password2" onblur="mess3()">
+
+<form id="form" action="${pageContext.request.contextPath }/user/updatePassword" method="post"> 
+	<input type="hidden" name="userId" value="${userId }"> 
+	<div class="main">
+		<div class="row">
+	    	<div class="col-lg-4 col-lg-offset-4 col-md-6 col-md-offset-3 col-xs-8 col-xs-offset-2">
+	        	请输入原始密码：
+	        	<input type="password"   class="navbar-link" id="psword" onblur="verify(${userId })"> 
+            	<p id="mess1" style="color:red;display:none">原始密码不正确！</p>
+	        </div>
+	    </div>
+	    <div class="row">
+	        <div class="col-lg-4 col-lg-offset-4 col-md-6 col-md-offset-3 col-xs-8 col-xs-offset-2">
+	        	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;请输入密码：
+	        	 <input type="password" id="password1" class="navbar-link" name="password" onblur="mess2()"> 
+            <p id="mess2" style="color:red;display:none">密码不能为空！</p>
+	        </div>
+	    </div>
+	    <div class="row">
+	    	<div class="col-lg-4 col-lg-offset-4 col-md-6 col-md-offset-3 col-xs-8 col-xs-offset-2">
+	        	请再次输入密码：
+	        	<input type="password"  class="navbar-link" id="password2" onblur="mess3()">
          	<p id="mess3" style="color:red;display:none">密码不能为空！</p>
          	<p id="mess4" style="color:red;display:none">两次输入密码不同！</p>
-
-	    
-	     	<input type="button" id="button"  value="提交">
-     </form>
-     
+	        </div>
+	    </div>
+	    <button type="button" class="btn btn-primary btn-md">提交</button> 
+	</div>
+</form>
 <script type="text/javascript">
 	$(document).ready(function(){
 	    $("#button").click(function(){  
@@ -119,3 +149,47 @@
 </script>
 </body>
 </html>
+
+
+
+
+
+
+
+<%-- <%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>修改密码页面</title>
+<script type="text/javascript" src="${pageContext.request.contextPath }/js/jquery-1.11.1.js"></script>
+</head>
+<body>
+ 
+	<form id="form" action="${pageContext.request.contextPath }/user/updatePassword" method="post">
+        	<input type="hidden" name="userId" value="${userId }">
+        	<p>请输入原始密码：</p>
+            <input type="password"  id="psword" onblur="verify(${userId })"> 
+            <p id="mess1" style="color:red;display:none">原始密码不正确！</p>
+
+    
+        	<p>请输入密码：</p>
+            <input type="password" id="password1" name="password" onblur="mess2()"> 
+            <p id="mess2" style="color:red;display:none">密码不能为空！</p>
+
+	    
+			<p>请再次输入密码：</p>
+            <input type="password" id="password2" onblur="mess3()">
+         	<p id="mess3" style="color:red;display:none">密码不能为空！</p>
+         	<p id="mess4" style="color:red;display:none">两次输入密码不同！</p>
+
+	    
+	     	<input type="button" id="button"  value="提交">
+     </form>
+     
+
+</body>
+</html> --%>
