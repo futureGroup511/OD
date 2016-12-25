@@ -11,7 +11,7 @@ import java.io.IOException;
  * 教学正书记、教学正院长：互评成绩*0.3 + 厅级打分*0.3
  */
 public class AssistantdeanGrade implements Grade {
-    private final String AG="src/main/resources/AGweigth.properties";
+    private final String AG="AGweigth.properties";
     public void grade(Statistics statistics) throws IOException {
         file.getAllvalue(AG);
         Double  zx = file.getZx();

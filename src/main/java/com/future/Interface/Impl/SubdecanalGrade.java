@@ -10,7 +10,7 @@ import java.io.IOException;
  * 教学副书记、教学副院长：互评成绩*0.3 + 厅级打分*0.2  +  单位正职* 0.2
  */
 public class SubdecanalGrade implements Grade {
-    private final  String SBG="src/main/resources/SBGweigth.properties";
+    private final  String SBG="SBGweigth.properties";
     public void grade(Statistics statistics) throws IOException {
         file.getAllvalue(SBG);
         Double  zx = file.getZx();
