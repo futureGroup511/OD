@@ -11,7 +11,7 @@ import java.io.IOException;
  * 党群副处、行政副处：互评成绩*0.3 + 厅级打分*0.2  + 单位正职* 0.2
  */
 public class DeputyCommissionerGrade implements Grade{
-    private final String DC="src/main/resources/DCweigth.properties";
+    private final String DC="DCweigth.properties";
     public void grade(Statistics statistics) throws IOException {
         file.getAllvalue(DC);
         Double  zx = file.getZx();

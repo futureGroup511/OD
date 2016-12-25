@@ -16,7 +16,7 @@ public class File implements FileOperation{
     private Double dwweight;
     private Double zx;
     private Double fx;
-    protected final String PRESIDENT="src/main/resources/President.properties";
+    protected final String PRESIDENT="President.properties";
 
     public Double getHpweight() {
         return hpweight;
@@ -96,7 +96,8 @@ public class File implements FileOperation{
         InputStream inputStream = null;
         Properties properties=new Properties();
         try {
-            inputStream = new BufferedInputStream(new FileInputStream(path));
+          //  inputStream = new BufferedInputStream(new FileInputStream(path));
+            inputStream =this.getClass().getClassLoader().getResourceAsStream(path);
             properties.load(inputStream);
             inputStream.close();
         } catch (FileNotFoundException e) {
