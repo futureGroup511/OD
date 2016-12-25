@@ -3,6 +3,8 @@ package com.future.controller;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -28,11 +30,15 @@ public class DepartmentController extends BaseAction {
 	 * @return
 	 */
 	@RequestMapping(value="getAllDep",method=RequestMethod.GET)
-	public ModelAndView getAllDep(){
+	public ModelAndView getAllDep(HttpServletRequest request){
+		//deleteDepMessage
+		String message = (String) request.getSession().getAttribute("deleteDepMessage");
+		request.getSession().removeAttribute("deleteDepMessage");
 		String viewname = "Department/allDep";
 		ModelAndView modelAndView = new ModelAndView(viewname);
 		List<Department> depList = departmentService.getAllDep();
 		modelAndView.addObject("depList", depList);
+		modelAndView.addObject("deleteDepMessage", message);
 		return modelAndView;
 	}
 	

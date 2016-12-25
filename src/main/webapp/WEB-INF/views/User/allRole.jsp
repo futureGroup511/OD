@@ -13,7 +13,7 @@
 <body>
 <div class="container">
   <div class="row">
-     <div class="col-lg-1 col-lg-offset-1 col-md-2  col-xs-2 col-xs-offset-1">
+     <div class="col-lg-1 col-lg-offset-4 col-md-2 col-lg-offset-4 col-xs-2 col-xs-offset-4">
            <a><p><a href="${pageContext.request.contextPath }/user/addRoleUI" class="btn btn-primary" type="button"><img src="${pageContext.request.contextPath }/img/yonghuzengjia.png" width="25" height="25">增加角色</a></p></a>
         </div>
         <!-- <div class="col-lg-2 col-lg-offset-6 col-md-3 scol-md-offset-3 col-xs-5  col-xs-offset-1">
@@ -26,6 +26,7 @@
 </div>
 
 <div class="table-responsive">
+	${deleteRoleMessage }
     <table class="table table-bordered table-hover table-striped">
     <thead>
       <tr class="two">

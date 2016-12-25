@@ -46,20 +46,22 @@ $(document).ready(function () {
         <div class="col-lg-2 col-md-3 col-xs-3">
             <p>欢迎登录本系统</p>
         </div> -->
-  </div>
-</div>
-
-<div class="table-responsive">
-	<div class="row form">
+        
 		<form action="${ pageContext.request.contextPath}/user/findByNameForUser" method="post">
-	    	<div class="col-lg-2 col-lg-offset-2 col-md-2 col-md-offset-2 col-xs-3 col-xs-offfet-2">
+	    	<div class="col-lg-3 col-lg-offset-2 col-md-3 col-md-offset-2 col-xs-4 col-xs-offfet-2">
 	        	姓名：<input  name="name" type="text" id="txtIput" class="navbar-link">
 	        </div>
 	        <div class="col-lg-1  col-md-1 col-xs-2">
 	        	<button type="submit" class="btn btn-primary btn-xs">提交</button>
 	        </div>
         </form>
-    </div>
+  
+  </div>
+</div>
+
+<div class="table-responsive">
+	
+    ${userDeleteMessage }
     <table class="table table-bordered table-hover table-striped">
     <thead>
       <tr class="two">

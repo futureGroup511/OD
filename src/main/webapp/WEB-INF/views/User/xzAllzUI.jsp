@@ -229,7 +229,11 @@ a, a:visited{text-decoration:none;}
                 </form>
                 </c:if>
 <c:if test="${message != null }">
-	${message }
+	<div class="container">
+	  <img src="${pageContext.request.contextPath }/img/success1.png" width="200" height="200"> 
+	  <p>${message }</p>
+	</div>
+	
 </c:if>
             </div>
          </div>
