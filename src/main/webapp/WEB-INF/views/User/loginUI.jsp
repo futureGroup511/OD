@@ -14,7 +14,7 @@
         <title>欢迎访问组织部互评系统</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!-- CSS -->
-        <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/reset.css.css">
+        <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/reset.css">
         <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/css/style.css">
 		<script type="text/javascript">
 	
@@ -29,24 +29,27 @@
     <body>
      <div class="connect">
         <div class="page-container">
-            <h1>Login</h1>
+            <%--<h1>Login</h1>--%>
            <form name="fosrm" id="form" action="${pageContext.request.contextPath }/user/login" method="post">
             	<input type="hidden" id="address" value="<%=basePath %>">
 
 				<div>
-					<input type="text" name="username" class="username" placeholder="Username" autocomplete="off"/>
+					<input type="text" name="username" class="username" placeholder="" autocomplete="off"/>
 				</div>
                 <div>
-					<input type="password" name="password" class="password" placeholder="Password" oncontextmenu="return false" onpaste="return false" />
+					<input type="password" name="password" class="password" placeholder="" oncontextmenu="return false" onpaste="return false" />
                 </div>
-                <input id="submit" type="submit" value="提交" onclick="juge();">
+                <input id="submit" type="submit" value="登录" onclick="juge();">
                
             </form>
 
-                <p>Henan institute of science and technology department of login system interface.</p>
-				<p style="margin-top:20px;font-size:25px;" class="one">河南科技学院用户登录界面</p>
+                <%--<p>Henan institute of science and technology department of login system interface.</p>--%>
+				<%--<p style="margin-top:20px;font-size:25px;" class="one">河南科技学院用户登录界面</p>--%>
             </div>
         </div>
+	 <div class="footer">
+		 <p>技术支持：河南科技学院未来工作室  河南艾未特网络技术有限公司</p>
+	 </div>
 		<div class="alert" style="display:none">
 			<h2>消息</h2>
 			<div class="alert_con">

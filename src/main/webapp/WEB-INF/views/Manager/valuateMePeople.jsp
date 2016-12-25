@@ -32,7 +32,7 @@
             <td>${valuatedMeInfo.evaluatedBy.userName }</td>
             <td>${valuatedMeInfo.evaluatedBy.userDuty }</td>
             <td>${valuatedMeInfo.evalRank }</td>
-            <td>${valuatedMeInfo.evalCate }</td>
+            <td>${valuatedMeInfo.evalsort }</td>
             <td>${valuatedMeInfo.evalDesc }</td>
         </tr>
     </c:forEach>

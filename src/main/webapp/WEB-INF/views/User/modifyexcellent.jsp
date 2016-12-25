@@ -10,10 +10,18 @@
 <head>
     <title>修改优秀比例权重</title>
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-1.11.1.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquert.media.js"></script>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.css" />
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/shisan.css" />
 
     <script type="text/javascript">
+
+        function lookPDF(theURL){
+            var pop,w=670,h=450; //window.navigate(theURL);
+            pop=window.open(theURL,"winGD","width="+w+",height="+h+",resizable=yes,menubar=no,toolbar=no,location=no,scrollbars=no,status=no")
+            pop.moveTo((screen.width-w)/2,(screen.height-h)/2);
+
+        }
         function jugeNull() {
             var bili=$("#bili").val().trim();
             var xibili=$("#xibili").val().trim();
@@ -44,6 +52,8 @@
         <button value="提交" type="button" onclick="jugeNull();"  class="btn btn-primary btn-md">提交</button>
     </form>
 </div>
+
+<button type="button" onclick="lookPDF('/OD/user/lookpdf');">查看pdf</button>
 <p id="message">${message}</p>
 </body>
 </html>

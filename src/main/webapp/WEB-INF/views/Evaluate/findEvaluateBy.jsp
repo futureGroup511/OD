@@ -68,7 +68,7 @@
             <tr>
                 <th>序号</th>
                 <th>姓名</th>
-                <th>角色</th>
+                <%--<th>角色</th>--%>
                 <th>单位</th>
                 <th>评价类型</th>
                 <th>评价等级</th>
@@ -77,7 +77,7 @@
                 <tr>
                     <td>${status.index+1}</td>
                     <td>${eval.userBy.userName}</td>
-                    <td>${eval.userBy.role.roleName}</td>
+                    <%--<td>${eval.userBy.role.roleName}</td>--%>
                     <td>${eval.userBy.department.depName}</td>
                     <td>${eval.evalsort}</td>
                     <td>${eval.evalgrade}</td>

@@ -10,6 +10,7 @@
 <head>
     <title>教学正书记、教学正院长权重</title>
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-1.11.1.js"></script>
+
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/shisan.css" />
 
@@ -56,6 +57,7 @@
         </form>
     </div>
 </div>
+
     <p id="message">${message}</p>
 </body>
 </html>
