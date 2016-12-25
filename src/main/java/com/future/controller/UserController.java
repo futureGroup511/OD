@@ -1341,6 +1341,14 @@ public class UserController extends BaseAction {
 		return  modelAndView;
 	}
 
+	@RequestMapping("/lookpdf")
+	public ModelAndView lookpdf(HttpSession session){
+		ModelAndView modelAndView = new ModelAndView();
+		String path="upload/xiaowangzi.pdf";
+		modelAndView.addObject("url",path);
+		modelAndView.setViewName("User/lookPDF");
+		return modelAndView;
+	}
 	// 竞赛分页相关
 	private Integer currentPage = 1;
 	private Integer pageSize = 10;
