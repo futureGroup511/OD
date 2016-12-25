@@ -52,7 +52,7 @@
 						<td class="four"><img src="${pageContext.request.contextPath }/img/bian.png">
 							<a href="updateDepUI/${dep.depId }">修改</a>&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;
 						<img src="${pageContext.request.contextPath }/img/lajitong.png">
-							<a href="${pageContext.request.contextPath }/user/deleteDep/${dep.depId }" style="color: #E11E05;">删除</a>
+							<a onClick="if(confirm( '确定要删除吗！ ')==false)return   false;" href="${pageContext.request.contextPath }/user/deleteDep/${dep.depId }" style="color: #E11E05;">删除</a>
 						</td>
 						
 					</tr>

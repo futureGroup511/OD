@@ -39,7 +39,7 @@
 			<tr>
 				<td>${id.count }</td>
 				<td>${role.roleName }</td>
-				<td class="four"><img src="${pageContext.request.contextPath }/img/bian.png"><a href="${pageContext.request.contextPath }/user/updateRoleUI/${role.roleId }">修改</a>&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;<img src="${pageContext.request.contextPath }/img/lajitong.png"><a href="${pageContext.request.contextPath }/user/deleteRole/${role.roleId }" style="color:#E11E05;">删除</a></td>
+				<td class="four"><img src="${pageContext.request.contextPath }/img/bian.png"><a href="${pageContext.request.contextPath }/user/updateRoleUI/${role.roleId }">修改</a>&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;<img src="${pageContext.request.contextPath }/img/lajitong.png"><a onClick="if(confirm( '确定要删除吗！ ')==false)return   false;" href="${pageContext.request.contextPath }/user/deleteRole/${role.roleId }" style="color:#E11E05;">删除</a></td>
 				
 			</tr>
 		</c:forEach>

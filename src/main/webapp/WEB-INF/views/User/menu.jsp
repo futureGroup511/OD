@@ -131,7 +131,7 @@
 					href="${pageContext.request.contextPath }/user/updateUserUI/${sessionScope.user.userId}"><dt>修改个人信息</dt></a>
 				<a target="right"
 					href="${pageContext.request.contextPath }/user/updatePasswordUI/${sessionScope.user.userId}"><dt>修改密码</dt></a>
-				<a href="${pageContext.request.contextPath }/user/logout"><dt>退出</dt></a>
+				<a onClick="if(confirm( '确定要退出吗！ ')==false)return   false;" href="${pageContext.request.contextPath }/user/logout"><dt>退出</dt></a>
 			</dl>
 
 		</div>
