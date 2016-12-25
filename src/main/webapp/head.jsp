@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>头部</title>
+<title>河南科技学院干部评价系统</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath }/css/bootstrap.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath }/css/header.css">
 <script src="${pageContext.request.contextPath }/js/49f8daee.vendors.js"></script>
@@ -63,7 +63,7 @@
            <img src="${pageContext.request.contextPath }/img/logo.png" id="image2"> 
         </div>
         <div class="col-lg-5 col-md-5 col-xs-5">
-           <p class="two">欢迎访问组织部评分系统</p>
+           <p class="two">河南科技学院干部评价系统</p>
         </div>
     </div>
 </div>

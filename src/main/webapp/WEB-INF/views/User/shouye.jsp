@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>欢迎访问组织部互评系统</title>
+<title>河南科技学院干部评价系统</title>
 </head>
 <frameset rows="16.9%,*" cols="100%" frameborder="no" border="0" framespacing="0">
 	<frame src="${pageContext.request.contextPath }/head.jsp" scrolling="no"></frame>

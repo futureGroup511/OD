@@ -10,7 +10,7 @@
 
 <body>
  <div class="container">
-    <p>欢迎使用组织部互评系统</p>
+    <p>河南科技学院干部评价系统</p>
  </div>
 </body>
 </html>

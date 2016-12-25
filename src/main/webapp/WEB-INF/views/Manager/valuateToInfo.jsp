@@ -11,12 +11,12 @@
 <div class="dangqian">
 	           <div class="container">
   <div class="row">
-       <!--  <div class="col-lg-3 col-lg-offset-5 col-md-3 scol-md-offset-3 col-xs-5  col-xs-offset-1">
-            <p>当前位置：老师互评>>党委</p>
+       <div class="col-lg-2 col-lg-offset-6 col-md-3 scol-md-offset-3 col-xs-5  col-xs-offset-1">
+            <p>当前位置：管理员>>干部打分情况</p>
         </div>
         <div class="col-lg-2 col-md-3 col-xs-3">
-            <p>欢迎登录本系统</p>
-        </div> -->
+            <p>欢迎  ${sessionScope.user.userName }  登录本系统</p>
+        </div>
 </div>
 <div class="main">
 	<div class="row form">
