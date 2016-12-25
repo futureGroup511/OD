@@ -16,10 +16,12 @@
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/blob.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/FileSaver.min.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/tableexport.js"></script>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.css" />
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/ten.css" />
 </head>
 <style>
     table.gridtable {
-                 font-family: verdana,arial,sans-serif;
+                 font-family: verdana,arial ,sans-serif;
                  font-size:11px;
                  color:#333333;
                  border-width: 1px;
@@ -36,12 +38,27 @@
     })
 </script>
 <body>
-    <form action="/OD/evaluate/findByUserIdOrEvalByName" method="post" id="form">
-        <input type="hidden" name="id" value="${sessionScope.user.userId}">
-        <input type="hidden" name="currentPage" value="${page.currentPage}" id="currentPage">
-        姓名:<input type="text" name="name" value="${findname}">
-        <input type="submit" value="确定">
-    </form>
+
+    <div class="row form">
+        <form action="/OD/evaluate/findByUserIdOrEvalByName" method="post" id="form">
+            <input type="hidden" name="id" value="${sessionScope.user.userId}">
+            <input type="hidden" name="currentPage" value="${page.currentPage}" id="currentPage">
+            <div class="col-lg-1 col-lg-offset-2 col-md-1 col-md-offset-2 col-xs-1 col-xs-offfet-2">
+            姓名：
+            </div>
+            <div class="col-lg-2  col-md-2  col-xs-3">
+                <input type="text" name="name" value="${findname}">
+            </div>
+            <div class="col-lg-2 col-md-2 col-xs-3">
+                <input type="submit" value="确定">
+            </div>
+        </form>
+    </div>
+
+
+
+
+
     <c:if test="${page.recordCount ne 0}">
         <table  class="gridtable">
             <tr>

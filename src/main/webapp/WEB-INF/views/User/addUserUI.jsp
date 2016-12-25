@@ -5,19 +5,21 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>添加用户页面</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<link rel="stylesheet" href="${pageContext.request.contextPath }/css/bootstrap.css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath }/css/one.css" />
 <script type="text/javascript" src="${pageContext.request.contextPath }/js/jquery-1.11.1.js"></script>
 <script type="text/javascript">
 	$(function(){
-		var a = $("form").attr("action");
+		var a = $("#form").attr("action");
 		//alert(a);
 		if(a == "true"){
 			//alert("b")
-			$("form").attr("action","addUser")
+			$("#form").attr("action","addUser")
 		} else if(a == "false"){
 			//alert("c")
-			$("form").attr("action","${pageContext.request.contextPath }/user/updateUser")
+			$("#form").attr("action","${pageContext.request.contextPath }/user/updateUser")
 		}
 	}) 
 	
@@ -114,8 +116,174 @@
 	}
 </script>
 </head>
+
 <body>
-添加用户页面/修改<%-- ${user.userId != null:updateUser?addUser} --%>
+<div class="dangqian">
+	           <div class="container">
+      <div class="row">
+        <div class="col-lg-3 col-lg-offset-5 col-md-3 scol-md-offset-3 col-xs-5  col-xs-offset-1">
+            <p>当前位置：老师互评>>党委</p>
+        </div>
+        <div class="col-lg-2 col-md-3 col-xs-3">
+            <p>欢迎登录本系统</p>
+        </div>
+        </div>
+</div>
+<div class="main">
+	<form:form id="form" action="${user.userId == null}" method="POST" modelAttribute="user" enctype="multipart/form-data">
+	
+	
+	
+	<c:if test="${user.userId !=null }">
+		<form:hidden path="userId"/>
+		<div class="row">
+	    	    <div class="col-lg-1 col-lg-offset-3 col-md-1 col-md-offset-3 col-xs-2 col-xs-offset-3"><p>用户名：</p></div>
+	            <div class="col-lg-2 col-md-2 col-xs-2">
+	            <form:input class="navbar-link" path="userName" id="username" onblur="checkoutname()"/><label id="nameMess"style="font:bold;color: red" hidden>用户名不能为空</label><br>
+	            </div>
+	            <div class="col-lg-1 col-lg-offset-1 col-md-1 col-md-offset-1 col-xs-2 col-xs-offset-1"><p>账号：</p></div>
+	            <div class="col-lg-2 col-md-2 col-xs-2">
+	            	<form:input class="navbar-link" path="userNum" id="usernum" readonly="true"/>
+	            </div>
+	        </div>
+	    </div>
+	    <div class="row">
+	    		<div class="col-lg-1 col-lg-offset-3 col-md-1 col-md-offset-3 col-xs-2 col-xs-offset-3"><p>用户角色：</p></div>
+	            <div class="col-lg-2 col-md-2 col-xs-2">
+	            	<form:select class="form-control" path="userRole" items="${userRole }" itemLabel="roleName" itemValue="roleId"></form:select><br>
+	            </div>
+	            <div class="col-lg-1 col-lg-offset-1 col-md-1 col-md-offset-1 col-xs-2 col-xs-offset-1"><p>所属单位：</p></div>
+	            <div class="col-lg-2 col-md-2 col-xs-2">
+	            		<form:select class="form-control" path="userDep" items="${userDep }" itemLabel="depName" itemValue="depId"></form:select><br>
+	            </div>
+	        </div>
+	    </div>
+		<div class="row">
+	    	    <div class="col-lg-1 col-lg-offset-3 col-md-1 col-md-offset-3 col-xs-2 col-xs-offset-3"><p>正副：</p></div>
+	            <div class="col-lg-2 col-md-2 col-xs-2">
+	            		<select name="userNp" class="form-control">
+					<option value="0" <c:if test="${user.userNp == 0 }">selected</c:if>>正</option>
+					<option value="1" <c:if test="${user.userNp == 1 }">selected</c:if>>副</option>
+					<option value="3" <c:if test="${user.userNp == 3 }">selected</c:if>>其他</option>
+				</select><br>
+	
+	            </div>
+	            <div class="col-lg-1 col-lg-offset-1 col-md-1 col-md-offset-1 col-xs-2 col-xs-offset-1"><p>职务：</p></div>
+	            <div class="col-lg-2 col-md-2 col-xs-2">
+	            	    <form:input path="userDuty" class="navbar-link"/><br>
+	            </div>
+	    </div>
+		<div class="row">
+	    	<div class="col-lg-1 col-lg-offset-3 col-md-1 col-md-offset-3 col-xs-2 col-xs-offset-3"><p>是否在职：</p></div>
+	            <div class="col-lg-2 col-md-2 col-xs-2">
+	            		<select name="userDesc" class="form-control">
+								<option value="0"     <c:if test="${user.userDesc == '0' }">selected</c:if>     >在职</option>
+								<option value="1"     <c:if test="${user.userDesc == '1' }">selected</c:if>     >不在职</option>
+						</select>
+	            </div>
+	            <div class="col-lg-1 col-lg-offset-1 col-md-1 col-md-offset-1 col-xs-2 col-xs-offset-1"><p>述职文件：</p></div>
+	            <div class="col-lg-2 col-md-2 col-xs-2">
+	            		<form:hidden path="userReport"/>
+					   <input type="file" name="uploadfile" class="choose">
+	                   <button type="button" class="btn btn-primary btn-md">浏览</button> 
+	            </div>
+	    </div>
+    </c:if>
+    
+    <c:if test="${user.userId ==null }">
+		<div class="row">
+	    	    <div class="col-lg-1 col-lg-offset-3 col-md-1 col-md-offset-3 col-xs-2 col-xs-offset-3"><p>用户名：</p></div>
+	            <div class="col-lg-2 col-md-2 col-xs-2">
+	            <form:input class="navbar-link" path="userName" id="username" onblur="checkoutname()"/><label id="nameMess"style="font:bold;color: red" hidden>用户名不能为空</label><br>
+	            </div>
+	            <div class="col-lg-1 col-lg-offset-1 col-md-1 col-md-offset-1 col-xs-2 col-xs-offset-1"><p>账号：</p></div>
+	            <div class="col-lg-2 col-md-2 col-xs-2">
+	            	<form:input class="navbar-link" path="userNum" id="usernum"/>
+	            </div>
+	        </div>
+	    </div>
+	    <div class="row">
+	    		<div class="col-lg-1 col-lg-offset-3 col-md-1 col-md-offset-3 col-xs-2 col-xs-offset-3"><p>用户角色：</p></div>
+	            <div class="col-lg-2 col-md-2 col-xs-2">
+	            	<form:select class="form-control" path="userRole" items="${userRole }" itemLabel="roleName" itemValue="roleId"></form:select><br>
+	            </div>
+	            <div class="col-lg-1 col-lg-offset-1 col-md-1 col-md-offset-1 col-xs-2 col-xs-offset-1"><p>所属单位：</p></div>
+	            <div class="col-lg-2 col-md-2 col-xs-2">
+	            		<form:select class="form-control" path="userDep" items="${userDep }" itemLabel="depName" itemValue="depId"></form:select><br>
+	            </div>
+	        </div>
+	    </div>
+		<div class="row">
+	    	    <div class="col-lg-1 col-lg-offset-3 col-md-1 col-md-offset-3 col-xs-2 col-xs-offset-3"><p>正副：</p></div>
+	            <div class="col-lg-2 col-md-2 col-xs-2">
+	            		<select name="userNp" class="form-control">
+					<option value="0" <c:if test="${user.userNp == 0 }">selected</c:if>>正</option>
+					<option value="1" <c:if test="${user.userNp == 1 }">selected</c:if>>副</option>
+					<option value="3" <c:if test="${user.userNp == 3 }">selected</c:if>>其他</option>
+				</select><br>
+	
+	            </div>
+	            <div class="col-lg-1 col-lg-offset-1 col-md-1 col-md-offset-1 col-xs-2 col-xs-offset-1"><p>职务：</p></div>
+	            <div class="col-lg-2 col-md-2 col-xs-2">
+	            	    <form:input path="userDuty" class="navbar-link"/><br>
+	            </div>
+	    </div>
+		<div class="row">
+	    	<div class="col-lg-1 col-lg-offset-3 col-md-1 col-md-offset-3 col-xs-2 col-xs-offset-3"><p>是否在职：</p></div>
+	            <div class="col-lg-2 col-md-2 col-xs-2">
+	            		<select name="userDesc" class="form-control">
+								<option value="0"     <c:if test="${user.userDesc == '0' }">selected</c:if>     >在职</option>
+								<option value="1"     <c:if test="${user.userDesc == '1' }">selected</c:if>     >不在职</option>
+						</select>
+	            </div>
+	            <div class="col-lg-1 col-lg-offset-1 col-md-1 col-md-offset-1 col-xs-2 col-xs-offset-1"><p>述职文件：</p></div>
+	            <div class="col-lg-2 col-md-2 col-xs-2">
+					   <input type="file" name="uploadfile" class="choose">
+	                   <button type="button" class="btn btn-primary btn-md">浏览</button> 
+	            </div>
+	    </div>
+	</c:if>
+	
+	
+	
+    
+    
+    
+    
+    <button type="button" class="btn btn-primary btn-md" id="button">提交</button> 
+</div>
+</form:form>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<%-- 
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>添加用户页面</title>
+
+</head>
+<body>
+添加用户页面/修改${user.userId != null:updateUser?addUser}
 <form:form id="form" action="${user.userId == null}" method="POST" modelAttribute="user" enctype="multipart/form-data">
 	
 	<!-- 修改 -->
@@ -175,4 +343,4 @@
 	<input type="button" id="button" value="提交">
 </form:form>
 </body>
-</html>
+</html> --%>
