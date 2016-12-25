@@ -1,4 +1,4 @@
-<%-- <%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
@@ -7,29 +7,29 @@
 	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
 			+ path + "/";
 %>
-<!DOCTYPE html>
-<html lang="en" class="no-js">
-
-    <head>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
 
         <meta charset="utf-8">
         <title>Fullscreen Login</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="">
-        <meta name="author" content="">
+       
 
         <!-- CSS -->
-        <link rel="stylesheet" href="${pageContext.request.contextPath }/css/reset.css">
-        <link rel="stylesheet" href="${pageContext.request.contextPath }/css/supersized.css">
-        <link rel="stylesheet" href="${pageContext.request.contextPath }/css/style.css">
-
+        <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/css/reset.css">
+        <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/css/style.css">
+		
     </head>
 
     <body oncontextmenu="return false">
-
+    <p>test<p>
+     <div class="connect">
         <div class="page-container">
             <h1>Login</h1>
-            <form action="" method="post">
+           <form name="frm" action="${pageContext.request.contextPath }/user/login" method="post" >
+            	<input type="hidden" id="address" value="<%=basePath %>">
+            	
 				<div>
 					<input type="text" name="username" class="username" placeholder="Username" autocomplete="off"/>
 				</div>
@@ -38,7 +38,7 @@
                 </div>
                 <button id="submit" type="button">Sign in</button>
             </form>
-            <div class="connect">
+           
                 <p>Henan institute of science and technology department of login system interface.</p>
 				<p style="margin-top:20px;font-size:25px;" class="one">河南科技学院用户登录界面</p>
             </div>
@@ -53,8 +53,6 @@
 
         <!-- Javascript -->
 		<script src="http://apps.bdimg.com/libs/jquery/1.6.4/jquery.min.js" type="text/javascript"></script>
-        <script src="${pageContext.request.contextPath }/js/supersized.3.2.7.min.js"></script>
-        <script src="${pageContext.request.contextPath }js/supersized-init.js"></script>
 		<script>
 		$(".btn").click(function(){
 			is_hide();
@@ -86,12 +84,12 @@
 		function is_hide(){ $(".alert").animate({"top":"-40%"}, 300) }
 		function is_show(){ $(".alert").show().animate({"top":"45%"}, 300) }
 		</script>
+            
     </body>
 
 </html>
 
 
- --%>
 
 
 
@@ -99,8 +97,7 @@
 
 
 
-
-
+<%-- 
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -152,4 +149,4 @@ ${message }
 	<input type="submit" value="登陆">
 </form>
 </body>
-</html>
+</html> --%>

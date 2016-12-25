@@ -1,3 +1,6 @@
+p{
+	color:red;
+}
 
 /* ------- This is the CSS Reset ------- */
 
@@ -41,4 +44,5 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
+
 
