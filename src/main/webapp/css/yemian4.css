@@ -11,6 +11,9 @@ body{
 	margin-right: 10px;
 	margin-bottom: 10px;
 }
+.row{
+	width:100%;
+}
 .container{
   width:100%;
 }
@@ -23,12 +26,17 @@ body{
 .row a:hover{
   text-decoration: none;
   color:#FFCA00;
-	
+}
+.form button{
+	border-radius: 0px;
 }
 .table-responsive{
 	width:90%;
 	margin:0 auto;
 	margin-top: 25px;
+}
+.table{
+	margin-top:25px;
 }
 .table-responsive .three a{
 	color:#d81e06;
@@ -58,4 +66,11 @@ body{
 }
 .pagination{
 	margin-left:-3%;
+}
+.container-one .row{
+	width:100%;
+}
+.container-one .row .btn{
+	background-color: #12A1EC;
+	margin-top: 10px;
 }
