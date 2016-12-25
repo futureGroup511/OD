@@ -106,9 +106,9 @@
 						href="${pageContext.request.contextPath }/department/getAllDep"><dt>查看所有单位信息</dt></a>
 					<a target="right"
 						href="${pageContext.request.contextPath }/user/getAllRole"><dt>查看所有角色</dt></a>
-					<a target="right"
+					<%-- <a target="right"
 						href="${pageContext.request.contextPath }/evaluate/valuatedByInfo/1"><dt>查看人的
-							被评价</dt></a>
+							被评价</dt></a> --%>
 					<a target="right"
 						href="${pageContext.request.contextPath }/evaluate/valuateToInfo/1"><dt>查看干部打分情况</dt></a>
 					<a target="right"
