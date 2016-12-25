@@ -1,0 +1,24 @@
+@charset "utf-8";
+*{
+padding:0;
+margin:0;
+}
+.container p .btn{
+	background-color: #12A1EC;
+}
+
+.row{
+  width:100%;
+  margin-top:2%;
+}
+.navbar-link{
+  height:33px;
+  width:60%;
+}
+.btn-primary{
+  margin-left:62%;
+  border-radius: 0px;
+  margin-top:5%;
+}
+/* CSS Document */
+

@@ -204,13 +204,13 @@
 
 
 
-<head>
+<%-- <head>
 <!-- 去掉这3行，则点击直接显示原图，如果移动至下面则IE浏览器报错 begin -->
 <script type='text/javascript' src='${pageContext.request.contextPath }/ly/js/jquery.js'></script>
 <script type='text/javascript' src='${pageContext.request.contextPath }/ly/js/jquery.scripts.js'></script>
 <script type='text/javascript' src='${pageContext.request.contextPath }/ly/js/jquery.custom.js'></script>
 <!-- 去掉这3行，则点击直接显示原图，如果移动至下面则IE浏览器报错 end -->
 <link rel="stylesheet" type="text/css" media="all" href="${pageContext.request.contextPath }/ly/css/style.min.css" />
-</head>
+</head> --%>
 
 
