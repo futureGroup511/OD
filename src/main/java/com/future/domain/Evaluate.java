@@ -102,15 +102,19 @@ public class Evaluate {
     }
 
     public Integer getEvalRank() {
-        return evalRank;
+      return  evalRank;
     }
 
     public void setEvalRank(Integer evalRank) {
         this.evalRank = evalRank;
     }
 
-    public Integer getEvalCate() {
-        return evalCate;
+    public String getEvalCate() {
+        if(evalCate == 1) return "互评";
+        if(evalCate == 2 && evalDesc.equals("1")) return "分管评价";
+        if(evalCate == 3 || (evalCate == 2 && evalDesc.equals("0"))) return "厅级评价";
+        if(evalCate == 4) return "单位评价";
+        return "未知";
     }
 
     public void setEvalCate(Integer evalCate) {

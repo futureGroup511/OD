@@ -162,14 +162,14 @@
 
     $.fn.tableExport.xlsx = {
         defaultClass: "xlsx",
-        buttonContent: "Export to xlsx",
+        buttonContent: "转换成xlsx(2010版以上的word)",
         mimeType: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
         fileExtension: ".xlsx"
     };
 
     $.fn.tableExport.xls = {
         defaultClass: "xls",
-        buttonContent: "Export to xls",
+        buttonContent: "转化成xls(2003版word中文乱码)",
         separator: "\t",
         mimeType: "application/vnd.ms-excel",
         fileExtension: ".xls"

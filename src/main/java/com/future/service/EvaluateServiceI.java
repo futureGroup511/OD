@@ -47,5 +47,11 @@ public interface EvaluateServiceI {
      * @author 刘阳阳
      */
 	List<User> getUserByNameLY(String nameLYY);
+
+    /**
+     * 得到所有院系的名曾
+     * @return
+     */
+    List<String> getAllDepartment();
 }
  

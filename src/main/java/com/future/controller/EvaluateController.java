@@ -10,18 +10,15 @@ import com.future.domain.User;
 import com.future.utils.PageBean;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
-
-import java.io.UnsupportedEncodingException;
-import java.util.*;
-
 import javax.servlet.http.HttpServletRequest;
+import java.io.UnsupportedEncodingException;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 @Controller
 @Scope("prototype")
@@ -150,10 +147,10 @@ public class EvaluateController extends BaseAction {
 
 
     @RequestMapping("/redirectHere")
-    public ModelAndView redirectHere(PeopleType pType){
-
-        List<Statistics> statisticList = statisticsService.getAllEvaluateResultByType(pType.getRoleType());
-
+    public ModelAndView redirectHere(/*PeopleType pType*/ User user){
+        if (user.getUserName()!= null && user.getUserName().equals("")) user.setUserName(null);
+        if (user.getDepartment()!=null && user.getDepartment().getDepName().equals(""))user.setDepartment(null);
+        List<Statistics> statisticList = statisticsService.getAllEvaluateResultByType(user);
         /**
          * 以总评结果进行排序
          */
@@ -169,7 +166,7 @@ public class EvaluateController extends BaseAction {
         map.put("pType", peopleType);
 
         modelAndView.addAllObjects(map);
-
+        modelAndView.addObject("user",user);
         return modelAndView;
 
     }
@@ -219,4 +216,10 @@ public class EvaluateController extends BaseAction {
     	return modelAndView;
     }
 
+    @ResponseBody
+    @RequestMapping("/getAlldepartmentName")
+    public List<String> getAlldepartmentName(){
+        List<String> departments=evaluateService.getAllDepartment();
+        return  departments;
+    }
 }

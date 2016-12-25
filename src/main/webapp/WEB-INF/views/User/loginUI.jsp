@@ -7,7 +7,6 @@
 	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
 			+ path + "/";
 %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 
@@ -15,7 +14,7 @@
         <title>Fullscreen Login</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!-- CSS -->
-        <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/css/reset.css">
+        <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/reset.css.css">
         <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/css/style.css">
 		<script type="text/javascript">
 	
@@ -33,6 +32,7 @@
             <h1>Login</h1>
            <form name="fosrm" id="form" action="${pageContext.request.contextPath }/user/login" method="post">
             	<input type="hidden" id="address" value="<%=basePath %>">
+
 				<div>
 					<input type="text" name="username" class="username" placeholder="Username" autocomplete="off"/>
 				</div>
@@ -42,7 +42,7 @@
                 <input id="submit" type="submit" value="提交" onclick="juge();">
                
             </form>
-           
+
                 <p>Henan institute of science and technology department of login system interface.</p>
 				<p style="margin-top:20px;font-size:25px;" class="one">河南科技学院用户登录界面</p>
             </div>
@@ -95,10 +95,11 @@
 		function is_hide(){ $(".alert").animate({"top":"-40%"}, 300) }
 		function is_show(){ $(".alert").show().animate({"top":"45%"}, 300) }
 		</script>
-            
+
     </body>
 
 </html>
+
 
 
 

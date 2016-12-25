@@ -69,4 +69,8 @@ public class EvaluateServiceImpl implements EvaluateServiceI {
 	public List<User> getUserByNameLY(String nameLYY) {
 		return evaluateMapper.getUserByNameLY(nameLYY);
 	}
+
+	public List<String> getAllDepartment() {
+		return evaluateMapper.getAllDepartment();
+	}
 }

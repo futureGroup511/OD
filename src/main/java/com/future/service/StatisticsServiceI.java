@@ -1,11 +1,7 @@
 package com.future.service;
 
 import com.future.domain.Statistics;
-
-import java.util.List;
-import com.future.dao.StatisticsMapper;
-import com.future.domain.Statistics;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.future.domain.User;
 
 import java.util.List;
 
@@ -24,6 +20,8 @@ public interface StatisticsServiceI {
 
 
     List<Statistics> getAllEvaluateResultByType(Integer peopleType);
+
+    List<Statistics> getAllEvaluateResultByType(User user);
 }
 
 

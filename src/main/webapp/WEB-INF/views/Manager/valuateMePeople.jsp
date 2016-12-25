@@ -3,11 +3,14 @@
 <html>
 <head>
     <title>评价人信息及评价信息</title>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/yemian13.css">
 </head>
 <body>
-<table class="table">
-    <h3>导出结果</h3>
-    <tr> 
+<div class="table-responsive">
+    <table class="table table-bordered table-hover table-striped">
+
+    <tr>
         <th>评价人姓名</th>
         <th>评价人职务</th>
         <th>评价级别</th>
@@ -23,6 +26,8 @@
             <td>${valuatedMeInfo.evalDesc }</td>
         </tr>
     </c:forEach>
-</table>
+    </table>
+</div>
+
 </body>
 </html>

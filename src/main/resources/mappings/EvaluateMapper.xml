@@ -336,6 +336,9 @@
 	<select id="getUserByNameLY" parameterType="java.lang.String" resultMap="UserMap">
 	  SELECT * FROM od_user user WHERE user.user_name like concat(concat('%'),#{nameLYY},'%')
 	</select>
-	
+
+	<select id="getAllDepartment" resultType="String">
+		SELECT dep_name FROM od_department
+	</select>
 	
 </mapper>

@@ -49,31 +49,48 @@
 		<result property="static_ft" column="stati_ft"></result>
 		<result property="static_dw" column="stati_dw"></result>
 		<association property="stati_user" column="stati_user_id" javaType="com.future.domain.User">
+			<id column="user_id" property="userId"></id>
 			<result property="userName" column="user_name"></result>
 			<result property="userNp" column="user_np"></result>
 			<result property="userDuty" column="user_duty"></result>
 			<association property="role" column="user_role" javaType="com.future.domain.Role">
 				<id property="roleId" column="role_id"></id>
 			</association>
+			<association property="department" javaType="Department">
+				<result property="depName" column="dep_name"></result>
+			</association>
 		</association>
 	</resultMap>
 	<select id="getAllEvaluateResult" resultMap="AllEvaluatedResult">
-		SELECT od_statistics.stati_id,
+		SELECT od_statistics.stati_id,od_user.user_id,od_department.dep_name,
 		od_statistics.stati_hp, od_statistics.stati_ztf,
 		od_statistics.stati_ft,od_statistics.stati_dw,
 		od_user.user_name,od_user.user_np,od_user.user_duty,
-		od_role.role_id from od_statistics,od_user,od_role WHERE od_statistics.stati_user_id = od_user.user_id
-		AND od_user.user_role = od_role.role_id ;
+		od_role.role_id from od_statistics,od_user,od_role,od_department WHERE
+		od_statistics.stati_user_id = od_user.user_id
+		AND od_user.user_dep = od_department.dep_id
+		AND od_user.user_role = od_role.role_id
+		GROUP BY od_department.dep_name
 	</select>
 
 	<!-- 得到指定角色类型的统计数量-->
-	<select id="getAllEvaluateResultByType" parameterType="int" resultMap="AllEvaluatedResult">
-		SELECT od_statistics.stati_id,
+	<select id="getAllEvaluateResultByType" parameterType="User" resultMap="AllEvaluatedResult">
+		SELECT od_statistics.stati_id,od_department.dep_name,
 		od_statistics.stati_hp, od_statistics.stati_ztf,
 		od_statistics.stati_ft,od_statistics.stati_dw,
 		od_user.user_name,od_user.user_np,od_user.user_duty,
-		od_role.role_id from od_statistics,od_user,od_role WHERE od_statistics.stati_user_id = od_user.user_id
-		AND od_user.user_role = od_role.role_id = #{peopleType};
+		od_role.role_id from od_statistics,od_user,od_role ,od_department
+		WHERE od_statistics.stati_user_id = od_user.user_id
+		AND od_user.user_role = od_role.role_id
+		AND od_user.user_dep =od_department.dep_id
+		AND od_user.user_np !=3
+		<if test="userName != null">
+			AND od_user.user_name = #{userName}
+		</if>
+		<if test="department != null">
+			AND od_department.dep_name = #{department.depName}
+		</if>
+		GROUP BY od_department.dep_name
 	</select>
 
 </mapper>

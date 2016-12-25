@@ -147,4 +147,10 @@ public interface EvaluateMapper {
      * @author 刘阳阳
      */
 	List<User> getUserByNameLY(String nameLYY);
+
+	/**
+	 * 得到所有单位的名称
+	 * @return
+	 */
+	List<String> getAllDepartment();
 }
