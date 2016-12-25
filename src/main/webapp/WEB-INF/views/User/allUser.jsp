@@ -14,9 +14,6 @@
 <script type="text/javascript" src="${pageContext.request.contextPath }/ly/auto/jquery.autocomplete.min.js"></script>
 <script type="text/javascript">
 $(document).ready(function () {
-	
-		
-		 
 		$.ajax({
  			url:'${pageContext.request.contextPath }/user/ajaxgetAllUserName',
  			type:'post',

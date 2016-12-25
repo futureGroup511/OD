@@ -10,6 +10,7 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath }/css/bootstrap.css" />
 <link rel="stylesheet" href="${pageContext.request.contextPath }/css/one.css" />
 <script type="text/javascript" src="${pageContext.request.contextPath }/js/jquery-1.11.1.js"></script>
+
 <script type="text/javascript">
 	$(function(){
 		var a = $("#form").attr("action");
@@ -198,7 +199,9 @@
 	            </div>
 	            <div class="col-lg-1 col-lg-offset-1 col-md-1 col-md-offset-1 col-xs-2 col-xs-offset-1"><p>账号：</p></div>
 	            <div class="col-lg-2 col-md-2 col-xs-2">
-	            	<form:input class="navbar-link" path="userNum" id="usernum"/>
+	            	<form:input class="navbar-link" path="userNum" id="usernum" onblur="checkoutUsrename()"/>
+					<label id="usernameMess"style="font:bold;color: red" hidden>账号不能为空</label>
+					<label id="usernameMess1"style="font:bold;color: red" hidden>此用户已存在</label>
 	            </div>
 	        </div>
 	    </div>

@@ -17,7 +17,14 @@
         <!-- CSS -->
         <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/css/reset.css">
         <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/css/style.css">
-		
+		<script type="text/javascript">
+	
+	//在被嵌套时就刷新上级窗口
+	if(window.parent != window){
+		//window.parent.location.reload(true);
+		window.parent.location.href='$("#address").val()';
+	}
+	</script>
 </head>
 
     <body>
