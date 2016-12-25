@@ -10,7 +10,20 @@ public class Evaluate {
     // 评价描述 
     private String evalDesc;
 
-    private User evaluatedBy;
+    //单位
+    private Department evalDep;
+    
+    
+    
+    public Department getEvalDep() {
+		return evalDep;
+	}
+
+	public void setEvalDep(Department evalDep) {
+		this.evalDep = evalDep;
+	}
+
+	private User evaluatedBy;
     private User evaluatedTo;
 
     public User getEvaluatedBy() {

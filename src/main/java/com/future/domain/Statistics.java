@@ -5,6 +5,8 @@ import com.future.Interface.Grade;
 import com.future.Interface.Impl.*;
 
 import java.io.IOException;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 /**
  * Created by 牛洧鹏 on 2016/12/20. 
@@ -23,12 +25,19 @@ public class Statistics implements Comparable<Statistics>{
     private Double static_xdw;
     private Grade grade;
 
-    public Double getStatic_xhp(){return  static_xhp;}
-    public Double getStatic_xdw(){return  static_xdw;}
+    public Double getStatic_xhp(){
+        if(static_xhp == null) return 0.0;
+        return  formatDouble(static_xhp);
+    }
+    public Double getStatic_xdw(){
+        if(static_xdw == null) return 0.0;
+        return   formatDouble(static_xdw);
+    }
     public void   setStatic_xhp(Double static_xhp){this.static_xhp=static_xhp;}
     public void   setStatic_xdw(Double static_xdw){this.static_xdw=static_xdw;}
     public Double getStatic_t() {
-        return static_t;
+        if(static_t == null) return 0.0;
+        return formatDouble(static_t);
     }
 
 
@@ -103,7 +112,7 @@ public class Statistics implements Comparable<Statistics>{
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return static_result;
+        return formatDouble(static_result);
     }
 
     public void setStatic_result(Double static_result) {
@@ -132,11 +141,17 @@ public class Statistics implements Comparable<Statistics>{
      */
     public int compareTo(Statistics o) {
         if(this.getStatic_result()>o.getStatic_result()){
-            return 1;
-        }else if(this.getStatic_result()<o.getStatic_result()){
             return -1;
+        }else if(this.getStatic_result()<o.getStatic_result()){
+            return 1;
         }else{
             return 0;
         }
     }
+
+    public Double formatDouble(Double data){
+        BigDecimal bg = new BigDecimal(data).setScale(2, RoundingMode.UP);
+        return bg.doubleValue();
+    }
+
 }

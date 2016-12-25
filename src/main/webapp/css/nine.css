@@ -1,0 +1,17 @@
+@charset "utf-8";
+*{
+  margin:0;
+  padding:0;
+}
+.row{width:100%;}
+.col-lg-2{margin-top:2%;}
+.col-lg-3{margin-top:2%;}
+.col-lg-1{margin-top:2%;}
+.form-control{width:150px;border-radius: 0px;margin-left:-15%;}
+.navbar-link{height:33px;width:90%;}
+.table{ text-align:center;width:66%;margin:0 auto; margin-top:3%;}
+.main .btn-primary{border-radius: 0px;margin-left:-100%;}
+.table thead tr th{ text-align:center;}
+
+/* CSS Document */
+

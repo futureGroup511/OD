@@ -374,4 +374,22 @@ public class UserServiceImpl implements UserServiceI {
 		return userMapper.getUserGoodFuZhi(goodUserList);
 	}
 
+	/**
+	 * 清空evalue数据
+	 * 
+	 * @author 刘阳阳
+	 */
+	public int delteDateFromEvaluate() {
+		return evaluateMapp.delteDateFromEvaluate();
+	}
+
+	/**
+	 * 更新static表全部为0
+	 * 
+	 * @author 刘阳阳
+	 */
+	public int updateDateStatistic() {
+		return userMapper.updateDateStatistic();
+	}
+
 }

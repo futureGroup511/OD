@@ -11,5 +11,6 @@ import java.io.IOException;
 public interface Grade {
     File file=new File();
     public void grade(Statistics statistics) throws IOException;
+    
 
 }

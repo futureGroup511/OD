@@ -133,4 +133,24 @@ public interface EvaluateMapper {
 	 */
 	List<Evaluate> getValuateByPeople(Map<String,Object> hashMap);
 	//==================================================
+
+	/**
+	 * 清空evalue数据
+	 * 
+	 * @author 刘阳阳
+	 */
+	int delteDateFromEvaluate();
+
+	/**
+     * 根据姓名模糊查询评价人
+     * 
+     * @author 刘阳阳
+     */
+	List<User> getUserByNameLY(String nameLYY);
+
+	/**
+	 * 得到所有单位的名称
+	 * @return
+	 */
+	List<String> getAllDepartment();
 }

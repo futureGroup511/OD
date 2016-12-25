@@ -13,7 +13,7 @@
 </head>
 <body> 
 
-<form action="/OD/evaluate/getValuatedOthers" method="post" id="form">
+<%-- <form action="/OD/evaluate/getValuatedOthers" method="post" id="form">
     <input type="hidden" name="meId" value="${requestScope.meId}">
     <input type="text" name="name" >
     <select name="rank" >
@@ -24,22 +24,39 @@
         <option value="40">差</option>
     </select>
     <input type="submit" value="提交">
-</form>
+</form> --%>
+评价人：${requestScope.nameLY }
 <table class="table">
     <tr>
-        <th>被评价人姓名</th>
-        <th>被评人评价职务</th>
-        <th>评价级别</th>
-        <th>评价类型</th>
-        <th>评价描述</th>
+        <th>序号</th>
+        <th>单位</th>
+        <th>被评人</th>
+       <!--  <th>被评人评价职务</th> -->
+        <th>评价结果</th>
+        <!-- <th>评价类型</th>
+        <th>评价描述</th> -->
     </tr>
-        <c:forEach items="${requestScope.evaluatesList }" var="valuatedMeInfo">
+        <c:forEach items="${requestScope.evaluatesList }" var="valuatedMeInfo" varStatus="id">
             <tr>
+                <td>${id.count }</td>
+                <td>${valuatedMeInfo.evalDep.depName }</td>
                 <td>${valuatedMeInfo.evaluatedTo.userName }</td>
-                <td>${valuatedMeInfo.evaluatedTo.userDuty }</td>
-                <td>${valuatedMeInfo.evalRank }</td>
-                <td>${valuatedMeInfo.evalCate }</td>
-                <td>${valuatedMeInfo.evalDesc }</td>
+                <%-- <td>${valuatedMeInfo.evaluatedTo.userDuty }</td> --%>
+                <td>
+                <c:if test="${valuatedMeInfo.evalRank ==1  }">
+                	优秀
+                </c:if>
+                <c:if test="${valuatedMeInfo.evalRank ==2  }">
+                	称职
+                </c:if>
+                <c:if test="${valuatedMeInfo.evalRank ==3  }">
+                	基本称职
+                </c:if>
+                <c:if test="${valuatedMeInfo.evalRank ==4  }">
+                	不称职
+                </c:if>
+                <%-- <td>${valuatedMeInfo.evalCate }</td>
+                <td>${valuatedMeInfo.evalDesc }</td> --%>
             </tr>
         </c:forEach>
 

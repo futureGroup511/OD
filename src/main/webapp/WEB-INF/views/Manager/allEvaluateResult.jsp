@@ -8,7 +8,9 @@
 
 
     <script type="text/javascript"  src="${pageContext.request.contextPath}/js/paging.js"></script>
-    <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-1.11.1.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath }/ly/auto/jquery-1.7.1.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/ly/auto/jquery.autocomplete.css">
+    <script type="text/javascript" src="${pageContext.request.contextPath }/ly/auto/jquery.autocomplete.min.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/xlsx.core.min.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/blob.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/FileSaver.min.js"></script>
@@ -26,6 +28,24 @@
     }
 </style>
 <script>
+    /*getAlldepartmentName*/
+    $(document).ready(function(){
+        $.ajax({
+                url:'${pageContext.request.contextPath }/evaluate/getAlldepartmentName',
+                type:'post',
+                data:null,
+                success:function (msg) {
+                        $("#dw").AutoComplete({
+                            'data':msg,
+                            'itemHeight': 20,
+                            'width': 280
+                        });
+
+
+                 }
+
+        });
+    });
     $("table").tableExport({
         bootstrap: false
     });
@@ -47,7 +67,7 @@
 </form:form>--%>
         <form action="${pageContext.request.contextPath }/evaluate/redirectHere" method="post">
             姓名：<input type="text" name="userName" value="${requestScope.user.userName}">
-            单位：<input type="text" name="department.depName" value="${requestScope.user.department.depName}">
+            单位：<input type="text" name="department.depName" value="${requestScope.user.department.depName}" id="dw">
             <input type="submit" value="提交">
         </form>
 <table class="valuateResult">

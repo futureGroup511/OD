@@ -1,0 +1,66 @@
+@charset "utf-8";
+/* CSS Document */
+
+*{
+padding:0;
+margin:0;
+}
+.row{
+	width:100%;
+}
+body{
+ border: 1px solid #B4B4B4;
+  margin-top: 10px;
+	margin-left: 10px;
+	margin-right: 10px;
+	margin-bottom: 10px;
+}
+.container{
+  width:100%;
+}
+.container p .btn{
+	background-color: #12A1EC;
+}
+.row p{
+  margin-top:25px;
+}
+.row a:hover{
+  text-decoration: none;
+  color:#FFCA00;
+}
+.table-responsive{
+	width:50%;
+	margin:0 auto;
+	margin-top: 15px;
+}
+.table-responsive th{
+	text-align: center;
+}
+.table-responsive tr{
+	text-align: center;
+}
+.table-responsive .three a{
+	color:#d81e06;
+	padding-left: 10px;
+}
+.table-responsive .four a{
+	color:#12A1EC;
+	padding-left: 10px;
+}
+.table-responsive td img{
+	width:16px;
+	height: 16px;
+}
+.row .col-lg-11{
+	margin-left:4%;
+	margin-top: -30px;
+}
+.row  .xixnxi{
+	margin-left:4%;
+	margin-top:5%;
+}
+.pagination{
+	margin-left:-3%;
+}
+
+

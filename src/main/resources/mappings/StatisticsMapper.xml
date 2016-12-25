@@ -83,12 +83,14 @@
 		WHERE od_statistics.stati_user_id = od_user.user_id
 		AND od_user.user_role = od_role.role_id
 		AND od_user.user_dep =od_department.dep_id
+		AND od_user.user_np !=3
 		<if test="userName != null">
 			AND od_user.user_name = #{userName}
 		</if>
 		<if test="department != null">
 			AND od_department.dep_name = #{department.depName}
 		</if>
+		GROUP BY od_department.dep_name
 	</select>
 
 </mapper>

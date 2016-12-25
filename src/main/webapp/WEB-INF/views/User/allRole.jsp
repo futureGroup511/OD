@@ -1,6 +1,62 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>页面6</title>
+<link rel="stylesheet" href="${pageContext.request.contextPath }/css/bootstrap.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/css/yemian6.css">
+</head>
+
+<body>
+<div class="container">
+  <div class="row">
+     <div class="col-lg-1 col-lg-offset-1 col-md-2  col-xs-2 col-xs-offset-1">
+           <a><p><a href="${pageContext.request.contextPath }/user/addRoleUI" class="btn btn-primary" type="button"><img src="${pageContext.request.contextPath }/img/yonghuzengjia.png" width="25" height="25">增加角色</a></p></a>
+        </div>
+        <div class="col-lg-2 col-lg-offset-6 col-md-3 scol-md-offset-3 col-xs-5  col-xs-offset-1">
+            <p>当前位置：管理员>>查看所有角色</p>
+        </div>
+        <div class="col-lg-2 col-md-3 col-xs-3">
+            <p>欢迎登录本系统</p>
+        </div>
+  </div>
+</div>
+
+<div class="table-responsive">
+    <table class="table table-bordered table-hover table-striped">
+    <thead>
+      <tr class="two">
+         <th>序号</th>
+         <th>名称</th>
+         <th>编辑</th>
+       </tr>
+      </thead>
+      <tbody>
+      	<c:forEach items="${roleList }" var="role" varStatus="id">
+			<tr>
+				<td>${id.count }</td>
+				<td>${role.roleName }</td>
+				<td class="four"><img src="${pageContext.request.contextPath }/img/bian.png"><a href="${pageContext.request.contextPath }/user/updateRoleUI/${role.roleId }">修改</a>&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;<img src="${pageContext.request.contextPath }/img/lajitong.png"><a href="${pageContext.request.contextPath }/user/deleteRole/${role.roleId }" style="color:#E11E05;">删除</a></td>
+				
+			</tr>
+		</c:forEach>
+		
+        
+      </tbody>
+    </table>
+</div>
+</body>
+</html>
+
+
+
+
+<%-- <%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -31,4 +87,4 @@
 
 </table>
 </body>
-</html>
+</html> --%>
