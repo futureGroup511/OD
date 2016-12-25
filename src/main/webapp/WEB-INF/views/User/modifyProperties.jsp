@@ -11,7 +11,7 @@
     <title>修改校厅级所占权重</title>
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-1.11.1.js"></script>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/yemian7.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/shisan.css" />
     <script >
 
         function  jugeNull() {
@@ -37,22 +37,23 @@
     </script>
 </head>
 <body>
-<div class="container-one">
-    <div class="row form">
-        <form action="/OD/user/modifyProperties" method="post" id="form">
-            <input type="hidden" name="juge" value="2">
-            <div class="col-lg-2 col-lg-offset-3 col-md-2 col-md-offset-3 col-xs-3 col-xs-offfet-3">
-                正校厅级所占权重: <input type="text" name="zx" value="${file.zx}" id="zx">
+<div class="main">
+    <form action="/OD/user/modifyProperties" method="post" id="form">
+        <input type="hidden" name="juge" value="2">
+        <div class="row">
+            <div class="col-lg-4 col-lg-offset-4 col-md-6 col-md-offset-3 col-xs-8 col-xs-offset-2">
+                正校厅级所占权重: <input type="text" name="zx" value="${file.zx}" id="zx" class="navbar-link">
             </div>
-            <div class="col-lg-2 col-lg-offset-1 col-md-2 col-md-offset-1 col-xs-3 col-xs-offfet-1">
-                副校厅级所占权重: <input type="text" name="fx" value="${file.fx}" id="fx">
+        </div>
+        <div class="row">
+            <div class="col-lg-4 col-lg-offset-4 col-md-6 col-md-offset-3 col-xs-8 col-xs-offset-2">
+                副校厅级所占权重: <input type="text" name="fx" value="${file.fx}" id="fx" class="navbar-link">
             </div>
-            <div class="col-lg-1  col-md-1 col-xs-2">
-                <button type="button" onclick="jugeNull()">提交</button>
-            </div>
-        </form>
-    </div>
+        </div>
+        <button type="button" onclick="jugeNull()"  class="btn btn-primary btn-md">提交</button>
+    </form>
 </div>
+
     <p id="message">${message}</p>
 </body>
 </html>

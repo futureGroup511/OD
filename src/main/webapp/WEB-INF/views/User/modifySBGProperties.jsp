@@ -11,7 +11,8 @@
     <title>修改教学副书记、教学副院长权重</title>
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-1.11.1.js"></script>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/yemian7.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/shisi.css" />
+
     <script>
         function  jugew() {
             var hp=$("#hpweight").val().trim();
@@ -23,25 +24,28 @@
     </script>
 </head>
 <body>
-<div class="container-one">
-    <div class="row form">
-        <form action="/OD/user/modifySBGProperties" method="post" id="form">
-            <input type="hidden" name="juge" value="2">
-            <div class="col-lg-2 col-lg-offset-3 col-md-2 col-md-offset-3 col-xs-3 col-xs-offfet-3">
-                互评成绩权重: <input type="text" name="hpweight" id="hpweight" value="${file.hpweight}">
+<div class="main">
+    <form action="/OD/user/modifySBGProperties" method="post" id="form">
+        <input type="hidden" name="juge" value="2">
+        <div class="row">
+            <div class="col-lg-4 col-lg-offset-4 col-md-6 col-md-offset-3 col-xs-8 col-xs-offset-2">
+                互评成绩权重: <input type="text" name="hpweight" id="hpweight" value="${file.hpweight}" class="navbar-link">
             </div>
-            <div class="col-lg-2 col-lg-offset-1 col-md-2 col-md-offset-1 col-xs-3 col-xs-offfet-1">
-                厅级打分权重: <input type="text" name="xtweight" id="xtweight" value="${file.xtweight}">
+        </div>
+        <div class="row">
+            <div class="col-lg-4 col-lg-offset-4 col-md-6 col-md-offset-3 col-xs-8 col-xs-offset-2">
+                厅级打分权重: <input type="text" name="xtweight" id="xtweight" value="${file.xtweight}" class="navbar-link">
             </div>
-            <div class="col-lg-2 col-lg-offset-1 col-md-2 col-md-offset-1 col-xs-3 col-xs-offfet-1">
-                单位正职权重: <input type="text" name="dwweight" id="dwweight" value="${file.dwweight}">
+        </div>
+        <div class="row">
+            <div class="col-lg-4 col-lg-offset-4 col-md-6 col-md-offset-3 col-xs-8 col-xs-offset-2">
+                单位正职权重: <input type="text" name="dwweight" id="dwweight" value="${file.dwweight}" class="navbar-link">
             </div>
-            <div class="col-lg-1  col-md-1 col-xs-2">
-                <button type="button" onclick="jugew()">提交</button>
+        </div>
 
-            </div>
-        </form>
-    </div>
+
+        <button type="button" onclick="jugew()" class="btn btn-primary btn-md">提交</button>
+    </form>
 </div>
     <p id="message">${message}</p>
 </body>

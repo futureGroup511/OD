@@ -10,6 +10,9 @@
 <head>
     <title>修改优秀比例权重</title>
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-1.11.1.js"></script>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.css" />
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/shisan.css" />
+
     <script type="text/javascript">
         function jugeNull() {
             var bili=$("#bili").val().trim();
@@ -24,12 +27,23 @@
     </script>
 </head>
 <body>
+<div class="main">
     <form action="/OD/user/modifyexcellent" method="post" id="form">
         <input type="hidden" name="juge" value="2">
-        优秀所占比例: <input type="text" name="bili" value="${bl}" id="bili">
-        优秀所占比例中副职最低比例: <input type="text" name="xibili" value="${xbl}" id="xibili">
-        <button value="提交" type="button" onclick="jugeNull();">提交</button>
+        <div class="row">
+            <div class="col-lg-4 col-lg-offset-4 col-md-6 col-md-offset-3 col-xs-8 col-xs-offset-2">
+                优秀所占比例: <input type="text" name="bili" value="${bl}" id="bili"  class="navbar-link">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-4 col-lg-offset-4 col-md-6 col-md-offset-3 col-xs-8 col-xs-offset-2">
+                副职最低比例: <input type="text" name="xibili" value="${xbl}" id="xibili" class="navbar-link">
+            </div>
+        </div>
+        <button value="提交" type="button" onclick="jugeNull();"  class="btn btn-primary btn-md">提交</button>
     </form>
+</div>
 <p id="message">${message}</p>
 </body>
 </html>
