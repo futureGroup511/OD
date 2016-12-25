@@ -9,7 +9,7 @@ body {
     filter:alpha(opacity:100);
     opacity:0.89;
     background-image:rgba(0,0,0,0.5);
-    background-image:url(img/3.jpg);
+    background-image:url(../img/3.jpg);
     background-repeat: no-repeat;
     z-index: -1;
 }

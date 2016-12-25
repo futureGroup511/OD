@@ -14,29 +14,26 @@
         <meta charset="utf-8">
         <title>Fullscreen Login</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-       
-
         <!-- CSS -->
         <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/css/reset.css">
         <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/css/style.css">
 		
-    </head>
+</head>
 
-    <body oncontextmenu="return false">
-    <p>test<p>
+    <body>
      <div class="connect">
         <div class="page-container">
             <h1>Login</h1>
-           <form name="frm" action="${pageContext.request.contextPath }/user/login" method="post" >
+           <form name="fosrm" id="form" action="${pageContext.request.contextPath }/user/login" method="post">
             	<input type="hidden" id="address" value="<%=basePath %>">
-            	
 				<div>
 					<input type="text" name="username" class="username" placeholder="Username" autocomplete="off"/>
 				</div>
                 <div>
 					<input type="password" name="password" class="password" placeholder="Password" oncontextmenu="return false" onpaste="return false" />
                 </div>
-                <button id="submit" type="button">Sign in</button>
+                <input id="submit" type="submit" value="提交" onclick="juge();">
+               
             </form>
            
                 <p>Henan institute of science and technology department of login system interface.</p>
@@ -52,14 +49,15 @@
 		</div>
 
         <!-- Javascript -->
-		<script src="http://apps.bdimg.com/libs/jquery/1.6.4/jquery.min.js" type="text/javascript"></script>
+		<script src="${pageContext.request.contextPath }/js/js.js" type="text/javascript"></script>
 		<script>
+		
 		$(".btn").click(function(){
 			is_hide();
 		})
 		var u = $("input[name=username]");
 		var p = $("input[name=password]");
-		$("#submit").live('click',function(){
+		function juge(){
 			if(u.val() == '' || p.val() =='')
 			{
 				$("#ts").html("用户名或密码不能为空");
@@ -75,6 +73,12 @@
 					return false;
 				}
 			}
+		
+			return true;
+		}
+		
+		$("#submit").live('click',function(){
+			
 		});
 		window.onload = function()
 		{
@@ -97,9 +101,9 @@
 
 
 
-<%-- 
 
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+
+<%-- <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
@@ -111,6 +115,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/css/reset.css">
+        <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/css/style.css">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>欢迎登陆</title>
 <script type="text/javascript" src="${pageContext.request.contextPath }/js/jquery-1.11.1.js"></script>
