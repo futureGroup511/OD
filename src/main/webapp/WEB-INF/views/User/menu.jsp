@@ -83,12 +83,6 @@
 				
 				<dl class="channel">
 
-					<a target="right"
-						href="${pageContext.request.contextPath }/user/getAllUser/1"><dt>查看所有用户信息</dt></a>
-					<a target="right"
-						href="${pageContext.request.contextPath }/department/getAllDep"><dt>查看所有单位信息</dt></a>
-					<a target="right"
-						href="${pageContext.request.contextPath }/user/getAllRole"><dt>查看所有角色</dt></a>
 		              	<dt>信息管理</dt>
 		                <dd><a target="right"
 						href="${pageContext.request.contextPath }/user/getAllUser/1">查看所有用户信息</a></dd>

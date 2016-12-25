@@ -131,6 +131,33 @@ public class UserController extends BaseAction {
 			return modelAndView;
 		}
 	}
+	
+	/**
+	 * 处理登陆请求
+	 * 
+	 * @author 刘阳阳
+	 */
+	@RequestMapping(value = "login", method = RequestMethod.GET)
+	// public ModelAndView login(@RequestParam("username") String
+	// username,@RequestParam("password") String password,ModelMap session){
+	public ModelAndView aaa(@RequestParam("username") String username, @RequestParam("password") String password,
+			HttpSession session, HttpServletRequest request) {
+		User user = userService.login(username, password);
+		if (user != null) {
+			String viewname = "User/shouye";
+			ModelAndView modelAndView = new ModelAndView(viewname);
+			// session.addAttribute("user",user);
+			session.setAttribute("user", user);
+			return modelAndView;
+		} else {
+			String viewname = "User/loginUI";
+			ModelAndView modelAndView = new ModelAndView(viewname);
+			// session.addAttribute("message","账号或密码错误");
+			request.setAttribute("message", "账号或密码错误111");
+			// session.setAttribute("message","账号或密码错误");
+			return modelAndView;
+		}
+	}
 
 	/**
 	 * 处理登出请求
