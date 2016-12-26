@@ -10,25 +10,16 @@
 <html>
 <head>
     <title>查看被评价人</title>
-    <script type="text/javascript"  src="${pageContext.request.contextPath}/js/paging.js"></script>
-    <script type="text/javascript" src="${pageContext.request.contextPath}/]js/jquery-1.11.1.js"></script>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.css" />
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/ten.css" />
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-1.11.1.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/xlsx.core.min.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/blob.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/FileSaver.min.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/tableexport.js"></script>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.css" />
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/ten.css" />
+    <script type="text/javascript"  src="${pageContext.request.contextPath}/js/paging.js"></script>
+
 </head>
-<style>
-    table.gridtable {
-                 font-family: verdana,arial ,sans-serif;
-                 font-size:11px;
-                 color:#333333;
-                 border-width: 1px;
-                 border-color: #666666;
-                 border-collapse: collapse;
-             }
-</style>
 
 <body>
 <div class="container">
@@ -51,12 +42,11 @@
             <div class="col-lg-2  col-md-2  col-xs-3">
                 <input type="text" name="name" value="${findname}">
             </div>
-            <div class="col-lg-2 col-md-2 col-xs-3">
-                <input type="submit" value="确定">
-            </div>
         </form>
+        <div class="col-lg-2 col-md-2 col-xs-3">
+            <button  onclick="subform()">确定</button>
+        </div>
     </div>
-
 
 
 
@@ -86,6 +76,8 @@
         </table>
         <nav>
             <ul class="pagination">
+
+
                 <li><a href="#" onclick="turning(1)">首页</a></li>
                 <li><a href="#" onclick="turning(${page.currentPage-1})">上一页</a></li>
                 <li><a href="#">${page.currentPage }/${page.pageCount }</a></li>
