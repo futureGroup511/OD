@@ -17,6 +17,23 @@
 <script type="text/javascript" src="${pageContext.request.contextPath }/js/jquery-1.11.1.js"></script>
 <script type="text/javascript"> 
 
+
+function lookPDF(theURL){
+    var pop,w=670,h=450; //window.navigate(theURL);
+    pop=window.open(theURL,"winGD","width="+w+",height="+h+",resizable=yes,menubar=no,toolbar=no,location=no,scrollbars=no,status=no")
+    pop.moveTo((screen.width-w)/2,(screen.height-h)/2);
+
+}
+function jugeNull() {
+    var bili=$("#bili").val().trim();
+    var xibili=$("#xibili").val().trim();
+    if(bili === "" || xibili==="") {
+        $("#message").text("请不要填写空值");
+    }else{
+        $("#form").submit();
+    }
+
+}
 	function xuanzhong(){
 		//$("input[type='radio']").attr("checked",'checked');
 		$(".chenzhi").attr("checked",'checked');
@@ -152,16 +169,15 @@ a, a:visited{text-decoration:none;}
 <body background="images/dotted.png">
 		<div class="dangqian">
             <div class="container">
-              <div class="row">
-                
-                <!-- <div class="col-lg-3 col-lg-offset-5 col-md-3 scol-md-offset-3 col-xs-5  col-xs-offset-1">
-                    <p>当前位置：老师互评>>党委</p>
-                </div>
-                <div class="col-lg-2 col-md-3 col-xs-3">
-                    <p>欢迎登录本系统</p>
-                </div> -->
-		     </div>
-           </div>
+  <div class="row">
+        <div class="col-lg-2 col-lg-offset-6 col-md-3 scol-md-offset-3 col-xs-5  col-xs-offset-1">
+            <p>当前位置：评价>>${pingjiaMessage }</p>
+        </div>
+        <div class="col-lg-2 col-md-3 col-xs-3">
+            <p>欢迎  ${sessionScope.user.userName }  登录本系统</p>
+        </div>
+  </div>
+</div>
         </div>
 
 
@@ -211,8 +227,9 @@ a, a:visited{text-decoration:none;}
 		                        </td>
 								<td>
 									<%-- <img alt="" height="10" width="10" src="${pageContext.request.contextPath }/upload/1481966691829.png"> --%>
-									<a class="image-icon" rel="gallery[modal]" href="${pageContext.request.contextPath }/${user.userReport}">
-									<img height="20" width="50" src="${pageContext.request.contextPath }/${user.userReport}"></a>
+									<%-- <a class="image-icon" rel="gallery[modal]" href="${pageContext.request.contextPath }/${user.userReport}">
+									<img height="20" width="50" src="${pageContext.request.contextPath }/${user.userReport}"></a> --%>
+									<button type="button" onclick="lookPDF('${pageContext.request.contextPath}/user/lookpdf?reportName=${user.userReport}');">查看述职报告</button>
 								</td>
 							</tr>
 						</c:forEach>

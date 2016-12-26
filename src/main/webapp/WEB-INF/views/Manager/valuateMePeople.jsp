@@ -7,6 +7,16 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/yemian13.css">
 </head>
 <body>
+<div class="container">
+  <div class="row">
+        <div class="col-lg-2 col-lg-offset-6 col-md-3 scol-md-offset-3 col-xs-5  col-xs-offset-1">
+            <p>当前位置：管理员>>查看干部被评价结果</p>
+        </div>
+        <div class="col-lg-2 col-md-3 col-xs-3">
+            <p>欢迎  ${sessionScope.user.userName }  登录本系统</p>
+        </div>
+  </div>
+</div>
 <div class="table-responsive">
     <table class="table table-bordered table-hover table-striped">
 

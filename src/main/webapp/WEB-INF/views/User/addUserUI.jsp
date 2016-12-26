@@ -122,12 +122,12 @@
 <div class="dangqian">
 	           <div class="container">
       <div class="row">
-        <!-- <div class="col-lg-3 col-lg-offset-5 col-md-3 scol-md-offset-3 col-xs-5  col-xs-offset-1">
-            <p>当前位置：老师互评>>党委</p>
+        <div class="col-lg-3 col-lg-offset-7 col-md-2 scol-md-offset-7 col-xs-2 col-xs-offset-7">
+            <p>当前位置：管理员>>增加/修改用户信息</p>
         </div>
-        <div class="col-lg-2 col-md-3 col-xs-3">
-            <p>欢迎登录本系统</p>
-        </div> -->
+        <div class="col-lg-2 col-md-2 col-xs-2">
+            <p>欢迎  ${sessionScope.user.userName }  登录本系统</p>
+        </div>
         </div>
 </div>
 <div class="main">

@@ -6,6 +6,8 @@ import com.future.domain.Evaluate;
 import com.future.domain.Role;
 import com.future.domain.User;
 import com.future.utils.PageBean;
+import com.mysql.jdbc.SocksProxySocketFactory;
+
 import org.apache.commons.io.FileUtils;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
@@ -310,6 +312,38 @@ public class UserController extends BaseAction {
 		}
 		return "redirect:/user/getAllUser/1";
 	}
+	
+	/**
+	 * 
+	 * 上传述职报告 
+	 * @author 刘阳阳
+	 */
+	@RequestMapping(value = "uploadResport", method = RequestMethod.POST)
+	public ModelAndView uploadResport(@RequestParam("uploadfile") CommonsMultipartFile file,
+			HttpServletRequest request) {
+			String viewname = "User/success";
+			ModelAndView modelAndView = new ModelAndView(viewname);
+			
+			User user = (User) request.getSession().getAttribute("user");
+			System.out.println(user);
+			
+			String filename = "";
+			String type = file.getOriginalFilename().substring(file.getOriginalFilename().indexOf("."));// 取文件格式后缀名
+			filename = System.currentTimeMillis() + type;// 取当前时间戳作为文件名
+			String path = request.getSession().getServletContext().getRealPath("/upload/" + filename);// 存放位置
+			File destFile = new File(path);
+			try {
+				FileUtils.copyInputStreamToFile(file.getInputStream(), destFile);// 复制临时文件到指定目录下
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			if (filename != "") {
+				user.setUserReport("upload/" + filename);
+			}
+			userService.updateByPrimaryKey(user);
+			modelAndView.addObject("message", "上传成功！");
+		return modelAndView;
+	}
 
 	@RequestMapping(value = "deleteUser/{id}", method = RequestMethod.GET)
 	public String deleteUser(@PathVariable("id") Integer id,HttpServletRequest request) {
@@ -350,6 +384,7 @@ public class UserController extends BaseAction {
 			List<User> user = userService.getxzAllz();
 			modelAndView.addObject("userList", user);
 			modelAndView.addObject("userNum", user.size());
+			modelAndView.addObject("pingjiaMessage", "处级干部评价");
 			modelAndView.addObject("url", "/user/xzAllz");
 		}
 		return modelAndView;
@@ -510,6 +545,7 @@ public class UserController extends BaseAction {
 			List<User> userList = userService.xzAllFenGuanUI(user.getUserName());
 			modelAndView.addObject("userList", userList);
 			modelAndView.addObject("userNum", userList.size());
+			modelAndView.addObject("pingjiaMessage", "分管(联点单位评价)");
 			modelAndView.addObject("url", "/user/xzAllFenGuan");
 		}
 		return modelAndView;
@@ -597,6 +633,7 @@ public class UserController extends BaseAction {
 			List<User> user = userService.getxzAllz();
 			modelAndView.addObject("userList", user);
 			modelAndView.addObject("userNum", user.size());
+			modelAndView.addObject("pingjiaMessage", "处级干部评价");
 			modelAndView.addObject("url", "/user/xfAllzf");
 		}
 		return modelAndView;
@@ -643,6 +680,7 @@ public class UserController extends BaseAction {
 			List<User> userList = userService.xfAllFenGuanUI(user.getUserName());
 			modelAndView.addObject("userList", userList);
 			modelAndView.addObject("userNum", userList.size());
+			modelAndView.addObject("pingjiaMessage", "分管(联点单位评价)");
 			modelAndView.addObject("url", "/user/xfAllFenGuan");
 		}
 		return modelAndView;
@@ -726,6 +764,7 @@ public class UserController extends BaseAction {
 			List<User> userList = userService.dangquanAllHPUser();
 			modelAndView.addObject("userList", userList);
 			modelAndView.addObject("userNum", userList.size());
+			modelAndView.addObject("pingjiaMessage", "对口干部互评");
 			modelAndView.addObject("url", "/user/dangqunGetAllJiaoxueShuji");
 		}
 		return modelAndView;
@@ -765,6 +804,8 @@ public class UserController extends BaseAction {
 			List<User> userList = userService.dangquanAllDepDwon(tempuser);
 			modelAndView.addObject("userList", userList);
 			modelAndView.addObject("userNum", userList.size());
+			modelAndView.addObject("pingjiaMessage", "对口干部互评");
+			modelAndView.addObject("pingjiaMessage", "单位副职评价");
 			modelAndView.addObject("url", "/user/dangqunGetAllDepZF");
 		}
 		return modelAndView;
@@ -807,6 +848,7 @@ public class UserController extends BaseAction {
 			List<User> userList = userService.JiaoxueShujiGetAlldangqun();
 			modelAndView.addObject("userList", userList);
 			modelAndView.addObject("userNum", userList.size());
+			modelAndView.addObject("pingjiaMessage", "对口干部互评");
 			modelAndView.addObject("url", "/user/JiaoxueShujiGetAlldangqun");
 		}
 		return modelAndView;
@@ -848,6 +890,7 @@ public class UserController extends BaseAction {
 			List<User> userList = userService.jiaoxueshujiAllGetDepDown(user);
 			modelAndView.addObject("userList", userList);
 			modelAndView.addObject("userNum", userList.size());
+			modelAndView.addObject("pingjiaMessage", "单位副职评价");
 			modelAndView.addObject("url", "/user/JiaoxueShujiGetAllDepDown");
 		}
 		return modelAndView;
@@ -888,6 +931,7 @@ public class UserController extends BaseAction {
 			List<User> userList = userService.XzGetAllYxYz();
 			modelAndView.addObject("userList", userList);
 			modelAndView.addObject("userNum", userList.size());
+			modelAndView.addObject("pingjiaMessage", "对口干部互评");
 			modelAndView.addObject("url", "/user/XzGetAllYxYz");
 		}
 		return modelAndView;
@@ -928,6 +972,7 @@ public class UserController extends BaseAction {
 			List<User> userList = userService.XzGetAllDepDown(user);
 			modelAndView.addObject("userList", userList);
 			modelAndView.addObject("userNum", userList.size());
+			modelAndView.addObject("pingjiaMessage", "单位副职评价");
 			modelAndView.addObject("url", "/user/XzGetAllDepDown");
 		}
 		return modelAndView;
@@ -971,6 +1016,7 @@ public class UserController extends BaseAction {
 			List<User> userList = userService.YxYzGetXz(); // 院系院长get行政
 			modelAndView.addObject("userList", userList);
 			modelAndView.addObject("userNum", userList.size());
+			modelAndView.addObject("pingjiaMessage", "对口干部互评");
 			modelAndView.addObject("url", "/user/YxYzGetXz");
 		}
 		return modelAndView;
@@ -1013,6 +1059,7 @@ public class UserController extends BaseAction {
 			List<User> userList = userService.YxYzGetAllDepDown(user);
 			modelAndView.addObject("userList", userList);
 			modelAndView.addObject("userNum", userList.size());
+			modelAndView.addObject("pingjiaMessage", "单位副职评价");
 			modelAndView.addObject("url", "/user/YxYzGetDepDown");
 		}
 		return modelAndView;
@@ -1342,9 +1389,9 @@ public class UserController extends BaseAction {
 	}
 
 	@RequestMapping("/lookpdf")
-	public ModelAndView lookpdf(HttpSession session){
+	public ModelAndView lookpdf(@RequestParam("reportName") String reportName,HttpSession session){
 		ModelAndView modelAndView = new ModelAndView();
-		String path="upload/xiaowangzi.pdf";
+		String path=reportName;
 		modelAndView.addObject("url",path);
 		modelAndView.setViewName("User/lookPDF");
 		return modelAndView;
