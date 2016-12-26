@@ -21,24 +21,24 @@
 function zancun(){
 	//得到本次参与评价的总人数
 	var count = $("#count").val();
-	//a 得到某个人一共评价了多少人，如果少于总数提示；
+	//得到每个人的评价结果；
+	 result = "";
+	//循环处理评价结果
 	 for(var i=1;i<=count;i++){
 		var a = $('input[name=eval' + i + ']:checked').val();
-		alert(a);
-	} 
-		/* var a = $("input[name=eval1]:checked").val();
-		alert(a);
 		if(a == undefined){
-			alert("空");
-		} */
-	/* result = "";
-	var inpArr = $("input[type='radio']");
-	for(var i=0;i<inpArr.length;i++){
-	    if(inpArr[i].checked){
-	    	temp=inpArr[i].value;
-	    	//result+=temp + ",";
-	    }
-	} */
+			//alert("kong");
+			result += "0,";
+		} else{
+			result += a + ","
+		}
+	 } 
+	//alert(result);
+	$("#result").attr("value",result);
+	$('#form').attr("action", "/OD/role/zancun").submit();;	
+	//$("#form").submit(); 
+	
+	
 }
 
 function lookPDF(theURL){
@@ -234,7 +234,7 @@ a, a:visited{text-decoration:none;}
                     </thead>
                     
                     <tbody>
-                    
+                    	<!-- 本来记录 -->
                     	<c:forEach items="${userList }" var="user" varStatus="id">
 							<input type="hidden" name="evalEvalby" value="${user.userId }">
 							<tr>
@@ -264,6 +264,37 @@ a, a:visited{text-decoration:none;}
 								</td>
 							</tr>
 						</c:forEach>
+						
+						<!-- 暂存记录 -->
+                    	<c:forEach items="${tempEvalList }" var="temp" varStatus="id">
+							<input type="hidden" name="evalEvalby" value="${temp.evalEvalby }">
+							<tr>
+								<td>${id.count }</td>
+								<td>${temp.department.depName }</td>
+								<td>${temp.user.userName }</td>
+								<td class="biaodan">
+		                        	<label class="radio-inline">
+		                            	<%-- <input type="radio"   name="eval${user.userId }"  id="inlineRadio1" value="1"> 优秀 --%>
+		                            	<input type="radio" name="eval${id.count }"  id="inlineRadio1" value="1"   <c:if test="${temp.evalRank == 1 }">checked</c:if>      > 优秀
+		                            </label>
+		                            <label class="radio-inline">
+		                              <input type="radio"  class="chenzhi" name="eval${id.count }" id="inlineRadio2" value="2" <c:if test="${temp.evalRank == 2 }">checked</c:if>> 称职
+		                            </label>
+		                            <label class="radio-inline">
+		                              <input type="radio" name="eval${id.count }" id="inlineRadio3" value="3" <c:if test="${temp.evalRank == 3 }">checked</c:if> >基本称职
+		                            </label>
+		                            <label class="radio-inline">
+		                              <input type="radio" name="eval${id.count }" id="inlineRadio3" value="4" <c:if test="${temp.evalRank == 4 }">checked</c:if> >不称职
+		                            </label>
+		                        </td>
+								<td>
+									<%-- <img alt="" height="10" width="10" src="${pageContext.request.contextPath }/upload/1481966691829.png"> --%>
+									<%-- <a class="image-icon" rel="gallery[modal]" href="${pageContext.request.contextPath }/${user.userReport}">
+									<img height="20" width="50" src="${pageContext.request.contextPath }/${user.userReport}"></a> --%>
+									<button type="button" onclick="lookPDF('${pageContext.request.contextPath}/user/lookpdf?reportName=${user.userReport}');">查看述职报告</button>
+								</td>
+							</tr>
+						</c:forEach>
                         
                     </tbody>
                 </table>
@@ -271,6 +302,10 @@ a, a:visited{text-decoration:none;}
 		    	<div class="col-lg-2 col-lg-offset-5 col-md-2 col-md-offset-5 col-xs-2 col-xs-offfet-5">
 		    		<input type="hidden" id="result" name="resultt" value="">
 					<input type="hidden" id="count" value="${userNum }">
+					<!-- 暂存的两个属性  cate和desc -->
+					<input type="hidden" name="zancunCate" value="${zancunCate }">
+					<input type="hidden" name="zancunDesc" value="${zancunDesc }">
+					
 		    		<input type="button" class="btn btn-primary btn-md" value="提交" id="button"><br>
 		    		<input type="button" class="btn btn-primary btn-md" onclick="zancun()" value="暂存"></input>
 		        </div>

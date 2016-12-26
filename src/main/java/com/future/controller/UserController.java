@@ -4,6 +4,7 @@ import com.future.base.BaseAction;
 import com.future.domain.Department;
 import com.future.domain.Evaluate;
 import com.future.domain.Role;
+import com.future.domain.TempEval;
 import com.future.domain.User;
 import com.future.utils.PageBean;
 import com.mysql.jdbc.SocksProxySocketFactory;
@@ -34,6 +35,7 @@ public class UserController extends BaseAction {
 	public ModelAndView empetDate(){
 		int a = userService.delteDateFromEvaluate();
 		int b = userService.updateDateStatistic();
+		int c = userService.delteDateFromTempEvaluate();
 		String viewname = "User/success";
 		ModelAndView modelAndView = new ModelAndView(viewname);
 		modelAndView.addObject("message", "数据清除成功！");
@@ -378,16 +380,35 @@ public class UserController extends BaseAction {
 		List<Evaluate> num = userService.getIsOrNoAllZheng(isEval);
 		if (num.size() > 0) {
 			// 评价过
-			modelAndView.addObject("message", "您已对所有正职评价过！！");
+			modelAndView.addObject("message", "您已对所有处级干部评价过！！");
 		} else {
-			// 未评价过
+			
+			//必须进行的操作，因为要拿到数量
 			List<User> user = userService.getxzAllz();
-			modelAndView.addObject("userList", user);
+			
+			//先检查是否有暂存记录，然后在进行一下操作
+			List<TempEval> tempEvalList = userService.getByIdZanCunData(tempuser.getUserId(),2,"0");
+			//首先拿到本来要评价的任，（因为要拿到具体人数，所以必须放出来）
+			User tempuser1 = (User) session.getAttribute("user");
+			List<User> userList = userService.xzAllFenGuanUI(tempuser1.getUserName());
+			if(tempEvalList.size() > 0){
+				modelAndView.addObject("tempEvalList", tempEvalList);
+			}else{
+				// 未评价过
+				modelAndView.addObject("userList", user);
+			}
 			modelAndView.addObject("userNum", user.size());
 			modelAndView.addObject("pingjiaMessage", "处级干部评价");
 			modelAndView.addObject("url", "/user/xzAllz");
+			//评价级别，和描述
+			modelAndView.addObject("zancunCate", "2");
+			modelAndView.addObject("zancunDesc","0");
+			
+			
+			
 		}
 		return modelAndView;
+			
 	}
 
 	/**
@@ -538,15 +559,28 @@ public class UserController extends BaseAction {
 			// 评价过
 			modelAndView.addObject("message", "您已对分管单位所有人员评价过！！");
 		} else {
-			// 未评价过
-			// 查询分管单位的所有人 从当前session拿到单位id，传到dao层查询
-			// User user = (User) session.get("user");
+			//先检查是否有暂存记录，然后在进行一下操作
+			List<TempEval> tempEvalList = userService.getByIdZanCunData(tempuser.getUserId(),2,"1");
+			//首先拿到本来要评价的任，（因为要拿到具体人数，所以必须放出来）
 			User user = (User) session.getAttribute("user");
 			List<User> userList = userService.xzAllFenGuanUI(user.getUserName());
-			modelAndView.addObject("userList", userList);
+			if(tempEvalList.size() > 0){
+				//System.out.println("=============");
+				//System.out.println(tempEvalList);
+				//System.out.println("=============");
+				modelAndView.addObject("tempEvalList", tempEvalList);
+			} else {
+				// 未评价过
+				// 查询分管单位的所有人 从当前session拿到单位id，传到dao层查询
+				// User user = (User) session.get("user");
+				modelAndView.addObject("userList", userList);
+			}
 			modelAndView.addObject("userNum", userList.size());
 			modelAndView.addObject("pingjiaMessage", "分管(联点单位评价)");
-			modelAndView.addObject("url", "/user/xzAllFenGuan");
+			//评价级别，和描述
+			modelAndView.addObject("zancunCate", "2");
+			modelAndView.addObject("zancunDesc","1");
+			modelAndView.addObject("url", "/user/xzAllFenGuan");	
 		}
 		return modelAndView;
 	}
@@ -627,14 +661,31 @@ public class UserController extends BaseAction {
 		List<Evaluate> num = userService.getIsOrNoAllZheng(isEval);
 		if (num.size() > 0) {
 			// 评价过
-			modelAndView.addObject("message", "您已对所有正职评价过！！");
+			modelAndView.addObject("message", "您已对所有处级干部评价过！！");
 		} else {
-			// 未评价过
+			
+			//必须进行的操作，因为要拿到数量
 			List<User> user = userService.getxzAllz();
-			modelAndView.addObject("userList", user);
+			//先检查是否有暂存记录，然后在进行一下操作
+			List<TempEval> tempEvalList = userService.getByIdZanCunData(tempuser.getUserId(),3,"0");
+			//首先拿到本来要评价的任，（因为要拿到具体人数，所以必须放出来）
+			User tempuser1 = (User) session.getAttribute("user");
+			List<User> userList = userService.xzAllFenGuanUI(tempuser1.getUserName());
+			if(tempEvalList.size() > 0){
+				modelAndView.addObject("tempEvalList", tempEvalList);
+			}else{
+				// 未评价过
+				modelAndView.addObject("userList", user);
+			}
+			
+			// 未评价过
 			modelAndView.addObject("userNum", user.size());
 			modelAndView.addObject("pingjiaMessage", "处级干部评价");
 			modelAndView.addObject("url", "/user/xfAllzf");
+			//评价级别，和描述
+			modelAndView.addObject("zancunCate", "3");
+			modelAndView.addObject("zancunDesc","0");
+			
 		}
 		return modelAndView;
 	}
@@ -674,14 +725,28 @@ public class UserController extends BaseAction {
 			// 评价过
 			modelAndView.addObject("message", "您已对分管单位所有人员评价过！！");
 		} else {
+			
+			//必须进行的操作，因为要拿到数量
+			List<User> userList = userService.xfAllFenGuanUI(tempuser.getUserName());
+			
+			//先检查是否有暂存记录，然后在进行一下操作
+			List<TempEval> tempEvalList = userService.getByIdZanCunData(tempuser.getUserId(),2,"1");
+			//首先拿到本来要评价的任，（因为要拿到具体人数，所以必须放出来）
+			if(tempEvalList.size() > 0){
+				modelAndView.addObject("tempEvalList", tempEvalList);
+			}else{
+				modelAndView.addObject("userList", userList);
+			}
+			
 			// 未评价过
 			// 查询分管单位的所有人 从当前session拿到单位id，传到dao层查询
-			User user = (User) session.getAttribute("user");
-			List<User> userList = userService.xfAllFenGuanUI(user.getUserName());
-			modelAndView.addObject("userList", userList);
 			modelAndView.addObject("userNum", userList.size());
 			modelAndView.addObject("pingjiaMessage", "分管(联点单位评价)");
 			modelAndView.addObject("url", "/user/xfAllFenGuan");
+			//评价级别，和描述
+			modelAndView.addObject("zancunCate", "2");
+			modelAndView.addObject("zancunDesc","1");
+			
 		}
 		return modelAndView;
 	}
@@ -759,13 +824,26 @@ public class UserController extends BaseAction {
 			// 评价过
 			modelAndView.addObject("message", "您已对院系书记副书记评价过！！");
 		} else {
-			// 未评价过
+			
+			//首先拿到本来要评价的任，（因为要拿到具体人数，所以必须放出来）
 			User user = (User) session.getAttribute("user");
 			List<User> userList = userService.dangquanAllHPUser();
-			modelAndView.addObject("userList", userList);
+			//先检查是否有暂存记录，然后在进行一下操作
+			List<TempEval> tempEvalList = userService.getByIdZanCunData(tempuser.getUserId(),1,"3");
+			if(tempEvalList.size() > 0){
+				modelAndView.addObject("tempEvalList", tempEvalList);
+			} else {
+				// 未评价过
+				modelAndView.addObject("userList", userList);
+			}
+			
 			modelAndView.addObject("userNum", userList.size());
 			modelAndView.addObject("pingjiaMessage", "对口干部互评");
 			modelAndView.addObject("url", "/user/dangqunGetAllJiaoxueShuji");
+			//评价级别，和描述
+			modelAndView.addObject("zancunCate", "1");
+			modelAndView.addObject("zancunDesc","3");		
+			
 		}
 		return modelAndView;
 	}
@@ -799,14 +877,28 @@ public class UserController extends BaseAction {
 			// 评价过
 			modelAndView.addObject("message", "您已本单位副职评价过！");
 		} else {
-			// 未评价过
+			//首先拿到本来要评价的任，（因为要拿到具体人数，所以必须放出来）
 			User user = (User) session.getAttribute("user");
 			List<User> userList = userService.dangquanAllDepDwon(tempuser);
-			modelAndView.addObject("userList", userList);
+			//先检查是否有暂存记录，然后在进行一下操作
+			List<TempEval> tempEvalList = userService.getByIdZanCunData(tempuser.getUserId(),4,"4");
+			if(tempEvalList.size() > 0){
+				modelAndView.addObject("tempEvalList", tempEvalList);
+			} else {
+				// 未评价过
+				modelAndView.addObject("userList", userList);
+			}
+			
+			// 未评价过
 			modelAndView.addObject("userNum", userList.size());
-			modelAndView.addObject("pingjiaMessage", "对口干部互评");
 			modelAndView.addObject("pingjiaMessage", "单位副职评价");
 			modelAndView.addObject("url", "/user/dangqunGetAllDepZF");
+			//评价级别，和描述
+			modelAndView.addObject("zancunCate", "4");
+			modelAndView.addObject("zancunDesc","4");
+			
+			
+			
 		}
 		return modelAndView;
 	}
@@ -843,13 +935,24 @@ public class UserController extends BaseAction {
 			// 评价过
 			modelAndView.addObject("message", "您已对党群部门互评过！");
 		} else {
-			// 未评价过
-			// User user = (User) session.get("user");
+			//首先拿到本来要评价的任，（因为要拿到具体人数，所以必须放出来）
 			List<User> userList = userService.JiaoxueShujiGetAlldangqun();
-			modelAndView.addObject("userList", userList);
+			//先检查是否有暂存记录，然后在进行一下操作
+			List<TempEval> tempEvalList = userService.getByIdZanCunData(tempuser.getUserId(),1,"4");
+			if(tempEvalList.size() > 0){
+				modelAndView.addObject("tempEvalList", tempEvalList);
+			} else {
+				// 未评价过
+				modelAndView.addObject("userList", userList);
+			}	
 			modelAndView.addObject("userNum", userList.size());
 			modelAndView.addObject("pingjiaMessage", "对口干部互评");
 			modelAndView.addObject("url", "/user/JiaoxueShujiGetAlldangqun");
+			//评价级别，和描述
+			modelAndView.addObject("zancunCate", "1");
+			modelAndView.addObject("zancunDesc","4");	
+			
+			
 		}
 		return modelAndView;
 	}
@@ -885,13 +988,23 @@ public class UserController extends BaseAction {
 			// 评价过
 			modelAndView.addObject("message", "您已本单位副职评价过！");
 		} else {
-			// 未评价过
+			//首先拿到本来要评价的任，（因为要拿到具体人数，所以必须放出来）
 			User user = (User) session.getAttribute("user");
 			List<User> userList = userService.jiaoxueshujiAllGetDepDown(user);
-			modelAndView.addObject("userList", userList);
+			//先检查是否有暂存记录，然后在进行一下操作
+			List<TempEval> tempEvalList = userService.getByIdZanCunData(tempuser.getUserId(),4,"3");
+			if(tempEvalList.size() > 0){
+				modelAndView.addObject("tempEvalList", tempEvalList);
+			} else {
+				// 未评价过
+				modelAndView.addObject("userList", userList);
+			}
 			modelAndView.addObject("userNum", userList.size());
 			modelAndView.addObject("pingjiaMessage", "单位副职评价");
 			modelAndView.addObject("url", "/user/JiaoxueShujiGetAllDepDown");
+			//评价级别，和描述
+			modelAndView.addObject("zancunCate", "4");
+			modelAndView.addObject("zancunDesc","3");
 		}
 		return modelAndView;
 	}
@@ -926,13 +1039,23 @@ public class UserController extends BaseAction {
 			// 评价过
 			modelAndView.addObject("message", "您已对院系院长副院长评价过！");
 		} else {
-			// 未评价过
-			// User user = (User) session.get("user");
+			//首先拿到本来要评价的任，（因为要拿到具体人数，所以必须放出来）
 			List<User> userList = userService.XzGetAllYxYz();
-			modelAndView.addObject("userList", userList);
+			//先检查是否有暂存记录，然后在进行一下操作
+			List<TempEval> tempEvalList = userService.getByIdZanCunData(tempuser.getUserId(),1,"3");
+			if(tempEvalList.size() > 0){
+				modelAndView.addObject("tempEvalList", tempEvalList);
+			} else {
+				// 未评价过
+				modelAndView.addObject("userList", userList);
+			}
 			modelAndView.addObject("userNum", userList.size());
 			modelAndView.addObject("pingjiaMessage", "对口干部互评");
 			modelAndView.addObject("url", "/user/XzGetAllYxYz");
+			//评价级别，和描述
+			modelAndView.addObject("zancunCate", "1");
+			modelAndView.addObject("zancunDesc","3");
+			
 		}
 		return modelAndView;
 	}
@@ -967,13 +1090,25 @@ public class UserController extends BaseAction {
 			// 评价过
 			modelAndView.addObject("message", "您已本单位所有副职评价过！");
 		} else {
-			// 未评价过
+			//首先拿到本来要评价的任，（因为要拿到具体人数，所以必须放出来）
 			User user = (User) session.getAttribute("user");
 			List<User> userList = userService.XzGetAllDepDown(user);
-			modelAndView.addObject("userList", userList);
+			//先检查是否有暂存记录，然后在进行一下操作
+			List<TempEval> tempEvalList = userService.getByIdZanCunData(tempuser.getUserId(),4,"3");
+			if(tempEvalList.size() > 0){
+				modelAndView.addObject("tempEvalList", tempEvalList);
+			} else {
+				// 未评价过
+				modelAndView.addObject("userList", userList);
+			}
+
+			// 未评价过
 			modelAndView.addObject("userNum", userList.size());
 			modelAndView.addObject("pingjiaMessage", "单位副职评价");
 			modelAndView.addObject("url", "/user/XzGetAllDepDown");
+			//评价级别，和描述
+			modelAndView.addObject("zancunCate", "4");
+			modelAndView.addObject("zancunDesc","3");
 		}
 		return modelAndView;
 	}
@@ -1011,13 +1146,26 @@ public class UserController extends BaseAction {
 			// 评价过
 			modelAndView.addObject("message", "您已对行政教辅部门评价过！");
 		} else {
-			// 未评价过
-			// User user = (User) session.get("user");
+			
+			
+			//首先拿到本来要评价的任，（因为要拿到具体人数，所以必须放出来）
 			List<User> userList = userService.YxYzGetXz(); // 院系院长get行政
-			modelAndView.addObject("userList", userList);
+			//先检查是否有暂存记录，然后在进行一下操作
+			List<TempEval> tempEvalList = userService.getByIdZanCunData(tempuser.getUserId(),1,"3");
+			if(tempEvalList.size() > 0){
+				modelAndView.addObject("tempEvalList", tempEvalList);
+			} else {
+				// 未评价过
+				modelAndView.addObject("userList", userList);
+			}
+			// 未评价过		
 			modelAndView.addObject("userNum", userList.size());
 			modelAndView.addObject("pingjiaMessage", "对口干部互评");
 			modelAndView.addObject("url", "/user/YxYzGetXz");
+			//评价级别，和描述
+			modelAndView.addObject("zancunCate", "1");
+			modelAndView.addObject("zancunDesc","3");
+
 		}
 		return modelAndView;
 	}
@@ -1054,13 +1202,24 @@ public class UserController extends BaseAction {
 			// 评价过
 			modelAndView.addObject("message", "您已本单位副职评价过！");
 		} else {
-			// 未评价过
+			//首先拿到本来要评价的任，（因为要拿到具体人数，所以必须放出来）
 			User user = (User) session.getAttribute("user");
 			List<User> userList = userService.YxYzGetAllDepDown(user);
-			modelAndView.addObject("userList", userList);
+			//先检查是否有暂存记录，然后在进行一下操作
+			List<TempEval> tempEvalList = userService.getByIdZanCunData(tempuser.getUserId(),4,"3");
+			if(tempEvalList.size() > 0){
+				modelAndView.addObject("tempEvalList", tempEvalList);
+			} else {
+				// 未评价过
+				modelAndView.addObject("userList", userList);
+			}		
+			// 未评价过
 			modelAndView.addObject("userNum", userList.size());
 			modelAndView.addObject("pingjiaMessage", "单位副职评价");
 			modelAndView.addObject("url", "/user/YxYzGetDepDown");
+			//评价级别，和描述
+			modelAndView.addObject("zancunCate", "4");
+			modelAndView.addObject("zancunDesc","3");	
 		}
 		return modelAndView;
 	}

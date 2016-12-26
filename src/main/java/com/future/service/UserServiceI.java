@@ -306,4 +306,33 @@ public interface UserServiceI {
 	void updateTemp(TempEval tempEval);
 
 	void deleteTemp(int id);
+
+	/**
+	 * 暂存评价结果
+	 * 
+	 * @author 刘阳阳
+	 */
+	int insertAllZanCun(List<Evaluate> evaList);
+
+	/**
+	 * 插入暂存结果之前应该删除以前暂存的记录
+	 * 
+	 * @author 刘阳阳
+	 */
+	void deleteAllZanCun(Integer evalEvalto, int parseInt, String zancunDesc);
+
+	/**
+	 * 
+	 * 进行评价之前查询所有暂存记录
+	 * @author 刘阳阳
+	 */
+	List<TempEval> getByIdZanCunData(Integer userId, int i, String string);
+
+	/**
+	 * delteDateFromEvaluate
+	 * 清空临时数据表
+	 * 
+	 * @author 刘阳阳
+	 */
+	int delteDateFromTempEvaluate();
 }

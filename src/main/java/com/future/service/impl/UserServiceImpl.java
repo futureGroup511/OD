@@ -421,4 +421,37 @@ public class UserServiceImpl implements UserServiceI {
 	public void deleteTemp(int id) {
 		tempEvalMapper.deleteByPrimaryKey(id);
 	}
+
+	/**
+	 * 暂存评价结果
+	 * 
+	 * @author 刘阳阳
+	 */
+	public int insertAllZanCun(List<Evaluate> evaList) {
+		return tempEvalMapper.insertAllZanCun(evaList);
+	}
+
+	/**
+	 * 暂存之前删除之前 所有暂存的记录
+	 */
+	public void deleteAllZanCun(Integer evalEvalto, int zancunCate, String zancunDesc) {
+		tempEvalMapper.deleteAllZanCun(evalEvalto,zancunCate,zancunDesc);
+	}
+
+	/**
+	 * 评价之前拿到所有暂存的记录
+	 */
+	public List<TempEval> getByIdZanCunData(Integer userId, int cate, String desc) {
+		return tempEvalMapper.getByIdZanCunData(userId,cate,desc);
+	}
+
+	/**
+	 * delteDateFromEvaluate
+	 * 清空临时数据表
+	 * 
+	 * @author 刘阳阳
+	 */
+	public int delteDateFromTempEvaluate() {
+		return tempEvalMapper.delteDateFromTempEvaluate();
+	}
 }

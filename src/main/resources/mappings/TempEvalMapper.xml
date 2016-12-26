@@ -119,4 +119,42 @@
 		eval_desc = #{evalDesc,jdbcType=VARCHAR}
 		where eval_id = #{evalId,jdbcType=INTEGER}
 	</update>
+	
+	<!-- 暂存   批量插入评价 -->
+	<insert id="insertAllZanCun" useGeneratedKeys="true" parameterType="java.util.List">
+		insert into od_tempEval(eval_evalby,eval_evalto,eval_rank,eval_cate,eval_desc) 
+		values 
+		<foreach collection="list" item="evaList" index="index" separator="," > 
+		(#{evaList.evalEvalby},#{evaList.evalEvalto},#{evaList.evalRank},#{evaList.evalCate},#{evaList.evalDesc}) 
+		</foreach>
+	</insert>
+	
+	<!-- 暂存之前删除之前 所有暂存的记录 -->
+	<delete id="deleteAllZanCun">
+		delete from od_tempEval
+		where eval_evalto = #{0} and eval_cate = #{1} and eval_desc = #{2}
+	</delete>
+	
+	<resultMap id="ZanCunDate" type="com.future.domain.TempEval"  extends="BaseResultMap">
+		<association property="user" javaType="com.future.domain.User">
+			<id property="userId" column="user_id"/>
+			<result property="userName" column="user_name"/>
+			<result property="userReport" column="user_report"/>
+		</association>
+		<association property="department" javaType="com.future.domain.Department">
+			<result property="depName" column="dep_name"/>
+		</association>
+	</resultMap>
+	
+	<select id="getByIdZanCunData" resultType="com.future.domain.TempEval" resultMap="ZanCunDate">
+		select tempEval.*, user.user_id, user.user_name ,user.user_report,department.dep_name
+		from od_tempeval tempEval,od_user user,od_department department
+		where tempEval.eval_evalby = user.user_id and user.user_dep = department.dep_id
+		and tempEval.eval_evalto = #{0} and tempEval.eval_cate = #{1} and tempEval.eval_desc = #{2}
+	</select>
+	
+	
+	<delete id="delteDateFromEvaluate" >
+		delete from od_tempEval
+	</delete>
 </mapper>
