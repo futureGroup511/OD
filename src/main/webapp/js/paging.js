@@ -9,3 +9,11 @@ function turning(currentPage,num){
         var form = document.getElementById("form");
         form.submit();
 }
+
+function subform(){
+        var cur=document.getElementById("currentPage");
+        cur.value = 1;
+        var form = document.getElementById("form");
+        form.submit();
+}
+

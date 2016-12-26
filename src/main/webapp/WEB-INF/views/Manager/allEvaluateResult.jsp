@@ -46,6 +46,18 @@
                  }
         });
     });
+        $.ajax({
+            url:'/OD/user/ajaxgetAllUserName',
+            type:'post',
+            data:null,
+            success:function (msg) {
+                $("#name").AutoComplete({
+                    'data':msg,
+                    'itemHeight':20,
+                    'width':280
+                });
+            }
+        });
     $("table").tableExport({
         bootstrap: false
     });
@@ -68,7 +80,7 @@
     <div class="row form">
         <form action="${pageContext.request.contextPath }/evaluate/redirectHere" method="post">
             <div class="col-lg-2 col-lg-offset-3 col-md-2 col-md-offset-3 col-xs-3 col-xs-offfet-3">
-                姓名：<input type="text" name="userName" value="${requestScope.user.userName}">
+                姓名：<input type="text" name="userName" value="${requestScope.user.userName}" id="name">
             </div>
             <div class="col-lg-2 col-lg-offset-1 col-md-2 col-md-offset-1 col-xs-3 col-xs-offfet-1">
                 单位：<input type="text" name="department.depName" value="${requestScope.user.department.depName}" id="dw">
