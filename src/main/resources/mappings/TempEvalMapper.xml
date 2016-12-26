@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.future.dao.TempEvalMapper">
+	<resultMap id="BaseResultMap" type="com.future.domain.TempEval">
+		<id column="eval_id" property="evalId" jdbcType="INTEGER" />
+		<result column="eval_evalby" property="evalEvalby" jdbcType="INTEGER" />
+		<result column="eval_evalto" property="evalEvalto" jdbcType="INTEGER" />
+		<result column="eval_rank" property="evalRank" jdbcType="INTEGER" />
+		<result column="eval_cate" property="evalCate" jdbcType="INTEGER" />
+		<result column="eval_desc" property="evalDesc" jdbcType="VARCHAR" />
+	</resultMap>
+
+	<sql id="Base_Column_List">
+		eval_id, eval_evalby, eval_evalto, eval_rank, eval_cate, eval_desc
+	</sql>
+ 
+	<!-- <resultMap id="evalto" type="Evaluate" extends="BaseResultMap">
+		<association property="userBy"  javaType="User">
+			<result column="user_name" property="userName" jdbcType="VARCHAR" />
+			<association property="role" javaType="Role">
+				<result column="role_name" property="roleName"></result>
+			</association>
+			<association  property="department" javaType="Department">
+				<result column="dep_name" property="depName"></result>
+			</association>
+		</association>
+	</resultMap> -->
+
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="java.lang.Integer">
+		select
+		<include refid="Base_Column_List" />
+		from od_tempEval
+		where eval_id = #{evalId,jdbcType=INTEGER}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from od_tempEval
+		where eval_id = #{evalId,jdbcType=INTEGER}
+	</delete>
+	<insert id="insert" parameterType="com.future.domain.TempEval">
+		insert into od_tempEval (eval_id, eval_evalby, eval_evalto,
+		eval_rank, eval_cate, eval_desc
+		)
+		values (#{evalId,jdbcType=INTEGER}, #{evalEvalby,jdbcType=INTEGER},
+		#{evalEvalto,jdbcType=INTEGER},
+		#{evalRank,jdbcType=INTEGER}, #{evalCate,jdbcType=INTEGER}, #{evalDesc,jdbcType=VARCHAR}
+		)
+	</insert>
+	<insert id="insertSelective" parameterType="com.future.domain.TempEval">
+		insert into od_tempEval
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="evalId != null">
+				eval_id,
+			</if>
+			<if test="evalEvalby != null">
+				eval_evalby,
+			</if>
+			<if test="evalEvalto != null">
+				eval_evalto,
+			</if>
+			<if test="evalRank != null">
+				eval_rank,
+			</if>
+			<if test="evalCate != null">
+				eval_cate,
+			</if>
+			<if test="evalDesc != null">
+				eval_desc,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="evalId != null">
+				#{evalId,jdbcType=INTEGER},
+			</if>
+			<if test="evalEvalby != null">
+				#{evalEvalby,jdbcType=INTEGER},
+			</if>
+			<if test="evalEvalto != null">
+				#{evalEvalto,jdbcType=INTEGER},
+			</if>
+			<if test="evalRank != null">
+				#{evalRank,jdbcType=INTEGER},
+			</if>
+			<if test="evalCate != null">
+				#{evalCate,jdbcType=INTEGER},
+			</if>
+			<if test="evalDesc != null">
+				#{evalDesc,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.future.domain.TempEval">
+		update od_tempEval
+		<set>
+			<if test="evalEvalby != null">
+				eval_evalby = #{evalEvalby,jdbcType=INTEGER},
+			</if>
+			<if test="evalEvalto != null">
+				eval_evalto = #{evalEvalto,jdbcType=INTEGER},
+			</if>
+			<if test="evalRank != null">
+				eval_rank = #{evalRank,jdbcType=INTEGER},
+			</if>
+			<if test="evalCate != null">
+				eval_cate = #{evalCate,jdbcType=INTEGER},
+			</if>
+			<if test="evalDesc != null">
+				eval_desc = #{evalDesc,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where eval_id = #{evalId,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.future.domain.TempEval">
+		update od_tempEval
+		set eval_evalby = #{evalEvalby,jdbcType=INTEGER},
+		eval_evalto = #{evalEvalto,jdbcType=INTEGER},
+		eval_rank = #{evalRank,jdbcType=INTEGER},
+		eval_cate = #{evalCate,jdbcType=INTEGER},
+		eval_desc = #{evalDesc,jdbcType=VARCHAR}
+		where eval_id = #{evalId,jdbcType=INTEGER}
+	</update>
+</mapper>

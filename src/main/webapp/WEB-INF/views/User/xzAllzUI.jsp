@@ -18,6 +18,29 @@
 <script type="text/javascript"> 
 
 
+function zancun(){
+	//得到本次参与评价的总人数
+	var count = $("#count").val();
+	//a 得到某个人一共评价了多少人，如果少于总数提示；
+	 for(var i=1;i<=count;i++){
+		var a = $('input[name=eval' + i + ']:checked').val();
+		alert(a);
+	} 
+		/* var a = $("input[name=eval1]:checked").val();
+		alert(a);
+		if(a == undefined){
+			alert("空");
+		} */
+	/* result = "";
+	var inpArr = $("input[type='radio']");
+	for(var i=0;i<inpArr.length;i++){
+	    if(inpArr[i].checked){
+	    	temp=inpArr[i].value;
+	    	//result+=temp + ",";
+	    }
+	} */
+}
+
 function lookPDF(theURL){
     var pop,w=670,h=450; //window.navigate(theURL);
     pop=window.open(theURL,"winGD","width="+w+",height="+h+",resizable=yes,menubar=no,toolbar=no,location=no,scrollbars=no,status=no")
@@ -45,6 +68,13 @@ function jugeNull() {
 	            //
 	        }
 	    });  
+	    
+	    //暂存
+	   /*  $("#zancun").click(function(){ 
+	    	if(checkout()==true){ 
+	            //
+	        }
+	    });  */
 	});
 
 	function checkout(){
@@ -213,16 +243,17 @@ a, a:visited{text-decoration:none;}
 								<td>${user.userName }</td>
 								<td class="biaodan">
 		                        	<label class="radio-inline">
-		                            	<input type="radio"   name="eval${user.userId }"  id="inlineRadio1" value="1"> 优秀
+		                            	<%-- <input type="radio"   name="eval${user.userId }"  id="inlineRadio1" value="1"> 优秀 --%>
+		                            	<input type="radio"   name="eval${id.count }"  id="inlineRadio1" value="1"> 优秀
 		                            </label>
 		                            <label class="radio-inline">
-		                              <input type="radio"  class="chenzhi" name="eval${user.userId }" id="inlineRadio2" value="2"> 称职
+		                              <input type="radio"  class="chenzhi" name="eval${id.count }" id="inlineRadio2" value="2"> 称职
 		                            </label>
 		                            <label class="radio-inline">
-		                              <input type="radio" name="eval${user.userId }" id="inlineRadio3" value="3">基本称职
+		                              <input type="radio" name="eval${id.count }" id="inlineRadio3" value="3">基本称职
 		                            </label>
 		                            <label class="radio-inline">
-		                              <input type="radio" name="eval${user.userId }" id="inlineRadio3" value="4">不称职
+		                              <input type="radio" name="eval${id.count }" id="inlineRadio3" value="4">不称职
 		                            </label>
 		                        </td>
 								<td>
@@ -240,7 +271,8 @@ a, a:visited{text-decoration:none;}
 		    	<div class="col-lg-2 col-lg-offset-5 col-md-2 col-md-offset-5 col-xs-2 col-xs-offfet-5">
 		    		<input type="hidden" id="result" name="resultt" value="">
 					<input type="hidden" id="count" value="${userNum }">
-		    		<input type="button" class="btn btn-primary btn-md" value="提交" id="button">
+		    		<input type="button" class="btn btn-primary btn-md" value="提交" id="button"><br>
+		    		<input type="button" class="btn btn-primary btn-md" onclick="zancun()" value="暂存"></input>
 		        </div>
 		       </div>
                 </form>
@@ -271,94 +303,3 @@ a, a:visited{text-decoration:none;}
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-<%-- <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>校正厅评价所有正职</title>
-
-</head>
-<body>
-<c:if test="${message == null }">
-校正厅评价所有正职<br>一一键选中称职<input type="button" onclick="xuanzhong()" value="选中">
-====${sessionScope.user.userName }===
-<form id="form" action="${pageContext.request.contextPath }${url}">
-	<input type="hidden" name="evalEvalto" value="${sessionScope.user.userId }">
-	<table border="1" cellpadding="1" cellspacing="0">
-		<tr>
-			<td>序号</td>
-			<!-- <td>id</td>
-			<td>正副</td>	 -->
-			<td>所属单位</td>
-			<td>姓名</td>
-			<td>评价</td>
-			<td>述职报告</td>
-		</tr>
-		
-		
-	
-		<c:forEach items="${userList }" var="user" varStatus="id">
-			<input type="hidden" name="evalEvalby" value="${user.userId }">
-			<tr>
-				<td>${id.count }</td>
-				<td>${user.userId }</td>				
-				<td>${user.userNp }</td>
-				<td>${user.department.depName }</td>
-				<td>${user.userName }</td>
-				<td>
-					<input type="radio"   name="eval${user.userId }" value="1"> 优秀
-					<input type="radio" class="chenzhi" name="eval${user.userId }" value="2"> 称职
-					<input type="radio" name="eval${user.userId }" value="3"> 基本称职
-					<input type="radio" name="eval${user.userId }" value="4"> 不称职
-				</td>
-				<td>
-					<img alt="" height="10" width="10" src="${pageContext.request.contextPath }/upload/1481966691829.png">
-					<a class="image-icon" rel="gallery[modal]" href="${pageContext.request.contextPath }/${user.userReport}">
-					<img height="20" width="50" src="${pageContext.request.contextPath }/${user.userReport}"></a>
-				</td>
-			</tr>
-		</c:forEach>
-		<tr>
-			<td>
-				<input type="hidden" id="result" name="resultt" value="">
-				<input type="hidden" id="count" value="${userNum }">
-				====${userNum }===
-				<input type="button" value="提交" id="button" >
-			</td>
-		</tr>
-	</table>
-</form>
-</c:if>
-<c:if test="${message != null }">
-	${message }
-</c:if>
-</body>
-</html>
-
-
-
-<head>
-<!-- 去掉这3行，则点击直接显示原图，如果移动至下面则IE浏览器报错 begin -->
-<script type='text/javascript' src='${pageContext.request.contextPath }/ly/js/jquery.js'></script>
-<script type='text/javascript' src='${pageContext.request.contextPath }/ly/js/jquery.scripts.js'></script>
-<script type='text/javascript' src='${pageContext.request.contextPath }/ly/js/jquery.custom.js'></script>
-<!-- 去掉这3行，则点击直接显示原图，如果移动至下面则IE浏览器报错 end -->
-<link rel="stylesheet" type="text/css" media="all" href="${pageContext.request.contextPath }/ly/css/style.min.css" />
-</head>
-
-
- --%>

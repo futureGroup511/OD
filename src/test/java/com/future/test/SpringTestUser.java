@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.future.dao.TempEvalMapper;
+import com.future.domain.TempEval;
 import com.future.domain.User;
 import com.future.service.UserServiceI;
 
@@ -21,6 +23,7 @@ public class SpringTestUser {
 	//注入userService 
 	@Autowired
 	private UserServiceI userService;
+	
 	
 	@Test
 	public void testAddUser(){
@@ -64,6 +67,40 @@ public class SpringTestUser {
 	public void xzAllFenGuanUI(){
 		List<User> listUser = userService.xzAllFenGuanUI("王清连");
 		System.out.println(listUser);
+	}
+	
+	@Test
+	public void TempInsert(){
+		TempEval tempEval = new TempEval();
+		tempEval.setEvalEvalby(3);
+		tempEval.setEvalEvalto(3);
+		tempEval.setEvalCate(3);
+		tempEval.setEvalRank(3);
+		tempEval.setEvalDesc("0");
+		userService.insertTemp(tempEval);
+	}
+	
+	@Test
+	public void TempSelect(){
+		TempEval tempEval = userService.selectByIdTemp(4);
+		System.out.println(tempEval);
+	}
+	
+	@Test
+	public void TempUpdate(){
+		TempEval tempEval = new TempEval();
+		tempEval.setEvalId(4);
+		tempEval.setEvalEvalby(3);
+		tempEval.setEvalEvalto(3);
+		tempEval.setEvalCate(3);
+		tempEval.setEvalRank(3);
+		tempEval.setEvalDesc("6");
+		userService.updateTemp(tempEval);
+	}
+	
+	@Test
+	public void TempDelete(){
+		userService.deleteTemp(4);
 	}
 	
 	

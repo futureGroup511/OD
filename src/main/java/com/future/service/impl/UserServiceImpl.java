@@ -11,9 +11,11 @@ import org.springframework.transaction.annotation.Transactional;
 import com.future.dao.DepartmentMapper;
 import com.future.dao.EvaluateMapper;
 import com.future.dao.RoleMapper;
+import com.future.dao.TempEvalMapper;
 import com.future.dao.UserMapper;
 import com.future.domain.Evaluate;
 import com.future.domain.Role;
+import com.future.domain.TempEval;
 import com.future.domain.User;
 import com.future.service.UserServiceI;
 import com.future.utils.PageBean;
@@ -26,6 +28,8 @@ public class UserServiceImpl implements UserServiceI {
 	private UserMapper userMapper;
 	@Autowired
 	private EvaluateMapper evaluateMapp;
+	@Autowired
+	private TempEvalMapper tempEvalMapper;
 
 
 	@Autowired
@@ -392,4 +396,29 @@ public class UserServiceImpl implements UserServiceI {
 		return userMapper.updateDateStatistic();
 	}
 
+
+	//=============================
+	//下边是关于临时表的操作
+	
+	public void insertTemp(TempEval tempEval) {
+		tempEvalMapper.insert(tempEval);
+	}
+
+	/**
+	 * 根据id查找 
+	 */
+	public TempEval selectByIdTemp(int id) {
+		return tempEvalMapper.selectByPrimaryKey(id);
+	}
+
+	/**
+	 * 跟新
+	 */
+	public void updateTemp(TempEval tempEval) {
+		tempEvalMapper.updateByPrimaryKey(tempEval);
+	}
+
+	public void deleteTemp(int id) {
+		tempEvalMapper.deleteByPrimaryKey(id);
+	}
 }

@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.future.domain.Evaluate;
 import com.future.domain.Role;
+import com.future.domain.TempEval;
 import com.future.domain.User;
 import com.future.utils.PageBean;
 
@@ -280,4 +281,29 @@ public interface UserServiceI {
 	 * @author 刘阳阳
 	 */
 	int updateDateStatistic();
+
+	
+	//=======接下来关于临时表的操作
+	/**
+	 * 
+	 * 
+	 * @author 刘阳阳
+	 */
+	void insertTemp(TempEval tempEval);
+
+	/**
+	 * 根据id查找
+	 * 
+	 * @author 刘阳阳
+	 */
+	TempEval selectByIdTemp(int i);
+
+	/**
+	 * 修改
+	 * 
+	 * @author 刘阳阳
+	 */
+	void updateTemp(TempEval tempEval);
+
+	void deleteTemp(int id);
 }
