@@ -162,7 +162,7 @@
 
     $.fn.tableExport.xlsx = {
         defaultClass: "xlsx",
-        buttonContent: "转换成xlsx(2010版以上的word)",
+        buttonContent: "导出成文件",
         mimeType: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
         fileExtension: ".xlsx"
     };
