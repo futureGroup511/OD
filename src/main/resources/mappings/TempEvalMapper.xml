@@ -30,15 +30,15 @@
 		parameterType="java.lang.Integer">
 		select
 		<include refid="Base_Column_List" />
-		from od_tempEval
+		from od_tempeval
 		where eval_id = #{evalId,jdbcType=INTEGER}
 	</select>
 	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-		delete from od_tempEval
+		delete from od_tempeval
 		where eval_id = #{evalId,jdbcType=INTEGER}
 	</delete>
 	<insert id="insert" parameterType="com.future.domain.TempEval">
-		insert into od_tempEval (eval_id, eval_evalby, eval_evalto,
+		insert into od_tempeval (eval_id, eval_evalby, eval_evalto,
 		eval_rank, eval_cate, eval_desc
 		)
 		values (#{evalId,jdbcType=INTEGER}, #{evalEvalby,jdbcType=INTEGER},
@@ -47,7 +47,7 @@
 		)
 	</insert>
 	<insert id="insertSelective" parameterType="com.future.domain.TempEval">
-		insert into od_tempEval
+		insert into od_tempeval
 		<trim prefix="(" suffix=")" suffixOverrides=",">
 			<if test="evalId != null">
 				eval_id,
@@ -90,7 +90,7 @@
 		</trim>
 	</insert>
 	<update id="updateByPrimaryKeySelective" parameterType="com.future.domain.TempEval">
-		update od_tempEval
+		update od_tempeval
 		<set>
 			<if test="evalEvalby != null">
 				eval_evalby = #{evalEvalby,jdbcType=INTEGER},
@@ -111,7 +111,7 @@
 		where eval_id = #{evalId,jdbcType=INTEGER}
 	</update>
 	<update id="updateByPrimaryKey" parameterType="com.future.domain.TempEval">
-		update od_tempEval
+		update od_tempeval
 		set eval_evalby = #{evalEvalby,jdbcType=INTEGER},
 		eval_evalto = #{evalEvalto,jdbcType=INTEGER},
 		eval_rank = #{evalRank,jdbcType=INTEGER},
@@ -131,7 +131,7 @@
 	
 	<!-- 暂存之前删除之前 所有暂存的记录 -->
 	<delete id="deleteAllZanCun">
-		delete from od_tempEval
+		delete from od_tempeval
 		where eval_evalto = #{0} and eval_cate = #{1} and eval_desc = #{2}
 	</delete>
 	
@@ -147,7 +147,7 @@
 	</resultMap>
 	
 	<select id="getByIdZanCunData" resultType="com.future.domain.TempEval" resultMap="ZanCunDate">
-		select tempEval.*, user.user_id, user.user_name ,user.user_report,department.dep_name
+		select tempeval.*, user.user_id, user.user_name ,user.user_report,department.dep_name
 		from od_tempeval tempEval,od_user user,od_department department
 		where tempEval.eval_evalby = user.user_id and user.user_dep = department.dep_id
 		and tempEval.eval_evalto = #{0} and tempEval.eval_cate = #{1} and tempEval.eval_desc = #{2}
@@ -155,6 +155,6 @@
 	
 	
 	<delete id="delteDateFromTempEvaluate" >
-		delete from od_tempEval
+		delete from od_tempeval
 	</delete>
 </mapper>
