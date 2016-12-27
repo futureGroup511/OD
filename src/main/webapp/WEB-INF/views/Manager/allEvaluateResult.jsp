@@ -98,9 +98,9 @@
             <td>被评价人单位</td>
             <td>被评价人姓名</td>
             <td>总评得分</td>
-            <td>互评得分</td>
-            <td>厅级得分</td>
-            <td>单位上级评价得分</td>
+            <td>对口互评得分</td>
+            <td>校领导评价得分</td>
+            <td>单位正职评价得分</td>
             <td>查看</td>
         </tr>
         <c:forEach items="${requestScope.statisticList }" var="statistic">

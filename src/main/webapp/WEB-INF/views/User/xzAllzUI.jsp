@@ -212,15 +212,21 @@ a, a:visited{text-decoration:none;}
 
 
 <div class="main">
+<form id="form" action="${pageContext.request.contextPath }${url}">
 		<div class="row form">
     	<div class="col-lg-1 col-lg-offset-1 col-md-1 col-md-offset-1 col-xs-1 col-xs-offfet-1">
         	<button type="button" class="btn btn-primary btn-md" onclick="xuanzhong()">一键选中称职</button>
         </div>
+        <div class="col-lg-1 col-lg-offset-1 col-md-1 col-md-offset-1 col-xs-1 col-xs-offfet-1">
+        	<input type="button" class="btn btn-primary btn-md" onclick="zancun()" value="暂存评价结果"></input>
+        </div>
+        
        </div>
         <div class="row">
          <div class="col-sm-12 col-md-12 col-lg-12" style="margin-left:-15;margin-right:-15;">
             <div class="table-responsive">
-            <form id="form" action="${pageContext.request.contextPath }${url}">
+            
+            	
 				<input type="hidden" name="evalEvalto" value="${sessionScope.user.userId }">
                 <table class="table table-striped" style="font-size:16px;">
                     <thead>
@@ -307,7 +313,7 @@ a, a:visited{text-decoration:none;}
 					<input type="hidden" name="zancunDesc" value="${zancunDesc }">
 					
 		    		<input type="button" class="btn btn-primary btn-md" value="提交" id="button"><br>
-		    		<input type="button" class="btn btn-primary btn-md" onclick="zancun()" value="暂存"></input>
+		    		<!-- <input type="button" class="btn btn-primary btn-md" onclick="zancun()" value="暂存"></input> -->
 		        </div>
 		       </div>
                 </form>

@@ -17,13 +17,13 @@
 				<a target="right"
 					href="${pageContext.request.contextPath }/user/xzAllzUI"><dt>处级干部评价</dt></a>
 				<a target="right"
-					href="${pageContext.request.contextPath }/user/xzAllFenGuanUI"><dt>分管（联点）单位评价</dt></a>
+					href="${pageContext.request.contextPath }/user/xzAllFenGuanUI"><dt>分管单位评价</dt></a>
 			</c:if>
 			<c:if test="${sessionScope.user.userRole == 2 }">
 				<a target="right"
 					href="${pageContext.request.contextPath }/user/xfAllzfUI"><dt>处级干部评价</dt></a>
 				<a target="right"
-					href="${pageContext.request.contextPath }/user/xfAllFenGuanUI"><dt>分管（联点）单位评价</dt></a>
+					href="${pageContext.request.contextPath }/user/xfAllFenGuanUI"><dt>分管单位评价</dt></a>
 			</c:if>
 			<c:if
 				test="${sessionScope.user.userRole == 3 && sessionScope.user.userNp == 0}">
@@ -102,7 +102,7 @@
 					<a target="right"
 						href="${pageContext.request.contextPath }/evaluate/seeAllEvaluateResult"><dt>干部总评结果</dt></a>
 					<a target="right" onClick="if(confirm( '确定要清空吗！ ')==false)return   false;"
-						href="${pageContext.request.contextPath }/user/empetDate"><dt>清空数据（无法恢复）</dt></a>
+						href="${pageContext.request.contextPath }/user/empetDate"><dt>清空数据</dt></a>
 					<%--<a href="/OD/user/modifyexcellent/?juge=1" target="right">修改优秀比例权重</a>
 					<a href="/OD/user/modifyProperties/?juge=1" target="right"><dt>修改校厅级权重</dt</a><br>
 					<a href="/OD/user/modifySGProperties/?juge=1" target="right"><dt>党群正处、行政正处权重</dt></a>
