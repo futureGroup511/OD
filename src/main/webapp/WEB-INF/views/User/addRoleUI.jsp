@@ -12,10 +12,10 @@
 <body>
 <div class="container">
   <div class="row">
-        <div class="col-lg-2 col-lg-offset-6 col-md-3 scol-md-offset-3 col-xs-5  col-xs-offset-1">
+        <div class="col-lg-3 col-lg-offset-7 col-md-3 scol-md-offset-7 col-xs-3  col-xs-offset-7">
             <p>当前位置：管理员>>增加角色信息</p>
         </div>
-        <div class="col-lg-2 col-md-3 col-xs-3">
+        <div class="col-lg-2 col-md-2 col-xs-2">
             <p>欢迎  ${sessionScope.user.userName }  登录本系统</p>
         </div>
   </div>
@@ -25,10 +25,10 @@
   
 
   	<form:form action="${pageContext.request.contextPath }/user/addRole" method="POST" modelAttribute="role">
-    	<div class="col-lg-2 col-lg-offset-3 col-md-2 col-md-offset-3 col-xs-3 col-xs-offfet-3">
+    	<div class="col-lg-3 col-lg-offset-3 col-md-3 col-md-offset-3 col-xs-3 col-xs-offfet-3">
         	名称：<input type="text" class="navbar-link" name="roleName">
         </div>
-        <div class="col-lg-1  col-md-1 col-xs-2">
+        <div class="col-lg-1  col-md-1 col-xs-1" style="margin-left: -3%;">
         	<input type="submit" class="btn btn-primary btn-xs" value="提交">
         </div>
     </form:form>

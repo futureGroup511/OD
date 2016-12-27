@@ -68,10 +68,10 @@
 <body>
 <div class="container">
   <div class="row">
-        <div class="col-lg-2 col-lg-offset-6 col-md-3 scol-md-offset-3 col-xs-5  col-xs-offset-1">
+        <div class="col-lg-3 col-lg-offset-7 col-md-3 scol-md-offset-7 col-xs-3  col-xs-offset-7">
             <p>当前位置：管理员>>干部总评结果</p>
         </div>
-        <div class="col-lg-2 col-md-3 col-xs-3">
+        <div class="col-lg-2 col-md-2 col-xs-2">
             <p>欢迎  ${sessionScope.user.userName }  登录本系统</p>
         </div>
   </div>
@@ -79,13 +79,13 @@
 <div class="container-one">
     <div class="row form">
         <form action="${pageContext.request.contextPath }/evaluate/redirectHere" method="post">
-            <div class="col-lg-2 col-lg-offset-3 col-md-2 col-md-offset-3 col-xs-3 col-xs-offfet-3">
+            <div class="col-lg-3 col-lg-offset-3 col-md-3 col-md-offset-3 col-xs-3 col-xs-offfet-3">
                 姓名：<input type="text" name="userName" value="${requestScope.user.userName}" id="name">
             </div>
-            <div class="col-lg-2 col-lg-offset-1 col-md-2 col-md-offset-1 col-xs-3 col-xs-offfet-1">
+            <div class="col-lg-3  col-md-3  col-xs-3 ">
                 单位：<input type="text" name="department.depName" value="${requestScope.user.department.depName}" id="dw">
             </div>
-            <div class="col-lg-1  col-md-1 col-xs-2">
+            <div class="col-lg-1  col-md-1 col-xs-1">
                 <input type="submit" class="btn btn-block btn-lg" value="提交">
             </div>
         </form>
