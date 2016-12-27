@@ -29,15 +29,15 @@
     <body>
      <div class="connect">
         <div class="page-container">
-            <%--<h1>Login</h1>--%>
+            <h1>河南科技学院干部评价系统</h1>
            <form name="fosrm" id="form" action="${pageContext.request.contextPath }/user/login" method="post">
             	<input type="hidden" id="address" value="<%=basePath %>">
 
 				<div>
-					<input type="text" name="username" class="username" placeholder="" autocomplete="off"/>
+					<input type="text" name="username" class="username" placeholder="用户名" autocomplete="off"/>
 				</div>
                 <div>
-					<input type="password" name="password" class="password" placeholder="" oncontextmenu="return false" onpaste="return false" />
+					<input type="password" name="password" class="password" placeholder="密码" oncontextmenu="return false" onpaste="return false" />
                 </div>
                 <input id="submit" type="submit" value="登录" onclick="juge();">
                

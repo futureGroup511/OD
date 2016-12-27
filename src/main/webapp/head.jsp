@@ -25,7 +25,7 @@
        <li class="active" data-target="#slidershow" data-slide-to="0"></li>
        <li data-target="#slidershow" data-slide-to="1"></li>
        <li data-target="#slidershow" data-slide-to="2"></li>
-       <li data-target="#slidershow" data-slide-to="3"></li>
+       <!-- <li data-target="#slidershow" data-slide-to="3"></li> -->
     </ol>
    <!--设置轮播图片-->
     <div class="carousel-inner">
@@ -38,9 +38,9 @@
       <div class="item">
            <a href="#"><img src="${pageContext.request.contextPath }/img/banner-three.png"></a>
       </div>
-      <div class="item">
+      <%-- <div class="item">
            <a href="#"><img src="${pageContext.request.contextPath }/img/banner-four.png"></a>
-      </div>
+      </div> --%>
       <!--<a class="left carousel-control" href="#slidershow" role="button" data-slide="prev">
            <span class="sr-only">Previous</span>
       </a>
