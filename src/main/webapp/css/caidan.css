@@ -32,11 +32,12 @@ a{text-decoration:none;}
     background-repeat:no-repeat;
     background-position:10px center;
     color:#f5f5f5;
-    font-size:20px;
+    font-size:15px;
     position:relative;
     line-height:48px;
     cursor:pointer;
     }
+
 .leftsidebar_box dd{
     font-size:13px;
     background-color:red;
@@ -76,3 +77,6 @@ a{text-decoration:none;}
 }
 
 .leftsidebar_box dl dd:last-child{padding-bottom:10px;}
+.container dt dd a{
+    font-size:10px;
+}

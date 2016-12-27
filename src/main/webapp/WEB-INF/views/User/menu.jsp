@@ -8,9 +8,9 @@
 <title>caidan</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath }/css/caidan.css">
 </head>
-<body id="bg">
-	<div class="container">
-		<div class="leftsidebar_box">
+<body id="bg" >
+	<div class="container" >
+		<div class="leftsidebar_box" style="font-size:10px;">
 			<div class="line"></div>
 			<dl class="channel">
 			<c:if test="${sessionScope.user.userRole == 1 }">
