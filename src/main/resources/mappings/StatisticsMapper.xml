@@ -91,7 +91,7 @@
 			AND od_department.dep_name = #{department.depName}
 		</if>
 		<if test="userRole != null">
-			AND od_user.user_dep = #{userRole}
+			AND od_user.user_role = #{userRole}
 		</if>
 		ORDER BY od_department.dep_name
 	</select>
