@@ -46,6 +46,7 @@
                  }
         });
     });
+
         $.ajax({
             url:'/OD/user/ajaxgetAllUserName',
             type:'post',
@@ -58,11 +59,12 @@
                 });
             }
         });
+
     $("table").tableExport({
         bootstrap: false
     });
     $(function(){
-        $("table").tableExport({formats:["xlsx","xls"]});
+        $("table").tableExport({formats:["xlsx"]});
     })
 </script>
 <body>
@@ -79,14 +81,23 @@
 <div class="container-one">
     <div class="row form">
         <form action="${pageContext.request.contextPath }/evaluate/redirectHere" method="post">
-            <div class="col-lg-3 col-lg-offset-3 col-md-3 col-md-offset-3 col-xs-3 col-xs-offfet-3">
+            <div class="col-lg-3 col-lg-offset-1 col-md-3 col-md-offset-1 col-xs-3 col-xs-offfet-1" style="margin-left: 10%;">
                 姓名：<input type="text" name="userName" value="${requestScope.user.userName}" id="name">
             </div>
             <div class="col-lg-3  col-md-3  col-xs-3 ">
                 单位：<input type="text" name="department.depName" value="${requestScope.user.department.depName}" id="dw">
             </div>
-            <div class="col-lg-1  col-md-1 col-xs-1">
-                <input type="submit" class="btn btn-block btn-lg" value="提交">
+            <div class="col-lg-2  col-md-2  col-xs-2 ">
+              类别:<select name="userRole" >
+                      <option value="">请选择</option>
+                      <option value="3">党群部门</option>
+                      <option value="4">教学书记副书记</option>
+                      <option value="5">行政教辅部门</option>
+                      <option value="6">院系院长副院长</option>
+                    </select>
+            </div>
+            <div class="col-lg-1  col-md-1 col-xs-1"style="margin-top:-10px;">
+                <input type="submit" class="btn btn-block " value="提交">
             </div>
         </form>
 
