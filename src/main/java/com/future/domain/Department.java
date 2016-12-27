@@ -53,4 +53,12 @@ public class Department {
     public void setDepManager(String depManager) {
         this.depManager = depManager == null ? null : depManager.trim();
     }
+
+	@Override
+	public String toString() {
+		return "Department [depId=" + depId + ", depName=" + depName + ", depDesc=" + depDesc + ", depRole=" + depRole
+				+ ", depManager=" + depManager + "]";
+	}
+    
+    
 }
