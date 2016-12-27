@@ -122,7 +122,7 @@
 	
 	<!-- 暂存   批量插入评价 -->
 	<insert id="insertAllZanCun" useGeneratedKeys="true" parameterType="java.util.List">
-		insert into od_tempEval(eval_evalby,eval_evalto,eval_rank,eval_cate,eval_desc) 
+		insert into od_tempeval(eval_evalby,eval_evalto,eval_rank,eval_cate,eval_desc) 
 		values 
 		<foreach collection="list" item="evaList" index="index" separator="," > 
 		(#{evaList.evalEvalby},#{evaList.evalEvalto},#{evaList.evalRank},#{evaList.evalCate},#{evaList.evalDesc}) 
@@ -154,7 +154,7 @@
 	</select>
 	
 	
-	<delete id="delteDateFromEvaluate" >
+	<delete id="delteDateFromTempEvaluate" >
 		delete from od_tempEval
 	</delete>
 </mapper>
