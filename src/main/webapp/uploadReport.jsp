@@ -26,9 +26,18 @@
   </div>
 </div>
 <div class="main">
+	<div class="row">
+            <div class="col-lg-1 col-lg-offset-1 col-md-1 col-md-offset-1 col-xs-1 col-xs-offset-1"></div>
+            <div class="col-lg-2 col-md-2 col-xs-2" style="margin-top:20px;">
+            		<c:if test="${sessionScope.user.userReport != '' }">
+                   		<button type="button" class="btn btn-primary btn-md" onclick="lookPDF('${pageContext.request.contextPath}/user/lookpdf?reportName=${sessionScope.user.userReport}');">查看述职报告</button>
+                   </c:if>
+            </div>
+    </div>
+	    
 	<form:form action="${pageContext.request.contextPath }/user/uploadResport" method="POST" enctype="multipart/form-data">
 		<div class="row">
-	            <div class="col-lg-1 col-lg-offset-1 col-md-1 col-md-offset-1 col-xs-1 col-xs-offset-1"><p>述职报告：</p></div>
+	            <div class="col-lg-1 col-lg-offset-1 col-md-1 col-md-offset-1 col-xs-1 col-xs-offset-1"><p>上传述职报告：</p></div>
 	            <div class="col-lg-2 col-md-2 col-xs-2" style="margin-top:20px;">
 					   <input type="file" name="uploadfile" class="choose">
 	                   <button type="button" class="btn btn-primary btn-md">浏览</button>
@@ -43,3 +52,16 @@
 </div>
 </body>
 </html>
+
+<!-- 查看述职报告 -->
+<script type="text/javascript" src="${pageContext.request.contextPath }/js/jquery.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath }/js/jquery.paginate.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath }/js/public.js"></script>
+<script type="text/javascript">
+function lookPDF(theURL){
+    var pop,w=670,h=450; //window.navigate(theURL);
+    pop=window.open(theURL,"winGD","width="+w+",height="+h+",resizable=yes,menubar=no,toolbar=no,location=no,scrollbars=no,status=no")
+    pop.moveTo((screen.width-w)/2,(screen.height-h)/2);
+
+}
+</script>

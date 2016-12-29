@@ -148,9 +148,9 @@
 	
 	<select id="getByIdZanCunData" resultType="com.future.domain.TempEval" resultMap="ZanCunDate">
 		select tempeval.*, user.user_id, user.user_name ,user.user_report,department.dep_name
-		from od_tempeval tempEval,od_user user,od_department department
-		where tempEval.eval_evalby = user.user_id and user.user_dep = department.dep_id
-		and tempEval.eval_evalto = #{0} and tempEval.eval_cate = #{1} and tempEval.eval_desc = #{2}
+		from od_tempeval tempeval,od_user user,od_department department
+		where tempeval.eval_evalby = user.user_id and user.user_dep = department.dep_id
+		and tempeval.eval_evalto = #{0} and tempeval.eval_cate = #{1} and tempeval.eval_desc = #{2}
 	</select>
 	
 	
