@@ -16,14 +16,16 @@ public class SessionInterceptors implements HandlerInterceptor{
 		User user = (User) session.getAttribute("user");
 		String url = request.getRequestURI();
 		String beUrl = "loginUI,login";
+		System.out.println("访问的url："+url);
 		if(user == null){
 			if(url.contains("login") || url.contains("js") ||url.contains("jquery") || url.contains("img") || url.contains("css") || url.contains("pdf") ){
+				System.out.println("放行");
 				return true;
 			} else {
-				request.getRequestDispatcher("loginUI").forward(request, response);
+				System.out.println("转到登陆页面");
+				request.getRequestDispatcher("/user/loginUI").forward(request, response);
 			}
 			//request.getRequestDispatcher("user/longinUI").forward(request, response);
-			System.out.println("放行");
 			return false;
 		}
 		return true;
