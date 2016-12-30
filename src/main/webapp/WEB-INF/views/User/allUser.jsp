@@ -97,7 +97,7 @@ $(document).ready(function () {
 							<c:if test="${user.userDesc == '0' }">在职</c:if>
 							<c:if test="${user.userDesc == '1' }">不在职</c:if>
 						</td>
-						<td class="four"><img src="${pageContext.request.contextPath }/img/bian.png"><a href="${pageContext.request.contextPath }/user/updateUserUI/${user.userId }">修改</a>&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;<img src="${pageContext.request.contextPath }/img/lajitong.png"><a href="${pageContext.request.contextPath }/user/deleteUser/${user.userId }" style="color:#E11E05;">删除</a></td>
+						<td class="four"><img src="${pageContext.request.contextPath }/img/bian.png"><a href="${pageContext.request.contextPath }/user/updateUserUI/${user.userId }/${currentPage }">修改</a>&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;<img src="${pageContext.request.contextPath }/img/lajitong.png"><a href="${pageContext.request.contextPath }/user/deleteUser/${user.userId }" style="color:#E11E05;">删除</a></td>
 					</tr>
 				</c:forEach>
 			</c:if>
@@ -115,14 +115,14 @@ $(document).ready(function () {
 								<td>${userr.userReport }</td>
 								<td>${userr.userDesc }</td>
 								
-								<td class="four"><img src="${pageContext.request.contextPath }/img/bian.png"><a href="updateUserUI/${userr.userId }">修改</a>&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;
+								<td class="four"><img src="${pageContext.request.contextPath }/img/bian.png"><a href="updateUserUI/${userr.userId }/${currentPage }">修改</a>&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;
 								<img src="${pageContext.request.contextPath }/img/lajitong.png">
 								
 								<a onClick="if(confirm( '确定要删除吗！ ')==false)return   false;" href="${pageContext.request.contextPath }/user/deleteUser/${userr.userId }" style="color: #E11E05;">删除</a>
 								</td>
 							</tr>
 				</c:if>
-       
+       			
       </tbody>
     </table>
 </div>
@@ -139,7 +139,7 @@ $(document).ready(function () {
             </li>
             <li><a href="javascript:gotoPage(1)">首页</a></li>
             <li><a href="javascript:gotoPage(${pageBean.currentPage }-1)">上一页</a></li>
-            <li><a href="#">${currentPage }/${pageBean.pageCount }</a></li>
+            <li><a href="#">${pageBean.currentPage }/${pageBean.pageCount }</a></li>
             <li><a href="javascript:gotoPage(${pageBean.currentPage }+1)">下一页</a></li>
             <li><a href="javascript:gotoPage(${pageBean.pageCount })">尾页</a></li>
             </li>

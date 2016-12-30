@@ -270,8 +270,8 @@ public class UserController extends BaseAction {
 		return "redirect:getAllUser/1";
 	}
 
-	@RequestMapping(value = "updateUserUI/{id}", method = RequestMethod.GET)
-	public ModelAndView updateUserUI(@PathVariable("id") Integer id, Map<String, Object> map) {
+	@RequestMapping(value = "updateUserUI/{id}/{pageCurr}", method = RequestMethod.GET)
+	public ModelAndView updateUserUI(@PathVariable("id") Integer id, @PathVariable("pageCurr") Integer pageCurr,Map<String, Object> map) {
 		String viewname = "User/addUserUI";
 		ModelAndView modelAndView = new ModelAndView(viewname);
 		User user = userService.selectByPrimaryKey(id);
@@ -281,6 +281,8 @@ public class UserController extends BaseAction {
 		modelAndView.addObject("user", user);
 		modelAndView.addObject("userRole", role);
 		modelAndView.addObject("userDep", dep);
+		modelAndView.addObject("pageCurr", pageCurr);
+		
 		return modelAndView;
 	}
 
@@ -293,6 +295,7 @@ public class UserController extends BaseAction {
 	public String updateUser(User user, @RequestParam("uploadfile") CommonsMultipartFile file,
 			HttpServletRequest request) {
 
+		String pageCurr = request.getParameter("pageCurr");
 		if (file.isEmpty()) {
 			userService.updateByPrimaryKey(user);
 		} else {
@@ -312,7 +315,8 @@ public class UserController extends BaseAction {
 
 			userService.updateByPrimaryKey(user);
 		}
-		return "redirect:/user/getAllUser/1";
+		System.out.println(pageCurr);
+		return "redirect:/user/getAllUser/" + pageCurr;
 	}
 	
 	/**

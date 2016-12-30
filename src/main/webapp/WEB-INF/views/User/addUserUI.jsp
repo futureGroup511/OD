@@ -187,6 +187,7 @@
 	            		<form:hidden path="userReport"/>
 					   <input type="file" name="uploadfile" class="choose">
 	                   <button type="button" class="btn btn-primary btn-md">浏览</button> 
+	                   <input type="hidden" name="pageCurr" value="${pageCurr }">
 	            </div>
 	    </div>
     </c:if>
@@ -253,12 +254,12 @@
 						<label id="passwordMess"style="font:bold;color: red" hidden>密码不能为空</label><br>
 	            </div>
 	            <div class="col-lg-2 col-lg-offset-2 col-md-2 col-md-offset-2 col-xs-2 col-xs-offset-2 ">
-	               <button type="button" class="btn btn-primary btn-md" id="button">提交</button>
+	               
 	            </div> 
-	            
 	    </div>
 	    
 	</c:if>
+	<button type="button" class="btn btn-primary btn-md" id="button">提交</button>
 </div>
 </form:form>
 </body>
