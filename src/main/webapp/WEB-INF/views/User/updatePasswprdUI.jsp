@@ -59,7 +59,10 @@
          	<p id="mess4" style="color:red;display:none">两次输入密码不同！</p>
 	        </div>
 	    </div>
-	    <button type="button" class="btn btn-primary btn-md">提交</button> 
+	    <div class="row">
+	     <div class="col-lg-4 col-lg-offset-5 col-md-6 col-md-offset-4 col-xs-8 col-xs-offset-3">
+	       <button type="button" class="btn btn-primary btn-md">提交</button> 
+	    </div>
 	</div>
 </form>
 <script type="text/javascript">

@@ -197,8 +197,8 @@ a, a:visited{text-decoration:none;}
 </head>
 <c:if test="${message == null }">
 <body background="images/dotted.png">
-		<div class="dangqian">
-            <div class="container">
+<div class="dangqian">
+ <div class="container"">
   <div class="row">
         <div class="col-lg-3 col-lg-offset-7 col-md-3 scol-md-offset-7 col-xs-3 col-xs-offset-7">
             <p>当前位置：评价>>${pingjiaMessage }</p>
@@ -217,7 +217,7 @@ a, a:visited{text-decoration:none;}
     	<div class="col-lg-1 col-lg-offset-1 col-md-1 col-md-offset-1 col-xs-1 col-xs-offfet-1">
         	<button type="button" class="btn btn-primary btn-md" onclick="xuanzhong()">一键选中称职</button>
         </div>
-        <div class="col-lg-1 col-lg-offset-1 col-md-1 col-md-offset-1 col-xs-1 col-xs-offfet-1">
+        <div class="col-lg-1 col-md-1 col-xs-1">
         	<input type="button" class="btn btn-primary btn-md" onclick="zancun()" value="暂存评价结果"></input>
         </div>
         
@@ -312,7 +312,7 @@ a, a:visited{text-decoration:none;}
 					<input type="hidden" name="zancunCate" value="${zancunCate }">
 					<input type="hidden" name="zancunDesc" value="${zancunDesc }">
 					
-		    		<input type="button" class="btn btn-primary btn-md" value="提交" id="button"><br>
+		    		<input type="button" class="btn btn-primary btn-md" value="提交" id="button" style="margin-top:30pxl;"><br>
 		    		<!-- <input type="button" class="btn btn-primary btn-md" onclick="zancun()" value="暂存"></input> -->
 		        </div>
 		       </div>

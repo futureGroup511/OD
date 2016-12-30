@@ -53,12 +53,12 @@
 </div>
 <div class="container">
     <div class="row">
-        <div class="col-lg-1 col-md-1 col-xs-1">
+        <%-- <div class="col-lg-1 col-md-1 col-xs-1">
           <img src="${pageContext.request.contextPath }/img/header-logo.png" id="image1">
         </div>
         <div class="col-lg-3 col-md-3 col-xs-3">
            <p class="one">河南科技学院</p>
-        </div>
+        </div> --%>
         <div class="col-lg-1 col-md-1 col-xs-1" >
            <img src="${pageContext.request.contextPath }/img/logo.png" id="image2"> 
         </div>

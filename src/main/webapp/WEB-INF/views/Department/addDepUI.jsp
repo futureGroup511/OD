@@ -23,14 +23,14 @@
 <div class="container-one">
   <div class="row form">
   	<form:form action="addDep" method="POST" modelAttribute="department">
-    	<div class="col-lg-2 col-lg-offset-3 col-md-2 col-md-offset-3 col-xs-3 col-xs-offfet-3">
+    	<div class="col-lg-3 col-lg-offset-3 col-md-3 col-md-offset-3 col-xs-3 col-xs-offfet-3">
         	名称：<input  type="text" class="navbar-link" name="depName">
         </div>
-        <div class="col-lg-2 col-lg-offset-1 col-md-2 col-md-offset-1 col-xs-3 col-xs-offfet-1">
+        <div class="col-lg-3 col-md-3 col-xs-3">
         	分管者：<input  type="text" class="navbar-link" name="depManager">
         </div>
-        <div class="col-lg-1  col-md-1 col-xs-2">
-        	<input type="submit" class="btn btn-primary btn-xs" value="提交">
+        <div class="col-lg-2  col-md-2 col-xs-2">
+        	<input type="submit" class="btn btn-primary btn-md" value="提交">
         </div>
     </form:form>
     </div>

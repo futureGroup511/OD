@@ -30,13 +30,26 @@ body{
 .form button{
 	border-radius: 0px;
 }
+.form .col-lg-1{
+margin-top:30px;	
+}
+.row .col-lg-3 input{
+	margin-top:38px;
+	font-size:16px;
+}
+.row .col-lg-1 button{
+	margin-top:35px;
+	width:100px;
+	height:30px;
+	background-color: #12A1EC;
+}
 .table-responsive{
 	width:90%;
 	margin:0 auto;
-	margin-top: 25px;
+	/* margin-top: 25px; */
 }
 .table{
-	margin-top:25px;
+	/* margin-top:25px; */
 }
 .table-responsive .three a{
 	color:#d81e06;

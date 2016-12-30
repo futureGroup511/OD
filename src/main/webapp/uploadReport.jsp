@@ -27,8 +27,8 @@
 </div>
 <div class="main">
 	<div class="row">
-            <div class="col-lg-1 col-lg-offset-1 col-md-1 col-md-offset-1 col-xs-1 col-xs-offset-1"></div>
-            <div class="col-lg-2 col-md-2 col-xs-2" style="margin-top:20px;">
+            <!-- <div class="col-lg-1 col-lg-offset-1 col-md-1 col-md-offset-1 col-xs-1 col-xs-offset-1"></div> -->
+            <div class="col-lg-2 col-lg-offset-2 col-md-2 col-md-offset-2 col-xs-2 col-xs-offset-2 " style="margin-top:20px;padding-left:4%;width:20%;">
             		<c:if test="${sessionScope.user.userReport != '' }">
                    		<button type="button" class="btn btn-primary btn-md" onclick="lookPDF('${pageContext.request.contextPath}/user/lookpdf?reportName=${sessionScope.user.userReport}');">查看述职报告</button>
                    </c:if>
@@ -37,14 +37,14 @@
 	    
 	<form:form action="${pageContext.request.contextPath }/user/uploadResport" method="POST" enctype="multipart/form-data">
 		<div class="row">
-	            <div class="col-lg-1 col-lg-offset-1 col-md-1 col-md-offset-1 col-xs-1 col-xs-offset-1"><p>上传述职报告：</p></div>
-	            <div class="col-lg-2 col-md-2 col-xs-2" style="margin-top:20px;">
+	            <div class="col-lg-2 col-lg-offset-1 col-md-2 col-md-offset-1 col-xs-2 col-xs-offset-1"><p>上传述职报告：</p></div>
+	            <div class="col-lg-2 col-md-2 col-xs-2" style="margin-top:0px;margin-left:-5.5%;">
 					   <input type="file" name="uploadfile" class="choose">
-	                   <button type="button" class="btn btn-primary btn-md">浏览</button>
+	                   <button type="button" class="btn btn-primary btn-md">选择述职报告</button>
 
 	            </div>
-			    <div class="col-lg-2  col-md-2  col-xs-2" style="margin-top:45px; margin-left:-6%;" >
-					<input type="submit" class="btn btn-primary btn-md" value="提交">
+			    <div class="col-lg-2  col-md-2  col-xs-2" style="margin-top:25px; margin-left:-6%;" >
+					<input type="submit" class="btn btn-primary btn-md" value="上传">
 				</div>
 	    </div>
 

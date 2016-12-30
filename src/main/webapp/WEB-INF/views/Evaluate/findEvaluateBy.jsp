@@ -36,15 +36,15 @@
         <form action="/OD/evaluate/findByUserIdOrEvalByName" method="post" id="form">
             <input type="hidden" name="id" value="${sessionScope.user.userId}">
             <input type="hidden" name="currentPage" value="${page.currentPage}" id="currentPage">
-            <div class="col-lg-1 col-lg-offset-2 col-md-1 col-md-offset-2 col-xs-1 col-xs-offfet-2">
-            姓名：
+            <div class="col-lg-1 col-lg-offset-2 col-md-1 col-md-offset-2 col-xs-1 col-xs-offfet-2"style="font-size:18px;">
+          		  姓名：
             </div>
-            <div class="col-lg-2  col-md-2  col-xs-3">
+            <div class="col-lg-2  col-md-2  col-xs-3"style="margin-left:-3%;padding-top:5px;">
                 <input type="text" name="name" value="${findname}">
             </div>
         </form>
         <div class="col-lg-2 col-md-2 col-xs-3">
-            <button  onclick="subform()">确定</button>
+            <button class="btn btn-primary" onclick="subform()">确定</button>
         </div>
     </div>
 
