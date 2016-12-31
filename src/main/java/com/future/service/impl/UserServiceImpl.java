@@ -357,9 +357,9 @@ public class UserServiceImpl implements UserServiceI {
 	 * 
 	 * 根据用户名称，查询改用户，模糊查询
 	 */
-	public User findByNameForUser(String username) {
+	public List<User> findByNameForUser(User user) {
 		
-		return userMapper.findByNameForUser(username);
+		return userMapper.findByNameForUser(user);
 	}
 
 	/**

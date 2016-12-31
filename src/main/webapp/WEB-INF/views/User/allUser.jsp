@@ -45,17 +45,29 @@ $(document).ready(function () {
         </div>
   </div>
  <div class="row">
-  <%-- <form action="${ pageContext.request.contextPath}/user/findByNameForUser" method="post"> --%>
+  <form action="${ pageContext.request.contextPath}/user/findByNameForUser" method="post">
 		  <div class="col-lg-1 col-lg-offset-1 col-md-1 col-md-offset-1 col-xs-1 col-xs-offset-1">
              <a><p><a href="${ pageContext.request.contextPath}/user/addUserUI" class="btn btn-primary" type="button"><img src="${pageContext.request.contextPath }/img/yonghuzengjia.png" width="25" height="25">增加用户</a></p></a>
            </div>
-	    	<div class="col-lg-3 col-lg-offset-2 col-md-3 col-md-offset-2 col-xs-3 col-xs-offfet-2">
+	    	<div class="col-lg-2  col-md-2  col-xs-2 ">
 	        	姓名：<input  name="name" type="text" id="txtIput" class="navbar-link">
 	        </div>
+	        <div class="col-lg-3 col-md-3 col-xs-3 ">
+	        	角色：<select name="role">
+	        			<option value="0">请选择</option>
+	        			<option value="1">校正厅</option>
+	        			<option value="2">校副厅</option>
+	        			<option value="3">党群部门</option>
+	        			<option value="4">教学书记副书记</option>
+	        			<option value="5">行政教辅部门</option>
+	        			<option value="6">院系院长副院长</option>
+	        		</select>
+	        </div>
+	        
 	        <div class="col-lg-1  col-md-1 col-xs-1">
 	        	<button type="submit" class="btn btn-primary btn-xs">提交</button>
 	        </div>
-        <!-- </form> -->
+        </form>
   </div>
 </div>
 
@@ -102,30 +114,30 @@ $(document).ready(function () {
 				</c:forEach>
 			</c:if>
 			<c:if test="${userr != null }">
-							<tr>
-								<td>${userr.userName }</td>
-								<td>${userr.userNum }</td>
-								<td>${userr.role.roleName }</td>
-								<td>${userr.department.depName }</td>
-								<td>${userr.userDuty }</td>
-								<td>
-									<c:if test="${userr.userNp ==0 }">正</c:if>
-									<c:if test="${userr.userNp ==1 }">副</c:if>
-								</td>
-								<td>${userr.userReport }</td>
-								<td>${userr.userDesc }</td>
-								
-								<td class="four"><img src="${pageContext.request.contextPath }/img/bian.png"><a href="updateUserUI/${userr.userId }/${currentPage }">修改</a>&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;
-								<img src="${pageContext.request.contextPath }/img/lajitong.png">
-								
-								<a onClick="if(confirm( '确定要删除吗！ ')==false)return   false;" href="${pageContext.request.contextPath }/user/deleteUser/${userr.userId }" style="color: #E11E05;">删除</a>
-								</td>
-							</tr>
-				</c:if>
-       			
+				<c:forEach items="${userr }" var="user">
+					<tr>
+						<td>${user.userName }</td>
+						<td>${user.userNum }</td>
+						<td>${user.role.roleName }</td>
+						<td>${user.department.depName }</td>
+						<td>${user.userDuty }</td>
+						<td>
+							<c:if test="${user.userNp ==0 }">正</c:if>
+							<c:if test="${user.userNp ==1 }">副</c:if>
+						</td>
+						<td>${user.userReport }</td>
+						<td>
+							<c:if test="${user.userDesc == '0' }">在职</c:if>
+							<c:if test="${user.userDesc == '1' }">不在职</c:if>
+						</td>
+						<td class="four"><img src="${pageContext.request.contextPath }/img/bian.png"><a href="${pageContext.request.contextPath }/user/updateUserUI/${user.userId }/1">修改</a>&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;<img src="${pageContext.request.contextPath }/img/lajitong.png"><a href="${pageContext.request.contextPath }/user/deleteUser/${user.userId }" style="color:#E11E05;">删除</a></td>
+					</tr>
+				</c:forEach>
+			</c:if>
       </tbody>
     </table>
 </div>
+<c:if test="${userr == null }">
  <div class="container">
   <div class="row">
    <div class="col-lg-5 col-lg-offset-5 col-md-5 col-md-offset-4 col-xs-5 col-xs-offset-4">
@@ -148,6 +160,7 @@ $(document).ready(function () {
         </div>
       </div>
 </div>
+</c:if>
 <script type="text/javascript">
 	function gotoPage(pageNum){
 		if(pageNum > "${pageBean.pageCount}"){
@@ -162,142 +175,3 @@ $(document).ready(function () {
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-<%-- 
-
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>查询所有用户</title>
-
-
-<script type="text/javascript" src="${pageContext.request.contextPath }/ly/auto/jquery-1.7.1.min.js"></script>
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/ly/auto/jquery.autocomplete.css"></link>
-<script type="text/javascript" src="${pageContext.request.contextPath }/ly/auto/jquery.autocomplete.min.js"></script>
-    
-<script type="text/javascript">
-$(document).ready(function () {
-	
-		
-		 
-		$.ajax({
- 			url:'${pageContext.request.contextPath }/user/ajaxgetAllUserName',
- 			type:'post',
-			data:null,
-			dataType:'json',
- 			success:function(msg) {
-                 /* var datas = eval(msg);
-                 $("#txtIput").autocomplete(datas); */
-                 $('#txtIput').AutoComplete({
-         		    //'data': ['One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten', 'Eleven', 'Twelve'],
-         		    'data': msg,
-         		    'itemHeight': 20,
-         		    'width': 280
-         		})
-             }
-         });
-     })
-</script>
-</head>
-<body>
-查询所有用户===${sessionScope.user.userName }
-<a href="${ pageContext.request.contextPath}/user/addUserUI">增加用户</a>
-<br>根据姓名查询用户
-
-<form action="${ pageContext.request.contextPath}/user/findByNameForUser" method="post">
-	姓名：<input name="name" id="txtIput" type="text">
-	
-	<input type="submit" value="提交">
-</form>
-<table border="1" cellpadding="1" cellspacing="0">
-	<tr>
-	    <td>姓名</td>
-	    <td>账号</td>
-	    <td>角色</td>
-	    <td>单位</td>
-	    <td>职务</td>
-	    <td>正/副</td>
-	    <td>述职报告</td>
-	    <td>是否在职</td>
-	    <td>编辑</td>
-	</tr>
-	<c:if test="${pageBean.recordlist != null }">
-		<c:forEach items="${pageBean.recordlist }" var="user">
-			<tr>
-				<td>${user.userName }</td>
-				<td>${user.userNum }</td>
-				<td>${user.role.roleName }</td>
-				<td>${user.department.depName }</td>
-				<td>${user.userDuty }</td>
-				<td>
-					<c:if test="${user.userNp ==0 }">正</c:if>
-					<c:if test="${user.userNp ==1 }">副</c:if>
-				</td>
-				<td>${user.userReport }</td>
-				<td>
-					<c:if test="${user.userDesc == '0' }">在职</c:if>
-					<c:if test="${user.userDesc == '1' }">不在职</c:if>
-				</td>
-				<td>
-					<a href="${pageContext.request.contextPath }/user/updateUserUI/${user.userId }">修改</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-					<a href="${pageContext.request.contextPath }/user/deleteUser/${user.userId }">删除</a>
-				</td>
-			</tr>
-		</c:forEach>
-	</c:if>
-	<c:if test="${userr != null }">
-	
-				<tr>
-					<td>${userr.userName }</td>
-					<td>${userr.userNum }</td>
-					<td>${userr.role.roleName }</td>
-					<td>${userr.department.depName }</td>
-					<td>${userr.userDuty }</td>
-					<td>
-						<c:if test="${userr.userNp ==0 }">正</c:if>
-						<c:if test="${userr.userNp ==1 }">副</c:if>
-					</td>
-					<td>${userr.userReport }</td>
-					<td>${userr.userDesc }</td>
-					<td>
-						<a href="updateUserUI/${userr.userId }">修改</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-						<a href="${pageContext.request.contextPath }/user/deleteUser/${userr.userId }">删除</a>
-					</td>
-				</tr>
-	</c:if>
-</table>
-<p>
-
-每页显示${pageBean.pageSize }条，总记录数${pageBean.recordCount }条
-<a href="javascript:gotoPage(1)">首页</a>
-<a href="javascript:gotoPage(${pageBean.currentPage }-1)">上一页</a>
-${currentPage }/${pageBean.pageCount }
-
-<a href="javascript:gotoPage(${pageBean.currentPage }+1)">下一页</a>
-<a href="javascript:gotoPage(${pageBean.pageCount })">尾页</a>
-</p>
-<script type="text/javascript">
-	function gotoPage(pageNum){
-		if(pageNum > "${pageBean.pageCount}"){
-			pageNum = "${pageBean.pageCount}"
-		}
-		if(pageNum < 1){
-			pageNum = 1;
-		}	
-		window.location.href="${pageContext.request.contextPath}/user/getAllUser/" + pageNum;
-}					
-</script>
-</body>
-</html>
- --%>

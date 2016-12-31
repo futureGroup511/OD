@@ -49,9 +49,9 @@ public class UserController extends BaseAction {
 	@ResponseBody
 	@RequestMapping(value="ajaxgetAllUserName",method=RequestMethod.POST)
 	public List<String> ajaxgetAllUserName(){
-		System.out.println("aaaaa");
+		//System.out.println("aaaaa");
 		List<String> list = userService.ajaxgetAllUserName();
-		System.out.println(list);
+		//System.out.println(list);
 		return list;
 	}
 	
@@ -62,11 +62,38 @@ public class UserController extends BaseAction {
 	 * 根据用户名称，查询改用户，模糊查询
 	 */
 	@RequestMapping(value="findByNameForUser",method=RequestMethod.POST)
-	public ModelAndView findByNameForUser(@RequestParam("name") String username){
+	public ModelAndView findByNameForUser(@RequestParam("name") String username,@RequestParam("role") String role,HttpServletRequest request){
 		System.out.println(username);
-		User user = userService.findByNameForUser(username);
-		System.out.println(user);
+		User tempuser = new User();
+		if(username.equals("") && role.equals("0")){
+			String message = (String) request.getSession().getAttribute("userDeleteMessage");
+			request.getSession().removeAttribute("userDeleteMessage");
+			
+			String viewname="User/allUser";
+			ModelAndView modelAndView = new ModelAndView(viewname);
+			//PageBean pageBean = PageBean.newInstance(); 
+			PageBean pageBean = PageBean.getDefault();
+			pageBean.setCurrentPage(currentPage);
+			pageBean = userService.pageBeanGetAllUser(pageBean);
+			pageBean.calbeginAndEnd();
+			modelAndView.addObject("pageBean",pageBean);
+			modelAndView.addObject("userDeleteMessage", message);
+			return modelAndView;
+		}
+		if(username.equals("")){
+			tempuser.setUserName(null);
+		} else {
+			tempuser.setUserName(username);
+		}
+		if(role.equals("0") ){
+			tempuser.setUserRole(null);
+		} else {
+			tempuser.setUserRole(Integer.parseInt(role));
+		}
 		
+		//tempuser.setUserName(username);
+		
+		List<User> user = userService.findByNameForUser(tempuser);
 		String viewname = "User/allUser";
 		ModelAndView modelAndView = new ModelAndView(viewname);
 		modelAndView.addObject("userr", user);

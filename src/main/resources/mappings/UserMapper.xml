@@ -318,7 +318,7 @@
 	
 	<!-- 根据用户名称，查询改用户，模糊查询 -->
 	
-	<select id="findByNameForUser" resultType="java.lang.String" resultMap="userAndRoleAndDeprtment">
+	<select id="findByNameForUser" resultType="com.future.domain.User" resultMap="userAndRoleAndDeprtment">
 		select 
 		user.*,role.role_id,role.role_name,role.role_desc,
 		dep.dep_id,dep.dep_name,dep.dep_desc,dep.dep_role,dep.dep_manager
@@ -326,7 +326,13 @@
 		od_user user,
 		od_role role,
 		od_department dep
-		where user.user_role = role.role_id and user.user_dep = dep.dep_id and user.user_name = #{username}
+		where user.user_role = role.role_id and user.user_dep = dep.dep_id 
+		<if test="userName != null ">
+			and user.user_name = #{userName}
+		</if>
+		<if test="userRole != null">
+			and user.user_role = #{userRole}
+		</if>
 	</select>
 	
 	<!-- ajax获取所有用户姓名 -->

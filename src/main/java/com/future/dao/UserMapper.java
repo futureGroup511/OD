@@ -137,9 +137,10 @@ public interface UserMapper {
 	/**
 	 * 
 	 * 根据用户名称，查询改用户，模糊查询
+	 * @param role 
 	 * 
 	 */
-	User findByNameForUser(String username);
+	List<User> findByNameForUser(User user);
 
 	/**
 	 * 
