@@ -12,10 +12,10 @@
 <body>
 <div class="container">
   <div class="row">
-        <div class="col-lg-3 col-lg-offset-7 col-md-3 scol-md-offset-7 col-xs-3  col-xs-offset-7">
+        <div class="col-lg-3 col-lg-offset-7 col-md-3 col-md-offset-6 col-xs-3  col-xs-offset-7">
             <p>当前位置：管理员>>增加角色信息</p>
         </div>
-        <div class="col-lg-2 col-md-2 col-xs-2">
+        <div class="col-lg-2 col-md-3 col-xs-2">
             <p>欢迎  ${sessionScope.user.userName }  登录本系统</p>
         </div>
   </div>

@@ -9,7 +9,7 @@
 </head>
 <frameset rows="16.9%,*" cols="100%" frameborder="no" border="0" framespacing="0">
 	<frame src="${pageContext.request.contextPath }/head.jsp" scrolling="no"></frame>
-<frameset cols="13%,87%" rows="100%" frameborder="yes"  framespacing="1">
+<frameset cols="12.5%,83%" rows="100%" frameborder="yes"  framespacing="1">
 	<frame src="${pageContext.request.contextPath }/user/returnMeun" scrolling="no"></frame>
     <frame src="${pageContext.request.contextPath }/welcome.jsp"  frameborder="yes" framespacing="1" name="right"></frame>
     </frameset>

@@ -12,7 +12,7 @@
 <body>
 <div class="container">
   <div class="row">
-        <div class="col-lg-2 col-lg-offset-6 col-md-3 scol-md-offset-3 col-xs-5  col-xs-offset-1">
+        <div class="col-lg-2 col-lg-offset-6 col-md-3 col-md-offset-6 col-xs-5  col-xs-offset-1">
             <p>当前位置：管理员>>修改单位信息</p>
         </div>
         <div class="col-lg-2 col-md-3 col-xs-3">
@@ -26,11 +26,11 @@
 		
   	<form:form action="${pageContext.request.contextPath }/department/updateDep" method="POST" modelAttribute="department">
     		<form:hidden path="depId"/>
-    	<div class="col-lg-2 col-lg-offset-3 col-md-2 col-md-offset-3 col-xs-3 col-xs-offfet-3">
+    	<div class="col-lg-2 col-lg-offset-3 col-md-3 col-md-offset-3 col-xs-3 col-xs-offfet-3">
         	名称：
         	<form:input class="navbar-link" path="depName"/>
         </div>
-        <div class="col-lg-2 col-lg-offset-1 col-md-2 col-md-offset-1 col-xs-3 col-xs-offfet-1">
+        <div class="col-lg-2 col-lg-offset-1 col-md-3 col-md-offset-1 col-xs-3 col-xs-offfet-1">
         	分管者：
         	<form:input path="depManager" class="navbar-link"/>
         </div>

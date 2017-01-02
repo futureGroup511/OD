@@ -4,7 +4,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>评价人信息及评价信息</title>
+    <title>当前位置：管理员>>干部总评结果</title>
 
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/yemian7.css">
@@ -70,10 +70,10 @@
 <body>
 <div class="container">
   <div class="row">
-        <div class="col-lg-3 col-lg-offset-7 col-md-3 scol-md-offset-7 col-xs-3  col-xs-offset-7">
+        <div class="col-lg-3 col-lg-offset-7 col-md-3 col-md-offset-6 col-xs-3  col-xs-offset-7">
             <p>当前位置：管理员>>干部总评结果</p>
         </div>
-        <div class="col-lg-2 col-md-2 col-xs-2">
+        <div class="col-lg-2 col-md-3 col-xs-2">
             <p>欢迎  ${sessionScope.user.userName }  登录本系统</p>
         </div>
   </div>
@@ -87,15 +87,15 @@
             <div class="col-lg-3  col-md-3  col-xs-3 ">
                 单位：<input type="text" name="department.depName" value="${requestScope.user.department.depName}" id="dw">
             </div>
-            <div class="col-lg-2  col-md-2  col-xs-2 ">
-              类别:<select name="userRole" >
-                      <option value="">请选择</option>
-                      <option value="3">党群部门</option>
-                      <option value="4">教学书记副书记</option>
-                      <option value="5">行政教辅部门</option>
-                      <option value="6">院系院长副院长</option>
-                    </select>
-            </div>
+            <div class="col-lg-2  col-md-3  col-xs-2 ">
+			              类别:<select name="userRole" >
+			                      <option value="">请选择</option>
+			                      <option value="3">党群部门</option>
+			                      <option value="4">教学书记副书记</option>
+			                      <option value="5">行政教辅部门</option>
+			                      <option value="6">院系院长副院长</option>
+			                    </select>
+			            </div>
             <div class="col-lg-1  col-md-1 col-xs-1"style="margin-top:-10px;">
                 <input type="submit" class="btn btn-block " value="提交">
             </div>

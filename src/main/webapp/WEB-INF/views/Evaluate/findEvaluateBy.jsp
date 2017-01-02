@@ -8,6 +8,16 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
+<style>
+body{
+	border: 1px solid #B4B4B4;
+    margin-top: 10px;
+	margin-left: 10px;
+	margin-right: 10px;
+	margin-bottom: 10px;
+	padding-bottom: 30px;
+}
+</style>
 <head>
     <title>查看被评价人</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.css" />
@@ -24,10 +34,10 @@
 <body>
 <div class="container">
   <div class="row">
-        <div class="col-lg-3 col-lg-offset-7 col-md-3 scol-md-offset-7 col-xs-3  col-xs-offset-7">
+        <div class="col-lg-3 col-lg-offset-7 col-md-3 col-md-offset-6 col-xs-3  col-xs-offset-7">
             <p>当前位置：评价>>查看以评信息</p>
         </div>
-        <div class="col-lg-2 col-md-2 col-xs-2">
+        <div class="col-lg-2 col-md-3 col-xs-2">
             <p>欢迎  ${sessionScope.user.userName }  登录本系统</p>
         </div>
   </div>
@@ -88,8 +98,12 @@
 
     </c:if>
     <c:if test="${page.recordCount == 0}">
-        没有数据
+       <div class="col-lg-2 col-lg-offset-2 col-md-2 col-md-offset-2 col-xs-2 col-xs-offset-2" >
+        	没有数据!
+        	
+        </div>	
     </c:if>
+    
     </div>
 </body>
 </html>

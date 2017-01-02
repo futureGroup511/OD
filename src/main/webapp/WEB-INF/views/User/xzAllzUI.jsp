@@ -199,11 +199,11 @@ a, a:visited{text-decoration:none;}
 <body background="images/dotted.png">
 <div class="dangqian">
  <div class="container"">
-  <div class="row">
-        <div class="col-lg-3 col-lg-offset-7 col-md-3 scol-md-offset-7 col-xs-3 col-xs-offset-7">
+  <div class="row" style="font-size:14px;">
+        <div class="col-lg-3 col-lg-offset-7 col-md-4 col-md-offset-5 col-xs-3 col-xs-offset-7">
             <p>当前位置：评价>>${pingjiaMessage }</p>
         </div>
-        <div class="col-lg-2 col-md-2 col-xs-2">
+        <div class="col-lg-2 col-md-3 col-xs-2">
             <p>欢迎  ${sessionScope.user.userName }  登录本系统</p>
         </div>
   </div>
@@ -217,7 +217,7 @@ a, a:visited{text-decoration:none;}
     	<div class="col-lg-1 col-lg-offset-1 col-md-1 col-md-offset-1 col-xs-1 col-xs-offfet-1">
         	<button type="button" class="btn btn-primary btn-md" onclick="xuanzhong()">一键选中称职</button>
         </div>
-        <div class="col-lg-1 col-md-1 col-xs-1">
+        <div class="col-lg-1 col-md-1 col-xs-1" style="margin-left:2em;">
         	<input type="button" class="btn btn-primary btn-md" onclick="zancun()" value="暂存评价结果"></input>
         </div>
         

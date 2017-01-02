@@ -2,7 +2,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>查看被评价详细信息</title>
+    <title>当前位置：管理员>>干部打分情况</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.css" />
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/eleven.css" />
 </head>
@@ -11,20 +11,20 @@
 <div class="dangqian">
 	           <div class="container">
   <div class="row">
-       <div class="col-lg-3 col-lg-offset-7 col-md-3 scol-md-offset-7 col-xs-3  col-xs-offset-7">
+       <div class="col-lg-3 col-lg-offset-7 col-md-4 col-md-offset-5 col-xs-3  col-xs-offset-7">
             <p>当前位置：管理员>>干部打分情况</p>
         </div>
-        <div class="col-lg-2 col-md-2 col-xs-2">
+        <div class="col-lg-2 col-md-3 col-xs-2">
             <p>欢迎  ${sessionScope.user.userName }  登录本系统</p>
         </div>
 </div>
 <div class="main">
 	<div class="row form">
 		<form action="${pageContext.request.contextPath}/evaluate/getUserByNameLY" method="post">
-	    	<div class="col-lg-2 col-lg-offset-2 col-md-1 col-md-offset-2 col-xs-1 col-xs-offset-2">
+	    	<div class="col-lg-3 col-lg-offset-2 col-md-3 col-md-offset-2 col-xs-3 col-xs-offset-2" style="pzdding-top:13px; font-size:19px;">
 	        	请输入姓名：
 	        </div>
-	        <div class="col-lg-2  col-md-2  col-xs-3">
+	        <div class="col-lg-3  col-md-3  col-xs-3">
 	        	<input  type="text" name="nameLYY" class="navbar-link">
 	        </div>
 	        <div class="col-lg-2 col-md-2 col-xs-3">

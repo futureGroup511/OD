@@ -62,7 +62,7 @@
         <div class="col-lg-1 col-md-1 col-xs-1" >
            <img src="${pageContext.request.contextPath }/img/logo.png" id="image2"> 
         </div>
-        <div class="col-lg-5 col-md-5 col-xs-5">
+        <div class="col-lg-5 col-md-5 col-xs-5" style="margin-left:-1%;">
            <p class="two">河南科技学院干部评价系统</p>
         </div>
     </div>

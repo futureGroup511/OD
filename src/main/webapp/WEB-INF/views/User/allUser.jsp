@@ -36,23 +36,23 @@ $(document).ready(function () {
 
 <body>
 <div class="container">
-  <div class="row">
-        <div class="col-lg-3 col-lg-offset-7 col-md-3 scol-md-offset-7 col-xs-3  col-xs-offset-7">
+  <div class="row" >
+        <div class="col-lg-2 col-lg-offset-7 col-md-3 scol-md-offset-6 col-xs-3  col-xs-offset-6" style="margin-top:30px;">
             <p>当前位置：管理员>>查看所有用户</p>
         </div>
-        <div class="col-lg-2 col-md-2 col-xs-2">
+        <div class="col-lg-2 col-md-3 col-xs-3"  style="margin-top:30px;">
             <p>欢迎  ${sessionScope.user.userName }  登录本系统</p>
         </div>
   </div>
- <div class="row">
+ <div class="row" style="height:30px;font-size:19px;">
   <form action="${ pageContext.request.contextPath}/user/findByNameForUser" method="post">
 		  <div class="col-lg-1 col-lg-offset-1 col-md-1 col-md-offset-1 col-xs-1 col-xs-offset-1">
              <a><p><a href="${ pageContext.request.contextPath}/user/addUserUI" class="btn btn-primary" type="button"><img src="${pageContext.request.contextPath }/img/yonghuzengjia.png" width="25" height="25">增加用户</a></p></a>
            </div>
-	    	<div class="col-lg-2  col-md-2  col-xs-2 ">
+	    	<div class="col-lg-3 col-lg-offset-1 col-md-3 col-md-offset-1 col-xs-3 col-xs-offset-1" style="margin-top:5px;">
 	        	姓名：<input  name="name" type="text" id="txtIput" class="navbar-link">
 	        </div>
-	        <div class="col-lg-3 col-md-3 col-xs-3 ">
+	        <div class="col-lg-3 col-md-3 col-xs-3"style="margin-top:5px;">
 	        	角色：<select name="role">
 	        			<option value="0">请选择</option>
 	        			<option value="1">校正厅</option>
@@ -83,7 +83,7 @@ $(document).ready(function () {
          <th>单位</th>
          <th>职务</th>
          <th>正/副</th>
-         <th>述职报告</th>
+         <!-- <th>述职报告</th> -->
          <th>是否在职</th>
          <th>编辑</th>
        </tr>
@@ -104,7 +104,7 @@ $(document).ready(function () {
 							<c:if test="${user.userNp ==0 }">正</c:if>
 							<c:if test="${user.userNp ==1 }">副</c:if>
 						</td>
-						<td>${user.userReport }</td>
+						<%-- <td>${user.userReport }</td> --%>
 						<td>
 							<c:if test="${user.userDesc == '0' }">在职</c:if>
 							<c:if test="${user.userDesc == '1' }">不在职</c:if>
@@ -125,7 +125,7 @@ $(document).ready(function () {
 							<c:if test="${user.userNp ==0 }">正</c:if>
 							<c:if test="${user.userNp ==1 }">副</c:if>
 						</td>
-						<td>${user.userReport }</td>
+						<%-- <td>${user.userReport }</td> --%>
 						<td>
 							<c:if test="${user.userDesc == '0' }">在职</c:if>
 							<c:if test="${user.userDesc == '1' }">不在职</c:if>

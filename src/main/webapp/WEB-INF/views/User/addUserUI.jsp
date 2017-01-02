@@ -120,12 +120,12 @@
 
 <body>
 <div class="dangqian">
-	           <div class="container">
+	           <div class="container"  style="padding-bottom:50px;padding-top:20px;">
       <div class="row">
-        <div class="col-lg-3 col-lg-offset-7 col-md-2 scol-md-offset-7 col-xs-2 col-xs-offset-7">
+        <div class="col-lg-3 col-lg-offset-6 col-md-4 col-md-offset-5 col-xs-3  col-xs-offset-6" style="margin-top:17px;">
             <p>当前位置：管理员>>增加/修改用户信息</p>
         </div>
-        <div class="col-lg-2 col-md-2 col-xs-2">
+        <div class="col-lg-2 col-md-3 col-xs-3"  style="margin-top:17px;">
             <p>欢迎  ${sessionScope.user.userName }  登录本系统</p>
         </div>
         </div>
@@ -138,30 +138,30 @@
 	<c:if test="${user.userId !=null }">
 		<form:hidden path="userId"/>
 		<div class="row">
-	    	    <div class="col-lg-1 col-lg-offset-3 col-md-1 col-md-offset-3 col-xs-2 col-xs-offset-3"><p>用户名：</p></div>
-	            <div class="col-lg-2 col-md-2 col-xs-2">
+	    	    <div class="col-lg-1 col-lg-offset-3 col-md-2 col-md-offset-1 col-xs-2 col-xs-offset-3"><p>用户名：</p></div>
+	            <div class="col-lg-2 col-md-3 col-xs-2">
 	            <form:input class="navbar-link" path="userName" id="username" onblur="checkoutname()"/><label id="nameMess"style="font:bold;color: red" hidden>用户名不能为空</label><br>
 	            </div>
-	            <div class="col-lg-1 col-lg-offset-1 col-md-1 col-md-offset-1 col-xs-2 col-xs-offset-1"><p>账号：</p></div>
-	            <div class="col-lg-2 col-md-2 col-xs-2">
+	            <div class="col-lg-1 col-lg-offset-1 col-md-2 col-xs-2 col-xs-offset-1"><p>账号：</p></div>
+	            <div class="col-lg-2 col-md-3 col-xs-2">
 	            	<form:input class="navbar-link" path="userNum" id="usernum" readonly="true"/>
 	            </div>
 	        </div>
 	    </div>
 	    <div class="row">
-	    		<div class="col-lg-1 col-lg-offset-3 col-md-1 col-md-offset-3 col-xs-2 col-xs-offset-3"><p>用户角色：</p></div>
-	            <div class="col-lg-2 col-md-2 col-xs-2">
+	    		<div class="col-lg-1 col-lg-offset-3 col-md-2 col-md-offset-1 col-xs-2 col-xs-offset-3"><p>用户角色：</p></div>
+	            <div class="col-lg-2 col-md-3 col-xs-2">
 	            	<form:select class="form-control" path="userRole" items="${userRole }" itemLabel="roleName" itemValue="roleId"></form:select><br>
 	            </div>
-	            <div class="col-lg-1 col-lg-offset-1 col-md-1 col-md-offset-1 col-xs-2 col-xs-offset-1"><p>所属单位：</p></div>
-	            <div class="col-lg-2 col-md-2 col-xs-2">
+	            <div class="col-lg-1 col-lg-offset-1 col-md-2  col-xs-2 col-xs-offset-1"><p>所属单位：</p></div>
+	            <div class="col-lg-2 col-md-3 col-xs-2">
 	            		<form:select class="form-control" path="userDep" items="${userDep }" itemLabel="depName" itemValue="depId"></form:select><br>
 	            </div>
 	        </div>
 	    </div>
 		<div class="row">
-	    	    <div class="col-lg-1 col-lg-offset-3 col-md-1 col-md-offset-3 col-xs-2 col-xs-offset-3"><p>正副：</p></div>
-	            <div class="col-lg-2 col-md-2 col-xs-2">
+	    	    <div class="col-lg-1 col-lg-offset-3 col-md-2 col-md-offset-1 col-xs-2 col-xs-offset-3"><p>正副：</p></div>
+	            <div class="col-lg-2 col-md-3 col-xs-2">
 	            		<select name="userNp" class="form-control">
 					<option value="0" <c:if test="${user.userNp == 0 }">selected</c:if>>正</option>
 					<option value="1" <c:if test="${user.userNp == 1 }">selected</c:if>>副</option>
@@ -169,21 +169,21 @@
 				</select><br>
 	
 	            </div>
-	            <div class="col-lg-1 col-lg-offset-1 col-md-1 col-md-offset-1 col-xs-2 col-xs-offset-1"><p>职务：</p></div>
-	            <div class="col-lg-2 col-md-2 col-xs-2">
+	            <div class="col-lg-1 col-lg-offset-1 col-md-2 col-md-offset-1 col-xs-2 col-xs-offset-1"><p>职务：</p></div>
+	            <div class="col-lg-2 col-md-3 col-xs-2">
 	            	    <form:input path="userDuty" class="navbar-link"/><br>
 	            </div>
 	    </div>
 		<div class="row">
-	    	<div class="col-lg-1 col-lg-offset-3 col-md-1 col-md-offset-3 col-xs-2 col-xs-offset-3"><p>是否在职：</p></div>
-	            <div class="col-lg-2 col-md-2 col-xs-2">
+	    	<div class="col-lg-1 col-lg-offset-3 col-md-2 col-md-offset-1 col-xs-2 col-xs-offset-3"><p>是否在职：</p></div>
+	            <div class="col-lg-2 col-md-3 col-xs-2">
 	            		<select name="userDesc" class="form-control">
 								<option value="0"     <c:if test="${user.userDesc == '0' }">selected</c:if>     >在职</option>
 								<option value="1"     <c:if test="${user.userDesc == '1' }">selected</c:if>     >不在职</option>
 						</select>
 	            </div>
-	            <div class="col-lg-1 col-lg-offset-1 col-md-1 col-md-offset-1 col-xs-2 col-xs-offset-1"><p>述职文件：</p></div>
-	            <div class="col-lg-2 col-md-2 col-xs-2">
+	            <div class="col-lg-1 col-lg-offset-1 col-md-2 col-md-offset-1 col-xs-2 col-xs-offset-1"><p>述职文件：</p></div>
+	            <div class="col-lg-2 col-md-3 col-xs-2">
 	            		<form:hidden path="userReport"/>
 					   <input type="file" name="uploadfile" class="choose">
 	                   <button type="button" class="btn btn-primary btn-md">浏览</button> 
@@ -194,12 +194,12 @@
     
     <c:if test="${user.userId ==null }">
 		<div class="row">
-	    	    <div class="col-lg-1 col-lg-offset-3 col-md-1 col-md-offset-3 col-xs-2 col-xs-offset-3"><p>用户名：</p></div>
-	            <div class="col-lg-2 col-md-2 col-xs-2">
+	    	    <div class="col-lg-1 col-lg-offset-3 col-md-2 col-md-offset-1 col-xs-2 col-xs-offset-3"><p>用户名：</p></div>
+	            <div class="col-lg-2 col-md-3 col-xs-2">
 	            <form:input class="navbar-link" path="userName" id="username" onblur="checkoutname()"/><label id="nameMess"style="font:bold;color: red" hidden>用户名不能为空</label><br>
 	            </div>
-	            <div class="col-lg-1 col-lg-offset-1 col-md-1 col-md-offset-1 col-xs-2 col-xs-offset-1"><p>账号：</p></div>
-	            <div class="col-lg-2 col-md-2 col-xs-2">
+	            <div class="col-lg-1 col-lg-offset-1 col-md-2 col-xs-1 col-xs-offset-1"><p>账号：</p></div>
+	            <div class="col-lg-2 col-md-3 col-xs-2">
 	            	<form:input class="navbar-link" path="userNum" id="usernum" onblur="checkoutUsrename()"/>
 					<label id="usernameMess"style="font:bold;color: red" hidden>账号不能为空</label>
 					<label id="usernameMess1"style="font:bold;color: red" hidden>此用户已存在</label>
@@ -207,19 +207,19 @@
 	        </div>
 	    </div>
 	    <div class="row">
-	    		<div class="col-lg-1 col-lg-offset-3 col-md-1 col-md-offset-3 col-xs-2 col-xs-offset-3"><p>用户角色：</p></div>
-	            <div class="col-lg-2 col-md-2 col-xs-2">
+	    		<div class="col-lg-1 col-lg-offset-3 col-md-2 col-md-offset-1 col-xs-2 col-xs-offset-3"><p>用户角色：</p></div>
+	            <div class="col-lg-2 col-md-3 col-xs-2">
 	            	<form:select class="form-control" path="userRole" items="${userRole }" itemLabel="roleName" itemValue="roleId"></form:select><br>
 	            </div>
-	            <div class="col-lg-1 col-lg-offset-1 col-md-1 col-md-offset-1 col-xs-2 col-xs-offset-1"><p>所属单位：</p></div>
-	            <div class="col-lg-2 col-md-2 col-xs-2">
+	            <div class="col-lg-1 col-lg-offset-1 col-md-2  col-xs-2 col-xs-offset-1"><p>所属单位：</p></div>
+	            <div class="col-lg-2 col-md-3 col-xs-2">
 	            		<form:select class="form-control" path="userDep" items="${userDep }" itemLabel="depName" itemValue="depId"></form:select><br>
 	            </div>
 	        </div>
 	    </div>
 		<div class="row">
-	    	    <div class="col-lg-1 col-lg-offset-3 col-md-1 col-md-offset-3 col-xs-2 col-xs-offset-3"><p>正副：</p></div>
-	            <div class="col-lg-2 col-md-2 col-xs-2">
+	    	    <div class="col-lg-1 col-lg-offset-3 col-md-2 col-md-offset-1 col-xs-2 col-xs-offset-3"><p>正副：</p></div>
+	            <div class="col-lg-2 col-md-3 col-xs-2">
 	            		<select name="userNp" class="form-control">
 					<option value="0" <c:if test="${user.userNp == 0 }">selected</c:if>>正</option>
 					<option value="1" <c:if test="${user.userNp == 1 }">selected</c:if>>副</option>
@@ -227,37 +227,39 @@
 				</select><br>
 	
 	            </div>
-	            <div class="col-lg-1 col-lg-offset-1 col-md-1 col-md-offset-1 col-xs-2 col-xs-offset-1"><p>职务：</p></div>
-	            <div class="col-lg-2 col-md-2 col-xs-2">
+	            <div class="col-lg-1 col-lg-offset-1 col-md-2 col-md-offset-1 col-xs-2 col-xs-offset-1"><p>职务：</p></div>
+	            <div class="col-lg-2 col-md-3 col-xs-2">
 	            	    <form:input path="userDuty" class="navbar-link"/><br>
 	            </div>
 	    </div>
 		<div class="row">
-	    	<div class="col-lg-1 col-lg-offset-3 col-md-1 col-md-offset-3 col-xs-2 col-xs-offset-3"><p>是否在职：</p></div>
-	            <div class="col-lg-2 col-md-2 col-xs-2">
+	    	<div class="col-lg-1 col-lg-offset-3 col-md-2 col-md-offset-1 col-xs-2 col-xs-offset-3"><p>是否在职：</p></div>
+	            <div class="col-lg-2 col-md-3 col-xs-2">
 	            		<select name="userDesc" class="form-control">
 								<option value="0"     <c:if test="${user.userDesc == '0' }">selected</c:if>     >在职</option>
 								<option value="1"     <c:if test="${user.userDesc == '1' }">selected</c:if>     >不在职</option>
 						</select>
 	            </div>
-	            <div class="col-lg-1 col-lg-offset-1 col-md-1 col-md-offset-1 col-xs-2 col-xs-offset-1"><p>述职文件：</p></div>
-	            <div class="col-lg-2 col-md-2 col-xs-2">
+	            <div class="col-lg-1 col-lg-offset-1 col-md-2 col-md-offset-1 col-xs-2 col-xs-offset-1"><p>述职文件：</p></div>
+	            <div class="col-lg-2 col-md-3 col-xs-2">
 					   <input type="file" name="uploadfile" class="choose">
 	                   <button type="button" class="btn btn-primary btn-md">浏览</button> 
 	            </div>
 	       </div>
 	     </div>
-	    <div class="row">
-	    	<div class="col-lg-1 col-lg-offset-3 col-md-1 col-md-offset-3 col-xs-2 col-xs-offset-3"><p>密码：</p></div>
-	            <div class="col-lg-2 col-md-2 col-xs-2">
+	    <div class="row" style="margin-top:2%;">
+	    	<div class="col-lg-1 col-lg-offset-3 col-md-2 col-md-offset-1 col-xs-2 col-xs-offset-3"><p>密码：</p></div>
+	            <div class="col-lg-2 col-md-3 col-xs-2">
 	            		<form:password class="navbar-link" path="userPassword" id="password" onblur="checkpassword()"/>
 						<label id="passwordMess"style="font:bold;color: red" hidden>密码不能为空</label><br>
 	            </div>
 	         </div> 
 	    </div>
 	</c:if>
+	
+	
 	<div class="row">
-	  <div class="col-lg-2 col-lg-offset-4 col-md-2 col-md-offset-4 col-xs-2 col-xs-offset-4 ">
+	  <div class="col-lg-2 col-lg-offset-4 col-md-3 col-md-offset-3 col-xs-2 col-xs-offset-4 " style="margin-top:2%;">
 	     <button type="button" class="btn btn-primary btn-md" id="button">提交</button>
 	  </div>
 	</div>

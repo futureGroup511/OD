@@ -16,19 +16,19 @@
 	<div class="container">
 		<div class="row">
 			<div
-				class="col-lg-1 col-lg-offset-2 col-md-1 col-md-offset-2 col-xs-1 col-xs-offset-2">
+				class="col-lg-1 col-lg-offset-3 col-md-1 col-md-offset-3 col-xs-1 col-xs-offset-2">
 					<a><p>
-						<a class="btn btn-primary" href="addDepUI">
+						<a class="btn btn-primary" href="addDepUI"> 
 							<img
 								src="${pageContext.request.contextPath }/img/yonghuzengjia.png"
 								width="25" height="25">增加单位
 						</a>
 					</p></a>
 			</div>
-			<div class="col-lg-3 col-lg-offset-4 col-md-3 scol-md-offset-4 col-xs-3  col-xs-offset-4">
+			<div class="col-lg-2 col-lg-offset-3 col-md-3 col-md-offset-1 col-xs-3  col-xs-offset-4">
             <p>当前位置：管理员>>查看所有单位</p>
         </div>
-        <div class="col-lg-2 col-md-2 col-xs-2">
+        <div class="col-lg-2 col-md-4 col-xs-2">
             <p>欢迎  ${sessionScope.user.userName }  登录本系统</p>
         </div>
 		</div>
