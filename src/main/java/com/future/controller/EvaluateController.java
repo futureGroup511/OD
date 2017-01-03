@@ -244,4 +244,16 @@ public class EvaluateController extends BaseAction {
         List<String> departments=evaluateService.getAllDepartment();
         return  departments;
     }
+    
+    /**
+     * 删除评价信息
+     */
+    @RequestMapping(value="delteEvaluate/{meId}",method=RequestMethod.GET)
+    public ModelAndView delteEvaluate(@PathVariable("meId") Integer evalTo){
+    	evaluateService.deleteByEvalTo(evalTo);
+    	String viewname = "User/success";
+    	ModelAndView modelAndView = new ModelAndView(viewname);
+    	modelAndView.addObject("message", "操作成功！");
+    	return null;
+    }
 }

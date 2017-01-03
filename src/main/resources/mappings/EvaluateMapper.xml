@@ -348,8 +348,11 @@
 		join od_role odr on odr.role_id=u.user_role join od_department ode on ode.dep_id=u.user_dep
 		where u.user_id in (select oe.eval_evalby from od_evaluate oe where oe.eval_evalto = #{0} and oe.eval_desc = #{1}) and oe.eval_desc=#{1}
 		ORDER BY eval_rank
-		
-		
 	</select>
+	
+	<delete id="deleteByEvalTo" >
+		delete from od_evaluate
+		where eval_evalto = #{0}
+	</delete>
 
 </mapper>

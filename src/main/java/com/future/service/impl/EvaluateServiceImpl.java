@@ -82,4 +82,14 @@ public class EvaluateServiceImpl implements EvaluateServiceI {
 	public List<Evaluate> contanueFindByUser(Integer userId, String fenlei) {
 		return evaluateMapper.contanueFindByUser(userId,fenlei);
 	}
+
+	
+	/**
+	 * 删除某人评价的信息
+	 * 
+	 * @author 刘阳阳
+	 */
+	public void deleteByEvalTo(Integer evalTo) {
+		evaluateMapper.deleteByEvalTo(evalTo);
+	}
 }

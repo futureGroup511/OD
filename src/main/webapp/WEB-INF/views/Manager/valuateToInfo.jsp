@@ -38,6 +38,7 @@
                         <tr class="active" >
                             <th>用户名</th>
                             <th>查看详细评价信息</th>
+                            <th>删除此人评价信息</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -45,6 +46,7 @@
 						        <tr>
 						            <td>${userInfo.userName }</td>
 						            <td><a href="${pageContext.request.contextPath}/evaluate/getValuatedOthers/?meId=${userInfo.userId}&nameLY=${userInfo.userName}">查看</a></td>
+						            <td><a href="${pageContext.request.contextPath}/evaluate/delteEvaluate/${userInfo.userId}">删除</a></td>
 						        </tr>
 						    </c:forEach>
                         

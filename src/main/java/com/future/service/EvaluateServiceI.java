@@ -60,5 +60,12 @@ public interface EvaluateServiceI {
      * @author 刘阳阳
      */
 	List<Evaluate> contanueFindByUser(Integer userId, String fenlei);
+
+	/**
+	 * 删除某人评价的信息
+	 * 
+	 * @author 刘阳阳
+	 */
+	void deleteByEvalTo(Integer evalTo);
 }
  
