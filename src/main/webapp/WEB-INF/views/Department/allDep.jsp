@@ -25,7 +25,7 @@
 						</a>
 					</p></a>
 			</div>
-			<div class="col-lg-2 col-lg-offset-3 col-md-3 col-md-offset-1 col-xs-3  col-xs-offset-4">
+			<div class="col-lg-3 col-lg-offset-3 col-md-3 col-md-offset-1 col-xs-3  col-xs-offset-4">
             <p>当前位置：管理员>>查看所有单位</p>
         </div>
         <div class="col-lg-2 col-md-4 col-xs-2">

@@ -164,7 +164,8 @@ public class EvaluateController extends BaseAction {
         PeopleType peopleType = new PeopleType();
         peopleType.setRoleType(1);
         map.put("pType", peopleType);
-
+        
+        modelAndView.addObject("tempUesrRole", user.getUserRole());
         modelAndView.addAllObjects(map);
         modelAndView.addObject("user",user);
         return modelAndView;

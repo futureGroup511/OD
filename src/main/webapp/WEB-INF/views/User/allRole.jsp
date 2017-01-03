@@ -16,7 +16,7 @@
      <div class="col-lg-1 col-lg-offset-3 col-md-1 col-md-offset-3 col-xs-1 col-xs-offset-2">
            <a><p><a href="${pageContext.request.contextPath }/user/addRoleUI" class="btn btn-primary" type="button"><img src="${pageContext.request.contextPath }/img/yonghuzengjia.png" width="25" height="25">增加角色</a></p></a>
         </div>
-        <div class="col-lg-2 col-lg-offset-3 col-md-3 col-md-offset-2 col-xs-3  col-xs-offset-4">
+        <div class="col-lg-3 col-lg-offset-3 col-md-3 col-md-offset-2 col-xs-3  col-xs-offset-4">
             <p>当前位置：管理员>>查看所有角色</p>
         </div>
         <div class="col-lg-2 col-md-3 col-xs-2">

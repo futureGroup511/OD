@@ -90,10 +90,10 @@
             <div class="col-lg-2  col-md-3  col-xs-2 ">
 			              类别:<select name="userRole" >
 			                      <option value="">请选择</option>
-			                      <option value="3">党群部门</option>
-			                      <option value="4">教学书记副书记</option>
-			                      <option value="5">行政教辅部门</option>
-			                      <option value="6">院系院长副院长</option>
+			                      <option value="3" <c:if test="${tempUesrRole == 3 }">selected</c:if> >党群部门</option>
+			                      <option value="4" <c:if test="${tempUesrRole == 4 }">selected</c:if>>教学书记副书记</option>
+			                      <option value="5" <c:if test="${tempUesrRole == 5 }">selected</c:if>>行政教辅部门</option>
+			                      <option value="6" <c:if test="${tempUesrRole == 6 }">selected</c:if>>院系院长副院长</option>
 			                    </select>
 			            </div>
             <div class="col-lg-1  col-md-1 col-xs-1"style="margin-top:-10px;">

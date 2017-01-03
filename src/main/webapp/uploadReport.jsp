@@ -43,7 +43,7 @@
 	                   <button type="button" class="btn btn-primary btn-md">选择述职报告</button>
 
 	            </div>
-			    <div class="col-lg-2  col-md-2  col-xs-2" style="margin-top:25px; margin-left:-6%;" >
+			    <div class="col-lg-2  col-md-2  col-xs-2 " style="margin-top:25px; /* margin-left:-6%; */" >
 					<input type="submit" class="btn btn-primary btn-md" value="上传">
 				</div>
 	    </div>

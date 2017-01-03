@@ -37,7 +37,7 @@ $(document).ready(function () {
 <body>
 <div class="container">
   <div class="row" >
-        <div class="col-lg-2 col-lg-offset-7 col-md-3 scol-md-offset-6 col-xs-3  col-xs-offset-6" style="margin-top:30px;">
+        <div class="col-lg-3 col-lg-offset-7 col-md-3 col-md-offset-6 col-xs-3  col-xs-offset-6" style="margin-top:30px;">
             <p>当前位置：管理员>>查看所有用户</p>
         </div>
         <div class="col-lg-2 col-md-3 col-xs-3"  style="margin-top:30px;">

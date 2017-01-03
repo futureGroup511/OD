@@ -267,21 +267,19 @@
 	<!-- 行政教辅部门， 对其 所属单位的副职评价 -->
 	<select id="XzGetAllDepDown" parameterType="com.future.domain.User" resultMap="userAndRoleAndDeprtment">
 		
-		select user.*,department.dep_name from od_user user,od_department department where user.user_dep = department.dep_id and user.user_dep = #{userDep} and user.user_np = 1 and  user_desc != '1'
+		select user.*,department.dep_name from od_user user,od_department department where user.user_dep = department.dep_id and user.user_dep = #{userDep} and user.user_np = 1 and  user_desc != '1' 
 	</select>
 	
 	<!-- 院系院长，与 行政教辅部门 互评 -->
 	<select id="YxYzGetXz" resultMap="userAndRoleAndDeprtment">
-		
-		select user.*,department.dep_name from od_user user,od_department department where user.user_dep = department.dep_id and user.user_role = 5 and  user_desc != '1'
-
+		select user.*,department.dep_name from od_user user,od_department department where user.user_dep = department.dep_id and user.user_role = 5 and  user_desc != '1' 
 	</select>
 	
 	
 	<!-- 院系院长，对本单位所有副职评价，得到所有副职列表 -->
 	<select id="YxYzGetAllDepDown" parameterType="com.future.domain.User" resultMap="userAndRoleAndDeprtment">		
 		<!-- select user.* from od_user user where user.user_dep = #{userDep} and user.user_np = 1 and user.user_role = #{userRole} -->
-		select user.*,department.dep_name from od_user user,od_department department where user.user_dep = department.dep_id and user.user_dep = #{userDep} and user.user_np = 1 and  user_desc != '1'
+		select user.*,department.dep_name from od_user user,od_department department where user.user_dep = department.dep_id and user.user_dep = #{userDep} and user.user_np = 1 and  user_desc != '1' order by user.user_role
 
 	</select>
 	
