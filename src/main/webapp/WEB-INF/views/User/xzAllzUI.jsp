@@ -215,10 +215,10 @@ a, a:visited{text-decoration:none;}
 <form id="form" action="${pageContext.request.contextPath }${url}">
 		<div class="row form">
     	<div class="col-lg-1 col-lg-offset-1 col-md-1 col-md-offset-1 col-xs-1 col-xs-offfet-1">
-        	<button type="button" class="btn btn-primary btn-md" onclick="xuanzhong()">一键选中称职</button>
+        	<button type="button" class="btn btn-primary btn-md" onclick="xuanzhong()" style="border-radius:5px; font-size:18px;">一键选中称职</button>
         </div>
-        <div class="col-lg-1 col-md-1 col-xs-1" style="margin-left:2em;">
-        	<input type="button" class="btn btn-primary btn-md" onclick="zancun()" value="暂存评价结果"></input>
+        <div class="col-lg-1 col-md-1 col-xs-1" >
+        	<input type="button" class="btn btn-primary btn-md" style="border-radius:5px; font-size:18px; margin-left:3em;" onclick="zancun()" value="暂存评价结果"></input>
         </div>
         
        </div>
@@ -312,7 +312,7 @@ a, a:visited{text-decoration:none;}
 					<input type="hidden" name="zancunCate" value="${zancunCate }">
 					<input type="hidden" name="zancunDesc" value="${zancunDesc }">
 					
-		    		<input type="button" class="btn btn-primary btn-md" value="提交" id="button" style="margin-top:30pxl;"><br>
+		    		<input type="button" class="btn btn-primary btn-md" style="border-radius:5px; font-size:18px;" value="提交" id="button" style="margin-top:30pxl;"><br>
 		    		<!-- <input type="button" class="btn btn-primary btn-md" onclick="zancun()" value="暂存"></input> -->
 		        </div>
 		       </div>

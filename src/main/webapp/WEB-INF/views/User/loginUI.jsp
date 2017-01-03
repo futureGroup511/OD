@@ -40,7 +40,7 @@
 					<input type="password" name="password" class="password" placeholder="密码" oncontextmenu="return false" onpaste="return false" />
                 </div>
                 <input id="submit" type="submit" value="登录" onclick="juge();">
-               
+               	${message }
             </form>
 
                 <%--<p>Henan institute of science and technology department of login system interface.</p>--%>

@@ -97,7 +97,7 @@
 			                    </select>
 			            </div>
             <div class="col-lg-1  col-md-1 col-xs-1"style="margin-top:-10px;">
-                <input type="submit" class="btn btn-block " value="提交">
+                <input type="submit" class="btn btn-block " value="查询">
             </div>
         </form>
 

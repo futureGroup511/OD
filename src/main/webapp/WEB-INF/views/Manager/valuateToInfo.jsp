@@ -21,14 +21,14 @@
 <div class="main">
 	<div class="row form">
 		<form action="${pageContext.request.contextPath}/evaluate/getUserByNameLY" method="post">
-	    	<div class="col-lg-3 col-lg-offset-2 col-md-3 col-md-offset-2 col-xs-3 col-xs-offset-2" style="pzdding-top:13px; font-size:19px;">
+	    	<div class="col-lg-3 col-lg-offset-2 col-md-3 col-md-offset-2 col-xs-3 col-xs-offset-2" style="padding-top:5px; font-size:19px;">
 	        	请输入姓名：
 	        </div>
 	        <div class="col-lg-3  col-md-3  col-xs-3">
 	        	<input  type="text" name="nameLYY" class="navbar-link">
 	        </div>
 	        <div class="col-lg-2 col-md-2 col-xs-3">
-	             <button type="submit" class="btn btn-primary btn-md">提交</button>
+	             <button type="submit" class="btn btn-primary btn-md" style="border-radius:5px; font-size:18px; ">查询</button>
 	        </div>
         </form>
     </div>

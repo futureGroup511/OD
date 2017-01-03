@@ -44,7 +44,7 @@ body {
 		<div class="row">
 			<div
 				class="col-lg-3 col-lg-offset-7 col-md-3 col-md-offset-6 col-xs-3  col-xs-offset-7">
-				<p>当前位置：评价>>查看以评信息</p>
+				<p>当前位置：评价>>查看已评信息</p>
 			</div>
 			<div class="col-lg-2 col-md-3 col-xs-2">
 				<p>欢迎 ${sessionScope.user.userName } 登录本系统</p>
@@ -84,7 +84,7 @@ body {
 			
 		</form>
 		<div class="col-lg-2 col-md-2 col-xs-3">
-			<button class="btn btn-primary" onclick="subform()">确定</button>
+			<button class="btn btn-primary" onclick="subform()">查&nbsp;&nbsp;&nbsp;询</button>
 		</div>
 	</div>
 

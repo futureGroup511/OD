@@ -608,7 +608,7 @@ public class UserController extends BaseAction {
 				modelAndView.addObject("userList", userList);
 			}
 			modelAndView.addObject("userNum", userList.size());
-			modelAndView.addObject("pingjiaMessage", "分管(联点单位评价)");
+			modelAndView.addObject("pingjiaMessage", "分管(联点)单位评价");
 			//评价级别，和描述
 			modelAndView.addObject("zancunCate", "2");
 			modelAndView.addObject("zancunDesc","1");

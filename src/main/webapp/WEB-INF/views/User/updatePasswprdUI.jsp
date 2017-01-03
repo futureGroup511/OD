@@ -13,16 +13,16 @@
 
 <body>
 <div class="dangqian">
-	<div class="row">
-    	<div class="container">
-  <div class="row">
-        <div class="col-lg-3 col-lg-offset-7 col-md-3 col-md-offset-6 col-xs-3  col-xs-offset-7">
+   <div class="container">
+       <div class="row">
+         <div class="col-lg-3 col-lg-offset-7 col-md-3 col-md-offset-6 col-xs-3  col-xs-offset-7">
             <p>当前位置：管理员>>修改密码</p>
-        </div>
-        <div class="col-lg-2 col-md-3 col-xs-2">
+         </div>
+         <div class="col-lg-2 col-md-3 col-xs-2">
             <p>欢迎  ${sessionScope.user.userName }  登录本系统</p>
-        </div>
-  </div>
+         </div>
+     </div>
+    </div>
 </div>
 
     </div>
@@ -46,7 +46,7 @@
 	    </div>
 	    <div class="row">
 	        <div class="col-lg-4 col-lg-offset-4 col-md-6 col-md-offset-3 col-xs-8 col-xs-offset-2">
-	        	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;请输入密码：
+	        	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;请输入密码：
 	        	 <input type="password" id="password1" class="navbar-link" name="password" onblur="mess2()"> 
             <p id="mess2" style="color:red;display:none">密码不能为空！</p>
 	        </div>

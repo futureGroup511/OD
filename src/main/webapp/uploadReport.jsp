@@ -16,7 +16,7 @@
 <body>
 <div class="dangqian">
 	           <div class="container">
-  <div class="row">
+  <div class="row" style="margin-top:30px;">
         <div class="col-lg-3 col-lg-offset-7 col-md-4 col-md-offset-5 col-xs-3  col-xs-offset-7">
             <p>当前位置：述职报告>>上传述职报告</p>
         </div>
@@ -28,7 +28,7 @@
 <div class="main">
 	<div class="row">
             <!-- <div class="col-lg-1 col-lg-offset-1 col-md-1 col-md-offset-1 col-xs-1 col-xs-offset-1"></div> -->
-            <div class="col-lg-2 col-lg-offset-2 col-md-2 col-md-offset-2 col-xs-2 col-xs-offset-2 " style="margin-top:20px;padding-left:4%;width:20%;">
+            <div class="col-lg-2 col-lg-offset-2 col-md-2 col-md-offset-2 col-xs-2 col-xs-offset-2 " style="margin-top:70px;padding-left:4%;width:20%;">
             		<c:if test="${sessionScope.user.userReport != '' }">
                    		<button type="button" class="btn btn-primary btn-md" onclick="lookPDF('${pageContext.request.contextPath}/user/lookpdf?reportName=${sessionScope.user.userReport}');">查看述职报告</button>
                    </c:if>
@@ -44,7 +44,7 @@
 
 	            </div>
 			    <div class="col-lg-2  col-md-2  col-xs-2 " style="margin-top:25px; /* margin-left:-6%; */" >
-					<input type="submit" class="btn btn-primary btn-md" value="上传">
+					<input type="submit" id="up" class="btn btn-primary btn-md" value="上传" >
 				</div>
 	    </div>
 
@@ -58,6 +58,16 @@
 <script type="text/javascript" src="${pageContext.request.contextPath }/js/jquery.paginate.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath }/js/public.js"></script>
 <script type="text/javascript">
+
+$(function(){
+	$("#up").click(function(){
+		if($.trim($("input[name='uploadfile']").val())==''){
+			alert("请选择文件后在单击上传！");
+			return false;
+		}	
+	});		
+})
+
 function lookPDF(theURL){
     var pop,w=670,h=450; //window.navigate(theURL);
     pop=window.open(theURL,"winGD","width="+w+",height="+h+",resizable=yes,menubar=no,toolbar=no,location=no,scrollbars=no,status=no")

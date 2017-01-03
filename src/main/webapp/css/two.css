@@ -4,8 +4,8 @@ padding:0;
 margin:0;
 }
 body{
- border: 1px solid #B4B4B4;
-  margin-top: 10px;
+   border: 1px solid #B4B4B4;
+    margin-top: 10px;
 	margin-left: 10px;
 	margin-right: 10px;
 	margin-bottom: 10px;
@@ -17,16 +17,15 @@ body{
 
 .row{
   width:100%;
-  margin-top:2%;
+ 
 }
 .navbar-link{
   height:33px;
   width:60%;
 }
 .btn-primary{
-  margin-left:-4%;
   border-radius: 5px;
-  width:60%;
+  width:100%;
   /* margin-top:5%; */
 }
 /* CSS Document */

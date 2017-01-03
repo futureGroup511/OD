@@ -46,13 +46,13 @@ $(document).ready(function () {
   </div>
  <div class="row" style="height:30px;font-size:19px;">
   <form action="${ pageContext.request.contextPath}/user/findByNameForUser" method="post">
-		  <div class="col-lg-1 col-lg-offset-1 col-md-1 col-md-offset-1 col-xs-1 col-xs-offset-1">
-             <a><p><a href="${ pageContext.request.contextPath}/user/addUserUI" class="btn btn-primary" type="button"><img src="${pageContext.request.contextPath }/img/yonghuzengjia.png" width="25" height="25">增加用户</a></p></a>
+		  <div class="col-lg-1 col-lg-offset-1 col-md-1 col-md-offset-1 col-xs-1 col-xs-offset-1" >
+             <a><p><a href="${ pageContext.request.contextPath}/user/addUserUI" class="btn btn-primary" type="button" style="font-size:18px;"><img src="${pageContext.request.contextPath }/img/yonghuzengjia.png" width="28" height="25">增加用户</a></p></a>
            </div>
 	    	<div class="col-lg-3 col-lg-offset-1 col-md-3 col-md-offset-1 col-xs-3 col-xs-offset-1" style="margin-top:5px;">
 	        	姓名：<input  name="name" type="text" id="txtIput" class="navbar-link">
 	        </div>
-	        <div class="col-lg-3 col-md-3 col-xs-3"style="margin-top:5px;">
+	        <div class="col-lg-3 col-md-3 col-xs-3"style="margin-top:5px; margin-left:-10px;">
 	        	角色：<select name="role">
 	        			<option value="0" <c:if test="${tempRole == 0 }">selected</c:if> >请选择
 	        			<option value="1" <c:if test="${tempRole == 1 }">selected</c:if>>校正厅</option>
@@ -65,7 +65,7 @@ $(document).ready(function () {
 	        </div>
 	        
 	        <div class="col-lg-1  col-md-1 col-xs-1">
-	        	<button type="submit" class="btn btn-primary btn-xs">提交</button>
+	        	<button type="submit" class="btn btn-primary" style="height:39px; font-size:18px;">查&nbsp;&nbsp;询</button>
 	        </div>
         </form>
   </div>
