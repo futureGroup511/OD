@@ -158,7 +158,7 @@ public class UserController extends BaseAction {
 			String viewname = "User/loginUI";
 			ModelAndView modelAndView = new ModelAndView(viewname);
 			// session.addAttribute("message","账号或密码错误");
-			request.setAttribute("message", "账号或密码错误111");
+			request.setAttribute("message", "账号或密码错误!");
 			// session.setAttribute("message","账号或密码错误");
 			return modelAndView;
 		}

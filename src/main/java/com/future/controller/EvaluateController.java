@@ -254,6 +254,6 @@ public class EvaluateController extends BaseAction {
     	String viewname = "User/success";
     	ModelAndView modelAndView = new ModelAndView(viewname);
     	modelAndView.addObject("message", "操作成功！");
-    	return null;
+    	return modelAndView;
     }
 }
