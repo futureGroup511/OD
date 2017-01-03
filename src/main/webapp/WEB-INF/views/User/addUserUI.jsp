@@ -165,7 +165,7 @@
 	            		<select name="userNp" class="form-control">
 					<option value="0" <c:if test="${user.userNp == 0 }">selected</c:if>>正</option>
 					<option value="1" <c:if test="${user.userNp == 1 }">selected</c:if>>副</option>
-					<option value="3" <c:if test="${user.userNp == 3 }">selected</c:if>>其他</option>
+					<option value="3" <c:if test="${user.userNp == 3 }">selected</c:if>>校领导</option>
 				</select><br>
 	
 	            </div>
@@ -223,7 +223,7 @@
 	            		<select name="userNp" class="form-control">
 					<option value="0" <c:if test="${user.userNp == 0 }">selected</c:if>>正</option>
 					<option value="1" <c:if test="${user.userNp == 1 }">selected</c:if>>副</option>
-					<option value="3" <c:if test="${user.userNp == 3 }">selected</c:if>>其他</option>
+					<option value="3" <c:if test="${user.userNp == 3 }">selected</c:if>>校领导</option>
 				</select><br>
 	
 	            </div>

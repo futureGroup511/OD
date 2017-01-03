@@ -186,20 +186,41 @@ public class EvaluateController extends BaseAction {
     @RequestMapping(value = "/findByUserIdOrEvalByName")
     public ModelAndView findByUserIdOrEvalByName(@RequestParam(value = "id",required=false)Integer id,
                                                  @RequestParam(value = "name",required=false)String name,
-                                                 @RequestParam(value = "currentPage",required=false) Integer currentPage){
-        PageBean page=PageBean.getDefault(); //创建一个默认当前页数为1，显示条数为10的page
-        if(currentPage != null) page.setCurrentPage(currentPage);
-        if(name != null && name.equals("")) name = null;
-        ModelAndView mv = new ModelAndView();
-        Map<String,Object> hashmap = new HashMap<String,Object>();
-        hashmap.put("id",id);
-        hashmap.put("name",name);
-        hashmap.put("page",page);
-        evaluateService.findEvalByUser(hashmap);
-        mv.addObject("page",page);
-        if(name != null)mv.addObject("findname",name);
-        mv.setViewName("Evaluate/findEvaluateBy");
-        return mv;
+                                                 @RequestParam(value = "currentPage",required=false) Integer currentPage,
+                                                 @RequestParam(value="fenlei",required=false) String fenlei,
+                                                 HttpServletRequest request){
+    	ModelAndView mv = new ModelAndView();
+    	System.out.println(fenlei);
+    	if(fenlei == null){
+    		//根据userid 和打分类别，查询到所有的人
+    		fenlei = "3";
+    	}
+    	if(!fenlei.equals("3")){
+        	System.out.println("嗯哼嗯哼不为空！！");
+        	User tempUser = (User) request.getSession().getAttribute("user");
+        	List<Evaluate> evalList = evaluateService.contanueFindByUser(tempUser.getUserId(),fenlei);
+        	mv.setViewName("Evaluate/findEvaluateBy");
+        	mv.addObject("evalList",evalList);
+        	mv.addObject("tempFenlei",fenlei);
+        	System.out.println(evalList);
+        	
+        	
+        } else {
+        	PageBean page=PageBean.getDefault(); //创建一个默认当前页数为1，显示条数为10的page
+            if(currentPage != null) page.setCurrentPage(currentPage);
+            if(name != null && name.equals("")) name = null;
+            
+            Map<String,Object> hashmap = new HashMap<String,Object>();
+            hashmap.put("id",id);
+            hashmap.put("name",name);
+            hashmap.put("page",page);
+            evaluateService.findEvalByUser(hashmap);
+            mv.addObject("page",page);
+            if(name != null)mv.addObject("findname",name);
+            mv.setViewName("Evaluate/findEvaluateBy");
+        }
+    	
+    	return mv;
     }
     
     /**

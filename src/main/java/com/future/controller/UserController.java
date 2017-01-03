@@ -97,6 +97,7 @@ public class UserController extends BaseAction {
 		String viewname = "User/allUser";
 		ModelAndView modelAndView = new ModelAndView(viewname);
 		modelAndView.addObject("userr", user);
+		modelAndView.addObject("tempRole", role);
 		return modelAndView;
 	}
 	

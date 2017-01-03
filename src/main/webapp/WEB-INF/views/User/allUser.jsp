@@ -54,13 +54,13 @@ $(document).ready(function () {
 	        </div>
 	        <div class="col-lg-3 col-md-3 col-xs-3"style="margin-top:5px;">
 	        	角色：<select name="role">
-	        			<option value="0">请选择</option>
-	        			<option value="1">校正厅</option>
-	        			<option value="2">校副厅</option>
-	        			<option value="3">党群部门</option>
-	        			<option value="4">教学书记副书记</option>
-	        			<option value="5">行政教辅部门</option>
-	        			<option value="6">院系院长副院长</option>
+	        			<option value="0" <c:if test="${tempRole == 0 }">selected</c:if> >请选择
+	        			<option value="1" <c:if test="${tempRole == 1 }">selected</c:if>>校正厅</option>
+	        			<option value="2" <c:if test="${tempRole == 2 }">selected</c:if>>校副厅</option>
+	        			<option value="3" <c:if test="${tempRole == 3 }">selected</c:if>>机关党群</option>
+	        			<option value="4" <c:if test="${tempRole == 4 }">selected</c:if>>教学单位党务</option>
+	        			<option value="5" <c:if test="${tempRole == 5 }">selected</c:if>>机关行政</option>
+	        			<option value="6" <c:if test="${tempRole == 6 }">selected</c:if>>教学单位行政</option>
 	        		</select>
 	        </div>
 	        

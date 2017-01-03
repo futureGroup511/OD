@@ -341,4 +341,15 @@
 		SELECT dep_name FROM od_department
 	</select>
 	
+	<!-- 条件查询以评信息(Integer userId, String fenlei); -->
+	<select id="contanueFindByUser" resultMap="evalto">
+		SELECT odr.role_name,ode.dep_name,u.user_name,eval_id,eval_evalby,eval_evalto,eval_rank,eval_cate,eval_desc
+		FROM od_evaluate oe join od_user u on u.user_id=oe.eval_evalby
+		join od_role odr on odr.role_id=u.user_role join od_department ode on ode.dep_id=u.user_dep
+		where u.user_id in (select oe.eval_evalby from od_evaluate oe where oe.eval_evalto = #{0} and oe.eval_desc = #{1}) and oe.eval_desc=#{1}
+		ORDER BY eval_rank
+		
+		
+	</select>
+
 </mapper>

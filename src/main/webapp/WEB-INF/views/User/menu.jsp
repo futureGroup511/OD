@@ -15,15 +15,15 @@
 			<dl class="channel">
 			<c:if test="${sessionScope.user.userRole == 1 }">
 				<a target="right"
-					href="${pageContext.request.contextPath }/user/xzAllzUI"><dt>处级干部评价</dt></a>
+					href="${pageContext.request.contextPath }/user/xzAllzUI"><dt>全体处级评价</dt></a>
 				<a target="right"
-					href="${pageContext.request.contextPath }/user/xzAllFenGuanUI"><dt>分管单位评价</dt></a>
+					href="${pageContext.request.contextPath }/user/xzAllFenGuanUI"><dt>分管(联点)评价</dt></a>
 			</c:if>
 			<c:if test="${sessionScope.user.userRole == 2 }">
 				<a target="right"
-					href="${pageContext.request.contextPath }/user/xfAllzfUI"><dt>处级干部评价</dt></a>
+					href="${pageContext.request.contextPath }/user/xfAllzfUI"><dt>全体处级评价</dt></a>
 				<a target="right"
-					href="${pageContext.request.contextPath }/user/xfAllFenGuanUI"><dt>分管单位评价</dt></a>
+					href="${pageContext.request.contextPath }/user/xfAllFenGuanUI"><dt>分管(联点)评价</dt></a>
 			</c:if>
 			<c:if
 				test="${sessionScope.user.userRole == 3 && sessionScope.user.userNp == 0}">

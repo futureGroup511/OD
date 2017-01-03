@@ -53,5 +53,12 @@ public interface EvaluateServiceI {
      * @return
      */
     List<String> getAllDepartment();
+
+    /**
+     * 条件查询以评信息
+     * 
+     * @author 刘阳阳
+     */
+	List<Evaluate> contanueFindByUser(Integer userId, String fenlei);
 }
  

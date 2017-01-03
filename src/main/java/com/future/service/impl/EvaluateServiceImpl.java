@@ -73,4 +73,13 @@ public class EvaluateServiceImpl implements EvaluateServiceI {
 	public List<String> getAllDepartment() {
 		return evaluateMapper.getAllDepartment();
 	}
+
+	/**
+     * 条件查询以评信息
+     * 
+     * @author 刘阳阳
+     */
+	public List<Evaluate> contanueFindByUser(Integer userId, String fenlei) {
+		return evaluateMapper.contanueFindByUser(userId,fenlei);
+	}
 }
