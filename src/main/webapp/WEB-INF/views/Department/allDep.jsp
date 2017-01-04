@@ -40,14 +40,17 @@
 		<table class="table table-bordered table-hover table-striped">
 			<thead>
 				<tr class="two">
+					<th>序号</th>
 					<th>名称</th>
 					<th>分管人</th>
 					<th>编辑</th>
 				</tr>
 			</thead>
 			<tbody>
-				<c:forEach items="${depList }" var="dep">
+				<c:forEach items="${depList }" var="dep" varStatus="id">
 					<tr>
+						
+						<td>${id.count }</td>
 						<td>${dep.depName }</td>
 						<td>${dep.depManager }</td>
 						<td class="four"><img src="${pageContext.request.contextPath }/img/bian.png">

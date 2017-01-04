@@ -90,10 +90,10 @@
             <div class="col-lg-2  col-md-3  col-xs-2 ">
 			              类别:<select name="userRole" >
 			                      <option value="">请选择</option>
-			                      <option value="3" <c:if test="${tempUesrRole == 3 }">selected</c:if> >党群部门</option>
-			                      <option value="4" <c:if test="${tempUesrRole == 4 }">selected</c:if>>教学书记副书记</option>
-			                      <option value="5" <c:if test="${tempUesrRole == 5 }">selected</c:if>>行政教辅部门</option>
-			                      <option value="6" <c:if test="${tempUesrRole == 6 }">selected</c:if>>院系院长副院长</option>
+			                      <option value="3" <c:if test="${tempUesrRole == 3 }">selected</c:if> >机关党群</option>
+			                      <option value="4" <c:if test="${tempUesrRole == 4 }">selected</c:if>>教学单位党务</option>
+			                      <option value="5" <c:if test="${tempUesrRole == 5 }">selected</c:if>>机关行政</option>
+			                      <option value="6" <c:if test="${tempUesrRole == 6 }">selected</c:if>>教学单位行政</option>
 			                    </select>
 			            </div>
             <div class="col-lg-1  col-md-1 col-xs-1"style="margin-top:-10px;">
@@ -106,6 +106,7 @@
 <div class="table-responsive">
     <table class="table table-bordered table-hover table-striped">
         <tr>
+            <td>序号</td>
             <td>被评价人单位</td>
             <td>被评价人姓名</td>
             <td>总评得分</td>
@@ -114,8 +115,9 @@
             <td>单位正职评价得分</td>
             <td>查看</td>
         </tr>
-        <c:forEach items="${requestScope.statisticList }" var="statistic">
+        <c:forEach items="${requestScope.statisticList }" var="statistic" varStatus="id">
             <tr>
+                <td>${id.count}</td>
                 <td>${statistic.stati_user.department.depName}</td>
                 <td>${statistic.stati_user.userName}</td>
                 <td>${statistic.static_result }</td>

@@ -10,7 +10,7 @@
 <body>
 <div class="container">
   <div class="row">
-        <div class="col-lg-2 col-lg-offset-6 col-md-3 scol-md-offset-3 col-xs-5  col-xs-offset-1">
+        <div class="col-lg-3 col-lg-offset-6 col-md-3 scol-md-offset-3 col-xs-5  col-xs-offset-1">
             <p>当前位置：管理员>>具体查询干部打分情况</p>
         </div>
         <div class="col-lg-2 col-md-3 col-xs-3">

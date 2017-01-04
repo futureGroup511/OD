@@ -77,6 +77,7 @@ $(document).ready(function () {
     <table class="table table-bordered table-hover table-striped">
     <thead>
       <tr class="two">
+         <th>序号</th>
          <th>姓名</th>
          <th>账号</th>
          <th>角色</th>
@@ -93,8 +94,9 @@ $(document).ready(function () {
       
       	
       		<c:if test="${pageBean.recordlist != null }">
-				<c:forEach items="${pageBean.recordlist }" var="user">
+				<c:forEach items="${pageBean.recordlist }" var="user" varStatus="id">
 					<tr>
+						<td>${id.count }</td>
 						<td>${user.userName }</td>
 						<td>${user.userNum }</td>
 						<td>${user.role.roleName }</td>
@@ -114,8 +116,9 @@ $(document).ready(function () {
 				</c:forEach>
 			</c:if>
 			<c:if test="${userr != null }">
-				<c:forEach items="${userr }" var="user">
+				<c:forEach items="${userr }" var="user" varStatus="id">
 					<tr>
+						<td>${id.count }</td>
 						<td>${user.userName }</td>
 						<td>${user.userNum }</td>
 						<td>${user.role.roleName }</td>

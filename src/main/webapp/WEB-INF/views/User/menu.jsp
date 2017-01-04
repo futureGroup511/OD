@@ -116,10 +116,11 @@
 		              	<dt>修改参数信息</dt>
 						<dd><a href="/OD/user/modifyexcellent/?juge=1" target="right">修改优秀比例权重</a></dd>
 		                <dd><a href="/OD/user/modifyProperties/?juge=1" target="right">校厅级权重</a></dd>
-		                <dd><a href="/OD/user/modifySGProperties/?juge=1" target="right">党群正处/行政正处</a></dd>
-		                <dd><a href="/OD/user/modifySBGProperties/?juge=1" target="right">教学副书记/教学副院长</a></dd>
-		                <dd><a href="/OD/user/modifyAGProperties/?juge=1" target="right">教学正书记/教学正院长</a></dd>
-		                <dd><a href="/OD/user/modifyDCProperties/?juge=1" target="right">党群副处/行政副处</a></dd>
+		                <dd><a href="/OD/user/modifySGProperties/?juge=1" target="right">机关党群、行政正处</a></dd>
+		                <dd><a href="/OD/user/modifyDCProperties/?juge=1" target="right">机关党群、行政副处</a></dd>
+		                <dd><a href="/OD/user/modifyAGProperties/?juge=1" target="right">党务、行政正处</a></dd>
+		                <dd><a href="/OD/user/modifySBGProperties/?juge=1" target="right">党务、行政副处</a></dd>
+		                
                		</dl>
 						
 				
