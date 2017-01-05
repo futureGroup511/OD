@@ -48,7 +48,7 @@
             </div>
         </div>
 	 <div class="footer">
-		 <p>技术支持：河南科技学院未来工作室&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 河南艾未特网络技术有限公司</p>
+		 <p>技术支持：信工学院未来软件工作室&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 河南艾未特网络技术有限公司</p>
 	 </div>
 		<div class="alert" style="display:none">
 			<h2>消息</h2>
