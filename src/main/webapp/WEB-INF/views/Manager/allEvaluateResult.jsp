@@ -81,13 +81,13 @@
 <div class="container-one">
     <div class="row form">
         <form action="${pageContext.request.contextPath }/evaluate/redirectHere" method="post">
-            <div class="col-lg-3 col-lg-offset-1 col-md-3 col-md-offset-1 col-xs-3 col-xs-offfet-1" style="margin-left: 10%;">
+            <div class="col-lg-3 col-md-4 col-xs-3 col-xs-offfet-1" style="margin-left: 10%; font-size:18px; width:30%;">
                 姓名：<input type="text" name="userName" value="${requestScope.user.userName}" id="name">
             </div>
-            <div class="col-lg-3  col-md-3  col-xs-3 ">
+            <div class="col-lg-3  col-md-4  col-xs-3" style="font-size:18px; margin-left:-6%; width:30%;">
                 单位：<input type="text" name="department.depName" value="${requestScope.user.department.depName}" id="dw">
             </div>
-            <div class="col-lg-2  col-md-3  col-xs-2 ">
+            <div class="col-lg-3  col-md-3  col-xs-2"  style="font-size:18px; margin-left:-6%;">
 			              类别:<select name="userRole" >
 			                      <option value="">请选择</option>
 			                      <option value="3" <c:if test="${tempUesrRole == 3 }">selected</c:if> >机关党群</option>
@@ -96,8 +96,8 @@
 			                      <option value="6" <c:if test="${tempUesrRole == 6 }">selected</c:if>>教学单位行政</option>
 			                    </select>
 			            </div>
-            <div class="col-lg-1  col-md-1 col-xs-1"style="margin-top:-10px;">
-                <input type="submit" class="btn btn-block " value="查询">
+            <div class="col-lg-1  col-md-1 col-xs-1"style="margin-top:-10px; margin-left:-60px;'">
+                <input type="submit" class="btn btn-block btn-primary"  style="font-size:18px; background-color:#12A1EC"value="查&nbsp;&nbsp;询">
             </div>
         </form>
 

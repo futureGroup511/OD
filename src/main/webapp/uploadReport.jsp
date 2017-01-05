@@ -26,26 +26,26 @@
   </div>
 </div>
 <div class="main">
-	<div class="row">
-            <!-- <div class="col-lg-1 col-lg-offset-1 col-md-1 col-md-offset-1 col-xs-1 col-xs-offset-1"></div> -->
-            <div class="col-lg-2 col-lg-offset-2 col-md-2 col-md-offset-2 col-xs-2 col-xs-offset-2 " style="margin-top:70px;padding-left:4%;width:20%;">
-            		<c:if test="${sessionScope.user.userReport != '' }">
-                   		<button type="button" class="btn btn-primary btn-md" onclick="lookPDF('${pageContext.request.contextPath}/user/lookpdf?reportName=${sessionScope.user.userReport}');">查看述职报告</button>
-                   </c:if>
-            </div>
-    </div>
+	
 	    
 	<form:form action="${pageContext.request.contextPath }/user/uploadResport" method="POST" enctype="multipart/form-data">
-		<div class="row">
-	            <div class="col-lg-2 col-lg-offset-1 col-md-2 col-md-offset-1 col-xs-2 col-xs-offset-1"><p>上传述职报告：</p></div>
-	            <div class="col-lg-2 col-md-2 col-xs-2" style="margin-top:0px;margin-left:-5.5%;">
+		<div class="row" style="margin-top:30px;">
+	            <div class="col-lg-2 col-lg-offset-1 col-md-2 col-md-offset-1 col-xs-2 col-xs-offset-1"><p style="font-size:18px;"><strong>上传述职报告：</strong></p></div>
+	            <div class="col-lg-1 col-md-2 col-xs-2">
 					   <input type="file" name="uploadfile" class="choose">
-	                   <button type="button" class="btn btn-primary btn-md">选择述职报告</button>
+	                   <button type="button" class="btn btn-primary btn-md" style="font-size:18px;margin-top:-31.5px;margin-left:-120%;">选择述职报告</button>
 
 	            </div>
-			    <div class="col-lg-2  col-md-2  col-xs-2 " style="margin-top:25px; /* margin-left:-6%; */" >
-					<input type="submit" id="up" class="btn btn-primary btn-md" value="上传" >
+			    <div class="col-lg-1  col-md-2  col-xs-2 " style="margin-top:25px; /* margin-left:-6%; */" >
+					<input type="submit" id="up" class="btn btn-primary btn-md" style="font-size:18px;margin-top:-31.5px;margin-left:-80%;" value="上&nbsp;&nbsp;传" >
 				</div>
+	    </div>
+	    <div class="row">
+	    			<div class="col-lg-1 col-md-1 col-md-offset-2 col-xs-1 col-xs-offset-3" style="margin-left:17.3%;">
+		            		<c:if test="${sessionScope.user.userReport != '' }">
+		                   		<button type="button" class="btn btn-primary btn-md" style="font-size:18px;" onclick="lookPDF('${pageContext.request.contextPath}/user/lookpdf?reportName=${sessionScope.user.userReport}');">查看述职报告</button>
+		                   </c:if>
+		            </div>
 	    </div>
 
 	</form:form>

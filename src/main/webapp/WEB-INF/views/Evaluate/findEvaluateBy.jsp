@@ -58,21 +58,18 @@ body {
 			<input type="hidden" name="currentPage" value="${page.currentPage}"
 				id="currentPage">
 			<div
-				class="col-lg-1 col-lg-offset-2 col-md-1 col-md-offset-2 col-xs-1 col-xs-offfet-2"
-				style="font-size: 18px;">姓名：</div>
+				  class="col-lg-1 col-lg-offset-2 col-md-1 col-md-offset-2 col-xs-1 col-xs-offfet-2"
+				style="font-size: 18px; padding-top:2px;">姓名：</div>
 			<div class="col-lg-2  col-md-2  col-xs-3"
-				style="margin-left: -3%; padding-top: 5px;">
-				<input type="text" name="name" value="${findname}">
+				style="margin-left: -5%; font-size: 18px;">
+				<input type="text" name="name" style="width:80%;"value="${findname}">
 			</div>
-			
-			
-			
 			<div
-				class="col-lg-2 col-lg-offset-1 col-md-1 col-md-offset-2 col-xs-1 col-xs-offfet-2"
-				style="font-size: 18px;">分类查询：</div>
-			<div class="col-lg-2  col-md-2  col-xs-3"
-				style="margin-left: -3%; padding-top: 5px;">
-				<select name="fenlei">
+				class="col-lg-2 col-md-2 col-xs-2"
+				style="font-size: 18px; margin-left:20px;">分类查询：</div>
+			<div class="col-lg-3  col-md-3  col-xs-3"
+				style="margin-left: -10%; font-size: 18px; padding-top:-6px; ">
+				<select name="fenlei" style="width:40%;">
 					<option value="3">请选择：</option>
 					<option value="0" <c:if test="${tempFenlei == 0 }">selected</c:if>>处级干部</option>
 					<option value="1" <c:if test="${tempFenlei == 1 }">selected</c:if>>分管单位</option>
@@ -83,8 +80,8 @@ body {
 			
 			
 		</form>
-		<div class="col-lg-2 col-md-2 col-xs-3">
-			<button class="btn btn-primary" onclick="subform()">查&nbsp;&nbsp;&nbsp;询</button>
+		<div class="col-lg-2 col-md-2 col-xs-3" >
+			<button class="btn btn-primary" onclick="subform()" style="font-size:18px; width:50%; margin-top:-8px;">查&nbsp;&nbsp;&nbsp;询</button>
 		</div>
 	</div>
 

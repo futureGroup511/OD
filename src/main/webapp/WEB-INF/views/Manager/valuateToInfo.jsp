@@ -28,7 +28,7 @@
 	        	<input  type="text" name="nameLYY" class="navbar-link">
 	        </div>
 	        <div class="col-lg-2 col-md-2 col-xs-3">
-	             <button type="submit" class="btn btn-primary btn-md" style="border-radius:5px; font-size:18px; ">查询</button>
+	             <button type="submit" class="btn btn-primary btn-md" style="border-radius:5px; font-size:18px; background-color:#12A1EC; ">查&nbsp;&nbsp;询</button>
 	        </div>
         </form>
     </div>

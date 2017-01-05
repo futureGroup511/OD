@@ -14,7 +14,7 @@
 <body>
 <div class="dangqian">
    <div class="container">
-       <div class="row">
+       <div class="row" style="margin-top:30px;">
          <div class="col-lg-3 col-lg-offset-7 col-md-3 col-md-offset-6 col-xs-3  col-xs-offset-7">
             <p>当前位置：管理员>>修改密码</p>
          </div>
@@ -38,21 +38,21 @@
 	<input type="hidden" name="userId" value="${userId }"> 
 	<div class="main">
 		<div class="row">
-	    	<div class="col-lg-4 col-lg-offset-4 col-md-6 col-md-offset-3 col-xs-8 col-xs-offset-2">
+	    	<div class="col-lg-4 col-lg-offset-4 col-md-6 col-md-offset-2 col-xs-8 col-xs-offset-2" style="margin-top:30px; font-size:18px;">
 	        	请输入原始密码：
 	        	<input type="password"   class="navbar-link" id="psword" onblur="verify(${userId })"> 
             	<p id="mess1" style="color:red;display:none">原始密码不正确！</p>
 	        </div>
 	    </div>
 	    <div class="row">
-	        <div class="col-lg-4 col-lg-offset-4 col-md-6 col-md-offset-3 col-xs-8 col-xs-offset-2">
+	        <div class="col-lg-4 col-lg-offset-4 col-md-6 col-md-offset-2 col-xs-8 col-xs-offset-2" style="margin-top:20px; font-size:18px;">
 	        	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;请输入密码：
 	        	 <input type="password" id="password1" class="navbar-link" name="password" onblur="mess2()"> 
             <p id="mess2" style="color:red;display:none">密码不能为空！</p>
 	        </div>
 	    </div>
 	    <div class="row">
-	    	<div class="col-lg-4 col-lg-offset-4 col-md-6 col-md-offset-3 col-xs-8 col-xs-offset-2">
+	    	<div class="col-lg-4 col-lg-offset-4 col-md-6 col-md-offset-2 col-xs-8 col-xs-offset-2" style="margin-top:20px; font-size:18px;">
 	        	请再次输入密码：
 	        	<input type="password"  class="navbar-link" id="password2" onblur="mess3()">
          	<p id="mess3" style="color:red;display:none">密码不能为空！</p>
@@ -60,8 +60,8 @@
 	        </div>
 	    </div>
 	    <div class="row">
-	     <div class="col-lg-4 col-lg-offset-5 col-md-6 col-md-offset-4 col-xs-8 col-xs-offset-3">
-	       <button type="button" class="btn btn-primary btn-md">提交</button> 
+	     <div class="col-lg-1 col-lg-offset-5 col-md-6 col-md-offset-4 col-xs-8 col-xs-offset-3" style="margin-top:30px; width:10%;">
+	       <button type="button" class="btn btn-primary btn-md" style="font-size:18px; margin-left:88px;">提&nbsp;&nbsp;交</button> 
 	    </div>
 	</div>
 </form>
