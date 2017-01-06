@@ -109,6 +109,7 @@
             <td>序号</td>
             <td>被评价人单位</td>
             <td>被评价人姓名</td>
+            <td>正/副</td>
             <td>总评得分</td>
             <td>对口互评得分</td>
             <td>校领导评价得分</td>
@@ -120,6 +121,12 @@
                 <td>${id.count}</td>
                 <td>${statistic.stati_user.department.depName}</td>
                 <td>${statistic.stati_user.userName}</td>
+                <c:if test="${statistic.stati_user.userNp eq 0}">
+                <td> 正</td>
+                </c:if>
+                <c:if test="${statistic.stati_user.userNp eq 1}">
+                <td>  副</td>
+                </c:if>
                 <td>${statistic.static_result }</td>
                 <td>${statistic.static_xhp }</td>
                 <td>${statistic.static_t }</td>
