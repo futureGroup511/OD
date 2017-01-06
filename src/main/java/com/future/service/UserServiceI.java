@@ -336,4 +336,11 @@ public interface UserServiceI {
 	 * @author 刘阳阳
 	 */
 	int delteDateFromTempEvaluate();
+
+	/**
+	 * 根据id重置密码
+	 * 
+	 * @author 刘阳阳
+	 */
+	void resetPassword(Integer id);
 }
