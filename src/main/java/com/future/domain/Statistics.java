@@ -85,9 +85,9 @@ public class Statistics implements Comparable<Statistics>{
             教学副书记、教学副院长：互评成绩*0.3 + 厅级打分*0.2  +  单位正职* 0.2
 
          */
-        if(stati_user.getUserName().equals("宋飞琼")){
+       /* if(stati_user.getUserName().equals("郭秋平")){
             System.out.println();
-        }
+        }*/
         Integer roleid=stati_user.getRole().getRoleId();
         if(stati_user.getUserNp()==0 ){ //正职
             if(roleid == 3 ||roleid == 5){ //党群和行政
