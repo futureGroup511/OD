@@ -112,7 +112,7 @@
 
 				</dl>
 						
-					<dl class="channel">
+					<!-- <dl class="channel">
 		              	<dt>修改参数信息</dt>
 						<dd><a href="/OD/user/modifyexcellent/?juge=1" target="right">修改优秀比例权重</a></dd>
 		                <dd><a href="/OD/user/modifyProperties/?juge=1" target="right">校厅级权重</a></dd>
@@ -121,7 +121,7 @@
 		                <dd><a href="/OD/user/modifyAGProperties/?juge=1" target="right">党务、行政正处</a></dd>
 		                <dd><a href="/OD/user/modifySBGProperties/?juge=1" target="right">党务、行政副处</a></dd>
 		                
-               		</dl>
+               		</dl> -->
 						
 				
 

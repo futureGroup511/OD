@@ -111,7 +111,9 @@ $(document).ready(function () {
 							<c:if test="${user.userDesc == '0' }">在职</c:if>
 							<c:if test="${user.userDesc == '1' }">不在职</c:if>
 						</td>
-						<td class="four"><img src="${pageContext.request.contextPath }/img/bian.png"><a href="${pageContext.request.contextPath }/user/updateUserUI/${user.userId }/${currentPage }">修改</a>&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;<img src="${pageContext.request.contextPath }/img/lajitong.png"><a href="${pageContext.request.contextPath }/user/deleteUser/${user.userId }" style="color:#E11E05;">删除</a></td>
+						<td class="four"><img src="${pageContext.request.contextPath }/img/bian.png"><a href="${pageContext.request.contextPath }/user/updateUserUI/${user.userId }/${currentPage }">修改</a>&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;<img src="${pageContext.request.contextPath }/img/lajitong.png"><a href="${pageContext.request.contextPath }/user/deleteUser/${user.userId }" style="color:#E11E05;">删除</a>
+						<img src="${pageContext.request.contextPath }/img/bian.png"><a onClick="if(confirm( '确定要重置密码吗！ ')==false)return   false;" href="${pageContext.request.contextPath }/user/resetPassword/${user.userId }/${currentPage }">重置密码</a>
+						</td>
 					</tr>
 				</c:forEach>
 			</c:if>

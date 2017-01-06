@@ -454,4 +454,13 @@ public class UserServiceImpl implements UserServiceI {
 	public int delteDateFromTempEvaluate() {
 		return tempEvalMapper.delteDateFromTempEvaluate();
 	}
+
+	/**
+	 * 根据id重置密码
+	 * 
+	 * @author 刘阳阳
+	 */
+	public void resetPassword(Integer id) {
+		userMapper.resetPassword(id);
+	}
 }

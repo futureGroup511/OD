@@ -356,4 +356,9 @@
 			stati_ft = 0,
 			stati_dw = 0
 	</update>
+	
+	<!-- 根据id重置密码    resetPassword-->
+	<update id="resetPassword">
+		update od_user set od_user.user_password = '123456' where od_user.user_id = #{0}
+	</update>
 </mapper>

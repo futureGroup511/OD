@@ -27,6 +27,13 @@ import java.util.*;
 public class UserController extends BaseAction {
 
 	// @SessionAttributes("user")
+	
+	@RequestMapping(value="resetPassword/{id}/{pageCurr}",method=RequestMethod.GET)
+	public String resetPassword(@PathVariable("id") Integer id, @PathVariable("pageCurr") Integer pageCurr){
+		//updateUserUI
+		userService.resetPassword(id);
+		return "redirect:/user/getAllUser/" + pageCurr;
+	}
 
 	/**
 	 * 清空数据
