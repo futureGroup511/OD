@@ -18,8 +18,6 @@ body {
 	padding-bottom: 30px;
 }
 </style>
-<head>
-<title>查看被评价人</title>
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/css/bootstrap.css" />
 <link rel="stylesheet"
@@ -36,6 +34,36 @@ body {
 	src="${pageContext.request.contextPath}/js/tableexport.js"></script>
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/js/paging.js"></script>
+	
+	
+<script type="text/javascript" src="${pageContext.request.contextPath }/ly/auto/jquery-1.7.1.min.js"></script>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/ly/auto/jquery.autocomplete.css"></link>
+<script type="text/javascript" src="${pageContext.request.contextPath }/ly/auto/jquery.autocomplete.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function () {
+		$.ajax({
+ 			url:'${pageContext.request.contextPath }/user/ajaxgetAllUserName',
+ 			type:'post',
+			data:null,
+			dataType:'json',
+ 			success:function(msg) {
+                 /* var datas = eval(msg);
+                 $("#txtIput").autocomplete(datas); */
+                 //alert(msg)
+                 $('#tttt').AutoComplete({
+         		    //'data': ['One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten', 'Eleven', 'Twelve'],
+         		    'data': msg,
+         		    'itemHeight': 20,
+         		    'width': 280
+         		})
+             }
+         });
+     })
+</script>
+<head>
+<title>查看被评价人</title>
+
 
 </head>
 
@@ -62,19 +90,24 @@ body {
 				style="font-size: 18px; padding-top:2px;">姓名：</div>
 			<div class="col-lg-2  col-md-2  col-xs-3"
 				style="margin-left: -5%; font-size: 18px;">
-				<input type="text" name="name" style="width:80%;"value="${findname}">
+				<input type="text" id="tttt" name="name" style="width:80%;" value="${findname}">
 			</div>
-			<div
-				class="col-lg-2 col-md-2 col-xs-2"
-				style="font-size: 18px; margin-left:20px;">分类查询：</div>
-			<div class="col-lg-3  col-md-3  col-xs-3"
-				style="margin-left: -10%; font-size: 18px; padding-top:-6px; ">
-				<select name="fenlei" style="width:40%;">
-					<option value="3">请选择：</option>
-					<option value="0" <c:if test="${tempFenlei == 0 }">selected</c:if>>处级干部</option>
-					<option value="1" <c:if test="${tempFenlei == 1 }">selected</c:if>>分管单位</option>
-				</select>
-			</div>
+			<c:if test="${user.userRole == 1 || user.userRole == 2}">
+				<div
+					class="col-lg-2 col-md-2 col-xs-2"
+					style="font-size: 18px; margin-left:20px;">分类查询：</div>
+				<div class="col-lg-3  col-md-3  col-xs-3"
+					style="margin-left: -10%; font-size: 18px; padding-top:-6px; ">
+					
+						<select name="fenlei" style="width:40%;">
+						<option value="3">请选择：</option>
+						<option value="0" <c:if test="${tempFenlei == 0 }">selected</c:if>>处级干部</option>
+						<option value="1" <c:if test="${tempFenlei == 1 }">selected</c:if>>分管单位</option>
+					</select>
+					
+					
+				</div>
+			</c:if>
 			
 			
 			
