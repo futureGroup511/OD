@@ -290,7 +290,7 @@ a, a:visited{text-decoration:none;}
 									<%-- <img alt="" height="10" width="10" src="${pageContext.request.contextPath }/upload/1481966691829.png"> --%>
 									<%-- <a class="image-icon" rel="gallery[modal]" href="${pageContext.request.contextPath }/${user.userReport}">
 									<img height="20" width="50" src="${pageContext.request.contextPath }/${user.userReport}"></a> --%>
-									<button type="button" onclick="lookPDF('${pageContext.request.contextPath}/user/lookpdf?reportName=${user.userReport}');">查看述职报告</button>
+									<button type="button" onclick="lookPDF('${pageContext.request.contextPath}/user/lookpdf?reportName=${temp.user.userReport}');">查看述职报告</button>
 								</td>
 							</tr>
 						</c:forEach>

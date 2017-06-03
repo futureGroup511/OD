@@ -61,7 +61,7 @@
 	    </div>
 	    <div class="row">
 	     <div class="col-lg-1 col-lg-offset-5 col-md-6 col-md-offset-4 col-xs-8 col-xs-offset-3" style="margin-top:30px; width:10%;">
-	       <button type="button" class="btn btn-primary btn-md" style="font-size:18px; margin-left:88px;">提&nbsp;&nbsp;交</button> 
+	       <button type="button" id="button" class="btn btn-primary btn-md" style="font-size:18px; margin-left:88px;">提&nbsp;&nbsp;交</button> 
 	    </div>
 	</div>
 </form>
